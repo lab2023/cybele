@@ -21,7 +21,7 @@ rails new APP_NAME -T -m https://raw.github.com/lab2023/cybele/master/rails_temp
 
 If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
 
-http://github.com/lab2023/rails-template/issues
+http://github.com/lab2023/cybele/issues
 
 ## Contributing
 
