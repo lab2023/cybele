@@ -8,8 +8,8 @@ This is yet an other private Rails Template.
 
 Before generating your application, you will need:
 
-The Ruby language (version 2.0.0)
-Rails 4.0
+* Ruby 2.0
+* Rails 4.0
 
 ## Usage
 
