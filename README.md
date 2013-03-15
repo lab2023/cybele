@@ -43,6 +43,4 @@ The names and logos for lab2023 are trademarks of lab2023, inc.
 
 ## License
 
-[MIT License](http://www.opensource.org/licenses/mit-license)
-
 Copyright 2012 lab2023 – internet technologies
