@@ -21,6 +21,7 @@ rails new APP_NAME -T -m https://raw.github.com/lab2023/cybele/master/rails_temp
 
 * [devise](https://github.com/plataformatec/devise)
 * [simple_form](https://github.com/plataformatec/simple_form)
+* [responders](https://github.com/plataformatec/responders)
 
 ## Bugs and  Feedback
 
