@@ -17,11 +17,16 @@ Before generating your application, you will need:
 rails new APP_NAME -T -m https://raw.github.com/lab2023/cybele/master/rails_template.rb
 ```
 
-## Include
+## Gems
 
-* [devise](https://github.com/plataformatec/devise)
+**Default Included**
+
 * [simple_form](https://github.com/plataformatec/simple_form)
 * [responders](https://github.com/plataformatec/responders)
+
+**Optional**
+
+* [devise](https://github.com/plataformatec/devise)
 
 ## Bugs and  Feedback
 
