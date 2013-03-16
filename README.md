@@ -24,6 +24,7 @@ rails new APP_NAME -T -m https://raw.github.com/lab2023/cybele/master/rails_temp
 * [simple_form](https://github.com/plataformatec/simple_form)
 * [responders](https://github.com/plataformatec/responders)
 * [devise](https://github.com/plataformatec/devise) for super admin
+* unicorn_template See [issue #4](https://github.com/lab2023/cybele/issues/4#issuecomment-15001981)
 
 **Optional**
 
