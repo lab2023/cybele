@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cybele/version'
+require 'lib/cybele/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'cybele'
@@ -15,15 +15,15 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.0.0'
   spec.add_dependency 'bundler', '~> 1.3'
-  spec.add_dependency 'rails', '4.0.0.rc1'
+  spec.add_dependency 'rails', '~> 4.0.0.rc1'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = %w[cybele]
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = %w[lib]
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency 'bundler', '~> 1.3'
+  spec.add_development_dependency 'rake'
 
   spec.extra_rdoc_files = %w[README.md LICENSE.txt]
 end
