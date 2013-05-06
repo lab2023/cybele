@@ -1,6 +1,8 @@
 # Cybele
 
-This is yet an other private Rails Template.
+NOTE: Don't use this gem until v1.0.0
+
+This is yet an other Rails Template which inspired from [Syspenders](https://github.com/thoughtbot/suspenders)
 
 **Cybele** pron.: /ˈsɪbɨliː/ was an originally Anatolian mother goddess. Little is known of her oldest Anatolian cults, other than her association with mountains, hawks and lions. She may have been Phrygia's State deity; her Phrygian cult was adopted and adapted by Greek colonists of Asia Minor, and spread from there to mainland Greece and its more distant western colonies from around the 6th century BCE.
 
@@ -14,22 +16,10 @@ Before generating your application, you will need:
 ## Usage
 
 ```ruby
-rails new APP_NAME -T -m https://raw.github.com/lab2023/cybele/master/rails_template.rb
+cybele PROJECT_NAME
 ```
 
-## What cybele included?
-
-**Default**
-
-* [simple_form](https://github.com/plataformatec/simple_form)
-* [responders](https://github.com/plataformatec/responders)
-* [devise](https://github.com/plataformatec/devise) for super admin
-* unicorn_template See [issue #4](https://github.com/lab2023/cybele/issues/4#issuecomment-15001981)
-
-**Optional**
-
-* [devise](https://github.com/plataformatec/devise) for user model. See [issue #2 comment](https://github.com/lab2023/cybele/issues/2#issuecomment-14980353)
-
+## What cybele do and included?
 
 
 ## Bugs and  Feedback
@@ -50,7 +40,7 @@ Once you've made your great commits:
 
 ## Credits
 
-Rails Template is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
+Cybele is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
 
 Thank you to all the [contributors!](https://github.com/lab2023/cybele/graphs/contributors)
 
