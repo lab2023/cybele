@@ -2,21 +2,27 @@
 
 NOTE: Don't use this gem until v1.0.0
 
-This is yet an other Rails Template which inspired from [Syspenders](https://github.com/thoughtbot/suspenders)
+This is yet an other Rails Template which inspired from [suspenders](https://github.com/thoughtbot/suspenders).
 
-**Cybele** pron.: /ˈsɪbɨliː/ was an originally Anatolian mother goddess. Little is known of her oldest Anatolian cults, other than her association with mountains, hawks and lions. She may have been Phrygia's State deity; her Phrygian cult was adopted and adapted by Greek colonists of Asia Minor, and spread from there to mainland Greece and its more distant western colonies from around the 6th century BCE.
+**Cybele** pron.: /ˈsɪbɨliː/ was an originally Anatolian mother goddess. Little is known of her oldest Anatolian cults,
+other than her association with mountains, hawks and lions. She may have been Phrygia's State deity; her Phrygian cult
+was adopted and adapted by Greek colonists of Asia Minor, and spread from there to mainland Greece and its more distant
+western colonies from around the 6th century BCE.
 
 ## Requirements
 
 Before generating your application, you will need:
 
-* Ruby 2.0
-* Rails 4.0
+* Ruby ~> 2.0
+* Rails ~> 4.0
 
 ## Usage
 
+First you should install the cybele gem than you can use it for creating new gem.
+
 ```ruby
-cybele PROJECT_NAME
+gem install cybele
+cybele project_name
 ```
 
 ## What cybele do and included?
