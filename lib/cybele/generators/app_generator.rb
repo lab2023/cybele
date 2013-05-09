@@ -19,13 +19,20 @@ module Cybele #:nodoc:#
     # Internal: Finish template
     def finish_template
       invoke :customization
-      invoke :customize_gemfile
       super
     end
 
     # Internal: Customization template
     def customization
+      invoke :customize_gemfile
       invoke :remove_files_we_dont_need
+      invoke :replace_files
+    end
+
+    # Internal: Customize gemfile
+    def customize_gemfile
+      build :replace_gemfile
+      bundle_command 'install --binstubs=bin/stubs'
     end
 
     # Internal: Remove files don't need
@@ -35,10 +42,10 @@ module Cybele #:nodoc:#
       build :remove_readme_rdoc
     end
 
-    # Internal: Customize gemfile
-    def customize_gemfile
-      build :replace_gemfile
-      bundle_command 'install --binstubs=bin/stubs'
+    # Internal: Replace files
+    def replace_files
+      say 'Replace files'
+      build :replace_erb_with_haml
     end
 
     # Internal: Let's not: We'll bundle manually at the right spot.

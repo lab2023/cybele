@@ -26,5 +26,10 @@ module Cybele #:nodoc:#
       copy_file 'Gemfile_new', 'Gemfile'
     end
 
+    # Internal: Replace erb files with html files
+    def replace_erb_with_haml
+      remove_file 'app/views/layouts/application.html.erb'
+      template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', :force => true
+    end
   end
 end
