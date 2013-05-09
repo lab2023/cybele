@@ -10,11 +10,6 @@ module Cybele #:nodoc:#
       template 'README.md.erb', 'README.md', :force => true
     end
 
-    # Internal: Overwrite superclass gemfile
-    def gemfile
-      template 'Gemfile_new', 'Gemfile', :force => true
-    end
-
     # Remove: Remove public index file
     def remove_public_index
       remove_file 'public/index.html'
@@ -27,8 +22,8 @@ module Cybele #:nodoc:#
 
     # Internal: Replace gemfile
     def replace_gemfile
-      remove_file 'Gemfile_new'
-      copy_file 'Gemfile_new', 'Gemfile_new'
+      remove_file 'Gemfile'
+      copy_file 'Gemfile_new', 'Gemfile'
     end
 
   end
