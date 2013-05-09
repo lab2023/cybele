@@ -4,7 +4,7 @@ require 'rails/generators/rails/app/app_generator'
 module Cybele #:nodoc:#
 
   # Public: This allows you to override entire operations, like the creation of the
-  # Gemfile, README, or JavaScript files, without needing to know exactly
+  # Gemfile_new, README, or JavaScript files, without needing to know exactly
   # what those operations do so you can create another template action.
   class AppGenerator < Rails::Generators::AppGenerator
 
@@ -19,19 +19,13 @@ module Cybele #:nodoc:#
     # Internal: Finish template
     def finish_template
       invoke :customization
+      invoke :customize_gemfile
       super
     end
 
     # Internal: Customization template
     def customization
-      invoke :add_readme_md
       invoke :remove_files_we_dont_need
-    end
-
-    # Internal: Add Readme.md file
-    def add_readme_md
-      say 'Add README.md'
-      build :readme
     end
 
     # Internal: Remove files don't need
@@ -41,5 +35,21 @@ module Cybele #:nodoc:#
       build :remove_readme_rdoc
     end
 
+    # Internal: Customize gemfile
+    def customize_gemfile
+      build :replace_gemfile
+      bundle_command 'install --binstubs=bin/stubs'
+    end
+
+    # Internal: Let's not: We'll bundle manually at the right spot.
+    def run_bundle
+    end
+
+    protected
+
+    # Internal: We need get_builder class
+    def get_builder_class
+      Cybele::AppBuilder
+    end
   end
 end
