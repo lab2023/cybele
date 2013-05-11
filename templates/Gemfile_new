@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem "haml", "~> 4.0.2"
 gem "haml-rails", "~> 0.4"
+gem 'responders'
 
 group :doc do
   gem 'sdoc', require: false

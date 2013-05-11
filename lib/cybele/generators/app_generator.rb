@@ -27,6 +27,7 @@ module Cybele #:nodoc:#
       invoke :customize_gemfile
       invoke :remove_files_we_dont_need
       invoke :replace_files
+      invoke :install_gems
     end
 
     # Internal: Customize gemfile
@@ -47,6 +48,13 @@ module Cybele #:nodoc:#
     def replace_files
       say 'Replace files'
       build :replace_erb_with_haml
+    end
+
+    # Internal: Install gems
+    def install_gems
+      say 'Install gems'
+      say 'Install responder gem'
+      build :install_responder_gem
     end
 
     # Internal: Let's not: We'll bundle manually at the right spot.
