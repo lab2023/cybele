@@ -1,5 +1,7 @@
 # Cybele
 
+[![Code Climate](https://codeclimate.com/github/lab2023/cybele.png)](https://codeclimate.com/github/lab2023/cybele)
+
 NOTE: Don't use this gem until v1.0.0
 
 This is yet an other Rails Template which inspired from [suspenders](https://github.com/thoughtbot/suspenders).
