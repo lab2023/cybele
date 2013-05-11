@@ -20,6 +20,11 @@ module Cybele #:nodoc:#
       remove_file 'README.rdoc'
     end
 
+    # Internal: Remove rails.png file
+    def remove_rails_logo_image
+      remove_file 'app/assets/images/rails.png'
+    end
+
     # Internal: Replace gemfile
     def replace_gemfile
       remove_file 'Gemfile'

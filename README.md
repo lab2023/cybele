@@ -1,5 +1,7 @@
 # Cybele
 
+[![Code Climate](https://codeclimate.com/github/lab2023/cybele.png)](https://codeclimate.com/github/lab2023/cybele)
+
 NOTE: Don't use this gem until v1.0.0
 
 This is yet an other Rails Template which inspired from [suspenders](https://github.com/thoughtbot/suspenders).
@@ -43,6 +45,15 @@ Once you've made your great commits:
 3. Push to your branch - `git push origin my_branch`
 4. Create a Pull Request from your branch
 5. That's it!
+
+## Documentation
+
+
+Cybele uses [TomDoc](http://tomdoc.org/) and [rDoc](http://rubydoc.info/gems/cybele) .
+
+## Backwards Compatibility
+
+Cybele uses [SemVer](http://semver.org/), and takes it seriously.
 
 ## Credits
 
