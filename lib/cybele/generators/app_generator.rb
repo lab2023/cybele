@@ -40,6 +40,7 @@ module Cybele #:nodoc:#
       say 'Remove files we don\'t need'
       build :remove_public_index
       build :remove_readme_rdoc
+      build :remove_rails_logo_image
     end
 
     # Internal: Replace files
