@@ -46,6 +46,15 @@ Once you've made your great commits:
 4. Create a Pull Request from your branch
 5. That's it!
 
+## Documentation
+
+
+Cybele uses [TomDoc](http://tomdoc.org/) and [rDoc](http://rubydoc.info/gems/cybele) .
+
+## Backwards Compatibility
+
+Cybele uses [SemVer](http://semver.org/), and takes it seriously.
+
 ## Credits
 
 Cybele is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
