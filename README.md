@@ -1,6 +1,7 @@
 # Cybele
 
 [![Code Climate](https://codeclimate.com/github/lab2023/cybele.png)](https://codeclimate.com/github/lab2023/cybele)
+[![Dependency Status](https://gemnasium.com/lab2023/cybele.png)](https://gemnasium.com/lab2023/cybele)
 
 NOTE: Don't use this gem until v1.0.0
 
