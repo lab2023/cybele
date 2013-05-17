@@ -30,6 +30,7 @@ module Cybele #:nodoc:#
       invoke :replace_files
       invoke :install_gems
       invoke :gitignore_files_and_folders
+      invoke :setup_bootstrap
     end
 
     # Internal: Customize gemfile
@@ -75,6 +76,12 @@ module Cybele #:nodoc:#
     def gitignore_files_and_folders
       build :setup_gitignore_files
       build :setup_gitignore_folders
+    end
+
+    # Internal: Setup up bootstrap
+    def setup_bootstrap
+      build :setup_asset_precompile
+      build :setup_application_js
     end
 
 

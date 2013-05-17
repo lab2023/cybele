@@ -79,6 +79,31 @@ module Cybele #:nodoc:#
       end
     end
 
+    # Internal: Setup asset precompile
+    # Look for information https://github.com/thomas-mcdonald/bootstrap-sass#rails-4
+    def setup_asset_precompile
+
+      config = <<-RUBY
+
+
+    # Precompile additional assets.
+    # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+      RUBY
+
+      inject_into_file 'config/application.rb', config, :after => '# config.i18n.default_locale = :de'
+    end
+
+    def setup_application_js
+      config = <<-RUBY
+
+//= require bootstrap
+      RUBY
+
+      inject_into_file 'app/assets/javascripts/application.js', config, :after => '//= require turbolinks'
+
+    end
+
     # Internal: Leftovers
     def leftovers
     end
