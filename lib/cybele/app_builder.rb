@@ -86,9 +86,8 @@ module Cybele #:nodoc:#
       config = <<-RUBY
 
 
-    # Precompile additional assets.
-    # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.sass.preferred_syntax = :sass
       RUBY
 
       inject_into_file 'config/application.rb', config, :after => '# config.i18n.default_locale = :de'
