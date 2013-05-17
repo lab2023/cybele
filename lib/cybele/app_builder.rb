@@ -1,7 +1,7 @@
 module Cybele #:nodoc:#
 
   # Public: This allows you to override entire operations, like the creation of the
-  # Gemfile_new, README, or JavaScript files, without needing to know exactly
+  # cybele_Gemfile, README, or JavaScript files, without needing to know exactly
   # what those operations do so you can create another template action.
   class AppBuilder < Rails::AppBuilder
 
@@ -28,7 +28,7 @@ module Cybele #:nodoc:#
     # Internal: Replace gemfile
     def replace_gemfile
       remove_file 'Gemfile'
-      copy_file 'Gemfile_new', 'Gemfile'
+      copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
     # Internal: Replace erb files with html files
@@ -55,6 +55,28 @@ module Cybele #:nodoc:#
     # Internal: Create database
     def create_database
       bundle_command 'exec rake db:create'
+    end
+
+    # Internal: Setup gitignore files
+    def setup_gitignore_files
+      remove_file '.gitignore'
+      copy_file 'cybele_gitignore', '.gitignore'
+    end
+
+    # Internal: Setup gitignore folders
+    def setup_gitignore_folders
+      %w(
+        app/assets/images
+        db/migrate
+        spec/support
+        spec/lib
+        spec/models
+        spec/views
+        spec/controllers
+        spec/helpers
+      ).each do |dir|
+        empty_directory_with_keep_file dir
+      end
     end
 
     # Internal: Leftovers

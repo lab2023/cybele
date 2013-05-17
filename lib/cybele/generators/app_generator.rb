@@ -29,6 +29,7 @@ module Cybele #:nodoc:#
       invoke :remove_files_we_dont_need
       invoke :replace_files
       invoke :install_gems
+      invoke :gitignore_files_and_folders
     end
 
     # Internal: Customize gemfile
@@ -69,6 +70,13 @@ module Cybele #:nodoc:#
 
       build :create_database
     end
+
+    # Internal: Ignore files and folder
+    def gitignore_files_and_folders
+      build :setup_gitignore_files
+      build :setup_gitignore_folders
+    end
+
 
     # Internal: Let's not: We'll bundle manually at the right spot.
     def run_bundle
