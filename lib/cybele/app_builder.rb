@@ -47,6 +47,16 @@ module Cybele #:nodoc:#
       copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'
     end
 
+    # Internal: Setup database config
+    def replace_database_yml
+      template 'config/database.yml.erb', 'config/database.yml', :force => true
+    end
+
+    # Internal: Create database
+    def create_database
+      bundle_command 'exec rake db:create'
+    end
+
     # Internal: Leftovers
     def leftovers
     end

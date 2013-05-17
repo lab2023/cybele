@@ -25,6 +25,7 @@ module Cybele #:nodoc:#
     # Internal: Customization template
     def customization
       invoke :customize_gemfile
+      invoke :setup_database
       invoke :remove_files_we_dont_need
       invoke :replace_files
       invoke :install_gems
@@ -48,6 +49,7 @@ module Cybele #:nodoc:#
     def replace_files
       say 'Replace files'
       build :replace_erb_with_haml
+      build :replace_database_yml
     end
 
     # Internal: Install gems
@@ -55,6 +57,17 @@ module Cybele #:nodoc:#
       say 'Install gems'
       say 'Install responder gem'
       build :install_responder_gem
+    end
+
+    # Internal: Setup database
+    def setup_database
+      say 'Setting up database'
+
+      if 'postgresql' == options[:database]
+        build :replace_database_yml
+      end
+
+      build :create_database
     end
 
     # Internal: Let's not: We'll bundle manually at the right spot.

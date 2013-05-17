@@ -39,6 +39,8 @@ http://github.com/lab2023/cybele/issues
 
 ## Contributing
 
+Cybele uses [TomDoc](http://tomdoc.org/), [rDoc](http://rubydoc.info/gems/cybele) and [SemVer](http://semver.org/), and takes it seriously.
+
 Once you've made your great commits:
 
 1. Fork Template
@@ -46,15 +48,6 @@ Once you've made your great commits:
 3. Push to your branch - `git push origin my_branch`
 4. Create a Pull Request from your branch
 5. That's it!
-
-## Documentation
-
-
-Cybele uses [TomDoc](http://tomdoc.org/) and [rDoc](http://rubydoc.info/gems/cybele) .
-
-## Backwards Compatibility
-
-Cybele uses [SemVer](http://semver.org/), and takes it seriously.
 
 ## Credits
 
