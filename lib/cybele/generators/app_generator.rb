@@ -31,6 +31,7 @@ module Cybele #:nodoc:#
       invoke :install_gems
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
+      invoke :configure_mail_setting
     end
 
     # Internal: Customize gemfile
@@ -84,6 +85,13 @@ module Cybele #:nodoc:#
       build :setup_application_js
       build :convert_application_js_to_coffee
       build :convert_application_css_to_sass
+    end
+
+    # Internal: Setup mail setting
+    def configure_mail_setting
+      build :configure_mail_setting
+      build :configure_action_mailer
+      build :setup_letter_opener
     end
 
 

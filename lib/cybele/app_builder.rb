@@ -105,8 +105,67 @@ module Cybele #:nodoc:#
       copy_file 'app/assets/stylesheets/application.css.sass', 'app/assets/stylesheets/application.css.sass'
     end
 
+    # Interval: Configure smtp
+    def configure_smtp
+      copy_file 'config/initializers/mail.rb', 'config/initializers/mail.rb'
+
+      prepend_file 'config/environments/production.rb',
+                   "require Rails.root.join('config/initializers/mail')\n"
+
+      config = <<-RUBY
+
+
+  # Mail Settings
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = MAIL_SETTING
+      RUBY
+
+      inject_into_file 'config/environments/production.rb', config,
+                       :after => 'config.action_mailer.raise_delivery_errors = false'
+    end
+
+    # Interval: Configure action mailer
+    def configure_action_mailer
+      action_mailer_host 'development', "#{app_name}.dev"
+      action_mailer_host 'test', 'www.example.com'
+      action_mailer_host 'production', "#{app_name}.com"
+    end
+
+    # Interval: Setup letter opener
+    def  setup_letter_opener
+      config = 'config.action_mailer.delivery_method = :letter_opener'
+      configure_environment 'development', config
+    end
+
     # Internal: Leftovers
     def leftovers
+    end
+
+    private
+
+    # Internal: Set action mailer hostname
+    #
+    # rail_env  - rails env like development, text, production
+    # host      - domain.dev, domain.com or example.com
+    #
+    # Returns nothing
+    def action_mailer_host(rails_env, host)
+      config = "config.action_mailer.default_url_options = { host: '#{host}' }"
+      configure_environment(rails_env, config)
+    end
+
+    # Internal: Set configure environment
+    #
+    # rail_env  - rails env like development, text, production
+    # config    - config string which will add to rails_env file
+    #
+    # Return nothing
+    def configure_environment(rails_env, config)
+      inject_into_file(
+          "config/environments/#{rails_env}.rb",
+          "\n\n  #{config}",
+          before: "\nend"
+      )
     end
   end
 end

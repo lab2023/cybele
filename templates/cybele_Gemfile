@@ -15,3 +15,5 @@ gem 'responders'
 group :doc do
   gem 'sdoc', require: false
 end
+
+gem 'letter_opener', :group => :development
