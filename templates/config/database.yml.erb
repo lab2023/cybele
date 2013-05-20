@@ -1,0 +1,13 @@
+development: &default
+  adapter: postgresql
+  database: <%= app_name %>_development
+  encoding: utf8
+  min_messages: warning
+  pool: 5
+  timeout: 5000
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: <%= app_name %>_test

@@ -1,10 +1,9 @@
 # Cybele
 
 [![Code Climate](https://codeclimate.com/github/lab2023/cybele.png)](https://codeclimate.com/github/lab2023/cybele)
+[![Dependency Status](https://gemnasium.com/lab2023/cybele.png)](https://gemnasium.com/lab2023/cybele)
 
 NOTE: Don't use this gem until v1.0.0
-
-This is yet an other Rails Template which inspired from [suspenders](https://github.com/thoughtbot/suspenders).
 
 **Cybele** pron.: /ˈsɪbɨliː/ was an originally Anatolian mother goddess. Little is known of her oldest Anatolian cults,
 other than her association with mountains, hawks and lions. She may have been Phrygia's State deity; her Phrygian cult
@@ -38,6 +37,8 @@ http://github.com/lab2023/cybele/issues
 
 ## Contributing
 
+Cybele uses [TomDoc](http://tomdoc.org/), [rDoc](http://rubydoc.info/gems/cybele) and [SemVer](http://semver.org/), and takes it seriously.
+
 Once you've made your great commits:
 
 1. Fork Template
@@ -46,21 +47,10 @@ Once you've made your great commits:
 4. Create a Pull Request from your branch
 5. That's it!
 
-## Documentation
-
-
-Cybele uses [TomDoc](http://tomdoc.org/) and [rDoc](http://rubydoc.info/gems/cybele) .
-
-## Backwards Compatibility
-
-Cybele uses [SemVer](http://semver.org/), and takes it seriously.
-
 ## Credits
 
 Cybele is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
-
 Thank you to all the [contributors!](https://github.com/lab2023/cybele/graphs/contributors)
-
 The names and logos for lab2023 are trademarks of lab2023, inc.
 
 ## License

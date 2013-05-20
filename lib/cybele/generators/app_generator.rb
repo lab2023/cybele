@@ -25,8 +25,13 @@ module Cybele #:nodoc:#
     # Internal: Customization template
     def customization
       invoke :customize_gemfile
+      invoke :setup_database
       invoke :remove_files_we_dont_need
       invoke :replace_files
+      invoke :install_gems
+      invoke :gitignore_files_and_folders
+      invoke :setup_bootstrap_sass_coffee
+      invoke :configure_mail_setting
     end
 
     # Internal: Customize gemfile
@@ -47,7 +52,48 @@ module Cybele #:nodoc:#
     def replace_files
       say 'Replace files'
       build :replace_erb_with_haml
+      build :replace_database_yml
     end
+
+    # Internal: Install gems
+    def install_gems
+      say 'Install gems'
+      say 'Install responder gem'
+      build :install_responder_gem
+    end
+
+    # Internal: Setup database
+    def setup_database
+      say 'Setting up database'
+
+      if 'postgresql' == options[:database]
+        build :replace_database_yml
+      end
+
+      build :create_database
+    end
+
+    # Internal: Ignore files and folder
+    def gitignore_files_and_folders
+      build :setup_gitignore_files
+      build :setup_gitignore_folders
+    end
+
+    # Internal: Setup up bootstrap, sass, coffee
+    def setup_bootstrap_sass_coffee
+      build :setup_asset_precompile
+      build :setup_application_js
+      build :convert_application_js_to_coffee
+      build :convert_application_css_to_sass
+    end
+
+    # Internal: Setup mail setting
+    def configure_mail_setting
+      build :configure_mail_setting
+      build :configure_action_mailer
+      build :setup_letter_opener
+    end
+
 
     # Internal: Let's not: We'll bundle manually at the right spot.
     def run_bundle
