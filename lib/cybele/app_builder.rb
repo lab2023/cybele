@@ -93,14 +93,16 @@ module Cybele #:nodoc:#
       inject_into_file 'config/application.rb', config, :after => '# config.i18n.default_locale = :de'
     end
 
-    def setup_application_js
-      config = <<-RUBY
+    # Interval: Convert application.js to application.js.coffee
+    def convert_application_js_to_coffee
+      remove_file 'app/assets/javascripts/application.js'
+      copy_file 'app/assets/javascripts/application.js.coffee', 'app/assets/javascripts/application.js.coffee'
+    end
 
-//= require bootstrap
-      RUBY
-
-      inject_into_file 'app/assets/javascripts/application.js', config, :after => '//= require turbolinks'
-
+    # Interval: Convert application.css to application.css.sass
+    def convert_application_css_to_sass
+      remove_file 'app/assets/stylesheets/application.css'
+      copy_file 'app/assets/stylesheets/application.css.sass', 'app/assets/stylesheets/application.css.sass'
     end
 
     # Internal: Leftovers

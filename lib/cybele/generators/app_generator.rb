@@ -30,7 +30,7 @@ module Cybele #:nodoc:#
       invoke :replace_files
       invoke :install_gems
       invoke :gitignore_files_and_folders
-      invoke :setup_bootstrap
+      invoke :setup_bootstrap_sass_coffee
     end
 
     # Internal: Customize gemfile
@@ -78,10 +78,12 @@ module Cybele #:nodoc:#
       build :setup_gitignore_folders
     end
 
-    # Internal: Setup up bootstrap
-    def setup_bootstrap
+    # Internal: Setup up bootstrap, sass, coffee
+    def setup_bootstrap_sass_coffee
       build :setup_asset_precompile
       build :setup_application_js
+      build :convert_application_js_to_coffee
+      build :convert_application_css_to_sass
     end
 
 
