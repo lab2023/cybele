@@ -10,19 +10,9 @@ module Cybele #:nodoc:#
       template 'README.md.erb', 'README.md', :force => true
     end
 
-    # Remove: Remove public index file
-    def remove_public_index
-      remove_file 'public/index.html'
-    end
-
     # Internal: Remove README.rdoc file
     def remove_readme_rdoc
       remove_file 'README.rdoc'
-    end
-
-    # Internal: Remove rails.png file
-    def remove_rails_logo_image
-      remove_file 'app/assets/images/rails.png'
     end
 
     # Internal: Replace gemfile
