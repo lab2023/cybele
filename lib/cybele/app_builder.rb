@@ -99,9 +99,6 @@ module Cybele #:nodoc:#
     def configure_smtp
 
       config = <<-RUBY
-
-
-  # Mail Settings
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => 'smtp.mandrillapp.com',
@@ -113,8 +110,7 @@ module Cybele #:nodoc:#
   }
       RUBY
 
-      inject_into_file 'config/environments/production.rb', config,
-                       :after => 'config.action_mailer.raise_delivery_errorsraise_delivery_errors = false'
+      configure_environment 'production', config
     end
 
     # Interval: Configure action mailer
@@ -143,7 +139,12 @@ module Cybele #:nodoc:#
     #
     # Returns nothing
     def action_mailer_host(rails_env, host)
-      config = "config.action_mailer.default_url_options = { host: '#{host}' }"
+
+      config = <<-RUBY
+  # Mail Setting
+  config.action_mailer.default_url_options = { :host => '#{host}' }
+      RUBY
+
       configure_environment(rails_env, config)
     end
 
