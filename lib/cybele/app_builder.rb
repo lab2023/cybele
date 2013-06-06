@@ -97,17 +97,20 @@ module Cybele #:nodoc:#
 
     # Interval: Configure smtp
     def configure_smtp
-      copy_file 'config/initializers/mail.rb', 'config/initializers/mail.rb'
-
-      prepend_file 'config/environments/production.rb',
-                   "require Rails.root.join('config/initializers/mail')\n"
 
       config = <<-RUBY
 
 
   # Mail Settings
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = MAIL_SETTING
+  config.action_mailer.smtp_settings = {
+      :address              => 'smtp.mandrillapp.com',
+      :port                 => 587,
+      :enable_starttls_auto => true,
+      :user_name            => 'email@email.com', #TODO change this with original
+      :password             => 'password',        #TODO change this with original
+      :authentication       => 'plain'
+  }
       RUBY
 
       inject_into_file 'config/environments/production.rb', config,
@@ -117,7 +120,7 @@ module Cybele #:nodoc:#
     # Interval: Configure action mailer
     def configure_action_mailer
       action_mailer_host 'development', "#{app_name}.dev"
-      action_mailer_host 'test', 'www.example.com'
+      action_mailer_host 'test', "#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
     end
 
