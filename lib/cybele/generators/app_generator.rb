@@ -87,7 +87,7 @@ module Cybele #:nodoc:#
 
     # Internal: Setup mail setting
     def configure_mail_setting
-      build :configure_mail_setting
+      build :configure_smtp
       build :configure_action_mailer
       build :setup_letter_opener
     end
