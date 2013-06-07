@@ -139,6 +139,11 @@ module Cybele #:nodoc:#
       configure_environment 'development', config
     end
 
+    # Interval: Setup simple form
+    def setup_simple_form
+      generate 'simple_form:install --bootstrap'
+    end
+
     # Internal: Leftovers
     def leftovers
     end
