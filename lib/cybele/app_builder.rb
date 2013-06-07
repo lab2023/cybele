@@ -113,11 +113,24 @@ module Cybele #:nodoc:#
       configure_environment 'production', config
     end
 
+    # Interval: Setup exception_notification
+    def set_exception_notification
+      config = <<-RUBY
+  config.middleware.use ExceptionNotifier,
+                        :email_prefix => "[#{app_name}] ",
+                        :sender_address => %{"notifier" <no-reply@#{app_name}.com>},
+                        :exception_recipients => %w{info@lab2023.com} #TODO change this with original
+      RUBY
+
+      configure_environment 'production', config
+    end
+
     # Interval: Configure action mailer
     def configure_action_mailer
       action_mailer_host 'development', "#{app_name}.dev"
       action_mailer_host 'test', "#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
+
     end
 
     # Interval: Setup letter opener
