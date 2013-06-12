@@ -99,7 +99,7 @@ module Cybele #:nodoc:#
     def configure_smtp
 
       config = <<-RUBY
-  config.action_mailer.delivery_method = :smtp
+config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => 'smtp.mandrillapp.com',
       :port                 => 587,
@@ -116,7 +116,7 @@ module Cybele #:nodoc:#
     # Interval: Setup exception_notification
     def set_exception_notification
       config = <<-RUBY
-  config.middleware.use ExceptionNotifier,
+config.middleware.use ExceptionNotifier,
                         :email_prefix => "[#{app_name}] ",
                         :sender_address => %{"notifier" <no-reply@#{app_name}.com>},
                         :exception_recipients => %w{info@lab2023.com} #TODO change this with original
