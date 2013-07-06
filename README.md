@@ -1,7 +1,7 @@
 # Cybele
 
-[![Code Climate](https://codeclimate.com/github/lab2023/cybele.png)](https://codeclimate.com/github/lab2023/cybele)
-[![Dependency Status](https://gemnasium.com/lab2023/cybele.png)](https://gemnasium.com/lab2023/cybele)
+[![Code Climate](https://codeclimate.com/github/kebab-project/cybele.png)](https://codeclimate.com/github/kebab-project/cybele)
+[![Dependency Status](https://gemnasium.com/kebab-project/cybele.png)](https://gemnasium.com/kebab-project/cybele)
 
 NOTE: Don't use this gem until v1.0.0
 
@@ -33,7 +33,7 @@ cybele project_name
 
 If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
 
-http://github.com/lab2023/cybele/issues
+http://github.com/kebab-project/cybele/issues
 
 ## Contributing
 
@@ -50,7 +50,7 @@ Once you've made your great commits:
 ## Credits
 
 - Cybele is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
-- Thank you to all the [contributors!](https://github.com/lab2023/cybele/graphs/contributors)
+- Thank you to all the [contributors!](https://github.com/kebab-project/cybele/graphs/contributors)
 - This gem is inspired from [suspender](https://github.com/thoughtbot/suspenders)
 - The names and logos for lab2023 are trademarks of lab2023, inc.
 
