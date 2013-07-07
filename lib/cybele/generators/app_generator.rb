@@ -33,6 +33,7 @@ module Cybele #:nodoc:#
       invoke :setup_bootstrap_sass_coffee
       invoke :configure_mail_setting
       invoke :setup_simple_form
+      invoke :setup_exception_notification
     end
 
     # Internal: Customize gemfile
@@ -98,8 +99,14 @@ module Cybele #:nodoc:#
 
     # Internal: Setup simple_form
     def setup_simple_form
-      say 'Setup simple form'
-      build :setup_simple_form
+      say 'Generate simple form files'
+      build :generate_simple_form
+    end
+
+    # Internal: Setup exception notification
+    def setup_exception_notification
+      say 'Generate exception notification'
+      build :generate_exception_notification
     end
 
 

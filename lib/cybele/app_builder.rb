@@ -113,18 +113,6 @@ config.action_mailer.delivery_method = :smtp
       configure_environment 'production', config
     end
 
-    # Interval: Setup exception_notification
-    def set_exception_notification
-      config = <<-RUBY
-config.middleware.use ExceptionNotifier,
-                        :email_prefix => "[#{app_name}] ",
-                        :sender_address => %{"notifier" <no-reply@#{app_name}.com>},
-                        :exception_recipients => %w{info@lab2023.com} #TODO change this with original
-      RUBY
-
-      configure_environment 'production', config
-    end
-
     # Interval: Configure action mailer
     def configure_action_mailer
       action_mailer_host 'development', "#{app_name}.dev"
@@ -140,9 +128,30 @@ config.middleware.use ExceptionNotifier,
     end
 
     # Interval: Setup simple form
-    def setup_simple_form
+    def generate_simple_form
       generate 'simple_form:install --bootstrap'
     end
+
+    # Internal: Generate exception notification
+    #
+    # This command generates an initialize file (config/initializers/exception_notification.rb)
+    # where you can customize your configurations.
+    # https://github.com/smartinez87/exception_notification#rails
+    def generate_exception_notification
+      generate 'exception_notification:install'
+    end
+
+    # Interval: Setup exception_notification
+#    def set_exception_notification
+#      config = <<-RUBY
+#config.middleware.use ExceptionNotifier,
+#                        :email_prefix => "[#{app_name}] ",
+#                        :sender_address => %{"notifier" <no-reply@#{app_name}.com>},
+#                        :exception_recipients => %w{info@lab2023.com} #TODO change this with original
+#      RUBY
+#
+#      configure_environment 'production', config
+#    end
 
     # Internal: Leftovers
     def leftovers
