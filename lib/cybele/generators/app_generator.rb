@@ -106,6 +106,7 @@ module Cybele #:nodoc:#
     # Internal: Setup exception notification
     def setup_exception_notification
       say 'Generate exception notification'
+      say 'Do not forget to configure config/initializers/exception_notification.rb file'
       build :generate_exception_notification
     end
 

@@ -141,18 +141,6 @@ config.action_mailer.delivery_method = :smtp
       generate 'exception_notification:install'
     end
 
-    # Interval: Setup exception_notification
-#    def set_exception_notification
-#      config = <<-RUBY
-#config.middleware.use ExceptionNotifier,
-#                        :email_prefix => "[#{app_name}] ",
-#                        :sender_address => %{"notifier" <no-reply@#{app_name}.com>},
-#                        :exception_recipients => %w{info@lab2023.com} #TODO change this with original
-#      RUBY
-#
-#      configure_environment 'production', config
-#    end
-
     # Internal: Leftovers
     def leftovers
     end
