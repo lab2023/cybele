@@ -8,14 +8,14 @@ Gem::Specification.new do |spec|
   spec.version       = Cybele::VERSION
   spec.authors       = %w[lab2023]
   spec.email         = %w[info@lab2023.com]
-  spec.description   = %q{Yet another rails template gem}
-  spec.summary       = %q{Yet another rails template gem}
-  spec.homepage      = 'https://github.com/lab2023/cybele'
+  spec.description   = %q{Rails 4.x template with responder, simple form, haml, exception notification, etc etc ...}
+  spec.summary       = %q{Rails 4.x template with responder, simple form, haml, exception notification, etc etc ...}
+  spec.homepage      = 'https://github.com/kebab-project/cybele'
   spec.license       = 'MIT'
 
   spec.required_ruby_version = '>= 2.0.0'
   spec.add_dependency 'bundler', '~> 1.3'
-  spec.add_dependency 'rails', '~> 4.0.0.rc1'
+  spec.add_dependency 'rails', '~> 4.0.0'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = %w[cybele]
