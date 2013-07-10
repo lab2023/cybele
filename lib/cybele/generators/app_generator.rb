@@ -110,6 +110,11 @@ module Cybele #:nodoc:#
       build :generate_exception_notification
     end
 
+    def setup_rails_config
+      say 'Generate rails config'
+      build :generate_rails_config
+    end
+
 
     # Internal: Let's not: We'll bundle manually at the right spot.
     def run_bundle

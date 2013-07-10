@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'responders'
 gem 'exception_notification', github: 'smartinez87/exception_notification'
 gem 'simple_form', '~> 3.0.0.rc'
+gem 'rails_config', '~> 0.3.3'
 
 group :doc do
   gem 'sdoc', require: false
