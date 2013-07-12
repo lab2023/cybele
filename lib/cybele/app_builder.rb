@@ -145,6 +145,11 @@ config.action_mailer.delivery_method = :smtp
     def leftovers
     end
 
+    # Internal: Setup Rails Config
+    def generate_rails_config
+      generate 'rails_config:install'
+    end
+
     private
 
     # Internal: Set action mailer hostname
