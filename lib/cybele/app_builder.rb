@@ -167,7 +167,8 @@ config.action_mailer.delivery_method = :smtp
 
     # Internal: Generate devise views
     def generate_devise_views
-      generate "devise:views"
+      # generate "devise:views"
+      directory 'app/views/devise', 'app/views/devise'
     end
 
     private
