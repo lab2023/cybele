@@ -110,24 +110,19 @@ module Cybele #:nodoc:#
       build :generate_exception_notification
     end
 
+    # Internal: Setup Rails Config
     def setup_rails_config
       say 'Generate rails config'
       build :generate_rails_config
     end
 
+    # Internal: Setup Devise
     def setup_devise
-      if yes?('Do you want to install devise gem? [yn])')
-        say 'Generate devise'
-        build :add_devise
-        bundle_command 'install --binstubs=bin/stubs'
-        build :generate_devise_settings
-        if yes?('Do you want to create devise model?[yn]')
-          model_name = ask('What is device model name?')
-          say 'Adding devise model'
-          build :generate_devise_model, model_name
-        end
-        build :generate_devise_views
-      end
+      say 'Generate devise'
+      build :generate_devise_settings
+      say 'Adding devise user model'
+      build :generate_devise_model, 'user'
+      build :generate_devise_views
     end
 
 

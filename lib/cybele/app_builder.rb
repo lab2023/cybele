@@ -150,15 +150,6 @@ config.action_mailer.delivery_method = :smtp
       generate 'rails_config:install'
     end
 
-    # Internal: Add devise gem
-    def add_devise
-      append_file 'Gemfile' do <<-FILE
-
-gem 'devise', '~> 3.0.0.rc'
-      FILE
-      end
-    end
-
     # Internal: Setup devise
     def generate_devise_settings
       generate 'devise:install'
