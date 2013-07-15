@@ -93,7 +93,6 @@ module Cybele #:nodoc:#
       say 'Setup mail settings'
       build :configure_action_mailer
       build :configure_smtp
-      #build :set_exception_notification
       build :setup_letter_opener
     end
 
@@ -108,6 +107,21 @@ module Cybele #:nodoc:#
       say 'Generate exception notification'
       say 'Do not forget to configure config/initializers/exception_notification.rb file'
       build :generate_exception_notification
+    end
+
+    # Internal: Setup Rails Config
+    def setup_rails_config
+      say 'Generate rails config'
+      build :generate_rails_config
+    end
+
+    # Internal: Setup Devise
+    def setup_devise
+      say 'Generate devise'
+      build :generate_devise_settings
+      say 'Adding devise user model'
+      build :generate_devise_model, 'user'
+      build :generate_devise_views
     end
 
 
