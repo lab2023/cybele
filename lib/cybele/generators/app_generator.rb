@@ -93,7 +93,6 @@ module Cybele #:nodoc:#
       say 'Setup mail settings'
       build :configure_action_mailer
       build :configure_smtp
-      #build :set_exception_notification
       build :setup_letter_opener
     end
 
