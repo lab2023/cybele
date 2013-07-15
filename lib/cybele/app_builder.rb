@@ -150,6 +150,27 @@ config.action_mailer.delivery_method = :smtp
       generate 'rails_config:install'
     end
 
+    # Internal: Setup devise
+    def generate_devise_settings
+      generate 'devise:install'
+      gsub_file 'config/initializers/filter_parameter_logging.rb', /:password/, ':password, :password_confirmation'
+      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, 'CHANGEME@example.com'
+
+    end
+
+    # Internal: Generate devise model
+    def generate_devise_model(model_name)
+      generate "devise #{model_name} name:string"
+
+      generate_devise_strong_parameters(model_name)
+    end
+
+    # Internal: Generate devise views
+    def generate_devise_views
+      # generate "devise:views"
+      directory 'app/views/devise', 'app/views/devise'
+    end
+
     private
 
     # Internal: Set action mailer hostname
@@ -176,6 +197,53 @@ config.action_mailer.delivery_method = :smtp
     # Return nothing
     def configure_environment(rails_env, config)
       inject_into_file("config/environments/#{rails_env}.rb", "\n\n  #{config}", before: "\nend")
+    end
+
+    # Setup strong params for devise
+    def generate_devise_strong_parameters(model_name)
+      create_sanitizer_lib(model_name)
+      create_sanitizer_initializer(model_name)
+      devise_parameter_sanitizer(model_name)
+    end
+
+
+    # Internal: Create devise ParameterSanitizer library
+    def create_sanitizer_lib(model_name)
+      create_file "lib/#{model_name.parameterize}_sanitizer.rb", <<-CODE
+class #{model_name.classify}::ParameterSanitizer < Devise::ParameterSanitizer
+  private
+  def sign_up
+    default_params.permit(:name, :email, :password, :password_confirmation) # TODO add other params here
+  end
+end
+      CODE
+    end
+
+    # Internal: Create devise ParameterSanitizer library initializer
+    def create_sanitizer_initializer(model_name)
+      path = "#"
+      path << "{Rails.application.root}"
+      path << "/lib/#{model_name.parameterize}_sanitizer.rb"
+      initializer 'sanitizers.rb', <<-CODE
+require "#{path}"
+      CODE
+    end
+
+    # Internal: Add devise_parameter_sanitizer method to app/controller/applications_controller.rb
+    def devise_parameter_sanitizer(model_name)
+      inject_into_file 'app/controllers/application_controller.rb', :after => 'protect_from_forgery with: :exception' do <<-CODE
+
+  protected
+
+  def devise_parameter_sanitizer
+    if resource_class == #{model_name.classify}
+      #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
+    else
+      super # Use the default one
+    end
+  end
+      CODE
+      end
     end
   end
 end

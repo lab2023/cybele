@@ -110,9 +110,19 @@ module Cybele #:nodoc:#
       build :generate_exception_notification
     end
 
+    # Internal: Setup Rails Config
     def setup_rails_config
       say 'Generate rails config'
       build :generate_rails_config
+    end
+
+    # Internal: Setup Devise
+    def setup_devise
+      say 'Generate devise'
+      build :generate_devise_settings
+      say 'Adding devise user model'
+      build :generate_devise_model, 'user'
+      build :generate_devise_views
     end
 
 
