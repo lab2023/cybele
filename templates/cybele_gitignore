@@ -25,12 +25,9 @@ vendor/bundler_gems
 
 # Ignore ide and text editor
 .idea
-.idea/**/*
 
 # Ignore pow files
 .powrc
 
 # Ignore mac files
 .DS_Store
-*.DS_Store
-**/.DS_Store
