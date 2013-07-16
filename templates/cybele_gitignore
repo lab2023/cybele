@@ -32,5 +32,3 @@ vendor/bundler_gems
 
 # Ignore mac files
 .DS_Store
-*.DS_Store
-**/.DS_Store
