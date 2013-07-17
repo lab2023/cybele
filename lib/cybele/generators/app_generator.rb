@@ -124,6 +124,12 @@ module Cybele #:nodoc:#
       build :generate_devise_views
     end
 
+    # Internal Setup Welcome Page
+    def setup_welcome_page
+      say 'Generate Welcome Page'
+      build :generate_welcome_page
+    end
+
 
     # Internal: Let's not: We'll bundle manually at the right spot.
     def run_bundle

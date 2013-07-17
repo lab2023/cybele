@@ -171,6 +171,13 @@ config.action_mailer.delivery_method = :smtp
       directory 'app/views/devise', 'app/views/devise'
     end
 
+    # Internal: Generate Welcome Page
+    def generate_welcome_page
+      copy_file 'app/controllers/welcome_controller.rb', 'app/controllers/welcome_controller.rb'
+      template 'app/views/welcome/index.html.haml.erb', 'app/views/welcome/index.html.haml', :force => true
+      route "root to: 'welcome#index'"
+    end
+
     private
 
     # Internal: Set action mailer hostname
