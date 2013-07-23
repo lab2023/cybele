@@ -1,5 +1,6 @@
 # Cybele
 
+[![Gem Version](https://badge.fury.io/rb/cybele.png)](http://badge.fury.io/rb/cybele)
 [![Code Climate](https://codeclimate.com/github/kebab-project/cybele.png)](https://codeclimate.com/github/kebab-project/cybele)
 [![Dependency Status](https://gemnasium.com/kebab-project/cybele.png)](https://gemnasium.com/kebab-project/cybele)
 
