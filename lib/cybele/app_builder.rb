@@ -21,6 +21,12 @@ module Cybele #:nodoc:#
       copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
+    # Internal: Replace config/application.rb file
+    def replace_application_rb_file
+      remove_file 'config/application.rb'
+      copy_file 'config/application.rb', 'config/application.rb'
+    end
+
     # Internal: Replace erb files with html files
     def replace_erb_with_haml
       remove_file 'app/views/layouts/application.html.erb'
@@ -130,6 +136,8 @@ config.action_mailer.delivery_method = :smtp
     # Interval: Setup simple form
     def generate_simple_form
       generate 'simple_form:install --bootstrap'
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml',
+      copy_file 'config/locales/tr.yml', 'config/locales/tr.yml',
     end
 
     # Internal: Generate exception notification
@@ -161,8 +169,8 @@ config.action_mailer.delivery_method = :smtp
     # Internal: Generate devise model
     def generate_devise_model(model_name)
       generate "devise #{model_name} name:string"
-
       generate_devise_strong_parameters(model_name)
+      remove_file 'config/locales/devise.en.yml'
     end
 
     # Internal: Generate devise views
@@ -187,7 +195,11 @@ config.action_mailer.delivery_method = :smtp
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
       gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}"
       gsub_file 'app/models/admin.rb', /:registerable,/, ''
+    end
 
+    def set_time_zone
+      add_set_user_time_zone_method_to_application_controller
+      add_time_zone_to_user
     end
 
     private
@@ -272,6 +284,31 @@ require "#{path}"
   namespace :#{namespace} do
       resources :dashboard, only: [:index]
   end
+      CODE
+      end
+    end
+
+    # Internal: Generate migration for add time_zone to User model
+    def add_time_zone_to_user
+      say 'Add time_zone to User model'
+      generate 'migration AddTimeZoneToUser time_zone:string -s'
+    end
+
+    # Internal: Add set_user_time_zone method to app/controller/applications_controller.rb
+    def add_set_user_time_zone_method_to_application_controller
+      say 'Add set_user_time_zone method to application controller'
+      inject_into_file 'app/controllers/application_controller.rb', :after => 'protected' do <<-CODE
+
+  def set_user_time_zone
+    Time.zone = current_user.time_zone if user_signed_in? && current_user.time_zone.present?
+  end
+
+      CODE
+      end
+      inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE
+
+  before_filter :set_user_time_zone
+
       CODE
       end
     end
