@@ -35,6 +35,7 @@ module Cybele #:nodoc:#
       invoke :setup_simple_form
       invoke :setup_exception_notification
       invoke :setup_welcome_page
+      invoke :setup_devise
       invoke :setup_time_zone
     end
 
@@ -135,8 +136,7 @@ module Cybele #:nodoc:#
     # Internal: Setup timezone per user
     def setup_time_zone
       say 'Setup time zone'
-      build :add_time_zone_to_user
-      build :add_set_user_time_zone_method_to_application_controller
+      build :set_time_zone
     end
 
 

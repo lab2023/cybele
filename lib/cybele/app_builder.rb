@@ -184,6 +184,12 @@ config.action_mailer.delivery_method = :smtp
       route "root to: 'welcome#index'"
     end
 
+    def set_time_zone
+      add_set_user_time_zone_method_to_application_controller
+      add_time_zone_to_user
+    end
+
+
     private
 
     # Internal: Set action mailer hostname
@@ -278,7 +284,7 @@ require "#{path}"
       end
       inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE
 
-  before_filter: set_user_time_zone
+  before_filter :set_user_time_zone
 
       CODE
       end
