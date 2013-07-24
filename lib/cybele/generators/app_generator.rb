@@ -34,6 +34,8 @@ module Cybele #:nodoc:#
       invoke :configure_mail_setting
       invoke :setup_simple_form
       invoke :setup_exception_notification
+      invoke :setup_welcome_page
+      invoke :setup_time_zone
     end
 
     # Internal: Customize gemfile
@@ -124,10 +126,17 @@ module Cybele #:nodoc:#
       build :generate_devise_views
     end
 
-    # Internal Setup Welcome Page
+    # Internal: Setup Welcome Page
     def setup_welcome_page
       say 'Generate Welcome Page'
       build :generate_welcome_page
+    end
+
+    # Internal: Setup timezone per user
+    def setup_time_zone
+      say 'Setup time zone'
+      build :add_time_zone_to_user
+      build :add_set_user_time_zone_method_to_application_controller
     end
 
 

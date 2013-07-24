@@ -21,6 +21,12 @@ module Cybele #:nodoc:#
       copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
+    # Internal: Replace config/application.rb file
+    def replace_application_rb_file
+      remove_file 'config/application.rb'
+      copy_file 'config/application.rb', 'config/application.rb'
+    end
+
     # Internal: Replace erb files with html files
     def replace_erb_with_haml
       remove_file 'app/views/layouts/application.html.erb'
@@ -249,6 +255,31 @@ require "#{path}"
       super # Use the default one
     end
   end
+      CODE
+      end
+    end
+
+    # Internal: Generate migration for add time_zone to User model
+    def add_time_zone_to_user
+      say 'Add time_zone to User model'
+      generate 'migration AddTimeZoneToUser time_zone:string -s'
+    end
+
+    # Internal: Add set_user_time_zone method to app/controller/applications_controller.rb
+    def add_set_user_time_zone_method_to_application_controller
+      say 'Add set_user_time_zone method to application controller'
+      inject_into_file 'app/controllers/application_controller.rb', :after => 'protected' do <<-CODE
+
+  def set_user_time_zone
+    Time.zone = current_user.time_zone if user_signed_in? && current_user.time_zone.present?
+  end
+
+      CODE
+      end
+      inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE
+
+  before_filter: set_user_time_zone
+
       CODE
       end
     end
