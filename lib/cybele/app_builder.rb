@@ -167,8 +167,8 @@ config.action_mailer.delivery_method = :smtp
     # Internal: Generate devise model
     def generate_devise_model(model_name)
       generate "devise #{model_name} name:string"
-
       generate_devise_strong_parameters(model_name)
+      remove_file 'config/locales/devise.en.yml'
     end
 
     # Internal: Generate devise views
