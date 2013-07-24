@@ -16,7 +16,7 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'rails_config', '~> 0.3.3'
 gem 'compass-rails', github: 'Compass/compass-rails', branch: 'rails4-hack'
 gem 'devise', '~> 3.0.0'
-gem "devise-i18n", '~> 0.8.6'
+gem 'devise-i18n', '~> 0.8.6'
 
 group :doc do
   gem 'sdoc', require: false
