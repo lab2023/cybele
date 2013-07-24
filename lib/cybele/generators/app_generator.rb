@@ -130,6 +130,11 @@ module Cybele #:nodoc:#
       build :generate_welcome_page
     end
 
+    def setup_hq_namespace
+      say 'Generate hq namespace'
+      build :generate_hq_namespace
+    end
+
 
     # Internal: Let's not: We'll bundle manually at the right spot.
     def run_bundle

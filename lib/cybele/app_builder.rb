@@ -174,8 +174,20 @@ config.action_mailer.delivery_method = :smtp
     # Internal: Generate Welcome Page
     def generate_welcome_page
       copy_file 'app/controllers/welcome_controller.rb', 'app/controllers/welcome_controller.rb'
-      template 'app/views/welcome/index.html.haml.erb', 'app/views/welcome/index.html.haml', :force => true
+      template 'app/views/welcome/index.html.haml.erb', 'app/views/welcome/index.html.haml', force: true
       route "root to: 'welcome#index'"
+    end
+
+    def generate_hq_namespace
+      generate "devise Admin"
+      create_namespace_routing('hq')
+      directory 'app/controllers/hq', 'app/controllers/hq'
+      template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
+      template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
+      directory 'app/views/hq/sessions', 'app/views/hq/sessions'
+      gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}"
+      gsub_file 'app/models/admin.rb', /:registerable,/, ''
+
     end
 
     private
@@ -248,6 +260,17 @@ require "#{path}"
     else
       super # Use the default one
     end
+  end
+      CODE
+      end
+    end
+
+    #Internal: Create namespace with dashboard resource in routes.rb
+    def create_namespace_routing(namespace)
+      inject_into_file 'config/routes.rb', after: "root to: 'welcome#index'" do <<-CODE
+
+  namespace :#{namespace} do
+      resources :dashboard, only: [:index]
   end
       CODE
       end
