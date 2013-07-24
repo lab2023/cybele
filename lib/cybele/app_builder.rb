@@ -136,7 +136,8 @@ config.action_mailer.delivery_method = :smtp
     # Interval: Setup simple form
     def generate_simple_form
       generate 'simple_form:install --bootstrap'
-      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.en.yml',
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml',
+      copy_file 'config/locales/tr.yml', 'config/locales/tr.yml',
     end
 
     # Internal: Generate exception notification
