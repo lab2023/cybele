@@ -1,0 +1,14 @@
+.jumbotron
+  %h1 Welcome to <%= app_name %>
+  - if current_user
+    = link_to 'Sign out', destroy_user_session_path, class: 'btn btn-large', method: :delete
+    .row-fluid.marketing
+      %p
+        %strong Name:
+        = current_user.name
+      %p
+        %strong Email:
+        = current_user.email
+  - else
+    = link_to 'Sign up today', new_user_registration_path, class: 'btn btn-large btn-success'
+    = link_to 'Sign in', new_user_session_path, class: 'btn btn-large'
