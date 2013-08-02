@@ -17,6 +17,9 @@ gem 'rails_config', '~> 0.3.3'
 gem 'compass-rails', github: 'Compass/compass-rails', branch: 'rails4-hack'
 gem 'devise', '~> 3.0.0'
 gem 'devise-i18n', '~> 0.8.6'
+gem 'will_paginate', '~> 3.0.4'
+gem 'will_paginate-bootstrap', '~> 0.2.3'
+gem 'will-paginate-i18n', '~> 0.1.13'
 
 group :doc do
   gem 'sdoc', require: false
