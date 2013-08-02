@@ -159,7 +159,9 @@ config.action_mailer.delivery_method = :smtp
       template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
-      gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}"
+      gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}, path: 'hq',
+             path_names: {sign_in: 'login', sign_out: 'logout', password: 'secret',
+                          confirmation: 'verification'}"
       gsub_file 'app/models/admin.rb', /:registerable,/, ''
     end
 

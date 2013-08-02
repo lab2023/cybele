@@ -1,4 +1,5 @@
-module Cybele
-  VERSION = '0.7.0'
+module Cybele #:nodoc:
+  # Public: Cybele version
+  VERSION = '0.8.0'
 end
 
