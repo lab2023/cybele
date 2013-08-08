@@ -33,6 +33,7 @@ module Cybele #:nodoc:#
       invoke :setup_bootstrap_sass_coffee
       invoke :configure_mail_setting
       invoke :setup_rspec
+      invoke :setup_capybara
       invoke :setup_simple_form
       invoke :setup_exception_notification
       invoke :setup_welcome_page
@@ -103,6 +104,11 @@ module Cybele #:nodoc:#
     def setup_rspec
       say 'Generate rspec'
       build :generate_rspec
+    end
+
+    def setup_capybara
+      say 'Generate capybara'
+      build :generate_capybara
     end
 
     # Internal: Setup simple_form

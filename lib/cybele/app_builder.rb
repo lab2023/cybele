@@ -136,6 +136,19 @@ config.action_mailer.delivery_method = :smtp
       generate 'rspec:install'
     end
 
+    def generate_capybara
+      inject_into_file 'spec/spec_helper.rb', :after => "require 'rspec/autorun'" do <<-CODE
+require 'capybara/rspec'
+      CODE
+      end
+      inject_into_file 'spec/spec_helper.rb', :after => '  config.order = "random"' do <<-CODE
+
+  # Capybara DSQL
+  config.include Capybara::DSL
+      CODE
+      end
+    end
+
     # Interval: Setup simple form
     def generate_simple_form
       generate 'simple_form:install --bootstrap'

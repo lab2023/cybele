@@ -33,4 +33,5 @@ group :development, :test do
   gem 'letter_opener'
   gem 'katip'
   gem 'rspec-rails', '~> 2.14.0'
+  gem 'capybara', '~> 2.1.0'
 end
