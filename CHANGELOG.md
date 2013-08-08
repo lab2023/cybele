@@ -1,5 +1,18 @@
 
 #### [Current]
+
+
+#### 0.9.0
+ * [0d6ef49](../../commit/0d6ef49) bump version 0.9.0 __(Onur Ozgur OZKAN)__
+ * [6a6ef73](../../commit/6a6ef73) #74 remove tomdoc __(Onur Ozgur OZKAN)__
+ * [3e37420](../../commit/3e37420) #66 Add factory-girl-rails __(Onur Ozgur OZKAN)__
+ * [ae6f239](../../commit/ae6f239) #65 Add should-matchers gem __(Onur Ozgur OZKAN)__
+ * [f0a307c](../../commit/f0a307c) #73 fixed new line problem __(Onur Ozgur OZKAN)__
+ * [a69f539](../../commit/a69f539) #73 Add capybara gem __(Onur Ozgur OZKAN)__
+ * [ee0ae05](../../commit/ee0ae05) #72 && #64 **Add Kangal and  Rspec Gems** __(Onur Ozgur OZKAN)__
+
+#### 0.8.0
+ * [d4722f5](../../commit/d4722f5) release version 0.8.0 __(Muhammet DİLEK)__
  * [58bdb65](../../commit/58bdb65) #69 paperclip added __(Muhammet DİLEK)__
  * [9186d02](../../commit/9186d02) #67 admins url changed __(Muhammet DİLEK)__
  * [9ed2bc7](../../commit/9ed2bc7) #68 will_paginate added __(Muhammet DİLEK)__
