@@ -138,12 +138,14 @@ config.action_mailer.delivery_method = :smtp
 
     def generate_capybara
       inject_into_file 'spec/spec_helper.rb', :after => "require 'rspec/autorun'" do <<-CODE
+
 require 'capybara/rspec'
       CODE
       end
       inject_into_file 'spec/spec_helper.rb', :after => '  config.order = "random"' do <<-CODE
 
-  # Capybara DSQL
+
+  # Capybara DSL
   config.include Capybara::DSL
       CODE
       end
