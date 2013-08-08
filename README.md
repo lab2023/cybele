@@ -70,7 +70,7 @@ http://github.com/kebab-project/cybele/issues
 
 ## Contributing
 
-Cybele uses [TomDoc](http://tomdoc.org/), [rDoc](http://rubydoc.info/gems/cybele) and [SemVer](http://semver.org/), and takes it seriously.
+Cybele uses [rDoc](http://rubydoc.info/gems/cybele) and [SemVer](http://semver.org/), and takes it seriously.
 
 Once you've made your great commits:
 
