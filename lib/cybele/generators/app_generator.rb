@@ -32,6 +32,7 @@ module Cybele #:nodoc:#
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
       invoke :configure_mail_setting
+      invoke :setup_rspec
       invoke :setup_simple_form
       invoke :setup_exception_notification
       invoke :setup_welcome_page
@@ -97,6 +98,11 @@ module Cybele #:nodoc:#
       build :configure_action_mailer
       build :configure_smtp
       build :setup_letter_opener
+    end
+
+    def setup_rspec
+      say 'Generate rspec'
+      build :generate_rspec
     end
 
     # Internal: Setup simple_form

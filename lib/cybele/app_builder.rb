@@ -124,13 +124,16 @@ config.action_mailer.delivery_method = :smtp
       action_mailer_host 'development', "#{app_name}.dev"
       action_mailer_host 'test', "#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
-
     end
 
     # Interval: Setup letter opener
     def  setup_letter_opener
       config = 'config.action_mailer.delivery_method = :letter_opener'
       configure_environment 'development', config
+    end
+
+    def generate_rspec
+      generate 'rspec:install'
     end
 
     # Interval: Setup simple form
