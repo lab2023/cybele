@@ -1,4 +1,5 @@
 module Cybele
+
   class AppBuilder < Rails::AppBuilder
 
     def readme
@@ -104,12 +105,40 @@ config.action_mailer.delivery_method = :smtp
       action_mailer_host 'development', "#{app_name}.dev"
       action_mailer_host 'test', "#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
-
     end
 
     def  setup_letter_opener
       config = 'config.action_mailer.delivery_method = :letter_opener'
       configure_environment 'development', config
+    end
+
+    def generate_rspec
+      generate 'rspec:install'
+    end
+
+    def generate_capybara
+      inject_into_file 'spec/spec_helper.rb', :after => "require 'rspec/autorun'" do <<-CODE
+
+require 'capybara/rspec'
+      CODE
+      end
+      inject_into_file 'spec/spec_helper.rb', :after => '  config.order = "random"' do <<-CODE
+
+
+  # Capybara DSL
+  config.include Capybara::DSL
+      CODE
+      end
+    end
+
+    def generate_factory_girl
+      inject_into_file 'spec/spec_helper.rb', :after => '  config.include Capybara::DSL' do <<-CODE
+
+
+  # Factory girl
+  config.include FactoryGirl::Syntax::Methods
+      CODE
+      end
     end
 
     def generate_simple_form
@@ -142,7 +171,6 @@ config.action_mailer.delivery_method = :smtp
     end
 
     def generate_devise_views
-      # generate "devise:views"
       directory 'app/views/devise', 'app/views/devise'
     end
 

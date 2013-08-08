@@ -2,6 +2,7 @@ require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 
 module Cybele
+  
   class AppGenerator < Rails::Generators::AppGenerator
 
     class_option :database, :type => :string, :aliases => '-d', :default => 'postgresql',
@@ -24,6 +25,9 @@ module Cybele
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
       invoke :configure_mail_setting
+      invoke :setup_rspec
+      invoke :setup_capybara
+      invoke :setup_factory_girl
       invoke :setup_simple_form
       invoke :setup_exception_notification
       invoke :setup_welcome_page
@@ -81,6 +85,21 @@ module Cybele
       build :configure_action_mailer
       build :configure_smtp
       build :setup_letter_opener
+    end
+
+    def setup_rspec
+      say 'Generate rspec'
+      build :generate_rspec
+    end
+
+    def setup_capybara
+      say 'Generate capybara'
+      build :generate_capybara
+    end
+
+    def setup_factory_girl
+      say 'Generate factory girl'
+      build :generate_factory_girl
     end
 
     def setup_simple_form
