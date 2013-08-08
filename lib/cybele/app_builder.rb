@@ -151,6 +151,16 @@ require 'capybara/rspec'
       end
     end
 
+    def generate_factory_girl
+      inject_into_file 'spec/spec_helper.rb', :after => '  config.include Capybara::DSL' do <<-CODE
+
+
+  # Factory girl
+  config.include FactoryGirl::Syntax::Methods
+      CODE
+      end
+    end
+
     # Interval: Setup simple form
     def generate_simple_form
       generate 'simple_form:install --bootstrap'

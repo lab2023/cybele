@@ -34,6 +34,7 @@ module Cybele #:nodoc:#
       invoke :configure_mail_setting
       invoke :setup_rspec
       invoke :setup_capybara
+      invoke :setup_factory_girl
       invoke :setup_simple_form
       invoke :setup_exception_notification
       invoke :setup_welcome_page
@@ -109,6 +110,11 @@ module Cybele #:nodoc:#
     def setup_capybara
       say 'Generate capybara'
       build :generate_capybara
+    end
+
+    def setup_factory_girl
+      say 'Generate factory girl'
+      build :generate_factory_girl
     end
 
     # Internal: Setup simple_form
