@@ -3,7 +3,7 @@ module Cybele
   class AppBuilder < Rails::AppBuilder
 
     def readme
-      template 'README.md.erb', 'README.md', :force => true
+      template 'README.md.erb', 'README.md', force: true
     end
 
     def remove_readme_rdoc
@@ -22,7 +22,11 @@ module Cybele
 
     def replace_erb_with_haml
       remove_file 'app/views/layouts/application.html.erb'
-      template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', :force => true
+      template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', force: true
+    end
+
+    def copy_rake_files
+      copy_file 'lib/tasks/annotate.rake', 'lib/tasks/annotate.rake', force: true
     end
 
     def install_responder_gem
@@ -35,7 +39,7 @@ module Cybele
     end
 
     def replace_database_yml
-      template 'config/database.yml.erb', 'config/database.yml', :force => true
+      template 'config/database.yml.erb', 'config/database.yml', force: true
     end
 
     def create_database
