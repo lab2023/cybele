@@ -20,6 +20,7 @@ module Cybele
       invoke :customize_gemfile
       invoke :setup_editorconfig
       invoke :setup_ruby_version
+      invoke :setup_add_disable_xml_params
       invoke :setup_database
       invoke :remove_files_we_dont_need
       invoke :replace_files
@@ -50,6 +51,11 @@ module Cybele
     def setup_ruby_version
       say 'Add .ruby-version file'
       build :add_ruby_version
+    end
+
+    def setup_add_disable_xml_params
+      say 'Add disable_xml_params.rb file to initilizers'
+      build :add_disable_xml_params
     end
 
     def remove_files_we_dont_need

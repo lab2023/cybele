@@ -23,6 +23,10 @@ module Cybele
       copy_file 'ruby_version', '.ruby_version'
     end
 
+    def add_disable_xml_params
+      copy_file 'config/initializers/disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
+    end
+
     def replace_application_rb_file
       remove_file 'config/application.rb'
       copy_file 'config/application.rb', 'config/application.rb'
