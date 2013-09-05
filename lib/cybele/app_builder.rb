@@ -102,16 +102,12 @@ module Cybele
 
     def configure_smtp
 
+      copy_file 'config/settings/production.yml', 'config/settings/production.yml'
+
       config = <<-RUBY
 config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      :address              => 'smtp.mandrillapp.com',
-      :port                 => 587,
-      :enable_starttls_auto => true,
-      :user_name            => 'email@email.com', #TODO change this with original
-      :password             => 'password',        #TODO change this with original
-      :authentication       => 'plain'
-  }
+config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = Settings.smtp.mandrill
       RUBY
 
       configure_environment 'production', config
@@ -220,7 +216,7 @@ require 'capybara/rspec'
     def action_mailer_host(rails_env, host)
 
       config = <<-RUBY
-  # Mail Setting
+# Mail Setting
   config.action_mailer.default_url_options = { :host => '#{host}' }
       RUBY
 
