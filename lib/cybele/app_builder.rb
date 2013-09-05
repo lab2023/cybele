@@ -15,6 +15,10 @@ module Cybele
       copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
+    def add_editorconfig
+      copy_file 'editorconfig', '.editorconfig'
+    end
+
     def replace_application_rb_file
       remove_file 'config/application.rb'
       copy_file 'config/application.rb', 'config/application.rb'

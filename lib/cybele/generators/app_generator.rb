@@ -18,6 +18,7 @@ module Cybele
 
     def customization
       invoke :customize_gemfile
+      invoke :setup_editorconfig
       invoke :setup_database
       invoke :remove_files_we_dont_need
       invoke :replace_files
@@ -38,6 +39,11 @@ module Cybele
     def customize_gemfile
       build :replace_gemfile
       bundle_command 'install --binstubs=bin/stubs'
+    end
+
+    def setup_editorconfig
+      say 'Add .editorconfig file'
+      build :add_editorconfig
     end
 
     def remove_files_we_dont_need
