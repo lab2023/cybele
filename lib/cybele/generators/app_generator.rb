@@ -36,6 +36,7 @@ module Cybele
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
+      invoke :goodbye
     end
 
     def customize_gemfile
@@ -162,6 +163,10 @@ module Cybele
     def setup_time_zone
       say 'Setup time zone'
       build :set_time_zone
+    end
+
+    def goodbye
+      say 'Congratulations! That\'s all...'
     end
 
     def run_bundle
