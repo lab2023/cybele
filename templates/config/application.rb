@@ -25,6 +25,9 @@ module Timezone
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :tr
 
+    # Available locales
+    config.i18n.available_locales = :tr
+
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.sass.preferred_syntax = :sass
 
