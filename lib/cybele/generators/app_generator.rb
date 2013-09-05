@@ -85,6 +85,11 @@ module Cybele
       build :create_database
     end
 
+    def setup_staging_environment
+      say 'Setting up the staging environment'
+      build :setup_staging_environment
+    end
+
     def gitignore_files_and_folders
       build :setup_gitignore_files
       build :setup_gitignore_folders

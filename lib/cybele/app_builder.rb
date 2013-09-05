@@ -113,6 +113,19 @@ config.action_mailer.raise_delivery_errors = false
       configure_environment 'production', config
     end
 
+    def setup_staging_environment
+      run 'cp config/environments/production.rb config/environments/staging.rb'
+
+      prepend_file 'config/environments/staging.rb',
+                   "Mail.register_interceptor RecipientInterceptor.new((Settings.email.noreply, subject_prefix: '[STAGING]'))\n"
+
+      config = <<-YML
+email:
+  noreply: noreply@appname.org
+      YML
+      prepend_file 'config/setting.yml', config
+    end
+
     def configure_action_mailer
       action_mailer_host 'development', "#{app_name}.dev"
       action_mailer_host 'test', "#{app_name}.com"
