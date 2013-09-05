@@ -19,6 +19,10 @@ module Cybele
       copy_file 'editorconfig', '.editorconfig'
     end
 
+    def add_ruby_version
+      copy_file 'ruby_version', '.ruby_version'
+    end
+
     def replace_application_rb_file
       remove_file 'config/application.rb'
       copy_file 'config/application.rb', 'config/application.rb'
