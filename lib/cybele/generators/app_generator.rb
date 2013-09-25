@@ -27,6 +27,7 @@ module Cybele
       invoke :install_gems
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
+      invoke :setup_rails_config
       invoke :configure_mail_setting
       invoke :setup_rspec
       invoke :setup_capybara
@@ -36,6 +37,7 @@ module Cybele
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
+      invoke :setup_staging_environment
       invoke :goodbye
     end
 
@@ -170,6 +172,14 @@ module Cybele
     end
 
     def run_bundle
+    end
+
+    def setup_hierapolis
+      build :create_hierapolis_theme
+    end
+
+    def setup_sipmle_form_wrapper
+      build :replace_simple_form_wrapper
     end
 
     protected

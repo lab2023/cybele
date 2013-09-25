@@ -31,6 +31,10 @@ gem 'ransack'
 
 # gem 'rails-observers'
 
+gem 'hierapolis-rails', '~> 0.3.0'
+gem 'breadcrumbs_on_rails', '~> 2.3.0'
+gem 'blankable', '~> 0.2.0'
+
 group :doc do
   gem 'sdoc', require: false
 end

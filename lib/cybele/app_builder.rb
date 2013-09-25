@@ -101,7 +101,7 @@ module Cybele
     end
 
     def configure_smtp
-
+      remove_file 'config/settings/production.yml'
       copy_file 'config/settings/production.yml', 'config/settings/production.yml'
 
       config = <<-RUBY
@@ -123,7 +123,7 @@ config.action_mailer.raise_delivery_errors = false
 email:
   noreply: noreply@appname.org
       YML
-      prepend_file 'config/setting.yml', config
+      prepend_file 'config/settings.yml', config
     end
 
     def configure_action_mailer
@@ -210,7 +210,7 @@ require 'capybara/rspec'
       generate "devise Admin"
       create_namespace_routing('hq')
       directory 'app/controllers/hq', 'app/controllers/hq'
-      template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
+      #template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
       gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}, path: 'hq',
@@ -222,6 +222,20 @@ require 'capybara/rspec'
     def set_time_zone
       add_set_user_time_zone_method_to_application_controller
       add_time_zone_to_user
+    end
+
+    def create_hierapolis_theme
+      remove_file 'lib/templates/rails/responders_controller/controller.rb'
+      remove_file 'lib/templates/haml/scaffold/_form.html.haml'
+      generate 'hierapolis:install'
+    end
+
+    def replace_simple_form_wrapper
+      remove_file 'config/initializers/simple_form.rb'
+      remove_file 'config/initializers/simple_form_bootstrap.rb'
+
+      copy_file 'config/initializers/simple_form.rb', 'config/initializers/simple_form.rb'
+      copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
     end
 
     private
