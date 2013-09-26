@@ -1,121 +1,182 @@
 
 #### [Current]
+ * [f73a240](../../commit/f73a240) - __(Muhammet DİLEK)__ [#85](../../issues/85) hierapolis-rails version fixed
+ * [49e4146](../../commit/49e4146) - __(Muhammet DİLEK)__ [#85](../../issues/85) hierapolis-rails added
+ * [0de956e](../../commit/0de956e) - __(Onur Ozgur OZKAN)__ [#78](../../issues/78) Add shoulda-context and show_for gems
+ * [bf4ecab](../../commit/bf4ecab) - __(Onur Ozgur OZKAN)__ [#62](../../issues/62) good bye message.
+ * [d40697a](../../commit/d40697a) - __(Onur Ozgur OZKAN)__ [#75](../../issues/75) Add rails-i18n gem
+ * [eef5314](../../commit/eef5314) - __(Onur Ozgur OZKAN)__ [#44](../../issues/44) Add staging env
+ * [1a6662e](../../commit/1a6662e) - __(Onur Ozgur OZKAN)__ [#83](../../issues/83) Improve Mandrill smtp settings
+ * [f8d303d](../../commit/f8d303d) - __(Onur Ozgur OZKAN)__ [#84](../../issues/84) Fixed http://www.kb.cert.org/vuls/id/380039
+ * [be7e2aa](../../commit/be7e2aa) - __(Onur Ozgur OZKAN)__ [#82](../../issues/82) add .ruby-version file
+ * [c4da36f](../../commit/c4da36f) - __(Onur Ozgur OZKAN)__ [#81](../../issues/81) add .editorconfig file
+ * [e7ebf06](../../commit/e7ebf06) - __(Onur Ozgur OZKAN)__ [#71](../../issues/71) Typo fixed.
+ * [5b49ffd](../../commit/5b49ffd) - __(Onur Ozgur OZKAN)__ [#71](../../issues/71) Add annotate rake
+ * [13e7381](../../commit/13e7381) - __(Onur Ozgur OZKAN)__ [#71](../../issues/71) Add annotate_models gems
+ * [9057409](../../commit/9057409) - __(Onur Ozgur OZKAN)__ Update CHANGELOG.md
 
+Conflicts:
+	lib/cybele/app_builder.rb
+	lib/cybele/generators/app_generator.rb
+
+
+Conflicts:
+	lib/cybele/version.rb
+
+ * [dc93e6e](../../commit/dc93e6e) - __(Onur Ozgur OZKAN)__ [#70](../../issues/70) remove tomdocs
 
 #### 0.9.0
- * [0d6ef49](../../commit/0d6ef49) bump version 0.9.0 __(Onur Ozgur OZKAN)__
- * [6a6ef73](../../commit/6a6ef73) #74 remove tomdoc __(Onur Ozgur OZKAN)__
- * [3e37420](../../commit/3e37420) #66 Add factory-girl-rails __(Onur Ozgur OZKAN)__
- * [ae6f239](../../commit/ae6f239) #65 Add should-matchers gem __(Onur Ozgur OZKAN)__
- * [f0a307c](../../commit/f0a307c) #73 fixed new line problem __(Onur Ozgur OZKAN)__
- * [a69f539](../../commit/a69f539) #73 Add capybara gem __(Onur Ozgur OZKAN)__
- * [ee0ae05](../../commit/ee0ae05) #72 && #64 **Add Kangal and  Rspec Gems** __(Onur Ozgur OZKAN)__
+ * [0d6ef49](../../commit/0d6ef49) - __(Onur Ozgur OZKAN)__ bump version 0.9.0
+ * [6a6ef73](../../commit/6a6ef73) - __(Onur Ozgur OZKAN)__ [#74](../../issues/74) remove tomdoc
+ * [3e37420](../../commit/3e37420) - __(Onur Ozgur OZKAN)__ [#66](../../issues/66) Add factory-girl-rails
+ * [ae6f239](../../commit/ae6f239) - __(Onur Ozgur OZKAN)__ [#65](../../issues/65) Add should-matchers gem
+ * [f0a307c](../../commit/f0a307c) - __(Onur Ozgur OZKAN)__ [#73](../../issues/73) fixed new line problem
+ * [a69f539](../../commit/a69f539) - __(Onur Ozgur OZKAN)__ [#73](../../issues/73) Add capybara gem
+ * [ee0ae05](../../commit/ee0ae05) - __(Onur Ozgur OZKAN)__ [#72](../../issues/72) && [#64](../../issues/64) **Add Kangal and  Rspec Gems**
+
+- Add Kangal gem
+- Add rspec-rails gem
+- Generate rspec:install
+
 
 #### 0.8.0
- * [d4722f5](../../commit/d4722f5) release version 0.8.0 __(Muhammet DİLEK)__
- * [58bdb65](../../commit/58bdb65) #69 paperclip added __(Muhammet DİLEK)__
- * [9186d02](../../commit/9186d02) #67 admins url changed __(Muhammet DİLEK)__
- * [9ed2bc7](../../commit/9ed2bc7) #68 will_paginate added __(Muhammet DİLEK)__
+ * [d4722f5](../../commit/d4722f5) - __(Muhammet DİLEK)__ release version 0.8.0
+ * [58bdb65](../../commit/58bdb65) - __(Muhammet DİLEK)__ [#69](../../issues/69) paperclip added
+ * [9186d02](../../commit/9186d02) - __(Muhammet DİLEK)__ [#67](../../issues/67) admins url changed
+ * [9ed2bc7](../../commit/9ed2bc7) - __(Muhammet DİLEK)__ [#68](../../issues/68) will_paginate added
 
 #### 0.7.0
- * [3c9a703](../../commit/3c9a703) bump version 0.7.0 __(Onur Ozgur OZKAN)__
- * [e038328](../../commit/e038328) typo fix __(Muhammet DİLEK)__
- * [b67bed5](../../commit/b67bed5) #48 #49 hq namespace added __(Muhammet DİLEK)__
- * [9800524](../../commit/9800524) #63 add tr.yml __(Onur Ozgur OZKAN)__
- * [50d52ba](../../commit/50d52ba) #63 add simple_form.tr.yml __(Onur Ozgur OZKAN)__
- * [bea7012](../../commit/bea7012) #63 remove devise.en.yml __(Onur Ozgur OZKAN)__
- * [3d53fb6](../../commit/3d53fb6) #39 setup timezone __(Onur Ozgur OZKAN)__
- * [35ea960](../../commit/35ea960) typo fixed __(Onur Ozgur OZKAN)__
- * [1db5ebd](../../commit/1db5ebd) #39 set time_zone __(Onur Ozgur OZKAN)__
- * [b7e6c6c](../../commit/b7e6c6c) typo fixed. __(Onur Ozgur OZKAN)__
- * [104e1aa](../../commit/104e1aa) add gem version to README.md __(Onur Ozgur OZKAN)__
- * [92d196c](../../commit/92d196c) #60 add katip gem __(Onur Ozgur OZKAN)__
- * [a514a58](../../commit/a514a58) #50 Add devise-i18n gem __(Onur Ozgur OZKAN)__
- * [7773e3c](../../commit/7773e3c) Merge remote-tracking branch 'origin/develop' into develop __(Onur Ozgur OZKAN)__
- * [9cab0cc](../../commit/9cab0cc) #58 add changelog.md __(Onur Ozgur OZKAN)__
- * [37c8bef](../../commit/37c8bef) #58 add changelog.md __(Onur Ozgur OZKAN)__
- * [1c9cc61](../../commit/1c9cc61) #53 welcome page added __(Muhammet DİLEK)__
- * [e656995](../../commit/e656995) Merge pull request #54 from sbagdat/patch-1 __(Onur Özgür ÖZKAN)__
- * [9d80dbf](../../commit/9d80dbf) Update cybele_gitignore __(Sıtkı Bağdat)__
- * [6d6c585](../../commit/6d6c585) Remove unnecessary lines for ignoring mac files __(Sıtkı Bağdat)__
- * [72fdaca](../../commit/72fdaca) typo fixed __(Onur Özgür ÖZKAN)__
- * [016dd44](../../commit/016dd44) typo fixed __(Onur Ozgur OZKAN)__
+ * [3c9a703](../../commit/3c9a703) - __(Onur Ozgur OZKAN)__ bump version 0.7.0
+ * [e038328](../../commit/e038328) - __(Muhammet DİLEK)__ typo fix
+
+Conflicts:
+	lib/cybele/app_builder.rb
+	lib/cybele/generators/app_generator.rb
+
+ * [b67bed5](../../commit/b67bed5) - __(Muhammet DİLEK)__ [#48](../../issues/48) [#49](../../issues/49) hq namespace added
+ * [9800524](../../commit/9800524) - __(Onur Ozgur OZKAN)__ [#63](../../issues/63) add tr.yml
+ * [50d52ba](../../commit/50d52ba) - __(Onur Ozgur OZKAN)__ [#63](../../issues/63) add simple_form.tr.yml
+ * [bea7012](../../commit/bea7012) - __(Onur Ozgur OZKAN)__ [#63](../../issues/63) remove devise.en.yml
+ * [3d53fb6](../../commit/3d53fb6) - __(Onur Ozgur OZKAN)__ [#39](../../issues/39) setup timezone
+ * [35ea960](../../commit/35ea960) - __(Onur Ozgur OZKAN)__ typo fixed
+ * [1db5ebd](../../commit/1db5ebd) - __(Onur Ozgur OZKAN)__ [#39](../../issues/39) set time_zone
+ * [b7e6c6c](../../commit/b7e6c6c) - __(Onur Ozgur OZKAN)__ typo fixed.
+ * [104e1aa](../../commit/104e1aa) - __(Onur Ozgur OZKAN)__ add gem version to README.md
+ * [92d196c](../../commit/92d196c) - __(Onur Ozgur OZKAN)__ [#60](../../issues/60) add katip gem
+ * [a514a58](../../commit/a514a58) - __(Onur Ozgur OZKAN)__ [#50](../../issues/50) Add devise-i18n gem
+ * [7773e3c](../../commit/7773e3c) - __(Onur Ozgur OZKAN)__ Merge remote-tracking branch 'origin/develop' into develop
+ * [9cab0cc](../../commit/9cab0cc) - __(Onur Ozgur OZKAN)__ [#58](../../issues/58) add changelog.md
+ * [37c8bef](../../commit/37c8bef) - __(Onur Ozgur OZKAN)__ [#58](../../issues/58) add changelog.md
+ * [1c9cc61](../../commit/1c9cc61) - __(Muhammet DİLEK)__ [#53](../../issues/53) welcome page added
+ * [e656995](../../commit/e656995) - __(Onur Özgür ÖZKAN)__ Merge pull request [#54](../../issues/54) from sbagdat/patch-1
+
+Remove unnecessary lines for ignoring mac files
+ * [9d80dbf](../../commit/9d80dbf) - __(Sıtkı Bağdat)__ Update cybele_gitignore
+ * [6d6c585](../../commit/6d6c585) - __(Sıtkı Bağdat)__ Remove unnecessary lines for ignoring mac files
+
+```*.DS_Store``` and ```**/.DS_Store``` are not necessary to ignore mac filesystem dust. ```.DS_Store``` line is already enough to complete this task.
+ * [72fdaca](../../commit/72fdaca) - __(Onur Özgür ÖZKAN)__ typo fixed
+ * [016dd44](../../commit/016dd44) - __(Onur Ozgur OZKAN)__ typo fixed
 
 #### 0.6.0
- * [98b604b](../../commit/98b604b) update readme.md __(Onur Ozgur OZKAN)__
- * [89ae9a1](../../commit/89ae9a1) bump version 0.6.0 __(Onur Ozgur OZKAN)__
- * [24a4f23](../../commit/24a4f23) #52 update gem versions __(Onur Ozgur OZKAN)__
- * [b49bfbe](../../commit/b49bfbe) #13 remove unused method __(Onur Ozgur OZKAN)__
- * [efe0121](../../commit/efe0121) #51 compass-rails added and application.css configuration __(Muhammet DİLEK)__
- * [0baf6fb](../../commit/0baf6fb) #2 devise views converted erb to haml __(Muhammet DİLEK)__
- * [40fd639](../../commit/40fd639) #2 devise and user model made mandatory __(Muhammet DİLEK)__
- * [9f8a199](../../commit/9f8a199) #13 add version number to gems __(Onur Özgür ÖZKAN)__
- * [31b3693](../../commit/31b3693) #13 remove github repository option from exception_notification __(Murat Kemal BAYGÜN)__
- * [8c9007d](../../commit/8c9007d) #2 devise added __(Muhammet DİLEK)__
- * [93ccbfe](../../commit/93ccbfe) #8 add rails config __(Muhammet DİLEK)__
+ * [98b604b](../../commit/98b604b) - __(Onur Ozgur OZKAN)__ update readme.md
+ * [89ae9a1](../../commit/89ae9a1) - __(Onur Ozgur OZKAN)__ bump version 0.6.0
+ * [24a4f23](../../commit/24a4f23) - __(Onur Ozgur OZKAN)__ [#52](../../issues/52) update gem versions
+ * [b49bfbe](../../commit/b49bfbe) - __(Onur Ozgur OZKAN)__ [#13](../../issues/13) remove unused method
+
+Conflicts:
+	templates/cybele_Gemfile
+
+ * [efe0121](../../commit/efe0121) - __(Muhammet DİLEK)__ [#51](../../issues/51) compass-rails added and application.css configuration
+ * [0baf6fb](../../commit/0baf6fb) - __(Muhammet DİLEK)__ [#2](../../issues/2) devise views converted erb to haml
+ * [40fd639](../../commit/40fd639) - __(Muhammet DİLEK)__ [#2](../../issues/2) devise and user model made mandatory
+ * [9f8a199](../../commit/9f8a199) - __(Onur Özgür ÖZKAN)__ [#13](../../issues/13) add version number to gems
+ * [31b3693](../../commit/31b3693) - __(Murat Kemal BAYGÜN)__ [#13](../../issues/13) remove github repository option from exception_notification
+ * [8c9007d](../../commit/8c9007d) - __(Muhammet DİLEK)__ [#2](../../issues/2) devise added
+ * [93ccbfe](../../commit/93ccbfe) - __(Muhammet DİLEK)__ [#8](../../issues/8) add rails config
 
 #### 0.5.0
- * [a8048e0](../../commit/a8048e0) bump version 0.5.0 __(Onur Özgür ÖZKAN)__
- * [699fd57](../../commit/699fd57) #46 change gem path and description __(Onur Özgür ÖZKAN)__
- * [d03cb23](../../commit/d03cb23) #13 add exception notification __(Onur Özgür ÖZKAN)__
- * [b7e4054](../../commit/b7e4054) #13 add exception notification __(Onur Özgür ÖZKAN)__
- * [bfafbf1](../../commit/bfafbf1) #46 fixed repo path __(Onur Özgür ÖZKAN)__
- * [7cf2df8](../../commit/7cf2df8) #35 close exception notification __(Onur Özgür ÖZKAN)__
- * [20a81d4](../../commit/20a81d4) #24 setup simple form __(Onur Özgür ÖZKAN)__
- * [a97c9ec](../../commit/a97c9ec) #24 setup simple form __(Onur Özgür ÖZKAN)__
- * [9967bcc](../../commit/9967bcc) #35 add exception notification __(Onur Özgür ÖZKAN)__
- * [26e1ac6](../../commit/26e1ac6) #40 Add better_errors, sextant, etc for development env __(Onur Özgür ÖZKAN)__
- * [ac06ff6](../../commit/ac06ff6) #35 Add smtp setting __(Onur Özgür ÖZKAN)__
- * [c8d4dc0](../../commit/c8d4dc0) #35 Add smtp setting __(Onur Özgür ÖZKAN)__
- * [f9e05bb](../../commit/f9e05bb) #35 Add smtp setting __(Onur Özgür ÖZKAN)__
- * [7fe8ce8](../../commit/7fe8ce8) #41 Add suspender link to README.md __(Onur Özgür ÖZKAN)__
+ * [a8048e0](../../commit/a8048e0) - __(Onur Özgür ÖZKAN)__ bump version 0.5.0
+ * [699fd57](../../commit/699fd57) - __(Onur Özgür ÖZKAN)__ [#46](../../issues/46) change gem path and description
+ * [d03cb23](../../commit/d03cb23) - __(Onur Özgür ÖZKAN)__ [#13](../../issues/13) add exception notification
+ * [b7e4054](../../commit/b7e4054) - __(Onur Özgür ÖZKAN)__ [#13](../../issues/13) add exception notification
+ * [bfafbf1](../../commit/bfafbf1) - __(Onur Özgür ÖZKAN)__ [#46](../../issues/46) fixed repo path
+ * [7cf2df8](../../commit/7cf2df8) - __(Onur Özgür ÖZKAN)__ [#35](../../issues/35) close exception notification
+ * [20a81d4](../../commit/20a81d4) - __(Onur Özgür ÖZKAN)__ [#24](../../issues/24) setup simple form
+ * [a97c9ec](../../commit/a97c9ec) - __(Onur Özgür ÖZKAN)__ [#24](../../issues/24) setup simple form
+ * [9967bcc](../../commit/9967bcc) - __(Onur Özgür ÖZKAN)__ [#35](../../issues/35) add exception notification
+ * [26e1ac6](../../commit/26e1ac6) - __(Onur Özgür ÖZKAN)__ [#40](../../issues/40) Add better_errors, sextant, etc for development env
+ * [ac06ff6](../../commit/ac06ff6) - __(Onur Özgür ÖZKAN)__ [#35](../../issues/35) Add smtp setting
+ * [c8d4dc0](../../commit/c8d4dc0) - __(Onur Özgür ÖZKAN)__ [#35](../../issues/35) Add smtp setting
+ * [f9e05bb](../../commit/f9e05bb) - __(Onur Özgür ÖZKAN)__ [#35](../../issues/35) Add smtp setting
+ * [7fe8ce8](../../commit/7fe8ce8) - __(Onur Özgür ÖZKAN)__ [#41](../../issues/41) Add suspender link to README.md
 
 #### 0.4.1
- * [31252fa](../../commit/31252fa) bump version 0.4.1 __(Onur Özgür ÖZKAN)__
- * [c51d836](../../commit/c51d836) Merge pull request #43 from sbagdat/patch-2 __(Onur Özgür ÖZKAN)__
- * [d2cd41c](../../commit/d2cd41c) Remove unnecessary builds __(Sıtkı Bağdat)__
- * [d01978f](../../commit/d01978f) Update app_builder.rb __(Sıtkı Bağdat)__
+ * [31252fa](../../commit/31252fa) - __(Onur Özgür ÖZKAN)__ bump version 0.4.1
+ * [c51d836](../../commit/c51d836) - __(Onur Özgür ÖZKAN)__ Merge pull request [#43](../../issues/43) from sbagdat/patch-2
+
+Update app_builder.rb thx @sbagdat
+ * [d2cd41c](../../commit/d2cd41c) - __(Sıtkı Bağdat)__ Remove unnecessary builds
+
+Removed 'remove_public_index' and 'remove_rails_logo_image' methods.
+ * [d01978f](../../commit/d01978f) - __(Sıtkı Bağdat)__ Update app_builder.rb
+
+In Rails 4, 'public/index.html' and 'rails.png' files are don't exist. A new Rails internal controller Rails::WelcomeController has been used to serve the dynamic welcome screen and rails.png image used as data-image. So I removed these lines from the file.
 
 #### 0.4.0
- * [a92094c](../../commit/a92094c) bump version 0.4.0 __(Onur Özgür ÖZKAN)__
- * [f34206c](../../commit/f34206c) #35 setup smtp, setup open_letter __(Onur Özgür ÖZKAN)__
- * [958bf5f](../../commit/958bf5f) #34 convert application.js to coffee and application.css to sass __(Onur Özgür ÖZKAN)__
- * [0fcd684](../../commit/0fcd684) #34 generator generate sass instead of scss __(Onur Özgür ÖZKAN)__
- * [cff434e](../../commit/cff434e) #34 add bootstrap-sass gem __(Onur Özgür ÖZKAN)__
- * [97c83ba](../../commit/97c83ba) #37 setup gitignore files and folders __(Onur Özgür ÖZKAN)__
- * [8f19ab2](../../commit/8f19ab2) #38 fixed strong_parameters generators __(Onur Özgür ÖZKAN)__
- * [fe6b961](../../commit/fe6b961) typo fixed __(Onur Özgür ÖZKAN)__
- * [2e370a3](../../commit/2e370a3) #36 setup database.yml and run rake db:create __(Onur Özgür ÖZKAN)__
- * [14d7005](../../commit/14d7005) #27 add gemnasium service link __(Onur Özgür ÖZKAN)__
- * [5af5c04](../../commit/5af5c04) #25 add responder gem to cybele __(Onur Özgür ÖZKAN)__
+ * [a92094c](../../commit/a92094c) - __(Onur Özgür ÖZKAN)__ bump version 0.4.0
+ * [f34206c](../../commit/f34206c) - __(Onur Özgür ÖZKAN)__ [#35](../../issues/35) setup smtp, setup open_letter
+ * [958bf5f](../../commit/958bf5f) - __(Onur Özgür ÖZKAN)__ [#34](../../issues/34) convert application.js to coffee and application.css to sass
+ * [0fcd684](../../commit/0fcd684) - __(Onur Özgür ÖZKAN)__ [#34](../../issues/34) generator generate sass instead of scss
+ * [cff434e](../../commit/cff434e) - __(Onur Özgür ÖZKAN)__ [#34](../../issues/34) add bootstrap-sass gem
+ * [97c83ba](../../commit/97c83ba) - __(Onur Özgür ÖZKAN)__ [#37](../../issues/37) setup gitignore files and folders
+ * [8f19ab2](../../commit/8f19ab2) - __(Onur Özgür ÖZKAN)__ [#38](../../issues/38) fixed strong_parameters generators
+ * [fe6b961](../../commit/fe6b961) - __(Onur Özgür ÖZKAN)__ typo fixed
+ * [2e370a3](../../commit/2e370a3) - __(Onur Özgür ÖZKAN)__ [#36](../../issues/36) setup database.yml and run rake db:create
+ * [14d7005](../../commit/14d7005) - __(Onur Özgür ÖZKAN)__ [#27](../../issues/27) add gemnasium service link
+ * [5af5c04](../../commit/5af5c04) - __(Onur Özgür ÖZKAN)__ [#25](../../issues/25) add responder gem to cybele
 
 #### 0.3.0
- * [7bdee87](../../commit/7bdee87) bump version __(Onur Özgür ÖZKAN)__
- * [3a7d93f](../../commit/3a7d93f) #33 update README.md __(Onur Özgür ÖZKAN)__
- * [4b13eee](../../commit/4b13eee) #27 add codeclimate __(Onur Özgür ÖZKAN)__
- * [ea548ad](../../commit/ea548ad) #32 remove rails logo __(Onur Özgür ÖZKAN)__
- * [69dc256](../../commit/69dc256) fixed Gemfile.lock __(Onur Özgür ÖZKAN)__
+ * [7bdee87](../../commit/7bdee87) - __(Onur Özgür ÖZKAN)__ bump version
+ * [3a7d93f](../../commit/3a7d93f) - __(Onur Özgür ÖZKAN)__ [#33](../../issues/33) update README.md
+
+add semver.org
+add tocdoc.org
+
+ * [4b13eee](../../commit/4b13eee) - __(Onur Özgür ÖZKAN)__ [#27](../../issues/27) add codeclimate
+ * [ea548ad](../../commit/ea548ad) - __(Onur Özgür ÖZKAN)__ [#32](../../issues/32) remove rails logo
+ * [69dc256](../../commit/69dc256) - __(Onur Özgür ÖZKAN)__ fixed Gemfile.lock
 
 #### 0.2.0
- * [bb991e1](../../commit/bb991e1) Bump version. __(Onur Özgür ÖZKAN)__
- * [ebff69d](../../commit/ebff69d) issue #26 replace files erb to haml __(Onur Özgür ÖZKAN)__
- * [853260b](../../commit/853260b) issue #31 fixed Gemfile __(Onur Özgür ÖZKAN)__
- * [593304f](../../commit/593304f) issue #31 replace Gemfile __(Onur Özgür ÖZKAN)__
- * [29ddfb9](../../commit/29ddfb9) issue #30 add all rdoc __(Onur Özgür ÖZKAN)__
- * [1af93d1](../../commit/1af93d1) issue #29 fixed Does it try to require a relative path? That's been removed in Ruby 1.9. __(Onur Özgür ÖZKAN)__
- * [204d7df](../../commit/204d7df) support new release over rails 4.0.0.rc1 __(Onur Özgür ÖZKAN)__
- * [311dd0a](../../commit/311dd0a) issue #23 improved readme.md __(Onur Özgür ÖZKAN)__
- * [370e0be](../../commit/370e0be) issue #22 add rdoc rake task __(Onur Özgür ÖZKAN)__
+ * [bb991e1](../../commit/bb991e1) - __(Onur Özgür ÖZKAN)__ Bump version.
+ * [ebff69d](../../commit/ebff69d) - __(Onur Özgür ÖZKAN)__ issue [#26](../../issues/26) replace files erb to haml
+ * [853260b](../../commit/853260b) - __(Onur Özgür ÖZKAN)__ issue [#31](../../issues/31) fixed Gemfile
+ * [593304f](../../commit/593304f) - __(Onur Özgür ÖZKAN)__ issue [#31](../../issues/31) replace Gemfile
+ * [29ddfb9](../../commit/29ddfb9) - __(Onur Özgür ÖZKAN)__ issue [#30](../../issues/30) add all rdoc
+ * [1af93d1](../../commit/1af93d1) - __(Onur Özgür ÖZKAN)__ issue [#29](../../issues/29) fixed Does it try to require a relative path? That's been removed in Ruby 1.9.
+ * [204d7df](../../commit/204d7df) - __(Onur Özgür ÖZKAN)__ support new release over rails 4.0.0.rc1
+ * [311dd0a](../../commit/311dd0a) - __(Onur Özgür ÖZKAN)__ issue [#23](../../issues/23) improved readme.md
+
+- fix typo
+- improve using section
+
+ * [370e0be](../../commit/370e0be) - __(Onur Özgür ÖZKAN)__ issue [#22](../../issues/22) add rdoc rake task
 
 #### 0.1.0
- * [282b70c](../../commit/282b70c) Issues #19 #20 #21  Create a gem __(Onur Özgür ÖZKAN)__
- * [eca13d5](../../commit/eca13d5) Update README.md __(Onur Özgür ÖZKAN)__
- * [002ff21](../../commit/002ff21) Update README.md __(Onur Özgür ÖZKAN)__
- * [be3c6a7](../../commit/be3c6a7) Update README.md __(Onur Özgür ÖZKAN)__
- * [ae5bbe2](../../commit/ae5bbe2) add responders __(Onur Özgür ÖZKAN)__
- * [4da6960](../../commit/4da6960) add devise and simple_form gem __(Onur Özgür ÖZKAN)__
- * [eaaa1cd](../../commit/eaaa1cd) Remove MIT license just now. __(Onur Özgür ÖZKAN)__
- * [9ec3295](../../commit/9ec3295) Update README.md __(Onur Özgür ÖZKAN)__
- * [143d255](../../commit/143d255) Update README.md __(Onur Özgür ÖZKAN)__
- * [9a14185](../../commit/9a14185) Update README.md __(Onur Özgür ÖZKAN)__
- * [f45360e](../../commit/f45360e) Initial commit __(Onur Özgür ÖZKAN)__
+ * [282b70c](../../commit/282b70c) - __(Onur Özgür ÖZKAN)__ Issues [#19](../../issues/19) [#20](../../issues/20) [#21](../../issues/21)  Create a gem
+
+- Generate Rails 4.x
+- Add README.md
+- Remove public/index.html
+- Remove README.rdoc
+
+ * [eca13d5](../../commit/eca13d5) - __(Onur Özgür ÖZKAN)__ Update README.md
+ * [002ff21](../../commit/002ff21) - __(Onur Özgür ÖZKAN)__ Update README.md
+ * [be3c6a7](../../commit/be3c6a7) - __(Onur Özgür ÖZKAN)__ Update README.md
+ * [ae5bbe2](../../commit/ae5bbe2) - __(Onur Özgür ÖZKAN)__ add responders
+ * [4da6960](../../commit/4da6960) - __(Onur Özgür ÖZKAN)__ add devise and simple_form gem
+ * [eaaa1cd](../../commit/eaaa1cd) - __(Onur Özgür ÖZKAN)__ Remove MIT license just now.
+ * [9ec3295](../../commit/9ec3295) - __(Onur Özgür ÖZKAN)__ Update README.md
+ * [143d255](../../commit/143d255) - __(Onur Özgür ÖZKAN)__ Update README.md
+ * [9a14185](../../commit/9a14185) - __(Onur Özgür ÖZKAN)__ Update README.md
+ * [f45360e](../../commit/f45360e) - __(Onur Özgür ÖZKAN)__ Initial commit
