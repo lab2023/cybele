@@ -1,5 +1,9 @@
 
 #### [Current]
+ * [063a81e](../../commit/063a81e) - __(Muhammet DİLEK)__ dashboard base class fixed
+
+#### 0.10.0
+ * [6e829f1](../../commit/6e829f1) - __(Muhammet DİLEK)__ bump version 0.10.0
  * [f73a240](../../commit/f73a240) - __(Muhammet DİLEK)__ [#85](../../issues/85) hierapolis-rails version fixed
  * [49e4146](../../commit/49e4146) - __(Muhammet DİLEK)__ [#85](../../issues/85) hierapolis-rails added
  * [0de956e](../../commit/0de956e) - __(Onur Ozgur OZKAN)__ [#78](../../issues/78) Add shoulda-context and show_for gems
