@@ -187,7 +187,6 @@ require 'capybara/rspec'
       generate 'devise:install'
       gsub_file 'config/initializers/filter_parameter_logging.rb', /:password/, ':password, :password_confirmation'
       gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, 'CHANGEME@example.com'
-
     end
 
     def generate_devise_model(model_name)

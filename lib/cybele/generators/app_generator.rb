@@ -2,7 +2,7 @@ require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 
 module Cybele
-
+  
   class AppGenerator < Rails::Generators::AppGenerator
 
     class_option :database, :type => :string, :aliases => '-d', :default => 'postgresql',
