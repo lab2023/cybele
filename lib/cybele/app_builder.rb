@@ -3,7 +3,7 @@ module Cybele
   class AppBuilder < Rails::AppBuilder
 
     def readme
-      template 'README.md.erb', 'README.md', :force => true
+      template 'README.md.erb', 'README.md', force: true
     end
 
     def remove_readme_rdoc
@@ -15,6 +15,18 @@ module Cybele
       copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
+    def add_editorconfig
+      copy_file 'editorconfig', '.editorconfig'
+    end
+
+    def add_ruby_version
+      copy_file 'ruby_version', '.ruby_version'
+    end
+
+    def add_disable_xml_params
+      copy_file 'config/initializers/disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
+    end
+
     def replace_application_rb_file
       remove_file 'config/application.rb'
       copy_file 'config/application.rb', 'config/application.rb'
@@ -22,7 +34,11 @@ module Cybele
 
     def replace_erb_with_haml
       remove_file 'app/views/layouts/application.html.erb'
-      template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', :force => true
+      template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', force: true
+    end
+
+    def copy_rake_files
+      copy_file 'lib/tasks/annotate.rake', 'lib/tasks/annotate.rake', force: true
     end
 
     def install_responder_gem
@@ -35,7 +51,7 @@ module Cybele
     end
 
     def replace_database_yml
-      template 'config/database.yml.erb', 'config/database.yml', :force => true
+      template 'config/database.yml.erb', 'config/database.yml', force: true
     end
 
     def create_database
@@ -85,20 +101,29 @@ module Cybele
     end
 
     def configure_smtp
+      remove_file 'config/settings/production.yml'
+      copy_file 'config/settings/production.yml', 'config/settings/production.yml'
 
       config = <<-RUBY
 config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      :address              => 'smtp.mandrillapp.com',
-      :port                 => 587,
-      :enable_starttls_auto => true,
-      :user_name            => 'email@email.com', #TODO change this with original
-      :password             => 'password',        #TODO change this with original
-      :authentication       => 'plain'
-  }
+config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = Settings.smtp.mandrill
       RUBY
 
       configure_environment 'production', config
+    end
+
+    def setup_staging_environment
+      run 'cp config/environments/production.rb config/environments/staging.rb'
+
+      prepend_file 'config/environments/staging.rb',
+                   "Mail.register_interceptor RecipientInterceptor.new((Settings.email.noreply, subject_prefix: '[STAGING]'))\n"
+
+      config = <<-YML
+email:
+  noreply: noreply@appname.org
+      YML
+      prepend_file 'config/settings.yml', config
     end
 
     def configure_action_mailer
@@ -184,7 +209,7 @@ require 'capybara/rspec'
       generate "devise Admin"
       create_namespace_routing('hq')
       directory 'app/controllers/hq', 'app/controllers/hq'
-      template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
+      #template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
       gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}, path: 'hq',
@@ -198,12 +223,26 @@ require 'capybara/rspec'
       add_time_zone_to_user
     end
 
+    def create_hierapolis_theme
+      remove_file 'lib/templates/rails/responders_controller/controller.rb'
+      remove_file 'lib/templates/haml/scaffold/_form.html.haml'
+      generate 'hierapolis:install'
+    end
+
+    def replace_simple_form_wrapper
+      remove_file 'config/initializers/simple_form.rb'
+      remove_file 'config/initializers/simple_form_bootstrap.rb'
+
+      copy_file 'config/initializers/simple_form.rb', 'config/initializers/simple_form.rb'
+      copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
+    end
+
     private
 
     def action_mailer_host(rails_env, host)
 
       config = <<-RUBY
-  # Mail Setting
+# Mail Setting
   config.action_mailer.default_url_options = { :host => '#{host}' }
       RUBY
 

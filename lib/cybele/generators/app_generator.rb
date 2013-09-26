@@ -18,12 +18,16 @@ module Cybele
 
     def customization
       invoke :customize_gemfile
+      invoke :setup_editorconfig
+      invoke :setup_ruby_version
+      invoke :setup_add_disable_xml_params
       invoke :setup_database
       invoke :remove_files_we_dont_need
       invoke :replace_files
       invoke :install_gems
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
+      invoke :setup_rails_config
       invoke :configure_mail_setting
       invoke :setup_rspec
       invoke :setup_capybara
@@ -33,11 +37,28 @@ module Cybele
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
+      invoke :setup_staging_environment
+      invoke :goodbye
     end
 
     def customize_gemfile
       build :replace_gemfile
       bundle_command 'install --binstubs=bin/stubs'
+    end
+
+    def setup_editorconfig
+      say 'Add .editorconfig file'
+      build :add_editorconfig
+    end
+
+    def setup_ruby_version
+      say 'Add .ruby-version file'
+      build :add_ruby_version
+    end
+
+    def setup_add_disable_xml_params
+      say 'Add disable_xml_params.rb file to initilizers'
+      build :add_disable_xml_params
     end
 
     def remove_files_we_dont_need
@@ -65,6 +86,11 @@ module Cybele
       end
 
       build :create_database
+    end
+
+    def setup_staging_environment
+      say 'Setting up the staging environment'
+      build :setup_staging_environment
     end
 
     def gitignore_files_and_folders
@@ -141,7 +167,19 @@ module Cybele
       build :set_time_zone
     end
 
+    def goodbye
+      say 'Congratulations! That\'s all...'
+    end
+
     def run_bundle
+    end
+
+    def setup_hierapolis
+      build :create_hierapolis_theme
+    end
+
+    def setup_sipmle_form_wrapper
+      build :replace_simple_form_wrapper
     end
 
     protected
