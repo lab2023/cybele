@@ -1,4 +1,4 @@
-class Hq::DashboardController < Hq::BaseController
+class Hq::DashboardController < Hq::ApplicationController
   def index
 
   end
