@@ -117,7 +117,7 @@ config.action_mailer.raise_delivery_errors = false
       run 'cp config/environments/production.rb config/environments/staging.rb'
 
       prepend_file 'config/environments/staging.rb',
-                   "Mail.register_interceptor RecipientInterceptor.new((Settings.email.noreply, subject_prefix: '[STAGING]'))\n"
+                   "Mail.register_interceptor RecipientInterceptor.new(Settings.email.noreply, subject_prefix: '[STAGING]')\n"
 
       config = <<-YML
 email:
