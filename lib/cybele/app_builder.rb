@@ -103,6 +103,7 @@ module Cybele
     def configure_smtp
       remove_file 'config/settings/production.yml'
       copy_file 'config/settings/production.yml', 'config/settings/production.yml'
+      copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
 config.action_mailer.delivery_method = :smtp
@@ -111,13 +112,14 @@ config.action_mailer.raise_delivery_errors = false
       RUBY
 
       configure_environment 'production', config
+      configure_environment 'staging', config
     end
 
     def setup_staging_environment
       run 'cp config/environments/production.rb config/environments/staging.rb'
 
       prepend_file 'config/environments/staging.rb',
-                   "Mail.register_interceptor RecipientInterceptor.new((Settings.email.noreply, subject_prefix: '[STAGING]'))\n"
+                   "Mail.register_interceptor RecipientInterceptor.new(Settings.email.noreply, subject_prefix: '[STAGING]')\n"
 
       config = <<-YML
 email:
@@ -174,6 +176,21 @@ require 'capybara/rspec'
 
     def generate_exception_notification
       generate 'exception_notification:install'
+    end
+
+    def add_exception_notification_to_environments
+      config = <<-CODE
+
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[Whatever] ",
+      :sender_address => %{"notifier" <notifier@example.com>},
+      :exception_recipients => %w{exceptions@example.com}
+    }
+      CODE
+
+      configure_environment('production', config)
+      configure_environment('staging', config)
     end
 
     def leftovers
@@ -264,7 +281,7 @@ require 'capybara/rspec'
 class #{model_name.classify}::ParameterSanitizer < Devise::ParameterSanitizer
   private
   def sign_up
-    default_params.permit(:name, :email, :password, :password_confirmation) # TODO add other params here
+    default_params.permit(:name, :email, :password, :password_confirmation, :time_zone) # TODO add other params here
   end
 end
       CODE

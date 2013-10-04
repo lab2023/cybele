@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake'
 
-  spec.extra_rdoc_files = %w[README.md LICENSE.txt]
+  spec.extra_rdoc_files = %w[README.md MIT-LICENSE]
 end
