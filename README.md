@@ -4,8 +4,6 @@
 [![Code Climate](https://codeclimate.com/github/kebab-project/cybele.png)](https://codeclimate.com/github/kebab-project/cybele)
 [![Dependency Status](https://gemnasium.com/kebab-project/cybele.png)](https://gemnasium.com/kebab-project/cybele)
 
-NOTE: Don't use this gem until v1.0.0
-
 **Cybele** pron.: /ˈsɪbɨliː/ was an originally Anatolian mother goddess. Little is known of her oldest Anatolian cults,
 other than her association with mountains, hawks and lions. She may have been Phrygia's State deity; her Phrygian cult
 was adopted and adapted by Greek colonists of Asia Minor, and spread from there to mainland Greece and its more distant
