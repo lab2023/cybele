@@ -35,6 +35,7 @@ module Cybele
       invoke :setup_factory_girl
       invoke :setup_simple_form
       invoke :setup_exception_notification
+      invoke :setup_exception_notification_to_environments
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
@@ -180,6 +181,10 @@ module Cybele
 
     def setup_sipmle_form_wrapper
       build :replace_simple_form_wrapper
+    end
+
+    def setup_exception_notification_to_environments
+      build :add_exception_notification_to_environments
     end
 
     protected

@@ -178,6 +178,21 @@ require 'capybara/rspec'
       generate 'exception_notification:install'
     end
 
+    def add_exception_notification_to_environments
+      config = <<-CODE
+
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[Whatever] ",
+      :sender_address => %{"notifier" <notifier@example.com>},
+      :exception_recipients => %w{exceptions@example.com}
+    }
+      CODE
+
+      configure_environment('production', config)
+      configure_environment('staging', config)
+    end
+
     def leftovers
     end
 
