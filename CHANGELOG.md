@@ -1,5 +1,14 @@
 
 #### [Current]
+ * [9d610b0](../../commit/9d610b0) - __(Muhammet DİLEK)__ [#89](../../issues/89) exception notification configuration added to environment files
+ * [4c00857](../../commit/4c00857) - __(Muhammet DİLEK)__ [#91](../../issues/91) staging configuration added
+ * [38ef9c5](../../commit/38ef9c5) - __(Muhammet DİLEK)__ [#90](../../issues/90) asset files updated
+ * [0710dd1](../../commit/0710dd1) - __(Tayfun Öziş ERİKAN)__ [#88](../../issues/88) RecipientInterceptor initial parameters was fixed.
+ * [fe6b690](../../commit/fe6b690) - __(Onur Ozgur OZKAN)__ [#87](../../issues/87) add time_zone to devise model
+ * [d87b845](../../commit/d87b845) - __(Onur Ozgur OZKAN)__ typo fixed.
+
+#### 0.10.1
+ * [cb7eead](../../commit/cb7eead) - __(Muhammet DİLEK)__ bump version 0.10.1
  * [063a81e](../../commit/063a81e) - __(Muhammet DİLEK)__ dashboard base class fixed
 
 #### 0.10.0
