@@ -28,6 +28,7 @@ module Cybele
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
       invoke :setup_rails_config
+      invoke :setup_staging_environment
       invoke :configure_mail_setting
       invoke :setup_rspec
       invoke :setup_capybara
@@ -37,7 +38,6 @@ module Cybele
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
-      invoke :setup_staging_environment
       invoke :goodbye
     end
 

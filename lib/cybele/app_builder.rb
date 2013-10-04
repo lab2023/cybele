@@ -103,6 +103,7 @@ module Cybele
     def configure_smtp
       remove_file 'config/settings/production.yml'
       copy_file 'config/settings/production.yml', 'config/settings/production.yml'
+      copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
 config.action_mailer.delivery_method = :smtp
@@ -111,6 +112,7 @@ config.action_mailer.raise_delivery_errors = false
       RUBY
 
       configure_environment 'production', config
+      configure_environment 'staging', config
     end
 
     def setup_staging_environment
