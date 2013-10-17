@@ -26,7 +26,7 @@ gem 'kangal', '~> 1.0.0'
 gem 'rack-timeout', '~> 0.0.4'
 gem 'annotate', '>=2.5.0'
 gem 'recipient_interceptor', '~> 0.1.2'
-gem 'rails-i18n', '~> 4.0.0.pre'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'ransack'
 
 # gem 'rails-observers'
