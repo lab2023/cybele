@@ -28,6 +28,10 @@ gem 'annotate', '>=2.5.0'
 gem 'recipient_interceptor', '~> 0.1.2'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'ransack'
+gem 'capistrano', '~> 2.15.5'
+gem 'capistrano-ext', '~> 1.2.1'
+gem 'unicorn', '~> 4.6.3'
+gem 'recipes_matic'
 
 # gem 'rails-observers'
 

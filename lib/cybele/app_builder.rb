@@ -254,6 +254,15 @@ require 'capybara/rspec'
       copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
     end
 
+    def setup_capistrano
+      run 'capify .'
+    end
+
+    def setup_recipes
+      run 'rm config/deploy.rb'
+      generate 'recipes_matic:install'
+    end
+
     private
 
     def action_mailer_host(rails_env, host)

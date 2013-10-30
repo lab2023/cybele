@@ -187,6 +187,16 @@ module Cybele
       build :add_exception_notification_to_environments
     end
 
+    def install_capistrano
+      build :setup_capistrano
+    end
+
+    def setup_recipes
+      build :setup_recipes
+    end
+
+
+
     protected
 
     def get_builder_class
