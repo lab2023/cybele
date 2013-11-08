@@ -1,5 +1,19 @@
 
 #### [Current]
+ * [c00cb14](../../commit/c00cb14) - __(Muhammet DİLEK)__ [#103](../../issues/103) secret_token.rb methodology changed
+ * [b44ce53](../../commit/b44ce53) - __(Onur Özgür ÖZKAN)__ [#102](../../issues/102) Update rails to version 4.0.1
+ * [59de9e1](../../commit/59de9e1) - __(Muhammet DİLEK)__ [#93](../../issues/93) recipes_matic latest gem version added
+ * [5080392](../../commit/5080392) - __(Muhammet DİLEK)__ [#93](../../issues/93) capistrano recipes added
+ * [443bf93](../../commit/443bf93) - __(H. Türkü Kaya)__ [#100](../../issues/100) SECURITY.md added
+ * [383d48f](../../commit/383d48f) - __(Muhammet DİLEK)__ Merge pull request [#99](../../issues/99) from marjinal1st/develop
+
+[#97](../../issues/97) Add secret_token.rb in gitignore
+ * [aa2e3ac](../../commit/aa2e3ac) - __(Ahmet Sezgin Duran)__ Add secret_token.rb in gitignore
+ * [a2caa79](../../commit/a2caa79) - __(Onur Özgür ÖZKAN)__ Update rails-i18n gem version
+ * [16c9331](../../commit/16c9331) - __(Muhammet DİLEK)__ update readme
+
+#### 1.0.0
+ * [6ea6062](../../commit/6ea6062) - __(Muhammet DİLEK)__ bump version 1.0.0
  * [9d610b0](../../commit/9d610b0) - __(Muhammet DİLEK)__ [#89](../../issues/89) exception notification configuration added to environment files
  * [4c00857](../../commit/4c00857) - __(Muhammet DİLEK)__ [#91](../../issues/91) staging configuration added
  * [38ef9c5](../../commit/38ef9c5) - __(Muhammet DİLEK)__ [#90](../../issues/90) asset files updated
