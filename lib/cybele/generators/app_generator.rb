@@ -195,7 +195,9 @@ module Cybele
       build :setup_recipes
     end
 
-
+    def setup_secret_token
+      build :update_secret_token
+    end
 
     protected
 

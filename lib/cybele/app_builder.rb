@@ -263,6 +263,11 @@ require 'capybara/rspec'
       generate 'recipes_matic:install'
     end
 
+    def update_secret_token
+      remove_file 'config/initializers/secret_token.rb'
+      template 'config/initializers/secret_token.erb', 'config/initializers/secret_token.rb'
+    end
+
     private
 
     def action_mailer_host(rails_env, host)

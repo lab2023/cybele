@@ -38,6 +38,4 @@ vendor/bundler_gems
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
-
-# Ignore secret token
-config/initializers/secret_token.rb
+.secret
