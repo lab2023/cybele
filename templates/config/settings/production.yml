@@ -6,6 +6,7 @@ smtp:
     user_name: 'email@email.com'
     password: 'password'
     authentication: 'plain'
+
 Aws:
   S3:
     bucket: projectname-production
