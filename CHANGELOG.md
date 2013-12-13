@@ -1,5 +1,15 @@
 
 #### [Current]
+ * [499e2f7](../../commit/499e2f7) - __(Onur Ozgur OZKAN)__ update kangal version 1.1.0
+ * [e220eb5](../../commit/e220eb5) - __(Onur Ozgur OZKAN)__ [#106](../../issues/106) Don't copy application.rb from template
+ * [5affe99](../../commit/5affe99) - __(Onur Ozgur OZKAN)__ Typo fixed. Add a new line.
+ * [563c704](../../commit/563c704) - __(Onur Ozgur OZKAN)__ [#105](../../issues/105) update rails 4.0.2
+ * [b2deb95](../../commit/b2deb95) - __(hamitturkukaya)__ [#96](../../issues/96) S3 settings moved to the Aws scope
+ * [3a02a10](../../commit/3a02a10) - __(H. Türkü Kaya)__ [#96](../../issues/96) Http protocol fixed in cybele-gemfile
+ * [b7cc645](../../commit/b7cc645) - __(H. Türkü Kaya)__ [#96](../../issues/96) amazon settings added to the enviromental settings
+
+#### 1.1.0
+ * [98f1cdb](../../commit/98f1cdb) - __(Muhammet DİLEK)__ bump version 1.1.0
  * [c00cb14](../../commit/c00cb14) - __(Muhammet DİLEK)__ [#103](../../issues/103) secret_token.rb methodology changed
  * [b44ce53](../../commit/b44ce53) - __(Onur Özgür ÖZKAN)__ [#102](../../issues/102) Update rails to version 4.0.1
  * [59de9e1](../../commit/59de9e1) - __(Muhammet DİLEK)__ [#93](../../issues/93) recipes_matic latest gem version added

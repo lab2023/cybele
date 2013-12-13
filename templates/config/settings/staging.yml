@@ -6,3 +6,11 @@ smtp:
     user_name: 'email@email.com'
     password: 'password'
     authentication: 'plain'
+
+Aws:
+  S3:
+    bucket: projectname-production
+    access_key_id: XXXXXXXXXXXXXXXX
+    secret_access_key: YYYYYYYYYYYYYYYYYY
+    aws_url: http://projectname-production.s3.amazonaws.com/
+    aws_raw_url: projectname-production.s3.amazonaws.com

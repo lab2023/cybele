@@ -27,11 +27,6 @@ module Cybele
       copy_file 'config/initializers/disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
     end
 
-    def replace_application_rb_file
-      remove_file 'config/application.rb'
-      copy_file 'config/application.rb', 'config/application.rb'
-    end
-
     def replace_erb_with_haml
       remove_file 'app/views/layouts/application.html.erb'
       template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', force: true
