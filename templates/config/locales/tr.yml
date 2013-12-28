@@ -23,3 +23,8 @@
 
 tr:
   hello: "Merhaba Dünya"
+  number:
+    currency:
+      format:
+        format: "%u %n"
+        unit: "₺"
