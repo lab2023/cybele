@@ -1,5 +1,16 @@
 
 #### [Current]
+ * [d482e6b](../../commit/d482e6b) - __(Muhammet DİLEK)__ Merge pull request [#112](../../issues/112) from sbagdat/patch-1
+
+Update cybele_gitignore
+ * [1cc0c24](../../commit/1cc0c24) - __(Sıtkı Bağdat)__ Update cybele_gitignore
+ * [a3e1185](../../commit/a3e1185) - __(Onur Özgür ÖZKAN)__ [#111](../../issues/111) Configure number currency for ₺ unit
+ * [8b13d54](../../commit/8b13d54) - __(hamitturkukaya)__ [#110](../../issues/110) paperclip amazon s3 settings added to initializers
+ * [05948c9](../../commit/05948c9) - __(hamitturkukaya)__ [#110](../../issues/110) paperclip amazon s3 settings added to initializers
+ * [8d41713](../../commit/8d41713) - __(Muhammet DİLEK)__ # 109 bootstrap-sass and compass-rails updated
+
+#### 1.2.0
+ * [00e244b](../../commit/00e244b) - __(Muhammet DİLEK)__ bump version 1.2.0
  * [499e2f7](../../commit/499e2f7) - __(Onur Ozgur OZKAN)__ update kangal version 1.1.0
  * [e220eb5](../../commit/e220eb5) - __(Onur Ozgur OZKAN)__ [#106](../../issues/106) Don't copy application.rb from template
  * [5affe99](../../commit/5affe99) - __(Onur Ozgur OZKAN)__ Typo fixed. Add a new line.
