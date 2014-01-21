@@ -31,7 +31,7 @@ gem 'ransack'
 gem 'capistrano', '~> 2.15.5'
 gem 'capistrano-ext', '~> 1.2.1'
 gem 'unicorn', '~> 4.6.3'
-gem 'recipes_matic', '~> 0.2.0'
+gem 'recipes_matic', '~> 1.0.0'
 gem 'aws-sdk', '~> 1.29.0'
 
 # gem 'rails-observers'
