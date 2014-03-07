@@ -35,6 +35,7 @@ gem 'recipes_matic', '~> 1.0.0'
 gem 'aws-sdk', '~> 1.29.0'
 
 # gem 'rails-observers'
+gem 'rails_best_practices', '~> 1.15.1'
 
 gem 'hierapolis-rails', '~> 0.4.0'
 gem 'breadcrumbs_on_rails', '~> 2.3.0'
