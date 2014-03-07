@@ -27,6 +27,10 @@ module Cybele
       copy_file 'config/initializers/disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
     end
 
+    def add_paperclip_aws
+      copy_file 'config/initializers/paperclip.rb', 'config/initializers/paperclip.rb'
+    end
+
     def replace_erb_with_haml
       remove_file 'app/views/layouts/application.html.erb'
       template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', force: true

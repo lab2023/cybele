@@ -1,5 +1,28 @@
 
 #### [Current]
+ * [cf40aec](../../commit/cf40aec) - __(Muhammet DİLEK)__ rails_best_practices gem added
+ * [39a7cf2](../../commit/39a7cf2) - __(Onur Özgür ÖZKAN)__ Merge pull request [#114](../../issues/114) from marjinal1st/version-patch
+
+TB-7 #time 10m Update Rails version in cybele_Gemfile
+ * [9ff6283](../../commit/9ff6283) - __(Ahmet Sezgin Duran)__ TB-7 #time 10m Update Rails version in cybele_Gemfile
+ * [278c844](../../commit/278c844) - __(Onur Özgür ÖZKAN)__ Update gems version.
+ * [56f2621](../../commit/56f2621) - __(Onur Özgür ÖZKAN)__ Change ruby version 2.0.0-p353
+ * [21137a8](../../commit/21137a8) - __(Onur Özgür ÖZKAN)__ Update cybele_Gemfile
+ * [d53dc47](../../commit/d53dc47) - __(Onur Özgür ÖZKAN)__ Update kangal version 1.2.3
+ * [9c457d2](../../commit/9c457d2) - __(Onur Özgür ÖZKAN)__ Update recipes_matic gem version to 1.0.0
+ * [6a1c519](../../commit/6a1c519) - __(Onur Ozgur OZKAN)__ version fixed
+ * [870066a](../../commit/870066a) - __(Onur Ozgur OZKAN)__ hump version 1.3.0
+ * [d482e6b](../../commit/d482e6b) - __(Muhammet DİLEK)__ Merge pull request [#112](../../issues/112) from sbagdat/patch-1
+
+Update cybele_gitignore
+ * [1cc0c24](../../commit/1cc0c24) - __(Sıtkı Bağdat)__ Update cybele_gitignore
+ * [a3e1185](../../commit/a3e1185) - __(Onur Özgür ÖZKAN)__ [#111](../../issues/111) Configure number currency for ₺ unit
+ * [8b13d54](../../commit/8b13d54) - __(hamitturkukaya)__ [#110](../../issues/110) paperclip amazon s3 settings added to initializers
+ * [05948c9](../../commit/05948c9) - __(hamitturkukaya)__ [#110](../../issues/110) paperclip amazon s3 settings added to initializers
+ * [8d41713](../../commit/8d41713) - __(Muhammet DİLEK)__ # 109 bootstrap-sass and compass-rails updated
+
+#### 1.2.0
+ * [00e244b](../../commit/00e244b) - __(Muhammet DİLEK)__ bump version 1.2.0
  * [499e2f7](../../commit/499e2f7) - __(Onur Ozgur OZKAN)__ update kangal version 1.1.0
  * [e220eb5](../../commit/e220eb5) - __(Onur Ozgur OZKAN)__ [#106](../../issues/106) Don't copy application.rb from template
  * [5affe99](../../commit/5affe99) - __(Onur Ozgur OZKAN)__ Typo fixed. Add a new line.
