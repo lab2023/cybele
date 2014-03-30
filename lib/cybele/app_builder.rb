@@ -20,7 +20,7 @@ module Cybele
     end
 
     def add_ruby_version
-      copy_file 'ruby_version', '.ruby_version'
+      copy_file 'ruby-version', '.ruby-version'
     end
 
     def add_disable_xml_params
