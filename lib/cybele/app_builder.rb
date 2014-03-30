@@ -114,6 +114,18 @@ config.action_mailer.raise_delivery_errors = false
       configure_environment 'staging', config
     end
 
+    def configure_bullet
+      config = <<-RUBY
+config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+  end
+  RUBY
+
+      configure_environment 'development', config
+    end
+
     def setup_staging_environment
       run 'cp config/environments/production.rb config/environments/staging.rb'
 

@@ -40,6 +40,7 @@ module Cybele
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
+      invoke :setup_bullet_config
       invoke :goodbye
     end
 
@@ -203,6 +204,10 @@ module Cybele
 
     def setup_secret_token
       build :update_secret_token
+    end
+
+    def setup_bullet_config
+      build :configure_bullet
     end
 
     protected
