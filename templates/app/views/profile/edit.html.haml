@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+      #{t('edit_profile')}
+  .panel-body
+    = simple_form_for :user, method: :put, url: '/profile' do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+        = f.input :current_password
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-default'
+        = link_to t('cancel'), root_path, class: 'btn'
