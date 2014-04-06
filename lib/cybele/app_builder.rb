@@ -244,6 +244,19 @@ require 'capybara/rspec'
              path_names: {sign_in: 'login', sign_out: 'logout', password: 'secret',
                           confirmation: 'verification'}"
       gsub_file 'app/models/admin.rb', /:registerable,/, ''
+      say 'Configuring profile editors...'
+      setup_profile_editors
+    end
+
+    def setup_profile_editors
+      inject_into_file 'config/routes.rb', :after => "namespace :hq do\n" do <<-RUBY
+    # Routing for admin profile editing
+    match '/profile', to: 'profile#edit', via: :get
+    match '/profile', to: 'profile#update', via: [:patch, :put]
+        RUBY
+      end
+
+      copy_file 'app/views/hq/profile/edit.html.haml', 'app/views/hq/profile/edit.html.haml'
     end
 
     def set_time_zone
