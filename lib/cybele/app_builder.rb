@@ -307,6 +307,10 @@ require 'capybara/rspec'
       template 'config/initializers/secret_token.erb', 'config/initializers/secret_token.rb'
     end
 
+    def setup_show_for
+      copy_file 'config/initializers/show_for.rb', 'config/initializers/show_for.rb'
+    end
+
     private
 
     def action_mailer_host(rails_env, host)

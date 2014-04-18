@@ -210,6 +210,10 @@ module Cybele
       build :configure_bullet
     end
 
+    def install_show_for
+      build :setup_show_for
+    end
+
     protected
 
     def get_builder_class
