@@ -1,2 +1,5 @@
 .idea/
 *.gem
+*.log
+.bundle/
+*.bundle/install.log

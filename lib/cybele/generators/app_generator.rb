@@ -41,6 +41,8 @@ module Cybele
       invoke :setup_devise
       invoke :setup_time_zone
       invoke :setup_bullet_config
+      invoke :setup_hq_namespace
+      invoke :setup_profiles
     end
 
     def customize_gemfile
@@ -172,6 +174,11 @@ module Cybele
     def setup_time_zone
       say 'Setup time zone'
       build :set_time_zone
+    end
+
+    def setup_profiles
+      say 'Setup profiles'
+      build :create_profile
     end
 
     def run_bundle
