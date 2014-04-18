@@ -316,7 +316,7 @@ require 'capybara/rspec'
     end
 
     def custom_exception_page
-      copy_file 'app/views/errors/internal_server_errors.html.haml', 'app/views/errors/internal_server_errors.html.haml'
+      copy_file 'app/views/errors/internal_server_error.html.haml', 'app/views/errors/internal_server_error.html.haml'
       inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
 
   rescue_from Exception, :with => :server_error
@@ -325,6 +325,22 @@ require 'capybara/rspec'
     respond_to do |format|
       format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
       format.all  { render nothing: true, status: 500}
+    end
+  end
+      CODE
+      end
+    end
+
+    def custom_404
+      copy_file 'app/views/errors/not_found.html.haml', 'app/views/errors/not_found.html.haml'
+      inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
+  rescue_from ActionController::RoutingError, :with => :page_not_found
+  def page_not_found
+    respond_to do |format|
+      format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
+      format.all  { render nothing: true, status: 404 }
     end
   end
       CODE

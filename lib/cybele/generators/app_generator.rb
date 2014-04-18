@@ -217,6 +217,10 @@ module Cybele
       build :custom_exception_page
     end
 
+    def custom_404
+      build :custom_404
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...'
     end
