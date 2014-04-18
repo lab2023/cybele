@@ -311,6 +311,10 @@ require 'capybara/rspec'
       copy_file 'config/initializers/show_for.rb', 'config/initializers/show_for.rb'
     end
 
+    def create_dev_rake
+      copy_file 'lib/tasks/dev.rake', 'lib/tasks/dev.rake'
+    end
+
     private
 
     def action_mailer_host(rails_env, host)

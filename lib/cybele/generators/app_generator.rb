@@ -41,7 +41,6 @@ module Cybele
       invoke :setup_devise
       invoke :setup_time_zone
       invoke :setup_bullet_config
-      invoke :goodbye
     end
 
     def customize_gemfile
@@ -175,10 +174,6 @@ module Cybele
       build :set_time_zone
     end
 
-    def goodbye
-      say 'Congratulations! That\'s all...'
-    end
-
     def run_bundle
     end
 
@@ -212,6 +207,14 @@ module Cybele
 
     def install_show_for
       build :setup_show_for
+    end
+
+    def create_dev_rake
+      build :create_dev_rake
+    end
+
+    def goodbye
+      say 'Congratulations! That\'s all...'
     end
 
     protected
