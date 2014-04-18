@@ -315,6 +315,22 @@ require 'capybara/rspec'
       copy_file 'lib/tasks/dev.rake', 'lib/tasks/dev.rake'
     end
 
+    def custom_exception_page
+      copy_file 'app/views/errors/internal_server_errors.html.haml', 'app/views/errors/internal_server_errors.html.haml'
+      inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
+
+  rescue_from Exception, :with => :server_error
+  def server_error(exception)
+    ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
+    respond_to do |format|
+      format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
+      format.all  { render nothing: true, status: 500}
+    end
+  end
+      CODE
+      end
+    end
+
     private
 
     def action_mailer_host(rails_env, host)

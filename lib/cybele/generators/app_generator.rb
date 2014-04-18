@@ -213,6 +213,10 @@ module Cybele
       build :create_dev_rake
     end
 
+    def custom_exception_page
+      build :custom_exception_page
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...'
     end
