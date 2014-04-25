@@ -1,5 +1,8 @@
 
 #### [Current]
+ * [c5b07c0](../../commit/c5b07c0) - __(Muhammet DİLEK)__ Gemfile.lock fixed
+ * [6d35777](../../commit/6d35777) - __(Onur Özgür ÖZKAN)__ Update gems version
+ * [e6171a2](../../commit/e6171a2) - __(Muhammet DİLEK)__ bump version 1.5.0
  * [f49b2e1](../../commit/f49b2e1) - __(Muhammet DİLEK)__ TB-2 improve profile
  * [0f86715](../../commit/0f86715) - __(hamitturkukaya)__ TB-2 Admin and user profiles added
  * [0c4f887](../../commit/0c4f887) - __(Muhammet DİLEK)__ TB-14 custom 404 page added
@@ -26,7 +29,11 @@ TB-7 #time 10m Update Rails version in cybele_Gemfile
  * [21137a8](../../commit/21137a8) - __(Onur Özgür ÖZKAN)__ Update cybele_Gemfile
  * [d53dc47](../../commit/d53dc47) - __(Onur Özgür ÖZKAN)__ Update kangal version 1.2.3
  * [9c457d2](../../commit/9c457d2) - __(Onur Özgür ÖZKAN)__ Update recipes_matic gem version to 1.0.0
+
+#### v1.3.0
  * [6a1c519](../../commit/6a1c519) - __(Onur Ozgur OZKAN)__ version fixed
+
+#### 1.3.0
  * [870066a](../../commit/870066a) - __(Onur Ozgur OZKAN)__ hump version 1.3.0
  * [d482e6b](../../commit/d482e6b) - __(Muhammet DİLEK)__ Merge pull request [#112](../../issues/112) from sbagdat/patch-1
 
