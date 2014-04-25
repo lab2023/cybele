@@ -1,15 +1,12 @@
 # encoding: UTF-8
 class UserProfilesController < ApplicationController
+  before_action :profile_controller
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
   add_breadcrumb I18n.t('activerecord.models.user_profiles'), :user_profile_path
 
   def show
-    if current_user.user_profile.present?
-      add_breadcrumb @user_profile.first_name, user_profile_path
-      respond_with(@user_profile)
-    else
-      redirect_to new_user_profile_path
-    end
+    add_breadcrumb @user_profile.first_name, user_profile_path
+    respond_with(@user_profile)
   end
 
   def new
@@ -19,7 +16,6 @@ class UserProfilesController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @user_profile.id, user_profile_path
     add_breadcrumb t('tooltips.edit'), edit_user_profile_path
   end
 
@@ -35,6 +31,12 @@ class UserProfilesController < ApplicationController
   end
 
   private
+
+  def profile_controller
+    if current_user.user_profile.nil?
+      redirect_to new_user_profile_path
+    end
+  end
 
   def set_user_profile
     @user_profile = current_user.user_profile
