@@ -1,5 +1,21 @@
 
 #### [Current]
+ * [f49b2e1](../../commit/f49b2e1) - __(Muhammet DİLEK)__ TB-2 improve profile
+ * [0f86715](../../commit/0f86715) - __(hamitturkukaya)__ TB-2 Admin and user profiles added
+ * [0c4f887](../../commit/0c4f887) - __(Muhammet DİLEK)__ TB-14 custom 404 page added
+ * [617a7c1](../../commit/617a7c1) - __(Muhammet DİLEK)__ TB-14 custom 500 page added
+ * [32593a0](../../commit/32593a0) - __(hamitturkukaya)__ TB-26 hierapolis-rails version upgraded
+ * [9c91097](../../commit/9c91097) - __(Muhammet DİLEK)__ TB-16 devise gem updated
+ * [cefb812](../../commit/cefb812) - __(Muhammet DİLEK)__ TB-23 dev.rake added
+ * [97fca16](../../commit/97fca16) - __(Muhammet DİLEK)__ TB-24 show initial file added
+ * [d9eb93a](../../commit/d9eb93a) - __(Ahmet Sezgin Duran)__ TB-2 #time 15m Add user profile editor
+ * [0273c31](../../commit/0273c31) - __(Ahmet Sezgin Duran)__ TB-2 #time 30m Add admin profile editor
+ * [10e6992](../../commit/10e6992) - __(Onur Ozgur OZKAN)__ Merge remote-tracking branch 'origin/develop' into develop
+ * [304a51d](../../commit/304a51d) - __(Onur Ozgur OZKAN)__ Fixed .ruby-version filename.
+ * [5b193d7](../../commit/5b193d7) - __(Ahmet Sezgin Duran)__ TB-3 #time 30m Add Bullet gem's configuration
+
+#### 1.4.0
+ * [06dbf38](../../commit/06dbf38) - __(Muhammet DİLEK)__ bump version 1.4.0
  * [cf40aec](../../commit/cf40aec) - __(Muhammet DİLEK)__ rails_best_practices gem added
  * [39a7cf2](../../commit/39a7cf2) - __(Onur Özgür ÖZKAN)__ Merge pull request [#114](../../issues/114) from marjinal1st/version-patch
 

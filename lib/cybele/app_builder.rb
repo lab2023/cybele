@@ -20,7 +20,7 @@ module Cybele
     end
 
     def add_ruby_version
-      copy_file 'ruby_version', '.ruby_version'
+      copy_file 'ruby-version', '.ruby-version'
     end
 
     def add_disable_xml_params
@@ -114,6 +114,18 @@ config.action_mailer.raise_delivery_errors = false
       configure_environment 'staging', config
     end
 
+    def configure_bullet
+      config = <<-RUBY
+config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+  end
+  RUBY
+
+      configure_environment 'development', config
+    end
+
     def setup_staging_environment
       run 'cp config/environments/production.rb config/environments/staging.rb'
 
@@ -179,17 +191,27 @@ require 'capybara/rspec'
 
     def add_exception_notification_to_environments
       config = <<-CODE
-
-  config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix => "[Whatever] ",
-      :sender_address => %{"notifier" <notifier@example.com>},
-      :exception_recipients => %w{exceptions@example.com}
-    }
+        config.middleware.use ExceptionNotification::Rack,
+          :email => {
+            :email_prefix => "[Whatever] ",
+            :sender_address => %{"notifier" <notifier@example.com>},
+            :exception_recipients => %w{exceptions@example.com}
+          }
       CODE
 
       configure_environment('production', config)
       configure_environment('staging', config)
+
+      inject_into_file 'config/initializers/exception_notification.rb', :before => 'config.add_notifier :email, {' do <<-RUBY
+        unless Rails.env == 'development'
+      RUBY
+      end
+
+      inject_into_file 'config/initializers/exception_notification.rb', :before => '# Campfire notifier sends notifications to your Campfire room.' do <<-RUBY
+        end
+      RUBY
+      end
+
     end
 
     def leftovers
@@ -232,11 +254,36 @@ require 'capybara/rspec'
              path_names: {sign_in: 'login', sign_out: 'logout', password: 'secret',
                           confirmation: 'verification'}"
       gsub_file 'app/models/admin.rb', /:registerable,/, ''
+
+      say 'Configuring profile editors...'
+      setup_profile_editors
+    end
+
+    def setup_profile_editors
+      # Inserting routes
+      inject_into_file 'config/routes.rb', :after => "namespace :hq do\n" do <<-RUBY
+      root to: 'dashboard#index'
+      resource :admin_profile, except: [:destroy], path: 'profile'
+        RUBY
+      end
+
+      inject_into_file 'config/routes.rb', :after => "'welcome#index'\n" do <<-RUBY
+
+      resource :user_profile, except: [:destroy], path: 'profile'
+
+        RUBY
+      end
     end
 
     def set_time_zone
       add_set_user_time_zone_method_to_application_controller
       add_time_zone_to_user
+    end
+
+    def create_profile
+      add_profile_models
+      add_profile_controllers
+      add_profile_views
     end
 
     def create_hierapolis_theme
@@ -265,6 +312,46 @@ require 'capybara/rspec'
     def update_secret_token
       remove_file 'config/initializers/secret_token.rb'
       template 'config/initializers/secret_token.erb', 'config/initializers/secret_token.rb'
+    end
+
+    def setup_show_for
+      copy_file 'config/initializers/show_for.rb', 'config/initializers/show_for.rb'
+    end
+
+    def create_dev_rake
+      copy_file 'lib/tasks/dev.rake', 'lib/tasks/dev.rake'
+    end
+
+    def custom_exception_page
+      copy_file 'app/views/errors/internal_server_error.html.haml', 'app/views/errors/internal_server_error.html.haml'
+      inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
+
+  rescue_from Exception, :with => :server_error
+  def server_error(exception)
+    ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
+    respond_to do |format|
+      format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
+      format.all  { render nothing: true, status: 500}
+    end
+  end
+      CODE
+      end
+    end
+
+    def custom_404
+      copy_file 'app/views/errors/not_found.html.haml', 'app/views/errors/not_found.html.haml'
+      inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
+  rescue_from ActionController::RoutingError, :with => :page_not_found
+  def page_not_found
+    respond_to do |format|
+      format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
+      format.all  { render nothing: true, status: 404 }
+    end
+  end
+      CODE
+      end
     end
 
     private
@@ -340,6 +427,12 @@ require "#{path}"
       generate 'migration AddTimeZoneToUser time_zone:string -s'
     end
 
+    def add_profile_models
+      say 'Creating Profile Models'
+      generate 'model user_profile first_name:string last_name:string gsm:string user:references -s'
+      generate 'model admin_profile first_name:string last_name:string gsm:string admin:references -s'
+    end
+
     def add_set_user_time_zone_method_to_application_controller
       say 'Add set_user_time_zone method to application controller'
       inject_into_file 'app/controllers/application_controller.rb', :after => 'protected' do <<-CODE
@@ -353,8 +446,31 @@ require "#{path}"
       inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE
 
   before_filter :set_user_time_zone
+  respond_to :html, :json
 
       CODE
+      end
+    end
+
+    def add_profile_controllers
+      copy_file 'app/controllers/hq/admin_profiles_controller.rb', 'app/controllers/hq/admin_profiles_controller.rb'
+      copy_file 'app/controllers/user_profiles_controller.rb', 'app/controllers/user_profiles_controller.rb'
+    end
+
+    def add_profile_views
+      directory 'app/views/hq/admin_profiles', 'app/views/hq/admin_profiles'
+      directory 'app/views/user_profiles', 'app/views/user_profiles'
+
+      inject_into_file 'app/models/user.rb', :after => ":recoverable, :rememberable, :trackable, :validatable\n" do <<-RUBY
+        has_one :user_profile
+        accepts_nested_attributes_for :user_profile
+      RUBY
+      end
+
+      inject_into_file 'app/models/admin.rb', :after => ":recoverable, :rememberable, :trackable, :validatable\n" do <<-RUBY
+        has_one :admin_profile
+        accepts_nested_attributes_for :admin_profile
+      RUBY
       end
     end
   end

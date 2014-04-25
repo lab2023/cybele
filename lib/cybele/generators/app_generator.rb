@@ -40,7 +40,9 @@ module Cybele
       invoke :setup_welcome_page
       invoke :setup_devise
       invoke :setup_time_zone
-      invoke :goodbye
+      invoke :setup_bullet_config
+      invoke :setup_hq_namespace
+      invoke :setup_profiles
     end
 
     def customize_gemfile
@@ -174,8 +176,9 @@ module Cybele
       build :set_time_zone
     end
 
-    def goodbye
-      say 'Congratulations! That\'s all...'
+    def setup_profiles
+      say 'Setup profiles'
+      build :create_profile
     end
 
     def run_bundle
@@ -203,6 +206,30 @@ module Cybele
 
     def setup_secret_token
       build :update_secret_token
+    end
+
+    def setup_bullet_config
+      build :configure_bullet
+    end
+
+    def install_show_for
+      build :setup_show_for
+    end
+
+    def create_dev_rake
+      build :create_dev_rake
+    end
+
+    def custom_exception_page
+      build :custom_exception_page
+    end
+
+    def custom_404
+      build :custom_404
+    end
+
+    def goodbye
+      say 'Congratulations! That\'s all...'
     end
 
     protected
