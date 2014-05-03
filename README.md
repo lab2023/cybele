@@ -49,11 +49,11 @@ Once you've made your great commits:
 
 ## Credits
 
-- Cybele is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
+- Cybele is maintained and funded by [lab2023 - information technologies](http://lab2023.com/)
 - Thank you to all the [contributors!](https://github.com/kebab-project/cybele/graphs/contributors)
 - This gem is inspired from [suspender](https://github.com/thoughtbot/suspenders)
 - The names and logos for lab2023 are trademarks of lab2023, inc.
 
 ## License
 
-Copyright 2012 lab2023 – internet technologies
+Copyright 2012 lab2023 - information technologies
