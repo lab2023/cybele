@@ -25,6 +25,12 @@ gem install cybele
 cybele project_name
 ```
 
+When the initialization is completed, there will be pending migrations. Run the rake command to execute them if you want:
+
+```bash
+rake db:migrate
+```
+
 ## What cybele do and included?
 
 Let's look the [Gemfile](https://raw.github.com/kebab-project/cybele/develop/templates/cybele_Gemfile) which created by cybele.
@@ -49,11 +55,13 @@ Once you've made your great commits:
 
 ## Credits
 
-- Cybele is maintained and funded by [lab2023 - internet technologies](http://lab2023.com/)
+![lab2023](http://lab2023.com/assets/images/named-logo.png)
+
+- Cybele is maintained and funded by [lab2023 - information technologies](http://lab2023.com/)
 - Thank you to all the [contributors!](https://github.com/kebab-project/cybele/graphs/contributors)
 - This gem is inspired from [suspender](https://github.com/thoughtbot/suspenders)
 - The names and logos for lab2023 are trademarks of lab2023, inc.
 
 ## License
 
-Copyright 2012 lab2023 – internet technologies
+Copyright 2014 lab2023 - information technologies

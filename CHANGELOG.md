@@ -1,5 +1,16 @@
 
 #### [Current]
+ * [6ce514d](../../commit/6ce514d) - __(Ahmet Sezgin Duran)__ TB-44 #time 5m Add Cybele migration info
+ * [32e09e2](../../commit/32e09e2) - __(Onur Özgür ÖZKAN)__ Update ruby version 2.1.2
+ * [86508de](../../commit/86508de) - __(Muhammet DİLEK)__ bump version 1.6.0
+ * [758c2c9](../../commit/758c2c9) - __(Muhammet DİLEK)__ TB-20 ruby migrated 2.1.1
+ * [f7a65f8](../../commit/f7a65f8) - __(Muhammet DİLEK)__ TB-20 rails migrated 4.1.1
+ * [406971d](../../commit/406971d) - __(Muhammet DİLEK)__ TB-34 secret_token.rb removed from gitignore
+ * [d95e561](../../commit/d95e561) - __(Ahmet Sezgin Duran)__ LAB-31 #time 1m Add named logo
+ * [d83d051](../../commit/d83d051) - __(Ahmet Sezgin Duran)__ LAB-31 #time 2m Update README.md
+
+#### 1.5.1
+ * [43a2ee1](../../commit/43a2ee1) - __(Muhammet DİLEK)__ bump version 1.5.1
  * [c5b07c0](../../commit/c5b07c0) - __(Muhammet DİLEK)__ Gemfile.lock fixed
  * [6d35777](../../commit/6d35777) - __(Onur Özgür ÖZKAN)__ Update gems version
  * [e6171a2](../../commit/e6171a2) - __(Muhammet DİLEK)__ bump version 1.5.0
