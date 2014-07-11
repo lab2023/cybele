@@ -25,6 +25,12 @@ gem install cybele
 cybele project_name
 ```
 
+When the initialization is completed, there will be pending migrations. Run the rake command to execute them if you want:
+
+```bash
+rake db:migrate
+```
+
 ## What cybele do and included?
 
 Let's look the [Gemfile](https://raw.github.com/kebab-project/cybele/develop/templates/cybele_Gemfile) which created by cybele.
