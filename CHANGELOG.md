@@ -1,7 +1,13 @@
 
 #### [Current]
+ * [653ad04](../../commit/653ad04) - __(Ahmet Sezgin Duran)__ TB-60 #time 30m Fix profile controller errors
+
+#### 1.6.1
+ * [844f583](../../commit/844f583) - __(Ahmet Sezgin Duran)__ TB-44 #time 1m Bump version 1.6.1
  * [6ce514d](../../commit/6ce514d) - __(Ahmet Sezgin Duran)__ TB-44 #time 5m Add Cybele migration info
  * [32e09e2](../../commit/32e09e2) - __(Onur Özgür ÖZKAN)__ Update ruby version 2.1.2
+
+#### 1.6.0
  * [86508de](../../commit/86508de) - __(Muhammet DİLEK)__ bump version 1.6.0
  * [758c2c9](../../commit/758c2c9) - __(Muhammet DİLEK)__ TB-20 ruby migrated 2.1.1
  * [f7a65f8](../../commit/f7a65f8) - __(Muhammet DİLEK)__ TB-20 rails migrated 4.1.1
@@ -40,8 +46,6 @@ TB-7 #time 10m Update Rails version in cybele_Gemfile
  * [21137a8](../../commit/21137a8) - __(Onur Özgür ÖZKAN)__ Update cybele_Gemfile
  * [d53dc47](../../commit/d53dc47) - __(Onur Özgür ÖZKAN)__ Update kangal version 1.2.3
  * [9c457d2](../../commit/9c457d2) - __(Onur Özgür ÖZKAN)__ Update recipes_matic gem version to 1.0.0
-
-#### v1.3.0
  * [6a1c519](../../commit/6a1c519) - __(Onur Ozgur OZKAN)__ version fixed
 
 #### 1.3.0
