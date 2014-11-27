@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class UserProfilesController < ApplicationController
-  before_action :profile_controller
+  before_action :authenticate_user!
+  before_action :profile_controller, except: [:new]
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
   add_breadcrumb I18n.t('activerecord.models.user_profiles'), :user_profile_path
 

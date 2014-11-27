@@ -121,7 +121,7 @@ config.after_initialize do
     Bullet.alert = true
     Bullet.bullet_logger = true
   end
-  RUBY
+      RUBY
 
       configure_environment 'development', config
     end
@@ -264,14 +264,14 @@ require 'capybara/rspec'
       inject_into_file 'config/routes.rb', :after => "namespace :hq do\n" do <<-RUBY
       root to: 'dashboard#index'
       resource :admin_profile, except: [:destroy], path: 'profile'
-        RUBY
+      RUBY
       end
 
-      inject_into_file 'config/routes.rb', :after => "'welcome#index'\n" do <<-RUBY
+      inject_into_file 'config/routes.rb', :after => "to: 'welcome#index'\n" do <<-RUBY
 
-      resource :user_profile, except: [:destroy], path: 'profile'
+resource :user_profile, except: [:destroy], path: 'profile'
 
-        RUBY
+      RUBY
       end
     end
 
