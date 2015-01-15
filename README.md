@@ -33,7 +33,7 @@ rake db:migrate
 
 ## What cybele do and included?
 
-Let's look the [Gemfile](https://raw.github.com/kebab-project/cybele/develop/templates/cybele_Gemfile) which created by cybele.
+Let's look the [Gemfile](https://raw.github.com/lab2023/cybele/develop/templates/cybele_Gemfile) which created by cybele.
 
 ## Bugs and  Feedback
 
