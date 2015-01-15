@@ -39,7 +39,7 @@ Let's look the [Gemfile](https://raw.github.com/kebab-project/cybele/develop/tem
 
 If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
 
-http://github.com/kebab-project/cybele/issues
+http://github.com/lab2023/cybele/issues
 
 ## Contributing
 
@@ -58,7 +58,7 @@ Once you've made your great commits:
 ![lab2023](http://lab2023.com/assets/images/named-logo.png)
 
 - Cybele is maintained and funded by [lab2023 - information technologies](http://lab2023.com/)
-- Thank you to all the [contributors!](https://github.com/kebab-project/cybele/graphs/contributors)
+- Thank you to all the [contributors!](../../graphs/contributors)
 - This gem is inspired from [suspender](https://github.com/thoughtbot/suspenders)
 - The names and logos for lab2023 are trademarks of lab2023, inc.
 
