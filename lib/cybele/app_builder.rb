@@ -81,7 +81,7 @@ module Cybele
 
       config = <<-RUBY
 
-
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.sass.preferred_syntax = :sass
       RUBY
@@ -180,7 +180,7 @@ require 'capybara/rspec'
     end
 
     def generate_simple_form
-      generate 'simple_form:install --bootstrap'
+      generate 'simple_form:install --bootstrap  --force'
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
       copy_file 'config/locales/tr.yml', 'config/locales/tr.yml'
     end
@@ -224,7 +224,7 @@ require 'capybara/rspec'
     def generate_devise_settings
       generate 'devise:install'
       gsub_file 'config/initializers/filter_parameter_logging.rb', /:password/, ':password, :password_confirmation'
-      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, 'CHANGEME@example.com'
+      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, 'Settings.mail.sender.email'
     end
 
     def generate_devise_model(model_name)
@@ -254,7 +254,7 @@ require 'capybara/rspec'
              path_names: {sign_in: 'login', sign_out: 'logout', password: 'secret',
                           confirmation: 'verification'}"
       gsub_file 'app/models/admin.rb', /:registerable,/, ''
-
+      
       say 'Configuring profile editors...'
       setup_profile_editors
     end
@@ -269,7 +269,7 @@ require 'capybara/rspec'
 
       inject_into_file 'config/routes.rb', :after => "to: 'welcome#index'\n" do <<-RUBY
 
-resource :user_profile, except: [:destroy], path: 'profile'
+  resource :user_profile, except: [:destroy], path: 'profile'
 
       RUBY
       end
@@ -300,10 +300,12 @@ resource :user_profile, except: [:destroy], path: 'profile'
       copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
     end
 
+    # Nor using  
     def setup_capistrano
       run 'capify .'
     end
 
+    # Nor using  
     def setup_recipes
       run 'rm config/deploy.rb'
       generate 'recipes_matic:install'
@@ -326,7 +328,7 @@ resource :user_profile, except: [:destroy], path: 'profile'
       copy_file 'app/views/errors/internal_server_error.html.haml', 'app/views/errors/internal_server_error.html.haml'
       inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
 
-  rescue_from Exception, :with => :server_error
+  # rescue_from Exception, :with => :server_error
   def server_error(exception)
     ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
     respond_to do |format|
@@ -352,6 +354,30 @@ resource :user_profile, except: [:destroy], path: 'profile'
   end
       CODE
       end
+    end
+
+    # Add default admin user and admin profile seeder
+    def add_seeds
+      say 'Add seeds'
+      inject_into_file 'db/seeds.rb', :after => "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
+
+admin = Admin.create(email: "admin@app.com", password: '12341234', password_confirmation: '12341234')
+admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "App")
+
+      RUBY
+      end      
+    end
+
+    # Copy locale files
+    def copy_locales
+      say 'Coping files..'
+      copy_file 'config/locales/models.en.yml', 'config/locales/models.en.yml'
+      copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
+      copy_file 'config/locales/show_for.en.yml', 'config/locales/show_for.en.yml'
+      copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
+      copy_file 'config/locales/view.en.yml', 'config/locales/view.en.yml'
+      copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
     end
 
     private
@@ -398,6 +424,7 @@ require "#{path}"
 
     def devise_parameter_sanitizer(model_name)
       inject_into_file 'app/controllers/application_controller.rb', :after => 'protect_from_forgery with: :exception' do <<-CODE
+
 
   protected
 
@@ -473,5 +500,6 @@ require "#{path}"
       RUBY
       end
     end
+
   end
 end
