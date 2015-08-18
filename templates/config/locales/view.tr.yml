@@ -1,0 +1,52 @@
+# encoding: utf-8
+tr:  
+  btn:
+    back: Geri
+    update: Güncelle
+  view:
+    select: Lütfen seçiniz!
+  navbar:
+    settings: Ayarlar
+    signout: Çıkış
+    signin: Giriş Yap
+  dock:
+    dashboard: Kontrol Paneli 
+  number:
+    currency:
+      format:
+        format: "%u %n"
+        unit: "₺"
+  internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
+  not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
+  devise:
+    session:
+      title: '%{model} Girişi'
+      button: Giriş Yap
+      remember_me: Beni Hatırla
+    registration:
+      title: '%{model} Giriş Bilgilerini Güncelle'
+      waiting_confirmation: 'E-posta addresi onayı için bekleniyor: %{email}'
+      hint_password: Değiştirmek istemiyorsanız boş bırakınız
+      hint_current_password: Değişiklikleri onaylamak için şuan ki şifrenizi girmelisiniz
+      new:
+        title: '%{model}  Kayıt İşlemi'
+        character_hint: 'Minimum %{length} karakter'
+        button:  Kayıt Ol
+    shared:
+      links:
+        signup: Kayıt Ol
+        signin: Giriş Yap
+        forgot_password: Şifrenizi mi unuttunuz?
+        confirmation_instructions: Onaylama yönergesini mi almadınız?
+        unlock_instructions: Kapatma yönergesini mi almadınız?
+        signin_with: '%{name} ile Giriş Yap'
+        signup_with: '%{name} ile Kayıt Ol'
+    password:
+      reset:
+        title: Şifrenizi mi unuttunuz?
+        instructions: Şifre sıfırlama talimatlarını gönder
+      edit:
+        title: Şifrenizi Değiştriniz
+        new_password: Yeni şifre
+        confirmation: Yeni şifre doğrulması
+        button: Şifremi Değiştir
