@@ -19,14 +19,14 @@ en:
   not_found: "Sory! Page not found. This page should be moved!"
   devise:
     session:
-      title: Giriş
-      button: Giriş Yap
-      remember_me: Beni Hatırla
+      title: Login
+      button: Login
+      remember_me: Remember Me
     registration:
-      title: '%{model} Giriş Bilgilerini Güncelle'
-      waiting_confirmation: 'E-posta addresi onayı için bekleniyor: %{email}'
-      hint_password: Değiştirmek istemiyorsanız boş bırakınız
-      hint_current_password: Değişiklikleri onaylamak için şuan ki şifrenizi girmelisiniz
+      title: '%{model} Update Login Information'
+      waiting_confirmation: 'Currently waiting confirmation for: %{email}'
+      hint_password: Leave it blank if you don't want to change it
+      hint_current_password: We need your current password to confirm your changes
       new:
         title: '%{model} New Registration'
         character_hint: '%{length} characters minimum'
