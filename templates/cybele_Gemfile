@@ -13,7 +13,11 @@ gem 'recipient_interceptor', '~> 0.1.2'
 gem 'rails-i18n', '~> 4.0.4'
 gem 'ransack', '~> 1.6.6'
 gem 'polyamorous', '~> 1.2.0'
-gem 'capistrano', '~> 2.15.5'
+gem 'capistrano', '~> 3.4.0'
+group :development do
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+end
 gem 'unicorn', '~> 4.9.0'
 gem 'exception_notification', '~> 4.1.1'
 gem 'responders', '~> 2.1.0'

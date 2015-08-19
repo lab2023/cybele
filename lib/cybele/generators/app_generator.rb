@@ -200,9 +200,15 @@ module Cybele
       build :add_exception_notification_to_environments
     end
 
-    # def install_capistrano
-    #   build :setup_capistrano
-    # end
+    def install_capistrano
+      say 'Setup capistrano'
+      build :setup_capistrano
+    end
+
+    def setup_capistrano_settings
+      say 'Setup capistrano settings'
+      build :setup_capistrano_settings
+    end
 
     # def setup_recipes
     #   build :setup_recipes

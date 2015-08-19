@@ -224,7 +224,7 @@ require 'capybara/rspec'
     def generate_devise_settings
       generate 'devise:install'
       gsub_file 'config/initializers/filter_parameter_logging.rb', /:password/, ':password, :password_confirmation'
-      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, 'Settings.mail.sender.email'
+      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, "no-reply@#{app_name}.com"
     end
 
     def generate_devise_model(model_name)
@@ -299,10 +299,36 @@ require 'capybara/rspec'
       copy_file 'config/initializers/simple_form.rb', 'config/initializers/simple_form.rb'
       copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
     end
-
-    # Nor using  
+ 
     def setup_capistrano
-      run 'capify .'
+      run 'bundle exec cap install'
+    end
+
+    def setup_capistrano_settings 
+      run 'rm config/deploy.rb'
+      # Copy teplates/config/deploy.rb to app directory
+      copy_file 'config/deploy.rb', 'config/deploy.rb'
+      # Change my_app_name string in the deploy.rb file with app_name that is created 
+      gsub_file 'config/deploy.rb', /my_app_name/, "#{app_name}"
+
+      inject_into_file 'Capfile', :after => "require 'capistrano/deploy'\n" do <<-RUBY
+require 'capistrano/rails'
+require 'capistrano/bundler'
+      RUBY
+      end
+
+      append_to_file 'config/deploy/production.rb' do
+        'server "example.com", user: "#{local_user}", roles: %w{app db web}, primary: true
+#set :port, 2222
+set :rails_env, "production"
+set :branch, "master"'
+      end
+      append_to_file 'config/deploy/staging.rb' do 
+        'server "staging.example.com", user: "#{local_user}", roles: %w{app db web}, primary: true
+#set :port, 2222
+set :rails_env, "staging"
+set :branch, "develop"'
+      end
     end
 
     # Nor using  
@@ -330,7 +356,7 @@ require 'capybara/rspec'
 
   # rescue_from Exception, :with => :server_error
   def server_error(exception)
-    ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
+    # ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
     respond_to do |format|
       format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
       format.all  { render nothing: true, status: 500}
@@ -361,8 +387,8 @@ require 'capybara/rspec'
       say 'Add seeds'
       inject_into_file 'db/seeds.rb', :after => "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
 
-admin = Admin.create(email: "admin@app.com", password: '12341234', password_confirmation: '12341234')
-admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "App")
+admin = Admin.create(email: "admin@#{app_name}.com", password: '12341234', password_confirmation: '12341234')
+admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app_name}")
 
       RUBY
       end      
