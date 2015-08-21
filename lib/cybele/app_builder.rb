@@ -314,6 +314,8 @@ require 'capybara/rspec'
       inject_into_file 'Capfile', :after => "require 'capistrano/deploy'\n" do <<-RUBY
 require 'capistrano/rails'
 require 'capistrano/bundler'
+require 'sshkit/sudo'
+require 'capistrano/maintenance'
       RUBY
       end
 
@@ -321,19 +323,20 @@ require 'capistrano/bundler'
         'server "example.com", user: "#{local_user}", roles: %w{app db web}, primary: true
 #set :port, 2222
 set :rails_env, "production"
-set :branch, "master"'
+set :branch, "master"
+set :project_domain, "example.com"'
       end
       append_to_file 'config/deploy/staging.rb' do 
         'server "staging.example.com", user: "#{local_user}", roles: %w{app db web}, primary: true
 #set :port, 2222
 set :rails_env, "staging"
-set :branch, "develop"'
+set :branch, "develop"
+set :project_domain, "staging.example.com"'
       end
     end
 
     # Nor using  
-    def setup_recipes
-      run 'rm config/deploy.rb'
+    def setup_recipes 
       generate 'recipes_matic:install'
     end
 

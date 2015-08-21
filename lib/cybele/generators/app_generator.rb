@@ -210,9 +210,9 @@ module Cybele
       build :setup_capistrano_settings
     end
 
-    # def setup_recipes
-    #   build :setup_recipes
-    # end
+    def setup_recipes
+      build :setup_recipes
+    end
 
     def setup_secret_token
       say 'Setup secret token'

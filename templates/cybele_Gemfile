@@ -17,6 +17,9 @@ gem 'capistrano', '~> 3.4.0'
 group :development do
   gem 'capistrano-rails',   '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'sshkit-sudo', require: false
+  gem 'capistrano-maintenance', '~> 1.0', require: false
+  gem 'recipes_matic', git: 'git@github.com:lab2023/recipes_matic.git', branch: 'feature/upgrade'
 end
 gem 'unicorn', '~> 4.9.0'
 gem 'exception_notification', '~> 4.1.1'
@@ -34,7 +37,7 @@ gem 'jquery-rails', '~> 4.0.4'
 gem 'turbolinks', '~> 2.5.3'
 gem 'haml', '~> 4.0.2'
 gem 'haml-rails', '0.9.0'
-gem 'hierapolis-rails', '~> 1.1.0'
+gem 'hierapolis-rails', git: 'git@github.com:lab2023/recipes_matic.git', branch: 'feature/improvement'
 gem 'breadcrumbs_on_rails', '~> 2.3.1'
 gem 'blankable', '~> 0.2.0'
 
@@ -55,6 +58,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'letter_opener'
   gem 'rspec-rails'
+  gem 'binding_of_caller'
   gem 'katip'
   gem 'capybara'
   gem 'bullet'
