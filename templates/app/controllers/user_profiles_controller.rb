@@ -3,7 +3,7 @@ class UserProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :check_profile, only: [:new, :create]
   before_action :profile_controller, except: [:new, :create]
-  before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_profile, only: [:show, :edit, :update]
   add_breadcrumb I18n.t('activerecord.models.user_profiles'), :user_profile_path
 
   def show
@@ -45,7 +45,7 @@ class UserProfilesController < ApplicationController
       redirect_to user_profile_path
     end
   end
-  
+
   def set_user_profile
     @user_profile = current_user.user_profile
   end

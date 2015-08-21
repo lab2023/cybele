@@ -106,8 +106,15 @@ module Cybele
 
       config = <<-RUBY
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.smtp_settings = Settings.smtp.mandrill
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = {
+      address: Settings.smtp.mandrill.address,
+      port: Settings.smtp.mandrill.port,
+      enable_starttls_auto: Settings.smtp.mandrill.enable_starttls_auto,
+      user_name: Settings.smtp.mandrill.user_name,
+      password: Settings.smtp.mandrill.password,
+      authentication: Settings.smtp.mandrill.authentication
+  }
       RUBY
 
       configure_environment 'production', config
@@ -134,14 +141,14 @@ config.after_initialize do
 
       config = <<-YML
 email:
-  noreply: noreply@appname.org
+  noreply: no-reply@#{app_name}.com
       YML
       prepend_file 'config/settings.yml', config
     end
 
     def configure_action_mailer
-      action_mailer_host 'development', "#{app_name}.dev"
-      action_mailer_host 'test', "#{app_name}.com"
+      action_mailer_host 'development', "localhost:3000"
+      action_mailer_host 'staging', "staging.#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
     end
 
@@ -191,12 +198,12 @@ require 'capybara/rspec'
 
     def add_exception_notification_to_environments
       config = <<-CODE
-        config.middleware.use ExceptionNotification::Rack,
-          :email => {
-            :email_prefix => "[Whatever] ",
-            :sender_address => %{"notifier" <notifier@example.com>},
-            :exception_recipients => %w{exceptions@example.com}
-          }
+config.middleware.use ExceptionNotification::Rack, 
+                        :email => {
+                            :email_prefix => "[#{app_name}]", 
+                            :sender_address => %{"Notifier" <notifier@#{app_name}.com>}, 
+                            :exception_recipients => %w{your_email@address.com}
+  }
       CODE
 
       configure_environment('production', config)
@@ -453,10 +460,7 @@ require "#{path}"
 
     def devise_parameter_sanitizer(model_name)
       inject_into_file 'app/controllers/application_controller.rb', :after => 'protect_from_forgery with: :exception' do <<-CODE
-
-
   protected
-
   def devise_parameter_sanitizer
     if resource_class == #{model_name.classify}
       #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
@@ -496,7 +500,6 @@ require "#{path}"
   def set_user_time_zone
     Time.zone = current_user.time_zone if user_signed_in? && current_user.time_zone.present?
   end
-
       CODE
       end
       inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE

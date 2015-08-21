@@ -3,7 +3,7 @@ class Hq::AdminProfilesController < Hq::ApplicationController
   
   before_action :check_profile, only: [:new, :create]
   before_action :profile_controller, except: [:new, :create] 
-  before_action :set_admin_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_profile, only: [:show, :edit, :update]
   add_breadcrumb I18n.t('activerecord.models.admin_profiles'), :hq_admin_profile_path
 
   def show
