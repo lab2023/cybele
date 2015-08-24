@@ -11,7 +11,7 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/blog2 
-set :deploy_to, "/home/#{local_user}/apps/#{fetch(:application)}"
+set :deploy_to, "/home/#{fetch(:local_user)}/apps/#{fetch(:application)}"
 
 # Default value for :scm is :git
 set :scm, :git 
