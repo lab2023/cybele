@@ -327,15 +327,13 @@ require 'capistrano/maintenance'
       end
 
       append_to_file 'config/deploy/production.rb' do
-        'server "example.com", user: "#{fetch(:local_user)}", roles: %w{app db web}, primary: true
-#set :port, 2222
+        'server "example.com", user: "#{fetch(:local_user)}", roles: %w{app db web}, primary: true, port: 22
 set :rails_env, "production"
 set :branch, "master"
 set :project_domain, "example.com"'
       end
       append_to_file 'config/deploy/staging.rb' do 
-        'server "staging.example.com", user: "#{fetch(:local_user)}", roles: %w{app db web}, primary: true
-#set :port, 2222
+        'server "staging.example.com", user: "#{fetch(:local_user)}", roles: %w{app db web}, primary: true, port: 22 
 set :rails_env, "staging"
 set :branch, "develop"
 set :project_domain, "staging.example.com"'
