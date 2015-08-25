@@ -1,0 +1,56 @@
+# encoding: utf-8
+tr:
+  activerecord:
+    models:
+      schemamigration: Schemamigration
+      user: Kullanıcı
+      user_profiles: Kullanıcı Profili
+      user_profile: Kullanıcı Profili
+      admin: Yönetici
+      admin_profiles: Yönetici Profili
+      admin_profile: Yönetici Profili
+    attributes:
+      user:
+        id: Id
+        email: E-posta
+        password: Şifre
+        password_confirmation: Şifre Onayı
+        current_password: Şuan ki şifreniz
+        encrypted_password: Şifrelenmiş şifre
+        reset_password_token: Şifre sıfırlama token'ı
+        reset_password_sent_at: Şifre sıfırlama gönderilme zamanı
+        remember_created_at: Beni hatırla oluşturulma zamanı
+        sign_in_count: Giriş sayısı
+        current_sign_in_at: Güncel giriş zamanı
+        last_sign_in_at: Enson giriş zamanı
+        current_sign_in_ip: Güncel giriş ip'si
+        last_sign_in_ip: Enson giriş ip'si
+        created_at: Oluşturulma Zamanı
+        updated_at: Güncellenme Zamanı
+        active: Aktif
+      user_profile:
+        first_name: İsim
+        last_name: Soyisim  
+        gsm: Telefon 
+      admin:
+        id: Id
+        email: E-posta
+        password: Şifre
+        password_confirmation: Şifre Onayı
+        current_password: Şuan ki şifreniz
+        encrypted_password: Şifrelenmiş şifre
+        reset_password_token: Şifre sıfırlama token'ı
+        reset_password_sent_at: Şifre sıfırlama gönderilme zamanı
+        remember_created_at: Beni hatırla oluşturulma zamanı
+        sign_in_count: Giriş sayısı
+        current_sign_in_at: Güncel giriş zamanı
+        last_sign_in_at: Enson giriş zamanı
+        current_sign_in_ip: Güncel giriş ip'si
+        last_sign_in_ip: Enson giriş ip'si
+        created_at: Oluşturulma Zamanı
+        updated_at: Güncellenme Zamanı
+        active: Aktif
+      admin_profile:
+        first_name: İsim
+        last_name: Soyisim
+        gsm: Telefon 

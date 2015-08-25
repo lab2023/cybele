@@ -1,0 +1,51 @@
+en:
+  btn:
+    back: Back
+    update: Update
+  view:
+    select: Please choose!
+  navbar:
+    settings: Settings
+    signout: Sign Out
+    signin: Sign In
+  dock:
+    dashboard: Dashboard
+  number:
+    currency:
+      format:
+        format: "%u %n"
+        unit: "₺"
+  internal_server_error: "Sory! Error an occurred.."
+  not_found: "Sory! Page not found. This page should be moved!"
+  devise:
+    session:
+      title: Login
+      button: Login
+      remember_me: Remember Me
+    registration:
+      title: '%{model} Update Login Information'
+      waiting_confirmation: 'Currently waiting confirmation for: %{email}'
+      hint_password: Leave it blank if you don't want to change it
+      hint_current_password: We need your current password to confirm your changes
+      new:
+        title: '%{model} New Registration'
+        character_hint: '%{length} characters minimum'
+        button: Register
+    shared:
+      links:
+        signup: Sign Up
+        signin: Sign In
+        forgot_password: Forgot your password?
+        confirmation_instructions: Didn't receive confirmation instructions?
+        unlock_instructions: Didn't receive unlock instructions?
+        signin_with: 'Sign in with %{name}'
+        signin_with: 'Sign up with %{name}'
+    password:
+      reset:
+        title: Forgot Your Password?
+        instructions: Send my password reset instructions
+      edit:
+        title: Change Your Password
+        new_password: New password
+        confirmation: New password confirmation
+        button: Change My Password
