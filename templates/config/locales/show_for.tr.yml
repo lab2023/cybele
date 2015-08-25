@@ -1,0 +1,8 @@
+# encoding: utf-8
+tr:
+  show_for:
+    blank: "Belirtilmedi"
+    # If you want to use html tags with blank value use blank html translation
+    # blank_html: "<span>Not specified</span>"
+    "yes": "Evet"
+    "no": "Hayır"

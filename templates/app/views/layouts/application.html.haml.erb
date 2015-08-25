@@ -15,6 +15,7 @@
             %a{:href => "/rails/routes"} Routes
         %h3.muted= link_to "<%= app_name %>", root_path
       %hr/
+      = render partial: 'layouts/partials/messages'
       = yield
       %hr/
       .footer

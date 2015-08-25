@@ -42,7 +42,7 @@ module Cybele
       invoke :setup_time_zone
       invoke :setup_bullet_config
       invoke :setup_hq_namespace
-      invoke :setup_profiles
+      invoke :setup_profiles 
     end
 
     def customize_gemfile
@@ -181,23 +181,33 @@ module Cybele
       build :create_profile
     end
 
-    def run_bundle
-    end
+    # def run_bundle
+    #   say 'Run bundle'
+    # end
 
     def setup_hierapolis
+      say 'Setup hierapolis'
       build :create_hierapolis_theme
     end
 
     def setup_sipmle_form_wrapper
+      say 'Setup sipmle form wrapper'
       build :replace_simple_form_wrapper
     end
 
     def setup_exception_notification_to_environments
+      say 'Setup exception notification for environments'
       build :add_exception_notification_to_environments
     end
 
     def install_capistrano
+      say 'Setup capistrano'
       build :setup_capistrano
+    end
+
+    def setup_capistrano_settings
+      say 'Setup capistrano settings'
+      build :setup_capistrano_settings
     end
 
     def setup_recipes
@@ -205,27 +215,43 @@ module Cybele
     end
 
     def setup_secret_token
+      say 'Setup secret token'
       build :update_secret_token
     end
 
     def setup_bullet_config
+      say 'Setup bullet config'
       build :configure_bullet
     end
 
     def install_show_for
+      say 'Setup show_for'
       build :setup_show_for
     end
 
     def create_dev_rake
+      say 'Create dev_rake'
       build :create_dev_rake
     end
 
     def custom_exception_page
+      say 'Setup custom exception pages'
       build :custom_exception_page
     end
 
     def custom_404
+      say 'Setup 404 page'
       build :custom_404
+    end
+
+    def add_seeds
+      say 'Add seeds main'
+      build :add_seeds
+    end
+
+    def copy_locales
+      say 'Copy config/locale files'
+      build :copy_locales 
     end
 
     def goodbye

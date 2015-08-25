@@ -81,7 +81,7 @@ module Cybele
 
       config = <<-RUBY
 
-
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.sass.preferred_syntax = :sass
       RUBY
@@ -106,8 +106,15 @@ module Cybele
 
       config = <<-RUBY
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.smtp_settings = Settings.smtp.mandrill
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = {
+      address: Settings.smtp.mandrill.address,
+      port: Settings.smtp.mandrill.port,
+      enable_starttls_auto: Settings.smtp.mandrill.enable_starttls_auto,
+      user_name: Settings.smtp.mandrill.user_name,
+      password: Settings.smtp.mandrill.password,
+      authentication: Settings.smtp.mandrill.authentication
+  }
       RUBY
 
       configure_environment 'production', config
@@ -134,14 +141,14 @@ config.after_initialize do
 
       config = <<-YML
 email:
-  noreply: noreply@appname.org
+  noreply: no-reply@#{app_name}.com
       YML
       prepend_file 'config/settings.yml', config
     end
 
     def configure_action_mailer
-      action_mailer_host 'development', "#{app_name}.dev"
-      action_mailer_host 'test', "#{app_name}.com"
+      action_mailer_host 'development', "localhost:3000"
+      action_mailer_host 'staging', "staging.#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
     end
 
@@ -180,7 +187,7 @@ require 'capybara/rspec'
     end
 
     def generate_simple_form
-      generate 'simple_form:install --bootstrap'
+      generate 'simple_form:install --bootstrap  --force'
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
       copy_file 'config/locales/tr.yml', 'config/locales/tr.yml'
     end
@@ -191,12 +198,12 @@ require 'capybara/rspec'
 
     def add_exception_notification_to_environments
       config = <<-CODE
-        config.middleware.use ExceptionNotification::Rack,
-          :email => {
-            :email_prefix => "[Whatever] ",
-            :sender_address => %{"notifier" <notifier@example.com>},
-            :exception_recipients => %w{exceptions@example.com}
-          }
+config.middleware.use ExceptionNotification::Rack, 
+                        :email => {
+                            :email_prefix => "[#{app_name}]", 
+                            :sender_address => %{"Notifier" <notifier@#{app_name}.com>}, 
+                            :exception_recipients => %w{your_email@address.com}
+  }
       CODE
 
       configure_environment('production', config)
@@ -224,7 +231,7 @@ require 'capybara/rspec'
     def generate_devise_settings
       generate 'devise:install'
       gsub_file 'config/initializers/filter_parameter_logging.rb', /:password/, ':password, :password_confirmation'
-      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, 'CHANGEME@example.com'
+      gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, "no-reply@#{app_name}.com"
     end
 
     def generate_devise_model(model_name)
@@ -254,7 +261,7 @@ require 'capybara/rspec'
              path_names: {sign_in: 'login', sign_out: 'logout', password: 'secret',
                           confirmation: 'verification'}"
       gsub_file 'app/models/admin.rb', /:registerable,/, ''
-
+      
       say 'Configuring profile editors...'
       setup_profile_editors
     end
@@ -269,7 +276,7 @@ require 'capybara/rspec'
 
       inject_into_file 'config/routes.rb', :after => "to: 'welcome#index'\n" do <<-RUBY
 
-resource :user_profile, except: [:destroy], path: 'profile'
+  resource :user_profile, except: [:destroy], path: 'profile'
 
       RUBY
       end
@@ -299,13 +306,42 @@ resource :user_profile, except: [:destroy], path: 'profile'
       copy_file 'config/initializers/simple_form.rb', 'config/initializers/simple_form.rb'
       copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
     end
-
+ 
     def setup_capistrano
-      run 'capify .'
+      run 'bundle exec cap install'
     end
 
-    def setup_recipes
+    def setup_capistrano_settings 
       run 'rm config/deploy.rb'
+      # Copy teplates/config/deploy.rb to app directory
+      copy_file 'config/deploy.rb', 'config/deploy.rb'
+      # Change my_app_name string in the deploy.rb file with app_name that is created 
+      gsub_file 'config/deploy.rb', /my_app_name/, "#{app_name}"
+
+      inject_into_file 'Capfile', :after => "require 'capistrano/deploy'\n" do <<-RUBY
+require 'capistrano/rails'
+require 'capistrano/bundler'
+require 'sshkit/sudo'
+require 'capistrano/maintenance'
+      RUBY
+      end
+
+      append_to_file 'config/deploy/production.rb' do
+        'server "example.com", user: "#{fetch(:local_user)}", roles: %w{app db web}, primary: true, port: 22
+set :rails_env, "production"
+set :branch, "master"
+set :project_domain, "example.com"'
+      end
+      append_to_file 'config/deploy/staging.rb' do 
+        'server "staging.example.com", user: "#{fetch(:local_user)}", roles: %w{app db web}, primary: true, port: 22 
+set :rails_env, "staging"
+set :branch, "develop"
+set :project_domain, "staging.example.com"'
+      end
+    end
+
+    # Nor using  
+    def setup_recipes 
       generate 'recipes_matic:install'
     end
 
@@ -326,9 +362,9 @@ resource :user_profile, except: [:destroy], path: 'profile'
       copy_file 'app/views/errors/internal_server_error.html.haml', 'app/views/errors/internal_server_error.html.haml'
       inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
 
-  rescue_from Exception, :with => :server_error
+  # rescue_from Exception, :with => :server_error
   def server_error(exception)
-    ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
+    # ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
     respond_to do |format|
       format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
       format.all  { render nothing: true, status: 500}
@@ -352,6 +388,30 @@ resource :user_profile, except: [:destroy], path: 'profile'
   end
       CODE
       end
+    end
+
+    # Add default admin user and admin profile seeder
+    def add_seeds
+      say 'Add seeds'
+      inject_into_file 'db/seeds.rb', :after => "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
+
+admin = Admin.create(email: "admin@#{app_name}.com", password: '12341234', password_confirmation: '12341234')
+admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app_name}")
+
+      RUBY
+      end      
+    end
+
+    # Copy locale files
+    def copy_locales
+      say 'Coping files..'
+      copy_file 'config/locales/models.en.yml', 'config/locales/models.en.yml'
+      copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
+      copy_file 'config/locales/show_for.en.yml', 'config/locales/show_for.en.yml'
+      copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
+      copy_file 'config/locales/view.en.yml', 'config/locales/view.en.yml'
+      copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
     end
 
     private
@@ -398,9 +458,7 @@ require "#{path}"
 
     def devise_parameter_sanitizer(model_name)
       inject_into_file 'app/controllers/application_controller.rb', :after => 'protect_from_forgery with: :exception' do <<-CODE
-
   protected
-
   def devise_parameter_sanitizer
     if resource_class == #{model_name.classify}
       #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
@@ -440,7 +498,6 @@ require "#{path}"
   def set_user_time_zone
     Time.zone = current_user.time_zone if user_signed_in? && current_user.time_zone.present?
   end
-
       CODE
       end
       inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE
@@ -473,5 +530,6 @@ require "#{path}"
       RUBY
       end
     end
+
   end
 end
