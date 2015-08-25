@@ -1,5 +1,32 @@
 
 #### [Current]
+ * [81358eb](../../commit/81358eb) - __(Tayfun Öziş ERİKAN)__ Some typos were fixed
+ * [0918eb6](../../commit/0918eb6) - __(Tayfun Öziş ERİKAN)__ Gemfile.lock was removed
+ * [648ed0a](../../commit/648ed0a) - __(Tayfun Öziş ERİKAN)__ File name was changed
+ * [c4cb51c](../../commit/c4cb51c) - __(Tayfun Öziş ERİKAN)__ License and version files were updated
+ * [f5b99e9](../../commit/f5b99e9) - __(Tayfun Öziş ERİKAN)__ Improvements were done - Ruby 2.2.3 version was added - Rails 4.2.3 version was added - Gemfile.lock was removed - Gemspec was improved
+ * [cf14f9e](../../commit/cf14f9e) - __(Ismail Akbudak)__ fix user
+ * [e0a7b20](../../commit/e0a7b20) - __(Ismail Akbudak)__ add ssh port for capistrano
+ * [171e45f](../../commit/171e45f) - __(Ismail Akbudak)__ add first deploy task for capistrano
+ * [1433ad6](../../commit/1433ad6) - __(Ismail Akbudak)__ improvement
+ * [a5158f0](../../commit/a5158f0) - __(Ismail Akbudak)__ fix errors
+ * [5ade7e4](../../commit/5ade7e4) - __(Ismail Akbudak)__ add new features
+ * [952a035](../../commit/952a035) - __(Ismail Akbudak)__ add devise return path
+ * [7c55b0e](../../commit/7c55b0e) - __(Ismail Akbudak)__ add capistrano 3.4 with settings
+ * [4930faa](../../commit/4930faa) - __(Ismail Akbudak)__ add notification messages view
+ * [16c8780](../../commit/16c8780) - __(Ismail Akbudak)__ implement localizations to view
+ * [0102c3b](../../commit/0102c3b) - __(Ismail Akbudak)__ add missing file
+ * [693c179](../../commit/693c179) - __(Ismail Akbudak)__ add localization files
+ * [388cee0](../../commit/388cee0) - __(Ismail Akbudak)__ add new methods and remove old methods
+ * [e7fd568](../../commit/e7fd568) - __(Ismail Akbudak)__ update gems version
+ * [44cfd06](../../commit/44cfd06) - __(Murat Kemal BAYGÜN)__ TB-65 Fix link
+ * [4bde163](../../commit/4bde163) - __(Murat Kemal BAYGÜN)__ TB-65 Fix contributor link
+ * [e0a97bd](../../commit/e0a97bd) - __(Ahmet Sezgin Duran)__ Merge tag '1.6.2' into develop
+
+#### 1.6.2
+ * [822cbf3](../../commit/822cbf3) - __(Onur Özgür ÖZKAN)__ Update GEM version.
+ * [eb6a510](../../commit/eb6a510) - __(Ahmet Sezgin Duran)__ Merge tag '1.6.1' into develop
+ * [584eb94](../../commit/584eb94) - __(Ahmet Sezgin Duran)__ TB-60 #time 1m Bump version 1.6.2 and dump changelog
  * [653ad04](../../commit/653ad04) - __(Ahmet Sezgin Duran)__ TB-60 #time 30m Fix profile controller errors
 
 #### 1.6.1
