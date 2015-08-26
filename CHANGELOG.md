@@ -1,7 +1,14 @@
 
 #### [Current]
+ * [81533c0](../../commit/81533c0) - __(Ismail Akbudak)__ Bump version v1.7.2
+ * [90eef0f](../../commit/90eef0f) - __(Ismail Akbudak)__ fix warning on build gemspec
+
+#### v1.7.1
+ * [e8ad41a](../../commit/e8ad41a) - __(Ismail Akbudak)__ update changelog
  * [0921829](../../commit/0921829) - __(Ismail Akbudak)__ Bump version v1.7.1
  * [8d94293](../../commit/8d94293) - __(Ismail Akbudak)__ Update ruby and rails versions
+
+#### v1.7.0
  * [d31374d](../../commit/d31374d) - __(Tayfun Öziş ERİKAN)__ Bump version v1.7.0
  * [81358eb](../../commit/81358eb) - __(Tayfun Öziş ERİKAN)__ Some typos were fixed
  * [0918eb6](../../commit/0918eb6) - __(Tayfun Öziş ERİKAN)__ Gemfile.lock was removed
