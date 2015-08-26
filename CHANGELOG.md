@@ -1,5 +1,8 @@
 
 #### [Current]
+ * [0921829](../../commit/0921829) - __(Ismail Akbudak)__ Bump version v1.7.1
+ * [8d94293](../../commit/8d94293) - __(Ismail Akbudak)__ Update ruby and rails versions
+ * [d31374d](../../commit/d31374d) - __(Tayfun Öziş ERİKAN)__ Bump version v1.7.0
  * [81358eb](../../commit/81358eb) - __(Tayfun Öziş ERİKAN)__ Some typos were fixed
  * [0918eb6](../../commit/0918eb6) - __(Tayfun Öziş ERİKAN)__ Gemfile.lock was removed
  * [648ed0a](../../commit/648ed0a) - __(Tayfun Öziş ERİKAN)__ File name was changed
@@ -23,9 +26,14 @@
  * [4bde163](../../commit/4bde163) - __(Murat Kemal BAYGÜN)__ TB-65 Fix contributor link
  * [e0a97bd](../../commit/e0a97bd) - __(Ahmet Sezgin Duran)__ Merge tag '1.6.2' into develop
 
-#### 1.6.2
+1.6.2 1.6.2
+
  * [822cbf3](../../commit/822cbf3) - __(Onur Özgür ÖZKAN)__ Update GEM version.
  * [eb6a510](../../commit/eb6a510) - __(Ahmet Sezgin Duran)__ Merge tag '1.6.1' into develop
+
+1.6.1 1.6.1
+
+#### 1.6.2
  * [584eb94](../../commit/584eb94) - __(Ahmet Sezgin Duran)__ TB-60 #time 1m Bump version 1.6.2 and dump changelog
  * [653ad04](../../commit/653ad04) - __(Ahmet Sezgin Duran)__ TB-60 #time 30m Fix profile controller errors
 
