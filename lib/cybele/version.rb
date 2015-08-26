@@ -1,5 +1,5 @@
 module Cybele
-  RAILS_VERSION = '~> 4.2.3'
+  RAILS_VERSION = '~> 4.2.4'
   RUBY_VERSION = IO.read("#{File.dirname(__FILE__)}/../../.ruby-version").strip
-  VERSION = '1.7.0'
+  VERSION = '1.7.1'
 end
