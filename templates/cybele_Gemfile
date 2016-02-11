@@ -22,7 +22,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'sshkit-sudo', require: false
   gem 'capistrano-maintenance', '~> 1.0', require: false
-  gem 'recipes_matic', '~> 1.2.1'
+  gem 'recipes_matic', '~> 1.3.0'
 end
 
 gem 'exception_notification', '~> 4.1.1'
