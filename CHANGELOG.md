@@ -1,5 +1,14 @@
 
 #### [Current]
+ * [1688060](../../commit/1688060) - __(Ismail Akbudak)__ update version v1.8.0
+ * [e96a7d0](../../commit/e96a7d0) - __(Ismail Akbudak)__ remove rack-timeout gem
+ * [67e0433](../../commit/67e0433) - __(Ismail Akbudak)__ update gem versions and add new gems
+ * [bfe1199](../../commit/bfe1199) - __(Ismail Akbudak)__ update recipes_matic gem version to v1.3.0
+ * [f437335](../../commit/f437335) - __(İsmail Akbudak)__ Update simple_form_bootstrap.rb
+ * [f01dec8](../../commit/f01dec8) - __(ismail Akbudak)__ add chosen with boostrap template
+
+#### v1.7.2
+ * [607fd19](../../commit/607fd19) - __(Ismail Akbudak)__ update changelog
  * [81533c0](../../commit/81533c0) - __(Ismail Akbudak)__ Bump version v1.7.2
  * [90eef0f](../../commit/90eef0f) - __(Ismail Akbudak)__ fix warning on build gemspec
 
