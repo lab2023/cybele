@@ -46,8 +46,8 @@ module Cybele
       copy_file 'app/controllers/application_controller.rb', 'app/controllers/application_controller.rb'
       copy_file 'app/controllers/concerns/basic_authentication.rb', 'app/controllers/concerns/basic_authentication.rb'
       copy_file 'lib/templates/rails/responders_controller/controller.rb', 'lib/templates/rails/responders_controller/controller.rb'
-      copy_file 'config/locales/responders.en.yml', 'config/locales/responders.en.yml'
       copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'
+      copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
     end
 
     def replace_database_yml
@@ -85,6 +85,12 @@ module Cybele
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.sass.preferred_syntax = :sass
+    config.i18n.default_locale = :tr
+    config.time_zone = 'Istanbul'
+    config.i18n.fallbacks = true
+    config.active_job.queue_adapter = :sidekiq
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
       RUBY
 
       inject_into_file 'config/application.rb', config, :after => '# config.i18n.default_locale = :de'
