@@ -415,7 +415,8 @@ set :project_domain, "staging.example.com"'
       # Hq assets files
       remove_file 'app/assets/javascripts/hq/application.js.coffee', force: true
       remove_file 'app/assets/stylesheets/hq/application.css.sass', force: true
-      directory 'app/assets', 'app/assets'
+      copy_file 'app/assets/javascripts/hq/application.js.coffee'
+      copy_file 'app/assets/stylesheets/hq/application.css.sass'
 
       # Partial files in layouts folder
       directory 'app/views/layouts/partials', 'app/views/layouts/partials'
@@ -446,7 +447,7 @@ set :project_domain, "staging.example.com"'
 
       # Controllers
       remove_file 'app/controllers/application_controller.rb', force: true
-      copy_file 'app/controllers/application_controller.rb', 'app/controllers/application_controller.rb'
+      template 'app/controllers/application_controller.rb.erb', 'app/controllers/application_controller.rb', force: true
 
     end
 
@@ -491,17 +492,17 @@ require "#{path}"
     end
 
     def devise_parameter_sanitizer(model_name)
-  #     inject_into_file 'app/controllers/application_controller.rb', after: 'protect_from_forgery with: :exception' do <<-CODE
-  # protected
-  # def devise_parameter_sanitizer
-  #   if resource_class == #{model_name.classify}
-  #     #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
-  #   else
-  #     super # Use the default one
-  #   end
-  # end
-  #     CODE
-  #     end
+      #     inject_into_file 'app/controllers/application_controller.rb', after: 'protect_from_forgery with: :exception' do <<-CODE
+      # protected
+      # def devise_parameter_sanitizer
+      #   if resource_class == #{model_name.classify}
+      #     #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
+      #   else
+      #     super # Use the default one
+      #   end
+      # end
+      #     CODE
+      #     end
     end
 
     def add_time_zone_to_user
