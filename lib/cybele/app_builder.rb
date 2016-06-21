@@ -44,6 +44,7 @@ module Cybele
       copy_file 'lib/application_responder.rb', 'lib/application_responder.rb'
       remove_file 'app/controllers/application_controller.rb'
       copy_file 'app/controllers/application_controller.rb', 'app/controllers/application_controller.rb'
+      copy_file 'app/controllers/concerns/basic_authentication.rb', 'app/controllers/concerns/basic_authentication.rb'
       copy_file 'lib/templates/rails/responders_controller/controller.rb', 'lib/templates/rails/responders_controller/controller.rb'
       copy_file 'config/locales/responders.en.yml', 'config/locales/responders.en.yml'
       copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'
