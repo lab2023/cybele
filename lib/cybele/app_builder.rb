@@ -78,9 +78,7 @@ module Cybele
     end
 
     def setup_asset_precompile
-
       config = <<-RUBY
-
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.sass.preferred_syntax = :sass
@@ -89,8 +87,7 @@ module Cybele
     config.i18n.fallbacks = true
     config.active_job.queue_adapter = :sidekiq
       RUBY
-
-      inject_into_file 'config/application.rb', config, :after => '# config.i18n.default_locale = :de'
+      inject_into_file 'config/application.rb', config, after: '# config.i18n.default_locale = :de'
     end
 
     def convert_application_js_to_coffee
@@ -118,7 +115,12 @@ module Cybele
       copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
-  config.action_mailer.delivery_method = :smtp
+  Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
+      RUBY
+      configure_environment 'staging', config
+
+      config = <<-RUBY
+config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
       address: Settings.smtp.address,
@@ -129,12 +131,7 @@ module Cybele
       authentication: Settings.smtp.authentication
   }
       RUBY
-
       configure_environment 'production', config
-      configure_environment 'staging', config
-      config = <<-RUBY
-    Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
-      RUBY
       configure_environment 'staging', config
     end
 
@@ -170,6 +167,7 @@ smtp:
   user_name: <%= ENV['SMTP_USER_NAME'] %>
   password: <%= ENV['SMTP_PASSWORD'] %>
   authentication: 'plain'
+
 AWS:
   S3:
     bucket: <%= ENV['S3_BUCKET_NAME'] %>
@@ -199,12 +197,12 @@ AWS:
     end
 
     def generate_capybara
-      inject_into_file 'spec/spec_helper.rb', :after => "require 'rspec/autorun'" do <<-CODE
+      inject_into_file 'spec/spec_helper.rb', after: "require 'rspec/autorun'" do <<-CODE
 
 require 'capybara/rspec'
       CODE
       end
-      inject_into_file 'spec/spec_helper.rb', :after => '  config.order = "random"' do <<-CODE
+      inject_into_file 'spec/spec_helper.rb', after: '  config.order = "random"' do <<-CODE
 
 
   # Capybara DSL
@@ -214,7 +212,7 @@ require 'capybara/rspec'
     end
 
     def generate_factory_girl
-      inject_into_file 'spec/spec_helper.rb', :after => '  config.include Capybara::DSL' do <<-CODE
+      inject_into_file 'spec/spec_helper.rb', after: '  config.include Capybara::DSL' do <<-CODE
 
 
   # Factory girl
@@ -231,31 +229,28 @@ require 'capybara/rspec'
 
     def generate_exception_notification
       generate 'exception_notification:install'
+      generate 'rollbar your_token'
     end
 
     def add_exception_notification_to_environments
       config = <<-CODE
 config.middleware.use ExceptionNotification::Rack, 
-email: {
-  email_prefix: "[#{app_name}]",
-  sender_address: %{"Notifier" <notifier@#{app_name}.com>},
-  exception_recipients: %w{your_email@address.com}
-}
+  email: {
+    email_prefix: "[#{app_name}]",
+    sender_address: %{"Notifier" <notifier@#{app_name}.com>},
+    exception_recipients: %w{your_email@address.com}
+  }
       CODE
-
       configure_environment('production', config)
       configure_environment('staging', config)
-
-      inject_into_file 'config/initializers/exception_notification.rb', :before => 'config.add_notifier :email, {' do <<-RUBY
+      inject_into_file 'config/initializers/exception_notification.rb', before: 'config.add_notifier :email, {' do <<-RUBY
         unless Rails.env == 'development'
       RUBY
       end
-
-      inject_into_file 'config/initializers/exception_notification.rb', :before => '# Campfire notifier sends notifications to your Campfire room.' do <<-RUBY
+      inject_into_file 'config/initializers/exception_notification.rb', before: '# Campfire notifier sends notifications to your Campfire room.' do <<-RUBY
         end
       RUBY
       end
-
     end
 
     def leftovers
@@ -453,7 +448,7 @@ admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app
 
     def action_mailer_host(rails_env)
       config = <<-RUBY
-  # Mail Setting
+# Mail Setting
   config.action_mailer.default_url_options = { host: ENV['ROOT_PATH'] }
       RUBY
       configure_environment(rails_env, config)
