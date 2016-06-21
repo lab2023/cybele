@@ -29,4 +29,12 @@ class ApplicationController < ActionController::Base
     Time.zone = current_user.time_zone if student_signed_in? && current_student.time_zone.present?
   end
 
+  def devise_parameter_sanitizer
+    if resource_class == User
+      User::ParameterSanitizer.new(User, :user, params)
+    else
+      super # Use the default one
+    end
+  end
+
 end

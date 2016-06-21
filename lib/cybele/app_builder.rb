@@ -376,6 +376,7 @@ set :project_domain, "staging.example.com"'
 
     # Copy files
     def copy_files
+
       # Locale files
       say 'Coping files..'
       remove_file 'config/locales/en.yml'
@@ -437,6 +438,11 @@ set :project_domain, "staging.example.com"'
       directory 'app/mailers', 'app/mailers'
       directory 'app/views/admin_mailer', 'app/views/admin_mailer'
       directory 'app/views/user_mailer', 'app/views/user_mailer'
+
+      # Controllers
+      remove_file 'app/controllers/application_controller.rb'
+      copy_file 'app/controllers/application_controller.rb', 'app/controllers/application_controller.rb'
+
     end
 
     private
@@ -480,17 +486,17 @@ require "#{path}"
     end
 
     def devise_parameter_sanitizer(model_name)
-      inject_into_file 'app/controllers/application_controller.rb', after: 'protect_from_forgery with: :exception' do <<-CODE
-  protected
-  def devise_parameter_sanitizer
-    if resource_class == #{model_name.classify}
-      #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
-    else
-      super # Use the default one
-    end
-  end
-      CODE
-      end
+  #     inject_into_file 'app/controllers/application_controller.rb', after: 'protect_from_forgery with: :exception' do <<-CODE
+  # protected
+  # def devise_parameter_sanitizer
+  #   if resource_class == #{model_name.classify}
+  #     #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
+  #   else
+  #     super # Use the default one
+  #   end
+  # end
+  #     CODE
+  #     end
     end
 
     def add_time_zone_to_user

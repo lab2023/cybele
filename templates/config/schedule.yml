@@ -7,6 +7,8 @@
 # 30 0 * * *    -> Every day at 00:30
 # 40 0 * * *    -> Every day at 00:40
 
+# Look config/initializers/sidekiq.rb
+
 # Every day at 00:01
 #check_course_hosting_date_job:
 #  cron: 1 0 * * * Europe/Istanbul
