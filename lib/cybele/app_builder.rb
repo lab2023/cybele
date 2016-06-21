@@ -100,14 +100,7 @@ module Cybele
     end
 
     def copy_vendor_assets
-      copy_file 'vendor/assets/javascripts/jquery.datetimepicker.js', 'vendor/assets/javascripts/jquery.datetimepicker.js'
-      copy_file 'vendor/assets/javascripts/nprogress.js', 'vendor/assets/javascripts/nprogress.js'
-      copy_file 'vendor/assets/javascripts/jquery.maskedinput.min.js', 'vendor/assets/javascripts/jquery.maskedinput.min.js'
-      copy_file 'vendor/assets/javascripts/trix.js', 'vendor/assets/javascripts/trix.js'
-
-      copy_file 'vendor/assets/stylesheets/jquery.datetimepicker.css', 'vendor/assets/stylesheets/jquery.datetimepicker.css'
-      copy_file 'vendor/assets/stylesheets/nprogress.css', 'vendor/assets/stylesheets/nprogress.css'
-      copy_file 'vendor/assets/stylesheets/trix.css', 'vendor/assets/stylesheets/trix.css'
+      directory 'vendor/assets', 'vendor/assets'
     end
 
     def configure_smtp
@@ -288,34 +281,12 @@ config.middleware.use ExceptionNotification::Rack,
     def setup_namespaces
       generate 'devise Admin name:string surname:string is_active:boolean'
 
-      copy_file 'app/controllers/hq/application_controller.rb', 'app/controllers/hq/application_controller.rb'
-
-      copy_file 'app/controllers/hq/dashboard_controller.rb', 'app/controllers/hq/dashboard_controller.rb'
-      template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
-
-      copy_file 'app/controllers/hq/passwords_controller.rb', 'app/controllers/hq/passwords_controller.rb'
-      directory 'app/views/hq/passwords', 'app/views/hq/passwords'
-
-      copy_file 'app/controllers/hq/registrations_controller.rb', 'app/controllers/hq/registrations_controller.rb'
-      directory 'app/views/hq/registrations', 'app/views/hq/registrations'
-
-      copy_file 'app/controllers/hq/sessions_controller.rb', 'app/controllers/hq/sessions_controller.rb'
-      directory 'app/views/hq/sessions', 'app/views/hq/sessions'
+      directory 'app/controllers/hq', 'app/controllers/hq'
+      directory 'app/views/hq', 'app/views/hq'
 
       # User controllers
-      copy_file 'app/controllers/user/user_application_controller.rb', 'app/controllers/user/user_application_controller.rb'
-
-      copy_file 'app/controllers/user/dashboard_controller.rb', 'app/controllers/user/dashboard_controller.rb'
-      directory 'app/views/user/dashboard', 'app/views/user/dashboard'
-
-      copy_file 'app/controllers/user/passwords_controller.rb', 'app/controllers/user/passwords_controller.rb'
-      directory 'app/views/user/passwords', 'app/views/user/passwords'
-
-      copy_file 'app/controllers/user/registrations_controller.rb', 'app/controllers/user/registrations_controller.rb'
-      directory 'app/views/user/registrations', 'app/views/user/registrations'
-
-      copy_file 'app/controllers/user/sessions_controller.rb', 'app/controllers/user/sessions_controller.rb'
-      directory 'app/views/user/sessions', 'app/views/user/sessions'
+      directory 'app/controllers/user', 'app/controllers/user'
+      directory 'app/views/user', 'app/views/user'
 
     end
 
@@ -407,17 +378,14 @@ set :project_domain, "staging.example.com"'
     def copy_files
       # Locale files
       say 'Coping files..'
-      copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
-      copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
-      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
-      copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
-      copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
+      remove_file 'config/locales/en.yml'
+      remove_file 'config/locales/simple_form.en.yml'
+      directory 'config/locales', 'config/locales'
 
       # Model files
       remove_file 'app/models/admin.rb'
-      copy_file 'app/models/admin.rb', 'app/models/admin.rb'
       remove_file 'app/models/user.rb'
-      copy_file 'app/models/user.rb', 'app/models/user.rb'
+      directory 'app/models', 'app/models'
 
       # Route file
       say 'Restore routes.rb'
@@ -437,13 +405,11 @@ set :project_domain, "staging.example.com"'
 
       # Hq assets files
       remove_file 'app/assets/javascripts/hq/application.js.coffee'
-      copy_file 'app/assets/javascripts/hq/application.js.coffee', 'app/assets/javascripts/hq/application.js.coffee'
-
       remove_file 'app/assets/stylesheets/hq/application.css.sass'
-      copy_file 'app/assets/stylesheets/hq/application.css.sass', 'app/assets/stylesheets/hq/application.css.sass'
+      directory 'app/assets', 'app/assets'
 
       # Partial files in layouts folder
-      copy_file 'app/views/layouts/partials/_warnings.html.haml', 'app/views/layouts/partials/_warnings.html.haml'
+      directory 'app/views/layouts/partials', 'app/views/layouts/partials'
 
       # Root folder files
       copy_file 'cybele_version.txt', 'VERSION.txt'
