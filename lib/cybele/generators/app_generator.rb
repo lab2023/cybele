@@ -28,6 +28,7 @@ module Cybele
       invoke :install_gems
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
+      invoke :copy_vendor_files
       invoke :setup_rails_config
       invoke :setup_staging_environment
       invoke :configure_mail_setting
@@ -113,6 +114,11 @@ module Cybele
       build :setup_application_js
       build :convert_application_js_to_coffee
       build :convert_application_css_to_sass
+    end
+
+    def copy_vendor_files
+      say 'Copy vendor assets'
+      build :copy_vendor_assets
     end
 
     def configure_mail_setting

@@ -88,8 +88,6 @@ module Cybele
     config.time_zone = 'Istanbul'
     config.i18n.fallbacks = true
     config.active_job.queue_adapter = :sidekiq
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
       RUBY
 
       inject_into_file 'config/application.rb', config, :after => '# config.i18n.default_locale = :de'
@@ -103,6 +101,15 @@ module Cybele
     def convert_application_css_to_sass
       remove_file 'app/assets/stylesheets/application.css'
       copy_file 'app/assets/stylesheets/application.css.sass', 'app/assets/stylesheets/application.css.sass'
+    end
+
+    def copy_vendor_assets
+      copy_file 'vendor/assets/javascripts/jquery.datetimepicker.js', 'vendor/assets/javascripts/jquery.datetimepicker.js'
+      copy_file 'vendor/assets/javascripts/nprogress.js', 'vendor/assets/javascripts/nprogress.js'
+      copy_file 'vendor/assets/javascripts/jquery.maskedinput.min.js', 'vendor/assets/javascripts/jquery.maskedinput.min.js'
+
+      copy_file 'vendor/assets/stylesheets/jquery.datetimepicker.css', 'vendor/assets/stylesheets/jquery.datetimepicker.css'
+      copy_file 'vendor/assets/stylesheets/nprogress.css', 'vendor/assets/stylesheets/nprogress.css'
     end
 
     def configure_smtp
