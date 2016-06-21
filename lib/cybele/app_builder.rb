@@ -297,6 +297,12 @@ config.middleware.use ExceptionNotification::Rack,
       copy_file 'app/controllers/hq/sessions_controller.rb', 'app/controllers/hq/sessions_controller.rb'
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
 
+      remove_file 'app/views/layouts/hq/application.html.haml'
+      template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
+
+      remove_file 'app/views/layouts/hq/login.html.haml'
+      template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
+
       # User
       copy_file 'app/controllers/user/user_application_controller.rb', 'app/controllers/user/user_application_controller.rb'
 

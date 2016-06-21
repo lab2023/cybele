@@ -1,5 +1,5 @@
 class User::SessionsController < Devise::SessionsController
-  layout 'user/login'
+  # layout 'user/login'
 
   private
 

@@ -28,7 +28,7 @@ class User::ProfilesController < User::UserApplicationController
       .permit(
         :name,
         :surname,
-        :timezone
+        :time_zone
     )
   end
 end

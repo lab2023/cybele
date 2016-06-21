@@ -1,5 +1,5 @@
 class User::PasswordsController < Devise::PasswordsController
-  layout 'user/login'
+  # layout 'user/login'
 
   private
 
