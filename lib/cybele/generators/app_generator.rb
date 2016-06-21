@@ -245,9 +245,9 @@ module Cybele
       build :setup_namespaces
     end
 
-    def copy_locales
-      say 'Copy config/locale files'
-      build :copy_locales 
+    def copy_all_files
+      say 'Copy files'
+      build :copy_files
     end
 
     def goodbye

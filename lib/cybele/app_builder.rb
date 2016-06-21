@@ -297,12 +297,6 @@ config.middleware.use ExceptionNotification::Rack,
       copy_file 'app/controllers/hq/sessions_controller.rb', 'app/controllers/hq/sessions_controller.rb'
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
 
-      remove_file 'app/views/layouts/hq/application.html.haml'
-      template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
-
-      remove_file 'app/views/layouts/hq/login.html.haml'
-      template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
-
       # User
       copy_file 'app/controllers/user/user_application_controller.rb', 'app/controllers/user/user_application_controller.rb'
 
@@ -405,8 +399,8 @@ set :project_domain, "staging.example.com"'
       end      
     end
 
-    # Copy locale files
-    def copy_locales
+    # Copy files
+    def copy_files
       say 'Coping files..'
       copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
       copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
@@ -423,6 +417,17 @@ set :project_domain, "staging.example.com"'
       say 'Restore routes.rb'
       remove_file 'config/routes.rb'
       template 'config/routes.erb', 'config/routes.rb'
+
+      say 'Set hq layouts'
+      remove_file 'app/views/layouts/hq/application.html.haml'
+      template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
+
+      remove_file 'app/views/layouts/login.html.haml'
+      template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
+
+      copy_file 'app/views/layouts/partials/_warnings.html.haml', 'app/views/layouts/partials/_warnings.html.haml'
+      copy_file 'cybele_version.txt', 'VERSION.txt'
+
     end
 
     private
