@@ -37,7 +37,6 @@ module Cybele
     end
 
     def copy_rake_files
-      copy_file 'lib/tasks/annotate.rake', 'lib/tasks/annotate.rake', force: true
     end
 
     def install_responder_gem
@@ -265,11 +264,15 @@ config.middleware.use ExceptionNotification::Rack,
       generate 'devise:install'
       gsub_file 'config/initializers/filter_parameter_logging.rb', /:password/, ':password, :password_confirmation'
       gsub_file 'config/initializers/devise.rb', /please-change-me-at-config-initializers-devise@example.com/, "no-reply@#{app_name}.com"
+      inject_into_file 'config/initializers/devise.rb', after: "# config.mailer = 'Devise::Mailer'\n" do <<-RUBY
+  Devise::Mailer.layout 'mailer'
+      RUBY
+      end
     end
 
-    def generate_devise_model(model_name)
-      generate "devise #{model_name} name:string surname:string"
-      generate_devise_strong_parameters(model_name)
+    def generate_devise_user
+      generate 'devise User name:string surname:string is_active:boolean'
+      generate_devise_strong_parameters('user')
       remove_file 'config/locales/devise.en.yml'
     end
 
@@ -283,7 +286,7 @@ config.middleware.use ExceptionNotification::Rack,
     end
 
     def setup_namespaces
-      generate 'devise Admin name:string surname:string'
+      generate 'devise Admin name:string surname:string is_active:boolean'
 
       copy_file 'app/controllers/hq/application_controller.rb', 'app/controllers/hq/application_controller.rb'
 
@@ -299,7 +302,7 @@ config.middleware.use ExceptionNotification::Rack,
       copy_file 'app/controllers/hq/sessions_controller.rb', 'app/controllers/hq/sessions_controller.rb'
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
 
-      # User
+      # User controllers
       copy_file 'app/controllers/user/user_application_controller.rb', 'app/controllers/user/user_application_controller.rb'
 
       copy_file 'app/controllers/user/dashboard_controller.rb', 'app/controllers/user/dashboard_controller.rb'
@@ -345,7 +348,7 @@ config.middleware.use ExceptionNotification::Rack,
       # Change my_app_name string in the deploy.rb file with app_name that is created 
       gsub_file 'config/deploy.rb', /my_app_name/, "#{app_name}"
 
-      inject_into_file 'Capfile', :after => "require 'capistrano/deploy'\n" do <<-RUBY
+      inject_into_file 'Capfile', after: "require 'capistrano/deploy'\n" do <<-RUBY
 require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'sshkit/sudo'
@@ -382,7 +385,6 @@ set :project_domain, "staging.example.com"'
     end
 
     def create_dev_rake
-      copy_file 'lib/tasks/dev.rake', 'lib/tasks/dev.rake'
     end
 
     def custom_exception_page
@@ -403,6 +405,7 @@ set :project_domain, "staging.example.com"'
 
     # Copy files
     def copy_files
+      # Locale files
       say 'Coping files..'
       copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
       copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
@@ -410,32 +413,55 @@ set :project_domain, "staging.example.com"'
       copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
       copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
 
+      # Model files
       remove_file 'app/models/admin.rb'
       copy_file 'app/models/admin.rb', 'app/models/admin.rb'
-
       remove_file 'app/models/user.rb'
       copy_file 'app/models/user.rb', 'app/models/user.rb'
 
+      # Route file
       say 'Restore routes.rb'
       remove_file 'config/routes.rb'
       template 'config/routes.erb', 'config/routes.rb'
 
+      # Hq layout files
       say 'Set hq layouts'
       remove_file 'app/views/layouts/hq/application.html.haml'
       template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
-
       remove_file 'app/views/layouts/login.html.haml'
       template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
 
+      # Mailer layout files
+      template 'app/views/layouts/mailer.html.haml.erb', 'app/views/layouts/mailer.html.haml', force: true
+      copy_file 'app/views/layouts/mailer.text.haml', 'app/views/layouts/mailer.text.haml'
+
+      # Hq assets files
       remove_file 'app/assets/javascripts/hq/application.js.coffee'
       copy_file 'app/assets/javascripts/hq/application.js.coffee', 'app/assets/javascripts/hq/application.js.coffee'
 
       remove_file 'app/assets/stylesheets/hq/application.css.sass'
       copy_file 'app/assets/stylesheets/hq/application.css.sass', 'app/assets/stylesheets/hq/application.css.sass'
 
+      # Partial files in layouts folder
       copy_file 'app/views/layouts/partials/_warnings.html.haml', 'app/views/layouts/partials/_warnings.html.haml'
+
+      # Root folder files
       copy_file 'cybele_version.txt', 'VERSION.txt'
       directory 'public/images', 'public/images'
+      template '.env.local.erb', '.env.local', force: true
+      template '.env.production.erb', '.env.production', force: true
+      template '.env.staging.erb', '.env.staging', force: true
+      template 'env.sample.erb', 'env.sample', force: true
+
+      # Library files
+      directory 'lib/tasks', 'lib/tasks'
+      directory 'lib/data', 'lib/data'
+
+      # Config files
+      copy_file 'config/initializers/sidekiq.rb', 'config/initializers/sidekiq.rb'
+      copy_file 'config/initializers/devise_async.rb', 'config/initializers/devise_async.rb'
+      copy_file 'config/schedule.yml', 'config/schedule.yml'
+      copy_file 'config/sidekiq.yml', 'config/sidekiq.yml'
     end
 
     private
@@ -479,7 +505,7 @@ require "#{path}"
     end
 
     def devise_parameter_sanitizer(model_name)
-      inject_into_file 'app/controllers/application_controller.rb', :after => 'protect_from_forgery with: :exception' do <<-CODE
+      inject_into_file 'app/controllers/application_controller.rb', after: 'protect_from_forgery with: :exception' do <<-CODE
   protected
   def devise_parameter_sanitizer
     if resource_class == #{model_name.classify}

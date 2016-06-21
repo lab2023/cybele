@@ -19,14 +19,16 @@
 *.swp
 .env
 bin/stubs
+/.env.*
+/.env.local
 public/system
-tags
 vendor/bundler_gems
 
 # Ignore ide and text editor
 .idea
 .idea/
 .idea/**/*
+/dump.rdb
 
 # Ignore pow files
 .powrc

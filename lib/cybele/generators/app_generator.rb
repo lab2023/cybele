@@ -162,7 +162,7 @@ module Cybele
       say 'Generate devise'
       build :generate_devise_settings
       say 'Adding devise user model'
-      build :generate_devise_model, 'user'
+      build :generate_devise_user
       build :generate_devise_views
     end
 
