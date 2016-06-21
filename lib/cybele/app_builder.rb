@@ -47,7 +47,6 @@ module Cybele
       copy_file 'app/controllers/concerns/basic_authentication.rb', 'app/controllers/concerns/basic_authentication.rb'
       copy_file 'lib/templates/rails/responders_controller/controller.rb', 'lib/templates/rails/responders_controller/controller.rb'
       copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'
-      copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
     end
 
     def replace_database_yml
@@ -412,13 +411,11 @@ admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app
     # Copy locale files
     def copy_locales
       say 'Coping files..'
-      copy_file 'config/locales/models.en.yml', 'config/locales/models.en.yml'
       copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
-      copy_file 'config/locales/show_for.en.yml', 'config/locales/show_for.en.yml'
       copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
-      copy_file 'config/locales/view.en.yml', 'config/locales/view.en.yml'
       copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
+      copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
     end
 
     private
