@@ -7,11 +7,11 @@ module Cybele
     end
 
     def remove_readme_rdoc
-      remove_file 'README.rdoc'
+      remove_file 'README.rdoc', force: true
     end
 
     def replace_gemfile
-      remove_file 'Gemfile'
+      remove_file 'Gemfile', force: true
       copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
@@ -32,7 +32,7 @@ module Cybele
     end
 
     def replace_erb_with_haml
-      remove_file 'app/views/layouts/application.html.erb'
+      remove_file 'app/views/layouts/application.html.erb', force: true
       template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', force: true
     end
 
@@ -41,7 +41,7 @@ module Cybele
 
     def install_responder_gem
       copy_file 'lib/application_responder.rb', 'lib/application_responder.rb'
-      remove_file 'app/controllers/application_controller.rb'
+      remove_file 'app/controllers/application_controller.rb', force: true
       copy_file 'app/controllers/application_controller.rb', 'app/controllers/application_controller.rb'
       copy_file 'app/controllers/concerns/basic_authentication.rb', 'app/controllers/concerns/basic_authentication.rb'
       copy_file 'lib/templates/rails/responders_controller/controller.rb', 'lib/templates/rails/responders_controller/controller.rb'
@@ -57,7 +57,7 @@ module Cybele
     end
 
     def setup_gitignore_files
-      remove_file '.gitignore'
+      remove_file '.gitignore', force: true
       copy_file 'cybele_gitignore', '.gitignore'
     end
 
@@ -90,12 +90,12 @@ module Cybele
     end
 
     def convert_application_js_to_coffee
-      remove_file 'app/assets/javascripts/application.js'
+      remove_file 'app/assets/javascripts/application.js', force: true
       copy_file 'app/assets/javascripts/application.js.coffee', 'app/assets/javascripts/application.js.coffee'
     end
 
     def convert_application_css_to_sass
-      remove_file 'app/assets/stylesheets/application.css'
+      remove_file 'app/assets/stylesheets/application.css', force: true
       copy_file 'app/assets/stylesheets/application.css.sass', 'app/assets/stylesheets/application.css.sass'
     end
 
@@ -104,7 +104,7 @@ module Cybele
     end
 
     def configure_smtp
-      remove_file 'config/settings/production.yml'
+      remove_file 'config/settings/production.yml', force: true
       copy_file 'config/settings/production.yml', 'config/settings/production.yml'
       copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
@@ -266,7 +266,7 @@ config.middleware.use ExceptionNotification::Rack,
     def generate_devise_user
       generate 'devise User name:string surname:string is_active:boolean'
       generate_devise_strong_parameters('user')
-      remove_file 'config/locales/devise.en.yml'
+      remove_file 'config/locales/devise.en.yml', force: true
     end
 
     def generate_devise_views
@@ -295,14 +295,14 @@ config.middleware.use ExceptionNotification::Rack,
     end
 
     def create_hierapolis_theme
-      remove_file 'lib/templates/rails/responders_controller/controller.rb'
-      remove_file 'lib/templates/haml/scaffold/_form.html.haml'
+      remove_file 'lib/templates/rails/responders_controller/controller.rb', force: true
+      remove_file 'lib/templates/haml/scaffold/_form.html.haml', force: true
       generate 'hierapolis:install'
     end
 
     def replace_simple_form_wrapper
-      remove_file 'config/initializers/simple_form.rb'
-      remove_file 'config/initializers/simple_form_bootstrap.rb'
+      remove_file 'config/initializers/simple_form.rb', force: true
+      remove_file 'config/initializers/simple_form_bootstrap.rb', force: true
 
       copy_file 'config/initializers/simple_form.rb', 'config/initializers/simple_form.rb'
       copy_file 'config/initializers/simple_form_bootstrap.rb', 'config/initializers/simple_form_bootstrap.rb'
@@ -347,7 +347,7 @@ set :project_domain, "staging.example.com"'
     end
 
     def update_secret_token
-      remove_file 'config/initializers/secret_token.rb'
+      remove_file 'config/initializers/secret_token.rb', force: true
       template 'config/initializers/secret_token.erb', 'config/initializers/secret_token.rb'
     end
 
@@ -379,8 +379,8 @@ set :project_domain, "staging.example.com"'
 
       # Locale files
       say 'Coping files..'
-      remove_file 'config/locales/en.yml'
-      remove_file 'config/locales/simple_form.en.yml'
+      remove_file 'config/locales/en.yml', force: true
+      remove_file 'config/locales/simple_form.en.yml', force: true
       copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
       copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
@@ -388,29 +388,33 @@ set :project_domain, "staging.example.com"'
       copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
 
       # Model files
-      remove_file 'app/models/admin.rb'
-      remove_file 'app/models/user.rb'
+      remove_file 'app/models/admin.rb', force: true
+      remove_file 'app/models/user.rb', force: true
       directory 'app/models', 'app/models'
 
       # Route file
       say 'Restore routes.rb'
-      remove_file 'config/routes.rb'
+      remove_file 'config/routes.rb', force: true
       template 'config/routes.erb', 'config/routes.rb'
 
       # Hq layout files
       say 'Set hq layouts'
-      remove_file 'app/views/layouts/hq/application.html.haml'
+      remove_file 'app/views/layouts/hq/application.html.haml', force: true
       template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
-      remove_file 'app/views/layouts/login.html.haml'
+      remove_file 'app/views/layouts/login.html.haml', force: true
       template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
 
       # Mailer layout files
       template 'app/views/layouts/mailer.html.haml.erb', 'app/views/layouts/mailer.html.haml', force: true
       copy_file 'app/views/layouts/mailer.text.haml', 'app/views/layouts/mailer.text.haml'
 
+      # Assets files
+      remove_file 'app/assets/javascripts/application.js', force: true
+      remove_file 'app/assets/stylesheets/application.css', force: true
+
       # Hq assets files
-      remove_file 'app/assets/javascripts/hq/application.js.coffee'
-      remove_file 'app/assets/stylesheets/hq/application.css.sass'
+      remove_file 'app/assets/javascripts/hq/application.js.coffee', force: true
+      remove_file 'app/assets/stylesheets/hq/application.css.sass', force: true
       directory 'app/assets', 'app/assets'
 
       # Partial files in layouts folder
@@ -433,6 +437,7 @@ set :project_domain, "staging.example.com"'
       copy_file 'config/initializers/devise_async.rb', 'config/initializers/devise_async.rb'
       copy_file 'config/schedule.yml', 'config/schedule.yml'
       copy_file 'config/sidekiq.yml', 'config/sidekiq.yml'
+      remove_file 'config/settings.local.yml', force: true
 
       # Mailer files
       directory 'app/mailers', 'app/mailers'
@@ -440,7 +445,7 @@ set :project_domain, "staging.example.com"'
       directory 'app/views/user_mailer', 'app/views/user_mailer'
 
       # Controllers
-      remove_file 'app/controllers/application_controller.rb'
+      remove_file 'app/controllers/application_controller.rb', force: true
       copy_file 'app/controllers/application_controller.rb', 'app/controllers/application_controller.rb'
 
     end
