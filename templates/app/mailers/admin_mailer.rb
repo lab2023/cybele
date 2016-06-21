@@ -1,9 +1,9 @@
 class AdminMailer < BaseMailer
 
-  def send_login_information(admin_id, password)
+  def login_info(admin_id, password)
     @admin      = Admin.find admin_id
     @password   = password
-    @subject    = t('email.admin.send_login_information.title')
+    @subject    = t('email.admin.login_info.title')
     mail(to: @admin.email, subject: @subject)
   end
 

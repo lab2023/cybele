@@ -12,7 +12,7 @@ class Admin < ActiveRecord::Base
          :validatable
 
   # Validations
-  validates_presence_of :name, :email
+  validates_presence_of :name, :email, :surname
   validates :email, uniqueness: true
 
   # Callbacks
@@ -31,7 +31,7 @@ class Admin < ActiveRecord::Base
   end
 
   def full_name
-    "#{self.name}"
+    "#{self.name} #{self.surname}"
   end
 
   private
@@ -46,7 +46,7 @@ class Admin < ActiveRecord::Base
   end
 
   def send_login_info
-    AdminMailer.send_login_information(self.id, self.password).deliver_later! if self.is_generated_password
+    AdminMailer.login_info(self.id, self.password).deliver_later! if self.is_generated_password
   end
 
 end

@@ -49,6 +49,6 @@ class User < ActiveRecord::Base
   end
 
   def send_login_info
-    UserMailer.send_login_information(self.id, self.password).deliver_later! if self.is_generated_password
+    UserMailer.login_info(self.id, self.password).deliver_later! if self.is_generated_password
   end
 end

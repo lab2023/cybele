@@ -380,7 +380,11 @@ set :project_domain, "staging.example.com"'
       say 'Coping files..'
       remove_file 'config/locales/en.yml'
       remove_file 'config/locales/simple_form.en.yml'
-      directory 'config/locales', 'config/locales'
+      copy_file 'config/locales/models.tr.yml', 'config/locales/models.tr.yml'
+      copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
+      copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
+      copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
 
       # Model files
       remove_file 'app/models/admin.rb'
@@ -428,6 +432,11 @@ set :project_domain, "staging.example.com"'
       copy_file 'config/initializers/devise_async.rb', 'config/initializers/devise_async.rb'
       copy_file 'config/schedule.yml', 'config/schedule.yml'
       copy_file 'config/sidekiq.yml', 'config/sidekiq.yml'
+
+      # Mailer files
+      directory 'app/mailers', 'app/mailers'
+      directory 'app/views/admin_mailer', 'app/views/admin_mailer'
+      directory 'app/views/user_mailer', 'app/views/user_mailer'
     end
 
     private
