@@ -369,7 +369,7 @@ set :project_domain, "staging.example.com"'
     def add_seeds
       say 'Add seeds'
       inject_into_file 'db/seeds.rb', after: "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
-      Admin.create(email: "admin@#{app_name}.com", name: 'Admin', surname: 'Admin', password: '12341234', password_confirmation: '12341234')
+    Admin.create(email: "admin@#{app_name}.com", name: 'Admin', surname: 'Admin', password: '12341234', password_confirmation: '12341234')
       RUBY
       end      
     end
