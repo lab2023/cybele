@@ -264,7 +264,7 @@ config.middleware.use ExceptionNotification::Rack,
     end
 
     def generate_devise_user
-      generate 'devise User name:string surname:string is_active:boolean'
+      generate 'devise User name:string surname:string is_active:boolean time_zone:string'
       generate_devise_strong_parameters('user')
       remove_file 'config/locales/devise.en.yml', force: true
     end
@@ -279,7 +279,7 @@ config.middleware.use ExceptionNotification::Rack,
     end
 
     def setup_namespaces
-      generate 'devise Admin name:string surname:string is_active:boolean'
+      generate 'devise Admin name:string surname:string is_active:boolean time_zone:string'
 
       directory 'app/controllers/hq', 'app/controllers/hq'
       directory 'app/views/hq', 'app/views/hq'
@@ -403,6 +403,10 @@ set :project_domain, "staging.example.com"'
       template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
       remove_file 'app/views/layouts/login.html.haml', force: true
       template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
+      remove_file 'app/views/layouts/partials/_navbar.html.haml', force: true
+      template 'app/views/layouts/partials/_navbar.html.haml.erb', 'app/views/layouts/partials/_navbar.html.haml', force: true
+      remove_file 'app/views/layouts/partials/_dock.html.haml', force: true
+      template 'app/views/layouts/partials/_dock.html.haml.erb', 'app/views/layouts/partials/_dock.html.haml', force: true
 
       # Mailer layout files
       template 'app/views/layouts/mailer.html.haml.erb', 'app/views/layouts/mailer.html.haml', force: true
@@ -492,22 +496,9 @@ require "#{path}"
     end
 
     def devise_parameter_sanitizer(model_name)
-      #     inject_into_file 'app/controllers/application_controller.rb', after: 'protect_from_forgery with: :exception' do <<-CODE
-      # protected
-      # def devise_parameter_sanitizer
-      #   if resource_class == #{model_name.classify}
-      #     #{model_name.classify}::ParameterSanitizer.new(#{model_name.classify}, :#{model_name.parameterize}, params)
-      #   else
-      #     super # Use the default one
-      #   end
-      # end
-      #     CODE
-      #     end
     end
 
     def add_time_zone_to_user
-      say 'Add time_zone to User model'
-      generate 'migration AddTimeZoneToUser time_zone:string -s'
     end
 
 

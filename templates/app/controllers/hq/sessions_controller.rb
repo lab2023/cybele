@@ -1,5 +1,5 @@
 class Hq::SessionsController < Devise::SessionsController
-  layout 'login'
+  layout 'hq/login'
 
   private
 
