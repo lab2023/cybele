@@ -118,7 +118,6 @@ module Cybele
       copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
-  Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
@@ -133,6 +132,10 @@ module Cybele
 
       configure_environment 'production', config
       configure_environment 'staging', config
+      config = <<-RUBY
+    Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
+      RUBY
+      configure_environment 'staging', config
     end
 
     def configure_bullet
@@ -143,7 +146,6 @@ config.after_initialize do
     Bullet.bullet_logger = true
   end
       RUBY
-
       configure_environment 'development', config
     end
 
@@ -158,6 +160,25 @@ email:
 basic_auth:
   username: #{app_name}
   password: #{app_name}1234
+
+root_path: <%= ENV['ROOT_PATH'] %>
+
+smtp:
+  address: <%= ENV['SMTP_ADDRESS'] %>
+  port: 587
+  enable_starttls_auto: true
+  user_name: <%= ENV['SMTP_USER_NAME'] %>
+  password: <%= ENV['SMTP_PASSWORD'] %>
+  authentication: 'plain'
+AWS:
+  S3:
+    bucket: <%= ENV['S3_BUCKET_NAME'] %>
+    access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+    secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+    aws_url: http://<%= ENV['AWS_RAW_URL'] %>
+    aws_raw_url: <%= ENV['AWS_RAW_URL'] %>
+    # Bucket region should be ireland for this setting
+    end_point: s3-eu-west-1.amazonaws.com
       YML
       prepend_file 'config/settings.yml', config
     end
@@ -215,11 +236,11 @@ require 'capybara/rspec'
     def add_exception_notification_to_environments
       config = <<-CODE
 config.middleware.use ExceptionNotification::Rack, 
-                        :email => {
-                            :email_prefix => "[#{app_name}]", 
-                            :sender_address => %{"Notifier" <notifier@#{app_name}.com>}, 
-                            :exception_recipients => %w{your_email@address.com}
-  }
+email: {
+  email_prefix: "[#{app_name}]",
+  sender_address: %{"Notifier" <notifier@#{app_name}.com>},
+  exception_recipients: %w{your_email@address.com}
+}
       CODE
 
       configure_environment('production', config)
