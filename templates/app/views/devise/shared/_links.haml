@@ -18,3 +18,5 @@
   - resource_class.omniauth_providers.each do |provider|
     = link_to  t('devise.shared.links.signin_with', name: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider)
     %br/
+= link_to t('navbar.home_page'), root_path
+%br/

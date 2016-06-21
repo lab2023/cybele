@@ -282,8 +282,36 @@ config.middleware.use ExceptionNotification::Rack,
 
     def setup_namespaces
       generate 'devise Admin name:string surname:string'
+
+      copy_file 'app/controllers/hq/application_controller.rb', 'app/controllers/hq/application_controller.rb'
+
+      copy_file 'app/controllers/hq/dashboard_controller.rb', 'app/controllers/hq/dashboard_controller.rb'
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
+
+      copy_file 'app/controllers/hq/passwords_controller.rb', 'app/controllers/hq/passwords_controller.rb'
+      directory 'app/views/hq/passwords', 'app/views/hq/passwords'
+
+      copy_file 'app/controllers/hq/registrations_controller.rb', 'app/controllers/hq/registrations_controller.rb'
+      directory 'app/views/hq/registrations', 'app/views/hq/registrations'
+
+      copy_file 'app/controllers/hq/sessions_controller.rb', 'app/controllers/hq/sessions_controller.rb'
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
+
+      # User
+      copy_file 'app/controllers/user/user_application_controller.rb', 'app/controllers/user/user_application_controller.rb'
+
+      copy_file 'app/controllers/user/dashboard_controller.rb', 'app/controllers/user/dashboard_controller.rb'
+      directory 'app/views/user/dashboard', 'app/views/user/dashboard'
+
+      copy_file 'app/controllers/user/passwords_controller.rb', 'app/controllers/user/passwords_controller.rb'
+      directory 'app/views/user/passwords', 'app/views/user/passwords'
+
+      copy_file 'app/controllers/user/registrations_controller.rb', 'app/controllers/user/registrations_controller.rb'
+      directory 'app/views/user/registrations', 'app/views/user/registrations'
+
+      copy_file 'app/controllers/user/sessions_controller.rb', 'app/controllers/user/sessions_controller.rb'
+      directory 'app/views/user/sessions', 'app/views/user/sessions'
+
     end
 
     def set_time_zone

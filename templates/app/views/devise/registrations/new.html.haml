@@ -1,12 +1,24 @@
 %h2
   = t('devise.registration.new.title', model: resource.class.model_name.human)
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+%hr/
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    = link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-lg btn-primary btn-block' do
+      %i.fa.fa-facebook
+      = t('devise.shared.links.signup_with', name: provider.to_s.titleize)
+  %hr/
+  %h3.text-center
+    = t('view.or')
+  %hr/
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :name, :autofocus => true
-    = f.input :email, :required => true
-    = f.input :password, :required => true
-    = f.input :password_confirmation, :required => true
+    = f.input :email, required: true
+    = f.input :password, required: true
+    = f.input :password_confirmation, required: true
+    = f.input :name, required: true
+    = f.input :surname, required: true
+    = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select'), required: true
   .form-actions
     = f.button :submit, t('devise.registration.new.button'), class: 'btn btn-primary'
-= render "devise/shared/links"
+= render 'devise/shared/links'
