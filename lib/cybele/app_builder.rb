@@ -118,15 +118,16 @@ module Cybele
       copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
-config.action_mailer.delivery_method = :smtp
+  Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
-      address: Settings.smtp.mandrill.address,
-      port: Settings.smtp.mandrill.port,
-      enable_starttls_auto: Settings.smtp.mandrill.enable_starttls_auto,
-      user_name: Settings.smtp.mandrill.user_name,
-      password: Settings.smtp.mandrill.password,
-      authentication: Settings.smtp.mandrill.authentication
+      address: Settings.smtp.address,
+      port: Settings.smtp.port,
+      enable_starttls_auto: Settings.smtp.enable_starttls_auto,
+      user_name: Settings.smtp.user_name,
+      password: Settings.smtp.password,
+      authentication: Settings.smtp.authentication
   }
       RUBY
 
@@ -148,21 +149,23 @@ config.after_initialize do
 
     def setup_staging_environment
       run 'cp config/environments/production.rb config/environments/staging.rb'
-
-      prepend_file 'config/environments/staging.rb',
-                   "Mail.register_interceptor RecipientInterceptor.new(Settings.email.noreply, subject_prefix: '[STAGING]')\n"
-
       config = <<-YML
 email:
+  sandbox: sandbox@#{app_name}.com
   noreply: no-reply@#{app_name}.com
+  admin: admin@#{app_name}.com
+
+basic_auth:
+  username: #{app_name}
+  password: #{app_name}1234
       YML
       prepend_file 'config/settings.yml', config
     end
 
     def configure_action_mailer
-      action_mailer_host 'development', "localhost:3000"
-      action_mailer_host 'staging', "staging.#{app_name}.com"
-      action_mailer_host 'production', "#{app_name}.com"
+      action_mailer_host 'development'
+      action_mailer_host 'staging'
+      action_mailer_host 'production'
     end
 
     def  setup_letter_opener
@@ -427,13 +430,11 @@ admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app
 
     private
 
-    def action_mailer_host(rails_env, host)
-
+    def action_mailer_host(rails_env)
       config = <<-RUBY
-# Mail Setting
-  config.action_mailer.default_url_options = { :host => '#{host}' }
+  # Mail Setting
+  config.action_mailer.default_url_options = { host: ENV['ROOT_PATH'] }
       RUBY
-
       configure_environment(rails_env, config)
     end
 
