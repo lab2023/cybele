@@ -159,7 +159,11 @@ email:
 
 basic_auth:
   username: #{app_name}
-  password: #{app_name}1234
+  password: #{app_name}
+
+sidekiq:
+  username: #{app_name}
+  password: #{app_name}
 
 root_path: <%= ENV['ROOT_PATH'] %>
 
@@ -280,17 +284,6 @@ config.middleware.use ExceptionNotification::Rack,
       generate 'devise Admin name:string surname:string'
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
-
-      remove_file 'app/models/admin.rb'
-      copy_file 'app/models/admin.rb', 'app/models/admin.rb'
-
-      remove_file 'app/models/user.rb'
-      copy_file 'app/models/user.rb', 'app/models/user.rb'
-
-      say 'Restore routes.rb'
-      remove_file 'config/routes.rb'
-      copy_file 'config/routes.rb', 'config/routes.rb'
-
     end
 
     def set_time_zone
@@ -372,7 +365,7 @@ set :project_domain, "staging.example.com"'
 
     def add_seeds
       say 'Add seeds'
-      inject_into_file 'db/seeds.rb', :after => "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
+      inject_into_file 'db/seeds.rb', after: "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
       Admin.create(email: "admin@#{app_name}.com", name: 'Admin', surname: 'Admin', password: '12341234', password_confirmation: '12341234')
       RUBY
       end      
@@ -386,6 +379,16 @@ set :project_domain, "staging.example.com"'
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
       copy_file 'config/locales/view.tr.yml', 'config/locales/view.tr.yml'
       copy_file 'config/locales/email.tr.yml', 'config/locales/email.tr.yml'
+
+      remove_file 'app/models/admin.rb'
+      copy_file 'app/models/admin.rb', 'app/models/admin.rb'
+
+      remove_file 'app/models/user.rb'
+      copy_file 'app/models/user.rb', 'app/models/user.rb'
+
+      say 'Restore routes.rb'
+      remove_file 'config/routes.rb'
+      template 'config/routes.erb', 'config/routes.rb'
     end
 
     private
