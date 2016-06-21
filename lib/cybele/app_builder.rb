@@ -115,7 +115,7 @@ module Cybele
       copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
-  Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
+Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
       RUBY
       configure_environment 'staging', config
 
