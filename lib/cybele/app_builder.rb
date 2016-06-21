@@ -201,13 +201,10 @@ AWS:
 
     def generate_capybara
       inject_into_file 'spec/spec_helper.rb', after: "require 'rspec/autorun'" do <<-CODE
-
 require 'capybara/rspec'
       CODE
       end
       inject_into_file 'spec/spec_helper.rb', after: '  config.order = "random"' do <<-CODE
-
-
   # Capybara DSL
   config.include Capybara::DSL
       CODE
@@ -216,8 +213,6 @@ require 'capybara/rspec'
 
     def generate_factory_girl
       inject_into_file 'spec/spec_helper.rb', after: '  config.include Capybara::DSL' do <<-CODE
-
-
   # Factory girl
   config.include FactoryGirl::Syntax::Methods
       CODE
@@ -256,9 +251,6 @@ config.middleware.use ExceptionNotification::Rack,
       end
     end
 
-    def leftovers
-    end
-
     def generate_rails_config
       generate 'rails_config:install'
     end
@@ -270,7 +262,7 @@ config.middleware.use ExceptionNotification::Rack,
     end
 
     def generate_devise_model(model_name)
-      generate "devise #{model_name} name:string"
+      generate "devise #{model_name} name:string surname:string"
       generate_devise_strong_parameters(model_name)
       remove_file 'config/locales/devise.en.yml'
     end
@@ -282,50 +274,27 @@ config.middleware.use ExceptionNotification::Rack,
     def generate_welcome_page
       copy_file 'app/controllers/welcome_controller.rb', 'app/controllers/welcome_controller.rb'
       template 'app/views/welcome/index.html.haml.erb', 'app/views/welcome/index.html.haml', force: true
-      route "root to: 'welcome#index'"
     end
 
-    def generate_hq_namespace
-      generate "devise Admin"
-      create_namespace_routing('hq')
-      directory 'app/controllers/hq', 'app/controllers/hq'
-      #template 'app/views/layouts/hq/base.html.haml.erb', 'app/views/layouts/hq/base.html.haml', force: true
+    def generate_namespaces
+      generate 'devise Admin name:string surname:string'
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'
-      gsub_file 'config/routes.rb', /devise_for :admins/, "devise_for :admins, controllers: {sessions: 'hq/sessions'}, path: 'hq',
-             path_names: {sign_in: 'login', sign_out: 'logout', password: 'secret',
-                          confirmation: 'verification'}"
-      gsub_file 'app/models/admin.rb', /:registerable,/, ''
-      
-      say 'Configuring profile editors...'
-      setup_profile_editors
-    end
 
-    def setup_profile_editors
-      # Inserting routes
-      inject_into_file 'config/routes.rb', :after => "namespace :hq do\n" do <<-RUBY
-      root to: 'dashboard#index'
-      resource :admin_profile, except: [:destroy], path: 'profile'
-      RUBY
-      end
+      remove_file 'app/models/admin.rb'
+      copy_file 'app/models/admin.rb', 'app/models/admin.rb'
 
-      inject_into_file 'config/routes.rb', :after => "to: 'welcome#index'\n" do <<-RUBY
+      remove_file 'app/models/user.rb'
+      copy_file 'app/models/user.rb', 'app/models/user.rb'
 
-  resource :user_profile, except: [:destroy], path: 'profile'
+      say 'Restore routes.rb'
+      remove_file 'config/routes.rb'
+      copy_file 'config/routes.rb', 'config/routes.rb'
 
-      RUBY
-      end
     end
 
     def set_time_zone
-      add_set_user_time_zone_method_to_application_controller
       add_time_zone_to_user
-    end
-
-    def create_profile
-      add_profile_models
-      add_profile_controllers
-      add_profile_views
     end
 
     def create_hierapolis_theme
@@ -395,44 +364,16 @@ set :project_domain, "staging.example.com"'
 
     def custom_exception_page
       copy_file 'app/views/errors/internal_server_error.html.haml', 'app/views/errors/internal_server_error.html.haml'
-      inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
-
-  # rescue_from Exception, :with => :server_error
-  def server_error(exception)
-    # ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
-    respond_to do |format|
-      format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
-      format.all  { render nothing: true, status: 500}
-    end
-  end
-      CODE
-      end
     end
 
     def custom_404
       copy_file 'app/views/errors/not_found.html.haml', 'app/views/errors/not_found.html.haml'
-      inject_into_file 'app/controllers/application_controller.rb', :before => 'protected' do <<-CODE
-
-  rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
-  rescue_from ActionController::RoutingError, :with => :page_not_found
-  def page_not_found
-    respond_to do |format|
-      format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
-      format.all  { render nothing: true, status: 404 }
-    end
-  end
-      CODE
-      end
     end
 
-    # Add default admin user and admin profile seeder
     def add_seeds
       say 'Add seeds'
       inject_into_file 'db/seeds.rb', :after => "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
-
-admin = Admin.create(email: "admin@#{app_name}.com", password: '12341234', password_confirmation: '12341234')
-admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app_name}")
-
+      Admin.create(email: "admin@#{app_name}.com", name: 'Admin', surname: 'Admin', password: '12341234', password_confirmation: '12341234')
       RUBY
       end      
     end
@@ -472,7 +413,7 @@ admin.admin_profile = AdminProfile.create(first_name: 'Admin', last_name: "#{app
 class #{model_name.classify}::ParameterSanitizer < Devise::ParameterSanitizer
   private
   def sign_up
-    default_params.permit(:name, :email, :password, :password_confirmation, :time_zone) # TODO add other params here
+    default_params.permit(:name, :surname, :email, :password, :password_confirmation, :time_zone) # TODO add other params here
   end
 end
       CODE
@@ -501,66 +442,11 @@ require "#{path}"
       end
     end
 
-    def create_namespace_routing(namespace)
-      inject_into_file 'config/routes.rb', after: "root to: 'welcome#index'" do <<-CODE
-
-  namespace :#{namespace} do
-      resources :dashboard, only: [:index]
-  end
-      CODE
-      end
-    end
-
     def add_time_zone_to_user
       say 'Add time_zone to User model'
       generate 'migration AddTimeZoneToUser time_zone:string -s'
     end
 
-    def add_profile_models
-      say 'Creating Profile Models'
-      generate 'model user_profile first_name:string last_name:string gsm:string user:references -s'
-      generate 'model admin_profile first_name:string last_name:string gsm:string admin:references -s'
-    end
-
-    def add_set_user_time_zone_method_to_application_controller
-      say 'Add set_user_time_zone method to application controller'
-      inject_into_file 'app/controllers/application_controller.rb', :after => 'protected' do <<-CODE
-
-  def set_user_time_zone
-    Time.zone = current_user.time_zone if user_signed_in? && current_user.time_zone.present?
-  end
-      CODE
-      end
-      inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do <<-CODE
-
-  before_filter :set_user_time_zone
-  respond_to :html, :json
-
-      CODE
-      end
-    end
-
-    def add_profile_controllers
-      copy_file 'app/controllers/hq/admin_profiles_controller.rb', 'app/controllers/hq/admin_profiles_controller.rb'
-      copy_file 'app/controllers/user_profiles_controller.rb', 'app/controllers/user_profiles_controller.rb'
-    end
-
-    def add_profile_views
-      directory 'app/views/hq/admin_profiles', 'app/views/hq/admin_profiles'
-      directory 'app/views/user_profiles', 'app/views/user_profiles'
-
-      inject_into_file 'app/models/user.rb', :after => ":recoverable, :rememberable, :trackable, :validatable\n" do <<-RUBY
-        has_one :user_profile
-        accepts_nested_attributes_for :user_profile
-      RUBY
-      end
-
-      inject_into_file 'app/models/admin.rb', :after => ":recoverable, :rememberable, :trackable, :validatable\n" do <<-RUBY
-        has_one :admin_profile
-        accepts_nested_attributes_for :admin_profile
-      RUBY
-      end
-    end
 
   end
 end

@@ -42,8 +42,7 @@ module Cybele
       invoke :setup_devise
       invoke :setup_time_zone
       invoke :setup_bullet_config
-      invoke :setup_hq_namespace
-      invoke :setup_profiles 
+      invoke :setup_namespaces
     end
 
     def customize_gemfile
@@ -172,24 +171,15 @@ module Cybele
       build :generate_welcome_page
     end
 
-    def setup_hq_namespace
-      say 'Generate hq namespace'
-      build :generate_hq_namespace
+    def setup_namespaces
+      say 'Generate namespaces'
+      build :generate_namespaces
     end
 
     def setup_time_zone
       say 'Setup time zone'
       build :set_time_zone
     end
-
-    def setup_profiles
-      say 'Setup profiles'
-      build :create_profile
-    end
-
-    # def run_bundle
-    #   say 'Run bundle'
-    # end
 
     def setup_hierapolis
       say 'Setup hierapolis'
