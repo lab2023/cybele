@@ -104,9 +104,11 @@ module Cybele
       copy_file 'vendor/assets/javascripts/jquery.datetimepicker.js', 'vendor/assets/javascripts/jquery.datetimepicker.js'
       copy_file 'vendor/assets/javascripts/nprogress.js', 'vendor/assets/javascripts/nprogress.js'
       copy_file 'vendor/assets/javascripts/jquery.maskedinput.min.js', 'vendor/assets/javascripts/jquery.maskedinput.min.js'
+      copy_file 'vendor/assets/javascripts/trix.js', 'vendor/assets/javascripts/trix.js'
 
       copy_file 'vendor/assets/stylesheets/jquery.datetimepicker.css', 'vendor/assets/stylesheets/jquery.datetimepicker.css'
       copy_file 'vendor/assets/stylesheets/nprogress.css', 'vendor/assets/stylesheets/nprogress.css'
+      copy_file 'vendor/assets/stylesheets/trix.css', 'vendor/assets/stylesheets/trix.css'
     end
 
     def configure_smtp
@@ -425,9 +427,15 @@ set :project_domain, "staging.example.com"'
       remove_file 'app/views/layouts/login.html.haml'
       template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
 
+      remove_file 'app/assets/javascripts/hq/application.js.coffee'
+      copy_file 'app/assets/javascripts/hq/application.js.coffee', 'app/assets/javascripts/hq/application.js.coffee'
+
+      remove_file 'app/assets/stylesheets/hq/application.css.sass'
+      copy_file 'app/assets/stylesheets/hq/application.css.sass', 'app/assets/stylesheets/hq/application.css.sass'
+
       copy_file 'app/views/layouts/partials/_warnings.html.haml', 'app/views/layouts/partials/_warnings.html.haml'
       copy_file 'cybele_version.txt', 'VERSION.txt'
-
+      directory 'public/images', 'public/images'
     end
 
     private

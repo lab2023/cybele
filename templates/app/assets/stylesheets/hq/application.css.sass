@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that will be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+
+@import 'nprogress'
+@import 'hierapolis'
+@import 'trix'
+@import "bootstrap-chosen"
+@import "jquery.datetimepicker"
+
+.admins, .users
+  .active
+    color: green !important
+  .passive
+    background-color: rgba(230, 161, 161, 0.37) !important
+  .paid
+    color: green !important
+  .not-paid
+    background-color: rgba(230, 161, 161, 0.37) !important
+
+.chosen-container .chosen-container-multi
+  width: 500px !important
+
+.btn
+  margin: 0px 1px
+
+.date.date_fields
+  select
+    width: 32%
+    float: left
+    margin: 2px
+    margin-bottom: 10px
+  label
+    width: 100%
+
+.tool-label
+  font-size: 14px
+  padding: 7px 10px
+  margin-right: 5px
+
+#sidebar ul#dock li.launcher ul.dropdown-menu
+  width: 310px
+
+.btn
+  margin: 0px 2px
+
+.form-actions
+  background-color: rgba(2, 2, 2, 0) !important
+
+#wrapper form .form-actions
+  float: right !important
+
+.query-buttons
+  .btn
+    margin: 2px
+
+.query-inputs
+  .pull-right
+    margin: 2px 0px
+
+trix-editor
+  min-height: 100px !important
+  @extend .form-control
+  height: 100% !important
+  margin: 0px 0px 12px 0px
+
+.form-group.nested-fields-wrapper
+  select
+    position: relative
+    top: -1px
+  .chosen-container
+    top: -2px
+  &.last
+    margin-bottom: 5px
+
+.show_for
+  .wrapper
+    padding: 3px 0px !important
+
+.grid table td.action
+  width: 9%
+
+#beaker
+  background-image: url('/images/sprite.png')

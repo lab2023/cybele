@@ -14,31 +14,21 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap
+#= require hierapolis
 #= require chosen-jquery
 #= require jquery.maskedinput.min
+#= require trix
 #= require jquery.datetimepicker
 #= require nprogress
-#= require trix
+
 
 class @App
-
   @tooltip = ->
     $('[data-toggle="tooltip"]').tooltip()
     $('[data-toggle="toolbar-tooltip"]').tooltip()
 
   @ready = ->
     App.tooltip()
-
-    $('.datetimepicker').datetimepicker
-      format: $('.datetimepicker').data('format')
-      step: 60
-      lang: 'tr'
-      minDate: 0
-      defaultTime: '12:00'
-
-    $( "[data-mask]").each (index, element) ->
-      $element = $(element)
-      $element.mask($element.data('mask'))
 
     $('.chosen-select').chosen
       allow_single_deselect: true
@@ -49,15 +39,39 @@ class @App
       placeholder_text: $('.chosen-select-with-width').attr('include_blank')
       width: '370px'
 
-    $('form[data-turboform]').on('submit', (e) ->
-      Turbolinks.visit @action + (if @action.indexOf('?') == -1 then '?' else '&') + $(this).serialize()
-      false
-    )
+    $('.changeable_select').on 'change', ->
+      $hiden_area = $($('#hider-id').data('hiden-area'))
+      values = $('#hider-id').data('hiden-on').split(',')
+      if $.inArray($(this).val(), values) != -1
+        $hiden_area.addClass('hidden')
+      else
+        $hiden_area.removeClass('hidden')
 
-$(document).ready(App.ready)
-$(document).on('page:load', App.ready)
-$(window).on('page:load', App.ready)
+ready = ->
+  App.ready()
 
+  $('.datetimepicker').datetimepicker
+    format: $('.datetimepicker').data('format')
+    step: 60
+    lang: 'tr'
+    minDate: 0
+    defaultTime: '12:00'
+
+  $( "[data-mask]").each (index, element) ->
+    $element = $(element)
+    $element.mask($element.data('mask'))
+
+  $('form[data-turboform]').on('submit', (e) ->
+    Turbolinks.visit @action + (if @action.indexOf('?') == -1 then '?' else '&') + $(this).serialize()
+    false
+  )
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
+$(window).on('page:load', ready)
+
+
+# Turbolinks.enableProgressBar()
 # Turbolinks events
 $(document).on 'page:fetch', ->
   NProgress.start()
