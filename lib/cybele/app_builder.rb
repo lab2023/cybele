@@ -276,7 +276,7 @@ config.middleware.use ExceptionNotification::Rack,
       template 'app/views/welcome/index.html.haml.erb', 'app/views/welcome/index.html.haml', force: true
     end
 
-    def generate_namespaces
+    def setup_namespaces
       generate 'devise Admin name:string surname:string'
       template 'app/views/hq/dashboard/index.html.haml.erb', 'app/views/hq/dashboard/index.html.haml', force: true
       directory 'app/views/hq/sessions', 'app/views/hq/sessions'

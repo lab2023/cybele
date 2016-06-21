@@ -171,11 +171,6 @@ module Cybele
       build :generate_welcome_page
     end
 
-    def setup_namespaces
-      say 'Generate namespaces'
-      build :generate_namespaces
-    end
-
     def setup_time_zone
       say 'Setup time zone'
       build :set_time_zone
@@ -243,6 +238,11 @@ module Cybele
     def add_seeds
       say 'Add seeds main'
       build :add_seeds
+    end
+
+    def setup_namespaces
+      say 'Generate namespaces'
+      build :setup_namespaces
     end
 
     def copy_locales
