@@ -15,7 +15,7 @@
             - type = params[:q][:user_type_eq]
             - if type == 'Admin'
               = f.label :user, label: t('activerecord.attributes.audits.user')
-              = f.input :user_id_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.user'), collection: get_admins, include_blank: t('view.select')
+              = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.user'), collection: get_admins, include_blank: t('view.select')
             - elsif type == 'User'
               = f.label :user, label: t('activerecord.attributes.audits.user')
               = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.user'), collection: get_users, include_blank: t('view.select')
