@@ -1,5 +1,5 @@
 .jumbotron
-  %h1 Welcome to <%= app_name %>
+  %h1 Welcome to <%= app_name.capitalize %>
   - if current_user
     = link_to t('navbar.sign_out'), destroy_user_session_path, class: 'btn btn-large', method: :delete
     .row-fluid.marketing
