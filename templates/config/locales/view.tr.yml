@@ -24,6 +24,7 @@ tr:
     there_is_no_data: Hiç %{resource} eklenmemiş.
   navbar:
     settings: Ayarlar
+    signup: Kayıt ol
     signin: Giriş Yap
     sign_out: Çıkış yap
     edit_login_info: Giriş bilgilerini güncelle
