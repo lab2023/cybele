@@ -36,9 +36,6 @@ module Cybele
       template 'app/views/layouts/application.html.haml.erb', 'app/views/layouts/application.html.haml', force: true
     end
 
-    def copy_rake_files
-    end
-
     def install_responder_gem
       copy_file 'lib/application_responder.rb', 'lib/application_responder.rb'
       remove_file 'app/controllers/application_controller.rb', force: true
@@ -290,10 +287,6 @@ config.middleware.use ExceptionNotification::Rack,
 
     end
 
-    def set_time_zone
-      add_time_zone_to_user
-    end
-
     def create_hierapolis_theme
       remove_file 'lib/templates/rails/responders_controller/controller.rb', force: true
       remove_file 'lib/templates/haml/scaffold/_form.html.haml', force: true
@@ -472,7 +465,6 @@ set :project_domain, "staging.example.com"'
     def generate_devise_strong_parameters(model_name)
       create_sanitizer_lib(model_name)
       create_sanitizer_initializer(model_name)
-      devise_parameter_sanitizer(model_name)
     end
 
     def create_sanitizer_lib(model_name)
@@ -493,12 +485,6 @@ end
       initializer 'sanitizers.rb', <<-CODE
 require "#{path}"
       CODE
-    end
-
-    def devise_parameter_sanitizer(model_name)
-    end
-
-    def add_time_zone_to_user
     end
 
 
