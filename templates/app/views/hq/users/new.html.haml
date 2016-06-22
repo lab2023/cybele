@@ -1,0 +1,5 @@
+- content_for :form_title do
+  = t('tt.new', resource_name: User.model_name.human)
+.alert.alert-info
+  = t('view.create_resource_mail_info', resource: User.model_name.human.downcase)
+= render 'form'

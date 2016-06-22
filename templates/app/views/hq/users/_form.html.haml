@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = yield :form_title
+  .panel-body
+    = simple_form_for([:hq, @user]) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name
+        = f.input :surname
+        = f.input :email
+        = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
+
+      .form-actions
+        - text = @user.id.present? ? t('btn.update') : t('btn.add')
+        = f.button :submit, text, class: 'btn btn-primary'
+        = link_to t('cancel'), hq_users_path, class: 'btn'

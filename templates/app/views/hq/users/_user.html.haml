@@ -1,0 +1,20 @@
+%tr{class: user.is_active ? 'active' : 'passive'}
+  %td= user.id
+  %td= user.full_name
+  %td= mail_to user.email, user.email
+  %td=l user.current_sign_in_at if user.current_sign_in_at.present?
+  %td=l user.last_sign_in_at if user.last_sign_in_at.present?
+  %td= user.is_active ? t('view.active') : t('view.passive')
+  %td.action
+    = link_to([:hq, user], class: 'btn btn-success', data: { toggle: :tooltip}, title: t('tooltips.zoom')) do
+      %i.icon-zoom-in
+    = link_to(edit_hq_user_path(user) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+      %i.icon-edit
+    = link_to([:hq, user], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+      %i.icon-trash
+    - if user.is_active
+      = link_to(toggle_is_active_hq_user_path(user), class: 'btn btn-danger', method: :post, data: { toggle: :tooltip}, title: t('view.make_passive') ) do
+        %i.icon-ban-circle
+    - else
+      = link_to(toggle_is_active_hq_user_path(user), class: 'btn btn-info', method: :post, data: { toggle: :tooltip}, title: t('view.make_active')) do
+        %i.icon-check

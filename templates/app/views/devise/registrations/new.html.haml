@@ -13,12 +13,12 @@
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :email, required: true
-    = f.input :password, required: true
-    = f.input :password_confirmation, required: true
-    = f.input :name, required: true
-    = f.input :surname, required: true
-    = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select'), required: true
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation
+    = f.input :name
+    = f.input :surname
+    = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
   .form-actions
     = f.button :submit, t('devise.registration.new.button'), class: 'btn btn-primary'
 = render 'devise/shared/links'
