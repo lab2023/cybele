@@ -30,6 +30,7 @@ tr:
     sign_out: Çıkış yap
     edit_login_info: Giriş bilgilerini güncelle
     home_page: Anasayfa
+    admin_portal: Yönetici Portalı
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?
