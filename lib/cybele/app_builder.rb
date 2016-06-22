@@ -403,10 +403,10 @@ set :project_domain, "staging.example.com"'
       template 'app/views/layouts/hq/application.html.haml.erb', 'app/views/layouts/hq/application.html.haml', force: true
       remove_file 'app/views/layouts/login.html.haml', force: true
       template 'app/views/layouts/hq/login.html.haml.erb', 'app/views/layouts/hq/login.html.haml', force: true
-      remove_file 'app/views/layouts/partials/_navbar.html.haml', force: true
-      template 'app/views/layouts/partials/_navbar.html.haml.erb', 'app/views/layouts/partials/_navbar.html.haml', force: true
-      remove_file 'app/views/layouts/partials/_dock.html.haml', force: true
-      template 'app/views/layouts/partials/_dock.html.haml.erb', 'app/views/layouts/partials/_dock.html.haml', force: true
+      remove_file 'app/views/layouts/hq/partials/_navbar.html.haml', force: true
+      template 'app/views/layouts/hq/partials/_navbar.html.haml.erb', 'app/views/layouts/hq/partials/_navbar.html.haml', force: true
+      remove_file 'app/views/layouts/hq/partials/_dock.html.haml', force: true
+      template 'app/views/layouts/hq/partials/_dock.html.haml.erb', 'app/views/layouts/hq/partials/_dock.html.haml', force: true
 
       # Mailer layout files
       template 'app/views/layouts/mailer.html.haml.erb', 'app/views/layouts/mailer.html.haml', force: true
