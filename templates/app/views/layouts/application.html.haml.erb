@@ -1,11 +1,11 @@
 !!!
 %html{lang: I18n.locale}
   %head
-    %title= content_for?(:title) ? "#{yield(:title)} - <%= app_name %>" : '<%= app_name %>'
+    %title= content_for?(:title) ? "#{yield(:title)} - <%= app_name.capitalize %>" : '<%= app_name.capitalize %>'
     %meta(http-equiv="content-type" content="text/html" charset="utf-8")
     %meta(http-equiv="x-ua-compatible" content="ie=edge,chrome=1")
-    %meta(name="description" content="<%= app_name %>")
-    %meta(name="author" content="<%= app_name %>")
+    %meta(name="description" content="<%= app_name.capitalize %>")
+    %meta(name="author" content="<%= app_name.capitalize %>")
     %link(rel="shortcut icon" href="/images/favicon.png")
 
     = stylesheet_link_tag 'application', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
@@ -21,10 +21,10 @@
           %li.active
             %a{href: "/"}
               = t('navbar.home_page')
-        %h3.muted= link_to "<%= app_name %>", root_path
+        %h3.muted= link_to "<%= app_name.capitalize %>", root_path
       %hr/
       = render partial: 'layouts/partials/messages'
       = yield
       %hr/
       .footer
-        %p <%= app_name %> Copyright &copy; #{Time.zone.now.year} Tüm Hakları Saklıdır.
+        %p <%= app_name.capitalize %> Copyright &copy; #{Time.zone.now.year} Tüm Hakları Saklıdır.
