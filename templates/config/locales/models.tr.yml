@@ -7,6 +7,10 @@ tr:
       users: Kullanıcılar
       admin: Yönetici
       admins: Yöneticiler
+      country: Ülke
+      countries: Ülkeler
+      city: Şehir
+      cities: Şehirler
     attributes:
       user:
         id: ID
@@ -53,5 +57,17 @@ tr:
         name: İsim
         surname: Soyisim
         is_active: Aktif mi?
+        created_at: Oluşturulma tarihi
+        updated_at: Güncellenme tarihi
+      country:
+        id: Id
+        name: Ülke ismi
+        created_at: Oluşturulma tarihi
+        updated_at: Güncellenme tarihi
+      city:
+        id: Id
+        name: Şehir ismi
+        country: Ülke
+        country_id: Ülke
         created_at: Oluşturulma tarihi
         updated_at: Güncellenme tarihi
