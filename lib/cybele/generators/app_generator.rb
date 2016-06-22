@@ -250,6 +250,11 @@ module Cybele
       build :copy_files
     end
 
+    def setup_git
+      say 'Initialize git'
+      build :git_commands
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...'
     end

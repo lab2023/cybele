@@ -400,6 +400,10 @@ set :project_domain, "staging.example.com"'
       template 'app/views/layouts/hq/partials/_navbar.html.haml.erb', 'app/views/layouts/hq/partials/_navbar.html.haml', force: true
       remove_file 'app/views/layouts/hq/partials/_dock.haml', force: true
       template 'app/views/layouts/hq/partials/_dock.html.haml.erb', 'app/views/layouts/hq/partials/_dock.html.haml', force: true
+      remove_file 'app/views/layouts/hq/partials/_footer.haml', force: true
+      template 'app/views/layouts/hq/partials/_footer.html.haml.erb', 'app/views/layouts/hq/partials/_footer.html.haml', force: true
+      remove_file 'app/views/layouts/hq/partials/_trackers.haml', force: true
+      template 'app/views/layouts/hq/partials/_trackers.html.haml.erb', 'app/views/layouts/hq/partials/_trackers.html.haml', force: true
 
       # Mailer layout files
       template 'app/views/layouts/mailer.html.haml.erb', 'app/views/layouts/mailer.html.haml', force: true
@@ -412,11 +416,15 @@ set :project_domain, "staging.example.com"'
       # Hq assets files
       remove_file 'app/assets/javascripts/hq/application.js.coffee', force: true
       remove_file 'app/assets/stylesheets/hq/application.css.sass', force: true
-      copy_file 'app/assets/javascripts/hq/application.js.coffee'
-      copy_file 'app/assets/stylesheets/hq/application.css.sass'
+      copy_file 'app/assets/javascripts/hq/application.js.coffee','app/assets/javascripts/hq/application.js.coffee'
+      copy_file 'app/assets/stylesheets/hq/application.css.sass', 'app/assets/stylesheets/hq/application.css.sass'
 
       # Partial files in layouts folder
-      directory 'app/views/layouts/partials', 'app/views/layouts/partials'
+      remove_file 'app/views/layouts/partials/_footer.haml', force: true
+      template 'app/views/layouts/partials/_footer.html.haml.erb', 'app/views/layouts/partials/_footer.html.haml', force: true
+      remove_file 'app/views/layouts/partials/_trackers.haml', force: true
+      template 'app/views/layouts/partials/_trackers.html.haml.erb', 'app/views/layouts/partials/_trackers.html.haml', force: true
+      template 'app/views/layouts/partials/_warnings.html.haml.erb', 'app/views/layouts/partials/_warnings.html.haml', force: true
 
       # Root folder files
       copy_file 'cybele_version.txt', 'VERSION.txt'
@@ -445,7 +453,11 @@ set :project_domain, "staging.example.com"'
       # Controllers
       remove_file 'app/controllers/application_controller.rb', force: true
       template 'app/controllers/application_controller.rb.erb', 'app/controllers/application_controller.rb', force: true
+    end
 
+    def git_commands
+      git :init
+      git add: '.'
     end
 
     private
