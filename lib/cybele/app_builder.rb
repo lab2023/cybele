@@ -467,6 +467,21 @@ set :project_domain, "staging.example.com"'
     def create_location_models
       generate 'model Country name:string'
       generate 'model City name:string country:references'
+      generate 'audited:install'
+    end
+
+    def create_jobs_helper_lib
+      create_file "lib/jobs_helper.rb", <<-CODE
+# Get system admin
+def system_admin
+  admin = Admin.where(email: "system@#{app_name}.com").first
+  if admin.nil?
+    password = Devise.friendly_token.first(12)
+    admin = Admin.create(name: 'System', surname: 'System', email: "system@#{app_name}.com", password: password, password_confirmation: password)
+  end
+  admin
+end
+      CODE
     end
 
     private

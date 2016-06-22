@@ -255,6 +255,11 @@ module Cybele
       build :copy_files
     end
 
+    def setup_helpers
+      say 'Create helpers'
+      build :create_jobs_helper_lib
+    end
+
     def setup_git
       say 'Initialize git'
       build :git_commands

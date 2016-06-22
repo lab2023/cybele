@@ -1,5 +1,8 @@
 class City < ActiveRecord::Base
 
+  # Helpers
+  audited
+
   # Relations
   belongs_to :country
 

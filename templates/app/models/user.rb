@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
+  # Helpers
+  audited except: [:password]
+
   # Validations
   validates_presence_of :name, :email, :surname
   validates :email, uniqueness: true

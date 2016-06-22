@@ -1,5 +1,10 @@
 ---
-tr:  
+tr:
+  actions:
+    update: Güncelleme
+    create: Oluşturma
+    destroy: Silme
+    delete: Silme
   btn:
     back: Geri
     update: Güncelle

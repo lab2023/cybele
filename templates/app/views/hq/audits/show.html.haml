@@ -1,0 +1,5 @@
+- @audit.audited_changes.keys.each do |key|
+  %p
+    %strong
+      = t("activerecord.attributes.#{@audit.try(:auditable_type).try(:underscore)}.#{key}") if @audit.try(:auditable_type).present?
+    = @audit.audited_changes[key]

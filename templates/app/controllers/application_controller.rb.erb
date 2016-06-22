@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  before_filter :set_audit_user
   protect_from_forgery with: :exception
 
   def server_error(exception)
@@ -35,6 +36,13 @@ class ApplicationController < ActionController::Base
     else
       super # Use the default one
     end
+  end
+
+  private
+
+  def set_audit_user
+    # Set audit current user
+    Audited.current_user_method = :current_user
   end
 
 end
