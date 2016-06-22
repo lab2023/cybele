@@ -457,7 +457,6 @@ set :project_domain, "staging.example.com"'
 
     def git_commands
       git :init
-      git add: '.'
     end
 
     private
