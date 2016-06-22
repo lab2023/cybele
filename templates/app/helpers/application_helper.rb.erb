@@ -1,0 +1,15 @@
+module ApplicationHelper
+
+  def get_countries
+    Country.all.map{|c| ["#{c.name}", c.id] }
+  end
+
+  def get_cities
+    City.all.map{|c| ["#{c.name}", c.id] }
+  end
+
+  def get_active_users
+    User.active.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
+  end
+
+end

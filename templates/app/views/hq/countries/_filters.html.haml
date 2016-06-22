@@ -1,0 +1,14 @@
+.table-header.row
+  .col-lg-3
+    - if params[:q].present? && (params[:q][:name_cont].present?)
+      = link_to hq_countries_path, class: 'btn btn-info' do
+        = t('view.all')
+        %span.badge= Country.count
+  .col-lg-9
+    = search_form_for [:hq, @search], builder: SimpleForm::FormBuilder, html: {class: 'form-inline', data: { turboform: true }} do |f|
+      .pull-right
+        .input-group
+          = f.input_field :name_cont, label: false, class: 'form-control', placeholder: t('view.quick_search')
+          %span.input-group-btn
+            = button_tag( class: 'btn btn-primary') do
+              %i.icon-search

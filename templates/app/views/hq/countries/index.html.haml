@@ -1,0 +1,18 @@
+- content_for :toolbar do
+  = link_to new_hq_country_path, class: 'btn btn-default' do
+    %i.icon-plus
+    = t('action_button.new', resource_name: Country.model_name.human)
+
+.panel.panel-default.grid
+  .panel-heading
+    %i.fa.fa-table.icon-large
+    = t('tt.index', resource_name: Country.model_name.human)
+    .panel-tools
+      .btn-group
+        %a.btn{href: hq_countries_path, data: {toggle: 'toolbar-tooltip'}, title: t('view.reload')}
+          %i.fa.fa-refresh
+      .badge= @countries.total_entries
+  =blankable(@countries)
+  .panel-footer
+    .pagination.pagination-sm
+      = will_paginate @countries, renderer: BootstrapPagination::Rails, bootstrap: 3

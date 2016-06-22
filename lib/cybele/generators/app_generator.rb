@@ -245,6 +245,11 @@ module Cybele
       build :setup_namespaces
     end
 
+    def setup_models
+      say 'Setup models'
+      build :create_location_models
+    end
+
     def copy_all_files
       say 'Copy files'
       build :copy_files

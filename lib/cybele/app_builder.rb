@@ -360,7 +360,6 @@ set :project_domain, "staging.example.com"'
     end
 
     def add_seeds
-      say 'Add seeds'
       inject_into_file 'db/seeds.rb', after: "#   Mayor.create(name: 'Emanuel', city: cities.first)\n" do <<-RUBY
     Admin.create(email: "admin@#{app_name}.com", name: 'Admin', surname: 'Admin', password: '12341234', password_confirmation: '12341234')
       RUBY
@@ -383,7 +382,13 @@ set :project_domain, "staging.example.com"'
       # Model files
       remove_file 'app/models/admin.rb', force: true
       remove_file 'app/models/user.rb', force: true
+      remove_file 'app/models/city.rb', force: true
+      remove_file 'app/models/country.rb', force: true
       directory 'app/models', 'app/models'
+
+      # Helper files
+      remove_file 'app/helpers/application_helper.rb', force: true
+      template 'app/helpers/application_helper.rb.erb', 'app/helpers/application_helper.rb'
 
       # Route file
       say 'Restore routes.rb'
@@ -459,6 +464,11 @@ set :project_domain, "staging.example.com"'
       git :init
     end
 
+    def create_location_models
+      generate 'model Country name:string'
+      generate 'model City name:string country:references'
+    end
+
     private
 
     def action_mailer_host(rails_env)
@@ -470,7 +480,7 @@ set :project_domain, "staging.example.com"'
     end
 
     def configure_environment(rails_env, config)
-      inject_into_file("config/environments/#{rails_env}.rb", "\n\n  #{config}", before: "\nend")
+      inject_into_file("config/environments/#{rails_env}.rb", "\n #{config}", before: "\nend")
     end
 
     def generate_devise_strong_parameters(model_name)

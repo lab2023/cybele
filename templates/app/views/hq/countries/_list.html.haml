@@ -1,0 +1,12 @@
+.panel-body.filters
+  = render 'filters'
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :id, t('activerecord.attributes.country.id'))
+      %th= sort_link(@search, :name, t('activerecord.attributes.country.name'))
+      %th= sort_link(@search, :created_at, t('activerecord.attributes.country.created_at'))
+      %th.actions
+        = t('view.actions')
+  %tbody
+    = render @countries
