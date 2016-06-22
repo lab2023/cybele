@@ -4,6 +4,10 @@
     <%= app_name %>
     = t('navbar.admin_portal')
   %ul.nav.navbar-nav.pull-right
+    %li
+      = link_to hq_audits_path do
+        %i.icon-cog
+        = t('activerecord.models.audits')
     %li.dropdown.user
       %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
         %i.icon-user

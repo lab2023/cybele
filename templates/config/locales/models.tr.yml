@@ -11,6 +11,8 @@ tr:
       countries: Ülkeler
       city: Şehir
       cities: Şehirler
+      audit: İşlem Geçmişi
+      audits: İşlem Geçmişleri
     attributes:
       user:
         id: ID
@@ -71,3 +73,15 @@ tr:
         country_id: Ülke
         created_at: Oluşturulma tarihi
         updated_at: Güncellenme tarihi
+      audits:
+        id: ID
+        user_type: İşlemi yapan kullanıcı tipi
+        user: İşlemi yapan kullanıcı
+        type: Tip
+        type_id: Tip ID
+        action: İşlem
+        user_id: İşlemi yapan
+        auditable_type: İşlem yapılan
+        auditable_id: İşlem yapılan ID
+        action: İşlem Türü
+        created_at: Oluşturulma tarihi
