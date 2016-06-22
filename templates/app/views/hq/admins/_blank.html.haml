@@ -1,0 +1,9 @@
+- if params[:q].present?
+  = render 'list'
+- else
+  .alert.alert-warning
+    %p
+      %h3= t('view.there_is_no_data', resource: Admin.model_name.human.downcase)
+      = link_to new_hq_admin_path, class: 'btn btn-primary' do
+        = t('action_button.new', resource_name: Admin.model_name.human)
+        = t('btn.add')

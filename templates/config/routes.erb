@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
   concern :activeable do
-    post :toggle_active, on: :member
+    post :toggle_is_active, on: :member
   end
 
   # Admins

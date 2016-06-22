@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = yield :form_title
+  .panel-body
+    = simple_form_for([:hq, @admin]) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name
+        = f.input :surname
+        = f.input :email
+
+      .form-actions
+        - text = @admin.id.present? ? t('btn.update') : t('btn.add')
+        = f.button :submit, text, class: 'btn btn-primary'
+        = link_to t('cancel'), hq_admins_path, class: 'btn'
