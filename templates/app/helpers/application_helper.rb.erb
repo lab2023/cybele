@@ -13,11 +13,11 @@ module ApplicationHelper
   end
 
   def get_users
-    User.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
+    User.all.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
   end
 
   def get_admins
-    Admin.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
+    Admin.all.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
   end
 
   def get_audit_users
