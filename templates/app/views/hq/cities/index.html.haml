@@ -1,0 +1,18 @@
+- content_for :toolbar do
+  = link_to new_hq_city_path, class: 'btn btn-default' do
+    %i.icon-plus
+    = t('action_button.new', resource_name: City.model_name.human)
+
+.panel.panel-default.grid
+  .panel-heading
+    %i.icon-table.icon-large
+    = t('tt.index', resource_name: City.model_name.human)
+    .panel-tools
+      .btn-group
+        %a.btn{href: hq_cities_path, data: {toggle: 'toolbar-tooltip'}, title: t('view.reload')}
+          %i.icon-refresh
+      .badge= @cities.count
+  =blankable(@cities)
+  .panel-footer
+    .pagination.pagination-sm
+      = will_paginate @cities, renderer: BootstrapPagination::Rails, bootstrap: 3

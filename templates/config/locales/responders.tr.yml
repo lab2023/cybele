@@ -1,7 +1,10 @@
-# encoding: utf-8
+---
 tr:
   flash:
     actions:
+      toggle_is_active:
+        passive: '%{resource_name} başarıyla pasif edildi.'
+        active: '%{resource_name} başarıyla aktif edildi.'
       create:
         notice: '%{resource_name} başarı ile yaratıldı.'
       update:

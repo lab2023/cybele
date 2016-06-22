@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = yield :form_title
+  .panel-body
+    = simple_form_for([:hq, @city]) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name
+        = f.input :country_id, collection: get_countries, include_blank: t('view.select'), input_html: { class: 'chosen-select' }
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to t('cancel'), hq_cities_path, class: 'btn'

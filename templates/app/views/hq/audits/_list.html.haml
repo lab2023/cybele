@@ -1,0 +1,37 @@
+.panel-heading
+  %i.fa.fa-list
+  = t('activerecord.models.audits')
+  .panel-tools
+    .btn-group
+      %a.btn{href: hq_audits_path, data: {toggle: 'toolbar-tooltip'}, title: t('view.reload')}
+        %i.icon-refresh
+    .badge= @audits.total_entries
+.panel-body.filters
+  = render 'filters'
+.table-responsive
+  %table.table
+    %thead
+      %tr
+        %th= sort_link(@search, :id, t('activerecord.attributes.audits.id'))
+        %th= sort_link(@search, :user_type, t('activerecord.attributes.audits.user_type'))
+        %th= sort_link(@search, :user_id, t('activerecord.attributes.audits.user'))
+        %th= sort_link(@search, :auditable_type, t('activerecord.attributes.audits.auditable_type'))
+        %th= sort_link(@search, :auditable_id, t('activerecord.attributes.audits.auditable_id'))
+        %th= sort_link(@search, :auditable_id, t('activerecord.attributes.audits.created_at'))
+        %th= sort_link(@search, :action, t('activerecord.attributes.audits.action'))
+        %th.actions
+          = t('view.actions')
+    %tbody
+      - @audits.each do |audit|
+        %tr
+          %td= audit.id
+          %td
+            = t("activerecord.models.#{audit.try(:user_type).try(:downcase)}") if audit.try(:user_type).present?
+          %td= "#{audit.try(:user).try(:full_name)} - #{audit.try(:user).try(:email)}"
+          %td= t("activerecord.models.#{audit.try(:auditable_type).try(:underscore)}") if audit.try(:auditable_type).present?
+          %td= audit.auditable_id
+          %td= l audit.created_at
+          %td= t("actions.#{audit.action}")
+          %td.actions
+            = link_to(hq_audit_path(id: audit), class: 'btn btn-success btn-xs', 'data-toggle' => 'tooltip', title: t('tooltips.zoom')) do
+              %i.fa.fa-eye

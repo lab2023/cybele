@@ -1,0 +1,13 @@
+%h2= t('email.hello')
+
+%p= t('email.user.login_info.first_info')
+%p= t('email.user.login_info.second_info')
+%p
+  %strong= "#{t('activerecord.attributes.user.email')} :"
+  = @user.email
+%p
+  %strong=  "#{t('activerecord.attributes.user.password')} :"
+  = @password
+%p= link_to t('email.user.login_info.btn_login'), new_user_session_url
+
+%p= t('email.user.login_info.last_info', link: new_user_session_url ).html_safe

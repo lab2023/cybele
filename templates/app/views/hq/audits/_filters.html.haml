@@ -1,0 +1,32 @@
+.table-header.row
+  .col-lg-2
+    - if params[:q].present?
+      = link_to hq_audits_path, class: 'btn btn-info' do
+        = t('view.all')
+        %span.badge= Audit.count
+  .col-lg-10
+    .pull-right
+      = search_form_for @search, builder: SimpleForm::FormBuilder, html: {class: 'form-inline', data: { turboform: true }}, url: hq_audits_path do |f|
+        .form-group
+          = f.label :user_type, label: t('activerecord.attributes.audits.user_type')
+          = f.input_field :user_type_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.user'), collection: get_audit_users, include_blank: t('view.select')
+
+          - if params[:q].present? and params[:q][:user_type_eq].present?
+            - type = params[:q][:user_type_eq]
+            - if type == 'Admin'
+              = f.label :user, label: t('activerecord.attributes.audits.user')
+              = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.user'), collection: get_admins, include_blank: t('view.select')
+            - elsif type == 'User'
+              = f.label :user, label: t('activerecord.attributes.audits.user')
+              = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.user'), collection: get_users, include_blank: t('view.select')
+
+          = f.label :auditable_type, label: t('activerecord.attributes.audits.auditable_type')
+          = f.input_field :auditable_type_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.auditable_type'), collection: @auditable_types.map{|a| [t("activerecord.models.#{a.auditable_type.try(:underscore)}"), a.auditable_type]}, include_blank: t('view.select')
+
+          = f.label :user, label: t('activerecord.attributes.audits.auditable_id')
+          = f.input_field :auditable_id_eq, label: false, class: 'form-control', placeholder: t('activerecord.attributes.audits.auditable_id')
+
+          = f.label :user, label: t('activerecord.attributes.audits.action')
+          = f.input_field :action_eq, label: false, class: 'form-control chosen-select', placeholder: t('activerecord.attributes.audits.action'), collection: %w(create update destroy).map{|a| [t("actions.#{a}"), a]}, include_blank: t('view.select')
+          = button_tag( class: 'btn btn-success btn-group') do
+            %i.fa.fa-search

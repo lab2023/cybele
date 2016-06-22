@@ -1,0 +1,13 @@
+- content_for :toolbar do
+  = link_to edit_hq_city_path(@city ), class: 'btn btn-default' do
+    %i.icon-pencil
+    = t('action_button.edit')
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = t('tt.show', resource_name: City.model_name.human)
+  .panel-body
+    = show_for @city do |s|
+      = s.attribute :id
+      = s.attribute :name
+      = s.attribute :name, in: :country

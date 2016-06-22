@@ -1,0 +1,14 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = yield :form_title
+  .panel-body
+    = simple_form_for([:hq, @country]) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to t('cancel'), hq_countries_path, class: 'btn'

@@ -1,0 +1,20 @@
+- content_for :toolbar do
+  = link_to edit_hq_user_path(@user ), class: 'btn btn-default' do
+    %i.icon-pencil
+    = t('action_button.edit')
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = t('tt.show', resource_name: User.model_name.human)
+  .panel-body
+    = show_for @user do |s|
+      = s.attribute :name
+      = s.attribute :surname
+      = s.attribute :email do
+        = mail_to @user.email, @user.email
+      = s.attribute :is_active
+      = s.attribute :time_zone
+      = s.attribute :current_sign_in_at
+      = s.attribute :last_sign_in_at
+      = s.attribute :created_at
+      = s.attribute :updated_at

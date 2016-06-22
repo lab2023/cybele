@@ -1,0 +1,11 @@
+%tr
+  %td= country.id
+  %td= country.name
+  %td=l country.created_at
+  %td.action
+    = link_to([:hq, country], class: 'btn btn-success', toogle: 'tooltip', title: t('tooltips.zoom')) do
+      %i.icon-eye-open
+    = link_to(edit_hq_country_path(country) , class: 'btn btn-info') do
+      %i.icon-edit
+    = link_to([:hq, country], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure') }) do
+      %i.icon-trash

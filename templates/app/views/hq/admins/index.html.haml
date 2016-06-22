@@ -1,0 +1,18 @@
+- content_for :toolbar do
+  = link_to new_hq_admin_path, class: 'btn btn-default' do
+    %i.icon-plus
+    = t('action_button.new', resource_name: Admin.model_name.human)
+
+.panel.panel-default.grid
+  .panel-heading
+    %i.fa.fa-table.icon-large
+    = t('activerecord.models.admins')
+    .panel-tools
+      .btn-group
+        %a.btn{href: hq_admins_path, data: {toggle: 'toolbar-tooltip'}, title: t('view.reload')}
+          %i.fa.fa-refresh
+      .badge= @admins.total_entries
+  =blankable(@admins)
+  .panel-footer
+    .pagination.pagination-sm
+      = will_paginate @admins, renderer: BootstrapPagination::Rails, bootstrap: 3

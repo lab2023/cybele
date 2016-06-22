@@ -1,0 +1,36 @@
+%i#toggle.icon-align-justify.icon-large
+
+%ul#dock
+
+  %li.launcher
+    %i.icon-dashboard
+    =link_to  t('dock.dashboard'), hq_dashboard_index_path
+
+  %li.launcher.dropdown.hover
+    %i.fa.fa-list
+    %a{href: '#'}= t('dock.system_users')
+    %ul.dropdown-menu
+      %li
+        = link_to hq_admins_path do
+          %i.fa.fa-users
+          = t('activerecord.models.admins')
+      %li
+        = link_to hq_users_path do
+          %i.fa.fa-users
+          = t('activerecord.models.users')
+
+  %br/
+  %li.launcher.dropdown.hover
+    %i.fa.fa-list
+    %a{href: '#'}= t('dock.system_datas')
+    %ul.dropdown-menu
+      %li
+        =link_to hq_countries_path do
+          %i.fa.fa-database
+          = t('activerecord.models.countries')
+      %li
+        =link_to hq_cities_path do
+          %i.fa.fa-database
+          = t('activerecord.models.cities')
+
+#beaker{data: {toggle: 'tooltip'}, title: 'Made by lab2023'}

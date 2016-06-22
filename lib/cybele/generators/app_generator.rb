@@ -28,6 +28,7 @@ module Cybele
       invoke :install_gems
       invoke :gitignore_files_and_folders
       invoke :setup_bootstrap_sass_coffee
+      invoke :copy_vendor_files
       invoke :setup_rails_config
       invoke :setup_staging_environment
       invoke :configure_mail_setting
@@ -41,8 +42,7 @@ module Cybele
       invoke :setup_devise
       invoke :setup_time_zone
       invoke :setup_bullet_config
-      invoke :setup_hq_namespace
-      invoke :setup_profiles 
+      invoke :setup_namespaces
     end
 
     def customize_gemfile
@@ -115,6 +115,11 @@ module Cybele
       build :convert_application_css_to_sass
     end
 
+    def copy_vendor_files
+      say 'Copy vendor assets'
+      build :copy_vendor_assets
+    end
+
     def configure_mail_setting
       say 'Setup mail settings'
       build :configure_action_mailer
@@ -157,7 +162,7 @@ module Cybele
       say 'Generate devise'
       build :generate_devise_settings
       say 'Adding devise user model'
-      build :generate_devise_model, 'user'
+      build :generate_devise_user
       build :generate_devise_views
     end
 
@@ -166,24 +171,10 @@ module Cybele
       build :generate_welcome_page
     end
 
-    def setup_hq_namespace
-      say 'Generate hq namespace'
-      build :generate_hq_namespace
-    end
-
     def setup_time_zone
       say 'Setup time zone'
       build :set_time_zone
     end
-
-    def setup_profiles
-      say 'Setup profiles'
-      build :create_profile
-    end
-
-    # def run_bundle
-    #   say 'Run bundle'
-    # end
 
     def setup_hierapolis
       say 'Setup hierapolis'
@@ -249,9 +240,29 @@ module Cybele
       build :add_seeds
     end
 
-    def copy_locales
-      say 'Copy config/locale files'
-      build :copy_locales 
+    def setup_namespaces
+      say 'Generate namespaces'
+      build :setup_namespaces
+    end
+
+    def setup_models
+      say 'Setup models'
+      build :create_location_models
+    end
+
+    def copy_all_files
+      say 'Copy files'
+      build :copy_files
+    end
+
+    def setup_helpers
+      say 'Create helpers'
+      build :create_jobs_helper_lib
+    end
+
+    def setup_git
+      say 'Initialize git'
+      build :git_commands
     end
 
     def goodbye

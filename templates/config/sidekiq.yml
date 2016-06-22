@@ -1,0 +1,13 @@
+production:
+  :concurrency: 25
+staging:
+  :concurrency: 3
+development:
+  :concurrency: 25
+  :logfile: ./log/sidekiq.log
+  :pidfile: ./tmp/pids/sidekiq.pid
+  :daemon: true
+:queues:
+  - default
+  - mailers
+  - [high_priority, 2]

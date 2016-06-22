@@ -9,16 +9,27 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
 
 @import "compass"
 @import "bootstrap"
+@import 'nprogress'
+@import "bootstrap-chosen"
+@import "jquery.datetimepicker"
+@import "nprogress"
+@import 'trix'
 
-body
-  padding-top: 20px
-  padding-bottom: 40px
+
+/* Trix editor
+trix-editor
+  min-height: 100px !important
+  @extend .form-control
+  height: 100% !important
+  margin: 0px 0px 12px 0px
 
 /* Custom container
+
+body
+  padding-bottom: 40px
 
 .container-narrow
   margin: 0 auto

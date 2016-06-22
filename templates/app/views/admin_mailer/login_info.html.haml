@@ -1,0 +1,13 @@
+%h2= t('email.hello')
+
+%p= t('email.admin.login_info.first_info')
+%p= "#{t('email.admin.login_info.second_info')} :"
+%p
+  %strong= "#{t('activerecord.attributes.admin.email')} :"
+  = @admin.email
+%p
+  %strong=  "#{t('activerecord.attributes.admin.password')} :"
+  = @password
+%p= link_to t('email.admin.login_info.btn_login'), new_admin_session_url
+
+%p= t('email.admin.login_info.last_info', link: new_admin_session_url ).html_safe

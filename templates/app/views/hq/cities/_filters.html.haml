@@ -1,0 +1,15 @@
+.table-header.row
+  .col-lg-3
+    - if params[:q].present? && (params[:q][:name_cont].present?)
+      = link_to hq_cities_path, class: 'btn btn-info' do
+        = t('view.all')
+        %span.badge= City.count
+  .col-lg-9
+    = search_form_for [:hq, @search], builder: SimpleForm::FormBuilder, html: {class: 'form-inline', data: { turboform: true }} do |f|
+      .pull-right
+        = f.input :country_id_eq, label: false, collection: get_countries, include_blank: "#{t('activerecord.attributes.city.country')} #{t('view.select').downcase}", input_html: { class: 'chosen-select form-control'}
+        .input-group
+          = f.input_field :name_cont, label: false, class: 'form-control', placeholder: t('view.quick_search')
+          %span.input-group-btn
+            = button_tag( class: 'btn btn-primary') do
+              %i.icon-search

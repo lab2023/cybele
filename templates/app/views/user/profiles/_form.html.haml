@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = yield :form_title
+  .panel-body
+    = simple_form_for([:user, @profile], url: user_profile_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name
+        = f.input :surname
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to t('cancel'), user_profile_path, class: 'btn'

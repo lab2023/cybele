@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-body
+    .row
+      .col-lg-12
+        .alert.alert-info
+          = t('view.hello', user: current_admin.email)
+        = link_to t('navbar.sign_out'), destroy_admin_session_path, method: :delete, class: 'btn btn-danger'
+        = link_to t('navbar.edit_login_info'), edit_admin_registration_path, class: 'btn btn-primary'
