@@ -106,12 +106,12 @@ module Cybele
       copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
 
       config = <<-RUBY
-Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
+  Mail.register_interceptor RecipientInterceptor.new(Settings.email.sandbox, subject_prefix: '[STAGING]')
       RUBY
       configure_environment 'staging', config
 
       config = <<-RUBY
-config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
       address: Settings.smtp.address,
@@ -128,7 +128,7 @@ config.action_mailer.delivery_method = :smtp
 
     def configure_bullet
       config = <<-RUBY
-config.after_initialize do
+  config.after_initialize do
     Bullet.enable = true
     Bullet.alert = true
     Bullet.bullet_logger = true
@@ -186,7 +186,9 @@ AWS:
     end
 
     def  setup_letter_opener
-      config = 'config.action_mailer.delivery_method = :letter_opener'
+      config = <<-RUBY
+  config.action_mailer.delivery_method = :letter_opener
+      RUBY
       configure_environment 'development', config
     end
 
@@ -227,7 +229,7 @@ require 'capybara/rspec'
 
     def add_exception_notification_to_environments
       config = <<-CODE
-config.middleware.use ExceptionNotification::Rack, 
+  config.middleware.use ExceptionNotification::Rack,
   email: {
     email_prefix: "[#{app_name}]",
     sender_address: %{"Notifier" <notifier@#{app_name}.com>},
@@ -488,14 +490,14 @@ end
 
     def action_mailer_host(rails_env)
       config = <<-RUBY
-# Mail Setting
+  # Mail Setting
   config.action_mailer.default_url_options = { host: ENV['ROOT_PATH'] }
       RUBY
       configure_environment(rails_env, config)
     end
 
     def configure_environment(rails_env, config)
-      inject_into_file("config/environments/#{rails_env}.rb", "\n #{config}", before: "\nend")
+      inject_into_file("config/environments/#{rails_env}.rb", "\n#{config}", before: "\nend")
     end
 
     def generate_devise_strong_parameters(model_name)
