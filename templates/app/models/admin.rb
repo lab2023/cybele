@@ -26,10 +26,6 @@ class Admin < ActiveRecord::Base
     super && self.is_active
   end
 
-  def inactive_message
-    I18n.t('devise.session.deactivated')
-  end
-
   def full_name
     "#{self.name} #{self.surname}"
   end

@@ -28,6 +28,7 @@ tr:
     signin: Giriş Yap
     sign_out: Çıkış yap
     edit_login_info: Giriş bilgilerini güncelle
+    home_page: Anasayfa
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?
@@ -44,6 +45,7 @@ tr:
     profile: Profil
     system_users: Sistem kullanıcıları
     system_datas: Sistem verileri
+  staging_warning: "<strong> Dikkat! </strong> Lütfen yapacağınız işlemlerde dikkatli olunuz. Şuan da <strong> test </strong> sunucusu üzerinde işlem yapıyorsunuz."
   internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
   not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
   devise:

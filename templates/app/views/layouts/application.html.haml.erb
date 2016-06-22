@@ -1,22 +1,29 @@
 !!!
-%html
+%html{lang: I18n.locale}
   %head
-    %title <%= app_name %>
+    %title= content_for?(:title) ? "#{yield(:title)} - <%= app_name %>" : '<%= app_name %>'
+    %meta(http-equiv="content-type" content="text/html" charset="utf-8")
+    %meta(http-equiv="x-ua-compatible" content="ie=edge,chrome=1")
+    %meta(name="description" content="<%= app_name %>")
+    %meta(name="author" content="<%= app_name %>")
+    %link(rel="shortcut icon" href="/images/favicon.png")
+
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
+    = yield :head
   %body
+    = render 'layouts/partials/warnings'
     .container-narrow
       .masthead
         %ul.nav.nav-pills.pull-right
           %li.active
-            %a{:href => "/"} Home
-          %li
-            %a{:href => "/rails/routes"} Routes
+            %a{href: "/"}
+              = t('navbar.home_page')
         %h3.muted= link_to "<%= app_name %>", root_path
       %hr/
       = render partial: 'layouts/partials/messages'
       = yield
       %hr/
       .footer
-        %p © Company 2013
+        %p <%= app_name %> Copyright &copy; #{Time.zone.now.year} Tüm Hakları Saklıdır.

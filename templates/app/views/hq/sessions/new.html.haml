@@ -6,4 +6,6 @@
     = f.input :password, required: false
     = f.input :remember_me, as: :boolean,label: t('devise.session.remember_me') if devise_mapping.rememberable?
   .form-actions
-    = f.button :submit, t('devise.session.button')
+    = f.button :submit, t('devise.session.button'), class: 'btn btn-primary'
+%br/
+= render 'devise/shared/links'
