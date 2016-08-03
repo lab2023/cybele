@@ -8,8 +8,7 @@ namespace :dev do
     Rake::Task['db:drop'].execute
     Rake::Task['db:create'].execute
     Rake::Task['db:migrate'].execute
-    Rake::Task['dev:initial'].execute
-    Rake::Task['db:seed'].execute
+    Rake::Task['dev:seed'].execute
   end
 
   desc 'seed test data'
