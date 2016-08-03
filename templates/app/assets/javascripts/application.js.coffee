@@ -19,6 +19,8 @@
 #= require jquery.datetimepicker
 #= require nprogress
 #= require trix
+#= require rails.validations
+#= require rails.validations.simple_form
 
 class @App
 
