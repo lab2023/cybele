@@ -3,7 +3,7 @@
     %i.icon-edit.icon-large
     = yield :form_title
   .panel-body
-    = simple_form_for([:hq, @user]) do |f|
+    = simple_form_for([:hq, @user], validate: true) do |f|
       = f.error_notification
 
       .form-inputs

@@ -336,9 +336,12 @@ set :project_domain, "staging.example.com"'
       end
     end
 
-    # Nor using  
     def setup_recipes 
       generate 'recipes_matic:install'
+    end
+
+    def setup_client_side_validations
+      generate 'client_side_validations:install'
     end
 
     def update_secret_token
@@ -440,6 +443,7 @@ set :project_domain, "staging.example.com"'
       template '.env.production.erb', '.env.production', force: true
       template '.env.staging.erb', '.env.staging', force: true
       template 'env.sample.erb', 'env.sample', force: true
+      template 'Procfile.erb', 'Procfile', force: true
 
       # Library files
       directory 'lib/tasks', 'lib/tasks'

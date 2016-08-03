@@ -34,8 +34,10 @@ tr:
     signin: Giriş Yap
     sign_out: Çıkış yap
     edit_login_info: Giriş bilgilerini güncelle
+    edit_profile_info: Profil bilgilerini güncelle
     home_page: Anasayfa
     admin_portal: Yönetici Portalı
+    profile: Profil
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?

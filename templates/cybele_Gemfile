@@ -65,7 +65,6 @@ group :development, :test do
   gem 'katip'
   gem 'capybara'
   gem 'bullet'
-  gem 'sinatra', require: nil
   gem 'quiet_assets'
 end
 
@@ -86,6 +85,7 @@ gem 'puma', '~> 3.4.0'
 gem 'sidekiq', '~> 4.1'
 gem 'devise-async', '~> 0.10.1'
 gem 'sidekiq-cron', '~> 0.4.2'
+gem 'sinatra', require: nil
 
 # Comand line execution
 gem 'cocaine', '~> 0.5.8'

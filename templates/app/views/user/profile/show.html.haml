@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = t('tt.show', resource_name: User.model_name.human)
+  .panel-body
+    = show_for @profile do |s|
+      = s.attribute :name
+      = s.attribute :surname
+      = s.attribute :email
+      = s.attribute :created_at
+      = s.attribute :updated_at
+  .panel-footer
+    = link_to root_path, class: 'btn-link' do
+      %i.fa.fa-arrow-left
+      = t('btn.back')
+    = link_to edit_user_profile_path(@profile), class: 'btn btn-link' do
+      %i.fa.fa-pencil
+      = t('navbar.edit_profile_info')

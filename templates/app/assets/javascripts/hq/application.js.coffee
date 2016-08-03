@@ -20,7 +20,8 @@
 #= require trix
 #= require jquery.datetimepicker
 #= require nprogress
-
+#= require rails.validations
+#= require rails.validations.simple_form
 
 class @App
   @tooltip = ->

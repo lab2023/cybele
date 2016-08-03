@@ -1,11 +1,11 @@
-class User::ProfilesController < User::UserApplicationController
+class User::ProfileController < User::UserApplicationController
 
   before_action :set_profile, only: [:show, :edit, :update]
   add_breadcrumb I18n.t('dock.profile'), :user_profile_path
 
   def show
     add_breadcrumb @profile.full_name, user_profile_path
-    respond_with([:user, @profile])
+    respond_with(:user, @profile)
   end
 
   def edit
@@ -14,7 +14,7 @@ class User::ProfilesController < User::UserApplicationController
 
   def update
     @profile.update(profile_params)
-    respond_with([:user, @profile], location: user_profile_path)
+    respond_with(:user, @profile, location: user_profile_path)
   end
 
   private

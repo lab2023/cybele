@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  before_filter :set_audit_user
+  before_filter :set_audit_user, :set_user_time_zone
   protect_from_forgery with: :exception
 
   def server_error(exception)
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_user_time_zone
-    Time.zone = current_user.time_zone if student_signed_in? && current_student.time_zone.present?
+    Time.zone = current_user.time_zone if user_signed_in? && current_user.time_zone.present?
   end
 
   def devise_parameter_sanitizer

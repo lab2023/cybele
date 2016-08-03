@@ -205,6 +205,11 @@ module Cybele
       build :setup_recipes
     end
 
+    def setup_client_side_validations
+      say 'Setup client_side_validations'
+      build :setup_client_side_validations
+    end
+
     def setup_secret_token
       say 'Setup secret token'
       build :update_secret_token
