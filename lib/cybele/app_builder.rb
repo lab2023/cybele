@@ -443,6 +443,7 @@ set :project_domain, "staging.example.com"'
       template '.env.production.erb', '.env.production', force: true
       template '.env.staging.erb', '.env.staging', force: true
       template 'env.sample.erb', 'env.sample', force: true
+      template 'Procfile.erb', 'Procfile', force: true
 
       # Library files
       directory 'lib/tasks', 'lib/tasks'
