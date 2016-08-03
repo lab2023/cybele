@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   namespace :user do
     root to: 'dashboard#index'
     resources :dashboard, only: [:index]
-    resources :profile, only: [:index, :edit, :update]
+    resources :profile, only: [:show, :edit, :update]
   end
 
   # Common pages

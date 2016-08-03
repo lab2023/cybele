@@ -1,4 +1,4 @@
-class User::ProfilesController < User::UserApplicationController
+class User::ProfileController < User::UserApplicationController
 
   before_action :set_profile, only: [:show, :edit, :update]
   add_breadcrumb I18n.t('dock.profile'), :user_profile_path

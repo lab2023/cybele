@@ -16,13 +16,39 @@
   %body
     = render 'layouts/partials/warnings'
     .container-narrow
-      .masthead
-        %ul.nav.nav-pills.pull-right
-          %li.active
-            %a{href: "/"}
-              = t('navbar.home_page')
-        %h3.muted= link_to "<%= app_name.capitalize %>", root_path
-      %hr/
+      %nav.navbar.navbar-default
+        .container-fluid
+          / Brand and toggle get grouped for better mobile display
+          .navbar-header
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to root_path, class: 'navbar-brand' do
+              %i.fa.fa-home
+              = "<%= app_name.capitalize %>"
+          / Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            %ul.nav.navbar-nav.navbar-right
+              - if user_signed_in?
+                %li
+                  = link_to destroy_user_session_path, method: :delete do
+                    %i.fa.fa-sign-out
+                    = t('navbar.sign_out')
+                %li
+                  = link_to user_profile_path(current_user) do
+                    %i.fa.fa-user
+                    = t('navbar.profile')
+              - else
+                %li
+                  = link_to new_user_session_path do
+                    %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                    = t('navbar.signin')
+                %li
+                  = link_to new_user_registration_path do
+                    %i.fa.fa-user{"aria-hidden" => "true"}
+                    = t('navbar.signup')
       = render partial: 'layouts/partials/messages'
       = yield
       %hr/
