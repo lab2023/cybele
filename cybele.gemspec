@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.version        = Cybele::VERSION
   spec.authors        = %w[lab2023]
   spec.email          = %w[info@lab2023.com]
-  spec.description    = %q{Rails 4.x template with responder, simple form, haml, exception notification, etc etc ...}
-  spec.summary        = %q{Rails 4.x template with responder, simple form, haml, exception notification, etc etc ...}
+  spec.description    = %q{Rails 5.x App template}
+  spec.summary        = %q{Rails 5.x template with responder, simple form, haml, exception notification, etc etc ...}
   spec.homepage       = 'https://github.com/kebab-project/cybele'
   spec.license        = 'MIT'
   spec.date           = Date.today.strftime('%Y-%m-%d')
@@ -21,9 +21,9 @@ Gem::Specification.new do |spec|
   spec.test_files     = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths  = %w[lib]
 
-  spec.add_development_dependency 'rake'
   spec.add_dependency 'bundler', '~> 1.5'
-  spec.add_dependency 'rails', Cybele::RAILS_VERSION
+  spec.add_runtime_dependency 'rails', '~> 5.0', Cybele::RAILS_VERSION
+  spec.add_development_dependency 'rspec', '~> 3.5'
 
   spec.extra_rdoc_files = %w[README.md MIT-LICENSE]
 end

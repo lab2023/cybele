@@ -1,6 +1,0 @@
----
-tr:
-  show_for:
-    blank: "Belirtilmedi"
-    "yes": "Evet"
-    "no": "Hayır"
