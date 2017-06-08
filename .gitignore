@@ -4,3 +4,4 @@
 .bundle/
 *.bundle/install.log
 Gemfile.lock
+tmp/
