@@ -5,6 +5,9 @@ module Cybele
   
   class AppGenerator < Rails::Generators::AppGenerator
 
+    class_option :use_heroku, type: :boolean, aliases: '-H', default: false,
+                 desc: 'Use Heroku for deploy'
+
     def customize_gemfile
       build :replace_gemfile
       bundle_command 'install --binstubs=bin/stubs'
@@ -23,6 +26,11 @@ module Cybele
     def remove_files_we_dont_need
       say 'Remove files we don\'t need'
       build :remove_readme_rdoc
+    end
+
+    def setup_simple_form
+      say 'Options'
+      say options.inspect
     end
 
     def goodbye
