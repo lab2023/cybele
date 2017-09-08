@@ -26,7 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'bundler', '~> 1.5'
   spec.add_runtime_dependency 'rails', '~> 5.0', Cybele::RAILS_VERSION
   spec.add_development_dependency 'rspec', '~> 3.5'
-  spec.add_runtime_dependency 'cocaine', '~> 0.5.8'
 
   spec.extra_rdoc_files = %w[README.md MIT-LICENSE]
 end
