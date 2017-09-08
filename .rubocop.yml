@@ -5,7 +5,6 @@ AllCops:
   Excludes:
     - bin/**
     - spec/**/**/**/**
-    - ./spec/support/CybeleTestHelpers.rb
     - test/**/**/**/**
     - tmp/**/**/**/**
 
