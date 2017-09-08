@@ -45,6 +45,16 @@ module CybeleTestHelpers
     end
   end
 
+  def drop_dummy_database
+    if File.exist?(project_path)
+      Dir.chdir(project_path) do
+        Bundler.with_clean_env do
+          `rake db:drop`
+        end
+      end
+    end
+  end
+
   private
 
   def tmp_path

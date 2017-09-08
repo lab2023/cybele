@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Build cybele gem
+echo "Build cybele gem"
+./bin/build_gem
+
+# Remove dummy_app
+echo "Remove dummy_app"
+rm -rf tmp/dummy_app
+
+# Create dummy_app
+echo "Create dummy_app"
+cybele tmp/dummy_app --skip-create-database

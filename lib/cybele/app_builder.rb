@@ -1,14 +1,9 @@
+# frozen_string_literal: true
+
 module Cybele
-
   class AppBuilder < Rails::AppBuilder
-
     def readme
       template 'README.md.erb', 'README.md', force: true
-    end
-
-    def replace_gemfile
-      remove_file 'Gemfile', force: true
-      copy_file 'cybele_Gemfile', 'Gemfile'
     end
 
     def remove_readme_rdoc
@@ -23,5 +18,14 @@ module Cybele
       copy_file 'ruby-version', '.ruby-version'
     end
 
+    def use_postgres_config_template
+      template 'postgresql_database.yml.erb',
+               'config/database.yml',
+               force: true
+    end
+
+    def create_database
+      bundle_command 'exec rake db:create db:migrate'
+    end
   end
 end
