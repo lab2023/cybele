@@ -21,8 +21,16 @@ module CybeleTestHelpers
     end
   end
 
+  def content(file_path)
+    IO.read("#{project_path}/#{file_path}")
+  end
+
   def project_path
     @project_path ||= Pathname.new("#{tmp_path}/#{APP_NAME}")
+  end
+
+  def app_name
+    APP_NAME
   end
 
   def cybele_help_command

@@ -21,6 +21,12 @@ Style/AccessorMethodName:
   Exclude:
     - 'lib/cybele/generators/app_generator.rb'
 
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+  Exclude:
+    - 'lib/cybele/app_builder.rb'
+
 Metrics/BlockLength:
   CountComments: false
   Max: 40

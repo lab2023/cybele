@@ -1,0 +1,18 @@
+# 00 * * * *    -> Daily at midnight
+# */5 * * * *   -> Every 5 minutes
+# */20 * * * *  -> Every 20 minutes
+# 0 0 * * *     -> Every day at midnight
+# 1 0 * * *     -> Every day at 00:01
+# 20 0 * * *    -> Every day at 00:20
+# 30 0 * * *    -> Every day at 00:30
+# 40 0 * * *    -> Every day at 00:40
+# 0 1 * * *    -> Every day at 01:00
+# 0 8 * * *    -> Every day at 08:00
+
+# You should enable sidekiq_schedule.yml in config/initializers/sidekiq.rb
+
+# Every day at 00:01
+#example:
+#  cron: '0 1 * * * UTC'
+#  class: ExampleJob
+#  queue: high_priority

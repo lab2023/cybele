@@ -28,6 +28,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip create database. Default: don\'t skip'
+    class_option :skip_sidekiq,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip sidekiq integration. Default: don\'t skip'
 
     def setup_editor_config
       say 'Add .editor_config file'
@@ -47,7 +53,20 @@ module Cybele
     def setup_database
       say 'Setting up database'
       build :use_postgres_config_template if options[:database] == 'postgresql'
-      build :create_database unless options[:skip_create_database]
+      if options[:skip_create_database]
+        say 'don\'t create database'
+      else
+        build :create_database
+      end
+    end
+
+    def setup_sidekiq
+      say 'Setting up sidekiq'
+      if options[:skip_sidekiq]
+        say 'don\'t use sidekiq'
+      else
+        build :use_sidekiq
+      end
     end
 
     def goodbye

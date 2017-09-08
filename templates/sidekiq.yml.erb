@@ -1,0 +1,19 @@
+:concurrency: 25
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:queues:
+  - default
+  - mailers
+  - low_priority
+  - [high_priority, 2]
+staging:
+  :concurrency: 10
+  :logfile: ./log/staging.log
+production:
+  :logfile: ./log/production.log
+development:
+  :concurrency: 10
+  :logfile: ./log/development.log
+test:
+  :pidfile: ./tmp/pids/sidekiq_test.pid
+  :logfile: ./log/sidekiq_test.log
