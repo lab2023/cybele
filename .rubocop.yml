@@ -1,0 +1,34 @@
+AllCops:
+  Includes:
+    - 'Rakefile'
+    - 'Gemfile'
+  Excludes:
+    - bin/**
+    - spec/**/**/**/**
+    - ./spec/support/CybeleTestHelpers.rb
+    - test/**/**/**/**
+    - tmp/**/**/**/**
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 90
+  Exclude:
+    - 'Gemfile'
+    - 'cybele.gemspec'
+
+Style/AccessorMethodName:
+  Exclude:
+    - 'lib/cybele/generators/app_generator.rb'
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 40
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: when_needed
