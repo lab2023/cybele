@@ -3,9 +3,6 @@ AllCops:
     - 'Rakefile'
     - 'Gemfile'
   Excludes:
-    - bin/**
-    - spec/**/**/**/**
-    - test/**/**/**/**
     - tmp/**/**/**/**
 
 Documentation:
@@ -24,8 +21,6 @@ Style/AccessorMethodName:
 Metrics/MethodLength:
   CountComments: false
   Max: 15
-  Exclude:
-    - 'lib/cybele/app_builder.rb'
 
 Metrics/BlockLength:
   CountComments: false
@@ -34,6 +29,8 @@ Metrics/BlockLength:
     - 'Rakefile'
     - '**/*.rake'
     - 'spec/**/*.rb'
+    - 'lib/cybele/app_builder.rb'
+    - 'lib/cybele/generators/app_generator.rb'
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: when_needed
