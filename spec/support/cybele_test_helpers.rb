@@ -67,6 +67,10 @@ module CybeleTestHelpers
     end
   end
 
+  def usage_file
+    @usage_path ||= File.join(root_path, 'USAGE')
+  end
+
   private
 
   def tmp_path

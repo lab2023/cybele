@@ -34,3 +34,7 @@ Metrics/BlockLength:
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: when_needed
+
+Style/IndentHeredoc:
+  Exclude:
+    - 'spec/features/cli_help_spec.rb'

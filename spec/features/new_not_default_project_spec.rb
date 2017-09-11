@@ -38,4 +38,23 @@ RSpec.describe 'Create new project without default configuration' do
     expect(routes_file).not_to match("^require 'sidekiq/web'")
     expect(routes_file).not_to match("^require 'sidekiq/cron/web'")
   end
+
+  it 'uses responders' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'responders'/)
+
+    lib_file = content('lib/application_responder.rb')
+    expect(lib_file).to match(/^class ApplicationResponder/)
+
+    controller_file = content('app/controllers/application_controller.rb')
+    expect(controller_file).to match("^require 'application_responder'")
+    expect(controller_file).to match('self.responder = ApplicationResponder')
+    expect(controller_file).to match('respond_to :html, :js, :json')
+
+    locale_file = content('config/locales/responders.en.yml')
+    expect(locale_file).not_to match('# alert:')
+    expect(locale_file).to match('create:')
+    expect(locale_file).to match('update:')
+    expect(locale_file).to match('destroy:')
+  end
 end

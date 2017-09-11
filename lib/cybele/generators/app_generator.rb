@@ -98,6 +98,10 @@ module Cybele
       say 'Congratulations! That\'s all...', :green
     end
 
+    def self.banner
+      "cybele #{arguments.map(&:usage).join(' ')} [options]"
+    end
+
     protected
 
     def get_builder_class

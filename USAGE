@@ -1,0 +1,12 @@
+Description:
+    Cybele is a Rails template with Lab2023 standard
+    defaults.
+
+    For full details check our GitHub project:
+        https://github.com/kebab-project/cybele
+
+Example:
+    cybele ~/Workplace/blog
+
+    This generates a Rails installation in ~/Workplace/blog configured
+    with our preferred defaults.
