@@ -8,6 +8,11 @@ echo "Build cybele gem"
 echo "Remove dummy_app"
 rm -rf tmp/dummy_app
 
+# Disable spring
+export DISABLE_SPRING=1
+# or you can run this command
+# ps ax | grep spring | grep dummy_app | cut -f1 -d' ' | xargs kill
+
 # Create dummy_app
 echo "Create dummy_app"
 cybele tmp/dummy_app --skip-create-database

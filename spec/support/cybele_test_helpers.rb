@@ -1,5 +1,6 @@
-module CybeleTestHelpers
+# frozen_string_literal: true
 
+module CybeleTestHelpers
   APP_NAME = 'dummy_app'
 
   def remove_project_directory
@@ -15,6 +16,7 @@ module CybeleTestHelpers
     Dir.chdir(tmp_path) do
       Bundler.with_clean_env do
         `
+        export DISABLE_SPRING=1;
         #{cybele_bin} #{APP_NAME} #{arguments}
         `
       end
@@ -22,7 +24,11 @@ module CybeleTestHelpers
   end
 
   def content(file_path)
-    IO.read("#{project_path}/#{file_path}")
+    IO.read(file_project_path(file_path))
+  end
+
+  def file_project_path(file_path)
+    "#{project_path}/#{file_path}"
   end
 
   def project_path
@@ -44,23 +50,25 @@ module CybeleTestHelpers
   end
 
   def setup_app_dependencies
-    if File.exist?(project_path)
-      Dir.chdir(project_path) do
-        Bundler.with_clean_env do
-          `bundle check || bundle install`
-        end
+    return unless File.exist?(project_path)
+    Dir.chdir(project_path) do
+      Bundler.with_clean_env do
+        `bundle check || bundle install`
       end
     end
   end
 
   def drop_dummy_database
-    if File.exist?(project_path)
-      Dir.chdir(project_path) do
-        Bundler.with_clean_env do
-          `rake db:drop`
-        end
+    return unless File.exist?(project_path)
+    Dir.chdir(project_path) do
+      Bundler.with_clean_env do
+        `rake db:drop`
       end
     end
+  end
+
+  def usage_file
+    @usage_path ||= File.join(root_path, 'USAGE')
   end
 
   private

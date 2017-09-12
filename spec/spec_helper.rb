@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'bundler/setup'
 
 Bundler.require(:default, :test)
 
-require (Pathname.new(__FILE__).dirname + '../lib/cybele').expand_path
+source_path = (Pathname.new(__FILE__).dirname + '../lib/cybele').expand_path
+require source_path
 
 Dir['./spec/support/**/*.rb'].each { |file| require file }
 
@@ -21,5 +24,4 @@ RSpec.configure do |config|
 
   # Use the specified formatter
   config.formatter = :documentation
-
 end
