@@ -51,6 +51,49 @@ module Cybele
       run 'cp config/environments/production.rb config/environments/staging.rb'
     end
 
+    def generate_config
+      generate 'config:install'
+      run 'cp config/settings/development.yml config/settings/staging.yml'
+    end
+
+    def fill_settings_yml
+      config = <<-YML
+email:
+  sandbox: sandbox@#{app_name}.com
+  noreply: no-reply@#{app_name}.com
+  admin: admin@#{app_name}.com
+
+basic_auth:
+  username: #{app_name}
+  password: #{app_name}
+
+sidekiq:
+  username: #{app_name}
+  password: #{app_name}
+
+root_path: <%= ENV['ROOT_PATH'] %>
+
+smtp:
+  address: <%= ENV['SMTP_ADDRESS'] %>
+  port: 587
+  enable_starttls_auto: true
+  user_name: <%= ENV['SMTP_USER_NAME'] %>
+  password: <%= ENV['SMTP_PASSWORD'] %>
+  authentication: 'plain'
+
+AWS:
+  S3:
+    bucket: <%= ENV['S3_BUCKET_NAME'] %>
+    access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+    secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+    aws_url: http://<%= ENV['AWS_RAW_URL'] %>
+    aws_raw_url: <%= ENV['AWS_RAW_URL'] %>
+    # Bucket region should be ireland for this setting
+    end_point: s3-eu-west-1.amazonaws.com
+      YML
+      prepend_file 'config/settings.yml', config
+    end
+
     private
 
     def configure_environment(rails_env, config)

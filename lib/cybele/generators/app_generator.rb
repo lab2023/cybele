@@ -101,13 +101,23 @@ module Cybele
     end
 
     def setup_staging_environment
-      say 'Setting up the staging environment'
+      say 'Setting up the staging environment', :green
       build :setup_staging_environment
     end
 
     def configure_recipient_interceptor
       say 'Setup mail settings with recipient_interceptor in staging', :green
       build :configure_recipient_interceptor
+    end
+
+    def setup_config
+      say 'Generate config', :green
+      build :generate_config
+    end
+
+    def fill_settings_yml
+      say 'Fill to settings.yml file', :green
+      build :fill_settings_yml
     end
 
     def goodbye
