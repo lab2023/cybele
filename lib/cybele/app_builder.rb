@@ -94,6 +94,10 @@ AWS:
       prepend_file 'config/settings.yml', config
     end
 
+    def generate_rollbar
+      generate 'rollbar'
+    end
+
     private
 
     def configure_environment(rails_env, config)

@@ -120,6 +120,11 @@ module Cybele
       build :fill_settings_yml
     end
 
+    def setup_rollbar
+      say 'Generate rollbar', :green
+      build :generate_rollbar
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end
