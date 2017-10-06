@@ -57,6 +57,12 @@ module Cybele
       @options.freeze
     end
 
+    def customize_gemfile
+      say 'Customize gem file', :green
+      build :add_gems
+      bundle_command 'install --binstubs=bin/stubs'
+    end
+
     def setup_editor_config
       say 'Add .editor_config file', :green
       build :add_editor_config
@@ -92,6 +98,16 @@ module Cybele
     def setup_responders
       say 'Setting up responders', :green
       build :configure_responders
+    end
+
+    def setup_staging_environment
+      say 'Setting up the staging environment'
+      build :setup_staging_environment
+    end
+
+    def configure_recipient_interceptor
+      say 'Setup mail settings with recipient_interceptor in staging', :green
+      build :configure_recipient_interceptor
     end
 
     def goodbye
