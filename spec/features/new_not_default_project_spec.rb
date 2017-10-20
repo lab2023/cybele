@@ -104,4 +104,9 @@ RSpec.describe 'Create new project without default configuration' do
     simple_form_tr_yml_file = content('config/locales/simple_form.tr.yml')
     expect(simple_form_tr_yml_file).to match('simple_form')
   end
+
+  it 'make control secret_key_base for staging' do
+    secret_file = content('config/secrets.yml')
+    expect(secret_file).to match('staging')
+  end
 end

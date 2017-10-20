@@ -103,6 +103,15 @@ AWS:
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
     end
 
+    def add_staging_secret_key_to_secrets_yml
+      config = <<-YML
+
+staging:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+      YML
+      append_file 'config/secrets.yml', config
+    end
+
     # Copy files
     def copy_files
       # Locale files

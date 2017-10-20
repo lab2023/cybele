@@ -76,6 +76,7 @@ module Cybele
       invoke :fill_settings_yml
       invoke :setup_rollbar
       invoke :setup_simple_form
+      invoke :add_staging_secret_key
     end
 
     def customize_gemfile
@@ -149,6 +150,11 @@ module Cybele
     def setup_simple_form
       say 'Generate simple form files', :green
       build :generate_simple_form
+    end
+
+    def add_staging_secret_key
+      say 'Add staging secret key to secret.yml file', :green
+      build :add_staging_secret_key_to_secrets_yml
     end
 
     def goodbye
