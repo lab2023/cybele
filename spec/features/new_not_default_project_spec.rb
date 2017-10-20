@@ -57,4 +57,51 @@ RSpec.describe 'Create new project without default configuration' do
     expect(locale_file).to match('update:')
     expect(locale_file).to match('destroy:')
   end
+
+  it 'uses rollbar' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'rollbar'/)
+
+    config_file = content('config/initializers/rollbar.rb')
+    expect(config_file).to match(/^Rollbar.configure/)
+  end
+
+  it 'uses config and staging file' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'config'/)
+
+    config_development_file = content('config/environments/development.rb')
+    expect(config_development_file).to match(/^Rails.application.configure/)
+
+    config_staging_file = content('config/environments/staging.rb')
+    expect(config_staging_file).to match(/^Rails.application.configure/)
+
+    config_production_file = content('config/environments/production.rb')
+    expect(config_production_file).to match(/^Rails.application.configure/)
+
+    config_test_file = content('config/environments/test.rb')
+    expect(config_test_file).to match(/^Rails.application.configure/)
+  end
+
+  it 'uses recipient_interceptor' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'recipient_interceptor'/)
+
+    config_staging_file = content('config/environments/staging.rb')
+    expect(config_staging_file).to match('RecipientInterceptor.new')
+  end
+
+  it 'uses simple_form' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'simple_form'/)
+
+    config_simple_form_file = content('config/initializers/simple_form.rb')
+    expect(config_simple_form_file).to match(/^SimpleForm.setup/)
+
+    simple_form_bootstrap_file = content('config/initializers/simple_form_bootstrap.rb')
+    expect(simple_form_bootstrap_file).to match(/^SimpleForm.setup/)
+
+    simple_form_tr_yml_file = content('config/locales/simple_form.tr.yml')
+    expect(simple_form_tr_yml_file).to match('simple_form')
+  end
 end

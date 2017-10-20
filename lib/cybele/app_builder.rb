@@ -101,7 +101,6 @@ AWS:
     def generate_simple_form
       generate 'simple_form:install --bootstrap  --force'
       copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
-      copy_file 'config/locales/tr.yml', 'config/locales/tr.yml'
     end
 
     # Copy files
