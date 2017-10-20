@@ -1,0 +1,17 @@
+---
+tr:
+  simple_form:
+    "yes": 'Evet'
+    "no": 'Hayır'
+    required:
+      text: 'zorunlu'
+      mark: '*'
+    error_notification:
+      default_message: "Lütfen aşağıdaki problemleri gözden geçiriniz:"
+    hints:
+      user:
+        new:
+          password: 'En az 8 karakter olmalıdır'
+#    labels:
+#      defaults:
+#        password: 'Password'

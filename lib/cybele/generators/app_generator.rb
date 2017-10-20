@@ -57,6 +57,27 @@ module Cybele
       @options.freeze
     end
 
+    def finish_template
+      invoke :customization
+      super
+    end
+
+    def customization
+      invoke :customize_gemfile
+      invoke :setup_editor_config
+      invoke :setup_ruby_version
+      invoke :remove_files_we_dont_need
+      invoke :setup_database
+      invoke :setup_sidekiq
+      invoke :setup_responders
+      invoke :setup_staging_environment
+      invoke :configure_recipient_interceptor
+      invoke :setup_config
+      invoke :fill_settings_yml
+      invoke :setup_rollbar
+      invoke :setup_simple_form
+    end
+
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
@@ -123,6 +144,11 @@ module Cybele
     def setup_rollbar
       say 'Generate rollbar', :green
       build :generate_rollbar
+    end
+
+    def setup_simple_form
+      say 'Generate simple form files', :green
+      build :generate_simple_form
     end
 
     def goodbye

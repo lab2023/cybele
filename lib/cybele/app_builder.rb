@@ -98,6 +98,20 @@ AWS:
       generate 'rollbar'
     end
 
+    def generate_simple_form
+      generate 'simple_form:install --bootstrap  --force'
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
+      copy_file 'config/locales/tr.yml', 'config/locales/tr.yml'
+    end
+
+    # Copy files
+    def copy_files
+      # Locale files
+      say 'Coping files..'
+      remove_file 'config/locales/simple_form.en.yml', force: true
+      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
+    end
+
     private
 
     def configure_environment(rails_env, config)
