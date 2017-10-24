@@ -20,10 +20,10 @@ Before generating your application, you will need:
 
 First you should install the cybele gem than you can use it for creating new gem.
 
-```ruby
-gem install cybele
-cybele project_name
-```
+    ```ruby
+        gem install cybele
+        cybele project_name
+    ```
 
 When the initialization is completed, there will be some required settings.
 
@@ -31,10 +31,14 @@ When the initialization is completed, there will be some required settings.
 * Set ENV['ROLLBAR_ACCESS_TOKEN'] for Rollbar.
 * If Sidekiq will be use, you must open sidekiq option in config/initializers/rollbar.rb like the following:
     ```ruby 
-    config.use_sidekiq 'queue' => 'default' 
+        config.use_sidekiq 'queue' => 'default' 
     ```
 * If you don't want to use Rollbar in development environment, you can disable for development environment in 
   in config/initializers/rollbar.rb
+* If you want to sign up email notification in staging environment, you can add mails like the following: 
+    ```ruby 
+        [Settings.email.sandbox, 'user1@example.com', 'user2@example.com']
+    ``` 
 * Set default values for is_active, time_zone variable using in User and Admin model migrations db/migrate/*.rb
 * Change username and password in config/settings.yml
 * In public folder run this command ln -s ../VERSION.txt VERSION.txt

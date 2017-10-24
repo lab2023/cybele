@@ -15,4 +15,4 @@ export DISABLE_SPRING=1
 
 # Create dummy_app
 echo "Create dummy_app"
-cybele tmp/dummy_app --skip-create-database
+cybele tmp/dummy_app --no-skip-ask

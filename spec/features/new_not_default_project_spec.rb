@@ -6,7 +6,7 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq')
+    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form')
     setup_app_dependencies
   end
 
@@ -91,18 +91,13 @@ RSpec.describe 'Create new project without default configuration' do
     expect(config_staging_file).to match('RecipientInterceptor.new')
   end
 
-  it 'uses simple_form' do
+  it 'do not use simple_form' do
     gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'simple_form'/)
+    expect(gemfile_file).not_to match(/^gem 'simple_form'/)
 
-    config_simple_form_file = content('config/initializers/simple_form.rb')
-    expect(config_simple_form_file).to match(/^SimpleForm.setup/)
-
-    simple_form_bootstrap_file = content('config/initializers/simple_form_bootstrap.rb')
-    expect(simple_form_bootstrap_file).to match(/^SimpleForm.setup/)
-
-    simple_form_tr_yml_file = content('config/locales/simple_form.tr.yml')
-    expect(simple_form_tr_yml_file).to match('simple_form')
+    expect(File).not_to exist(file_project_path('config/initializers/simple_form.rb'))
+    expect(File).not_to exist(file_project_path('config/initializers/simple_form_bootstrap.rb'))
+    expect(File).not_to exist(file_project_path('config/locales/simple_form.tr.yml'))
   end
 
   it 'make control secret_key_base for staging' do

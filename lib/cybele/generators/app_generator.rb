@@ -5,6 +5,7 @@ require 'rails/generators/rails/app/app_generator'
 
 module Cybele
   class AppGenerator < Rails::Generators::AppGenerator
+
     @options = nil
 
     # Default settings
@@ -42,6 +43,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip sidekiq integration. Default: don\'t skip'
+    class_option :skip_simple_form,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip simple_form integration. Default: don\'t skip'
 
     def initialize(*args)
       super
@@ -54,34 +61,16 @@ module Cybele
       option_with_ask_limited(:database, DATABASES)
       option_with_ask_yes(:skip_create_database)
       option_with_ask_yes(:skip_sidekiq)
+      option_with_ask_yes(:skip_simple_form)
       @options.freeze
-    end
-
-    def finish_template
-      invoke :customization
-      super
-    end
-
-    def customization
-      invoke :customize_gemfile
-      invoke :setup_editor_config
-      invoke :setup_ruby_version
-      invoke :remove_files_we_dont_need
-      invoke :setup_database
-      invoke :setup_sidekiq
-      invoke :setup_responders
-      invoke :setup_staging_environment
-      invoke :configure_recipient_interceptor
-      invoke :setup_config
-      invoke :fill_settings_yml
-      invoke :setup_rollbar
-      invoke :setup_simple_form
-      invoke :add_staging_secret_key
     end
 
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
+      unless @options[:skip_simple_form]
+        build :add_simple_form_gem
+      end
       bundle_command 'install --binstubs=bin/stubs'
     end
 
@@ -148,6 +137,7 @@ module Cybele
     end
 
     def setup_simple_form
+      return if @options[:skip_simple_form]
       say 'Generate simple form files', :green
       build :generate_simple_form
     end
