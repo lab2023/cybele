@@ -3,6 +3,7 @@
 module Cybele
   class AppBuilder < Rails::AppBuilder
     include Cybele::Helpers
+    include Cybele::Helpers::Staging
     include Cybele::Helpers::Sidekiq
     include Cybele::Helpers::Responders
     include Cybele::Helpers::SimpleForm
@@ -24,11 +25,6 @@ module Cybele
       append_file('Gemfile', template_content('Gemfile.erb'))
     end
 
-    def add_simple_form_gem
-      # Add simple_form gems
-      append_file('Gemfile', template_content('simple_form/simple_form_Gemfile.erb'))
-    end
-
     def add_editor_config
       copy_file 'editorconfig', '.editorconfig'
     end
@@ -47,10 +43,6 @@ module Cybele
       bundle_command 'exec rake db:create db:migrate'
     end
 
-    def setup_staging_environment
-      run 'cp config/environments/production.rb config/environments/staging.rb'
-    end
-
     def generate_config
       generate 'config:install'
       run 'cp config/settings/development.yml config/settings/staging.yml'
@@ -59,10 +51,6 @@ module Cybele
 
     def generate_rollbar
       generate 'rollbar'
-    end
-
-    def add_staging_secret_key_to_secrets_yml
-      append_file 'config/secrets.yml', template_content('secrets.yml.erb')
     end
 
     private

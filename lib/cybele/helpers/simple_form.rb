@@ -14,6 +14,11 @@ module Cybele
         # Remove simple_form turkish file
         copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
       end
+
+      def add_simple_form_gem
+        # Add simple_form gem
+        append_file('Gemfile', template_content('simple_form/simple_form_Gemfile.erb'))
+      end
     end
   end
 end
