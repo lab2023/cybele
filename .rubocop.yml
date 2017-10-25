@@ -1,18 +1,22 @@
 AllCops:
-  Includes:
+  Include:
     - 'Rakefile'
     - 'Gemfile'
-  Excludes:
+  Exclude:
     - tmp/**/**/**/**
 
 Documentation:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 90
+  Max: 110
   Exclude:
     - 'Gemfile'
     - 'cybele.gemspec'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'lib/cybele/generators/app_generator.rb'
 
 Style/AccessorMethodName:
   Exclude:
@@ -38,3 +42,7 @@ Style/FrozenStringLiteralComment:
 Style/IndentHeredoc:
   Exclude:
     - 'spec/features/cli_help_spec.rb'
+
+Naming/HeredocDelimiterNaming:
+  Exclude:
+      - 'spec/features/cli_help_spec.rb'

@@ -5,7 +5,6 @@ require 'rails/generators/rails/app/app_generator'
 
 module Cybele
   class AppGenerator < Rails::Generators::AppGenerator
-
     @options = nil
 
     # Default settings
@@ -68,9 +67,7 @@ module Cybele
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
-      unless @options[:skip_simple_form]
-        build :add_simple_form_gem
-      end
+      build :add_simple_form_gem unless @options[:skip_simple_form]
       bundle_command 'install --binstubs=bin/stubs'
     end
 
