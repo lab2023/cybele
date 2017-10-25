@@ -6,7 +6,7 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq')
+    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form')
     setup_app_dependencies
   end
 
@@ -56,5 +56,52 @@ RSpec.describe 'Create new project without default configuration' do
     expect(locale_file).to match('create:')
     expect(locale_file).to match('update:')
     expect(locale_file).to match('destroy:')
+  end
+
+  it 'uses rollbar' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'rollbar'/)
+
+    config_file = content('config/initializers/rollbar.rb')
+    expect(config_file).to match(/^Rollbar.configure/)
+  end
+
+  it 'uses config and staging file' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'config'/)
+
+    config_development_file = content('config/environments/development.rb')
+    expect(config_development_file).to match(/^Rails.application.configure/)
+
+    config_staging_file = content('config/environments/staging.rb')
+    expect(config_staging_file).to match(/^Rails.application.configure/)
+
+    config_production_file = content('config/environments/production.rb')
+    expect(config_production_file).to match(/^Rails.application.configure/)
+
+    config_test_file = content('config/environments/test.rb')
+    expect(config_test_file).to match(/^Rails.application.configure/)
+  end
+
+  it 'uses recipient_interceptor' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'recipient_interceptor'/)
+
+    config_staging_file = content('config/environments/staging.rb')
+    expect(config_staging_file).to match('RecipientInterceptor.new')
+  end
+
+  it 'do not use simple_form' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).not_to match(/^gem 'simple_form'/)
+
+    expect(File).not_to exist(file_project_path('config/initializers/simple_form.rb'))
+    expect(File).not_to exist(file_project_path('config/initializers/simple_form_bootstrap.rb'))
+    expect(File).not_to exist(file_project_path('config/locales/simple_form.tr.yml'))
+  end
+
+  it 'make control secret_key_base for staging' do
+    secret_file = content('config/secrets.yml')
+    expect(secret_file).to match('staging')
   end
 end

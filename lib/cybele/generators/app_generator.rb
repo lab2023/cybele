@@ -42,6 +42,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip sidekiq integration. Default: don\'t skip'
+    class_option :skip_simple_form,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip simple_form integration. Default: don\'t skip'
 
     def initialize(*args)
       super
@@ -54,7 +60,15 @@ module Cybele
       option_with_ask_limited(:database, DATABASES)
       option_with_ask_yes(:skip_create_database)
       option_with_ask_yes(:skip_sidekiq)
+      option_with_ask_yes(:skip_simple_form)
       @options.freeze
+    end
+
+    def customize_gemfile
+      say 'Customize gem file', :green
+      build :add_gems
+      build :add_simple_form_gem unless @options[:skip_simple_form]
+      bundle_command 'install --binstubs=bin/stubs'
     end
 
     def setup_editor_config
@@ -70,6 +84,11 @@ module Cybele
     def remove_files_we_dont_need
       say 'Remove files we don\'t need', :green
       build :remove_readme_rdoc
+    end
+
+    def setup_config
+      say 'Generate config', :green
+      build :generate_config
     end
 
     def setup_database
@@ -92,6 +111,32 @@ module Cybele
     def setup_responders
       say 'Setting up responders', :green
       build :configure_responders
+    end
+
+    def setup_staging_environment
+      say 'Setting up the staging environment', :green
+      build :setup_staging_environment
+    end
+
+    def configure_recipient_interceptor
+      say 'Setup mail settings with recipient_interceptor in staging', :green
+      build :configure_recipient_interceptor
+    end
+
+    def setup_rollbar
+      say 'Generate rollbar', :green
+      build :generate_rollbar
+    end
+
+    def setup_simple_form
+      return if @options[:skip_simple_form]
+      say 'Setting up simple_form', :green
+      build :configure_simple_form
+    end
+
+    def add_staging_secret_key
+      say 'Add staging secret key to secret.yml file', :green
+      build :add_staging_secret_key_to_secrets_yml
     end
 
     def goodbye
