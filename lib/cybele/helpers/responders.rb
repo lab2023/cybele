@@ -5,7 +5,7 @@ module Cybele
     module Responders
       def configure_responders
         # Add gems
-        append_file('Gemfile', template_content('responders_Gemfile.erb'))
+        append_file('Gemfile', template_content('responders/responders_Gemfile.erb'))
         run_bundle
 
         # Add initializers

@@ -26,7 +26,7 @@ module Cybele
 
     def add_simple_form_gem
       # Add simple_form gems
-      append_file('Gemfile', template_content('simple_form_Gemfile.erb'))
+      append_file('Gemfile', template_content('simple_form/simple_form_Gemfile.erb'))
     end
 
     def add_editor_config
