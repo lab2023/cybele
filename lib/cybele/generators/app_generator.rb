@@ -89,6 +89,11 @@ module Cybele
       build :remove_readme_rdoc
     end
 
+    def setup_config
+      say 'Generate config', :green
+      build :generate_config
+    end
+
     def setup_database
       if @options[:database] == 'postgresql'
         say 'Set up postgresql template', :green
@@ -121,16 +126,6 @@ module Cybele
       build :configure_recipient_interceptor
     end
 
-    def setup_config
-      say 'Generate config', :green
-      build :generate_config
-    end
-
-    def fill_settings_yml
-      say 'Fill to settings.yml file', :green
-      build :fill_settings_yml
-    end
-
     def setup_rollbar
       say 'Generate rollbar', :green
       build :generate_rollbar
@@ -138,8 +133,8 @@ module Cybele
 
     def setup_simple_form
       return if @options[:skip_simple_form]
-      say 'Generate simple form files', :green
-      build :generate_simple_form
+      say 'Setting up simple_form', :green
+      build :configure_simple_form
     end
 
     def add_staging_secret_key

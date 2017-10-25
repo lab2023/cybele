@@ -5,6 +5,8 @@ module Cybele
     include Cybele::Helpers
     include Cybele::Helpers::Sidekiq
     include Cybele::Helpers::Responders
+    include Cybele::Helpers::SimpleForm
+    include Cybele::Helpers::RecipientInterceptor
 
     def readme
       template 'README.md.erb',
@@ -45,10 +47,6 @@ module Cybele
       bundle_command 'exec rake db:create db:migrate'
     end
 
-    def configure_recipient_interceptor
-      configure_environment 'staging', template_content('staging.rb')
-    end
-
     def setup_staging_environment
       run 'cp config/environments/production.rb config/environments/staging.rb'
     end
@@ -56,31 +54,15 @@ module Cybele
     def generate_config
       generate 'config:install'
       run 'cp config/settings/development.yml config/settings/staging.yml'
-    end
-
-    def fill_settings_yml
-      prepend_file 'config/settings.yml', template_content('settings.yml.erb')
+      append_file('config/settings.yml', template_content('settings.yml.erb'))
     end
 
     def generate_rollbar
       generate 'rollbar'
     end
 
-    def generate_simple_form
-      bundle_command 'exec rails generate simple_form:install --bootstrap -force'
-      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
-    end
-
     def add_staging_secret_key_to_secrets_yml
       append_file 'config/secrets.yml', template_content('secrets.yml.erb')
-    end
-
-    # Copy files
-    def copy_files
-      # Locale files
-      say 'Coping files..'
-      remove_file 'config/locales/simple_form.en.yml', force: true
-      copy_file 'config/locales/simple_form.tr.yml', 'config/locales/simple_form.tr.yml'
     end
 
     private
