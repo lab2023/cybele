@@ -75,6 +75,17 @@ RSpec.describe 'Create new project with default configuration' do
     expect(config_file).to match(/^Rollbar.configure/)
   end
 
+  it 'uses show_for' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'show_for'/)
+
+    config_show_for_file = content('config/initializers/show_for.rb')
+    expect(config_show_for_file).to match(/^ShowFor.setup/)
+
+    show_for_tr_yml_file = content('config/locales/show_for.tr.yml')
+    expect(show_for_tr_yml_file).to match('show_for')
+  end
+
   it 'uses config and staging file' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'config'/)
