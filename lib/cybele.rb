@@ -10,4 +10,3 @@ require 'cybele/helpers/simple_form'
 require 'cybele/helpers/show_for'
 require 'cybele/helpers/recipient_interceptor'
 require 'cybele/app_builder'
-
