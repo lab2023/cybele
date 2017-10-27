@@ -76,6 +76,46 @@ RSpec.describe 'Create new project with default configuration' do
     expect(config_file).to match(/^Rollbar.configure/)
   end
 
+  it 'uses ransack' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'ransack'/)
+  end
+
+  it 'uses will_paginate' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'will_paginate'/)
+  end
+
+  it 'uses to_xls' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'to_xls'/)
+  end
+
+  it 'uses roo' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'roo'/)
+  end
+
+  it 'uses roo-xls' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'roo-xls'/)
+  end
+
+  it 'uses write_xlsx' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'write_xlsx'/)
+  end
+
+  it 'uses colorize' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'colorize'")
+  end
+
+  it 'uses better_errors' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'better_errors'")
+  end
+
   it 'uses show_for' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'show_for'/)
