@@ -60,7 +60,8 @@ RSpec.describe 'Create new project with default configuration' do
     expect(controller_file).to match('self.responder = ApplicationResponder')
     expect(controller_file).to match('respond_to :html, :js, :json')
 
-    locale_file = content('config/locales/responders.en.yml')
+    expect(File).to exist(file_project_path('config/locales/responders.tr.yml'))
+    locale_file = content('config/locales/responders.tr.yml')
     expect(locale_file).not_to match('# alert:')
     expect(locale_file).to match('create:')
     expect(locale_file).to match('update:')
@@ -109,6 +110,32 @@ RSpec.describe 'Create new project with default configuration' do
 
     config_staging_file = content('config/environments/staging.rb')
     expect(config_staging_file).to match('RecipientInterceptor.new')
+  end
+
+  it 'uses locale_language' do
+    expect(File).to exist(file_project_path('config/locales/tr.yml'))
+    locale_file = content('config/locales/tr.yml')
+    expect(locale_file).to match('phone:')
+    expect(locale_file).to match('date:')
+    expect(locale_file).to match('time:')
+    expect(locale_file).to match('number:')
+
+    expect(File).to exist(file_project_path('config/locales/email.tr.yml'))
+    locale_file = content('config/locales/email.tr.yml')
+    expect(locale_file).to match('email:')
+    expect(locale_file).to match('devise:')
+    expect(locale_file).to match('admin:')
+    expect(locale_file).to match('user:')
+
+    expect(File).to exist(file_project_path('config/locales/models.tr.yml'))
+    locale_file = content('config/locales/models.tr.yml')
+    expect(locale_file).to match('activerecord:')
+    expect(locale_file).to match('models:')
+    expect(locale_file).to match('attributes:')
+
+    expect(File).to exist(file_project_path('config/locales/view.tr.yml'))
+    locale_file = content('config/locales/view.tr.yml')
+    expect(locale_file).to match('actions:')
   end
 
   it 'uses simple_form' do

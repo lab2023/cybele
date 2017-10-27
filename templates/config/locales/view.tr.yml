@@ -1,0 +1,100 @@
+---
+tr:
+  actions:
+    update: Güncelleme
+    create: Oluşturma
+    destroy: Silme
+    delete: Silme
+  btn:
+    back: Geri
+    update: Güncelle
+  view:
+    excel_export: Excel Olarak Çıkart
+    make_passive: Pasif et
+    make_active: Aktif et
+    actions: İşlemler
+    select: Seçiniz
+    active: Aktif
+    passive: Pasif
+    start: Başlangıç
+    end: Bitiş
+    used: Kullanılan
+    not_used: Kullanılmayan
+    cancel: İptal et
+    all: Hepsi
+    reset: Temizle
+    quick_search: Arama yap..
+    reload: Yeniden yükle
+    hello: Merhaba %{user}
+    there_is_no_data: Hiç %{resource} eklenmemiş.
+    create_resource_mail_info: "Yeni bir %{resource} eklediğinizde e-posta adresine giriş bilgileri gönderilecektir."
+  navbar:
+    settings: Ayarlar
+    signup: Kayıt ol
+    signin: Giriş Yap
+    sign_out: Çıkış yap
+    edit_login_info: Giriş bilgilerini güncelle
+    edit_profile_info: Profil bilgilerini güncelle
+    home_page: Anasayfa
+    admin_portal: Yönetici Portalı
+    profile: Profil
+  tooltips:
+    delete: Sil
+    are_you_sure: Devam etmek istedğinize emin misiniz?
+    choose: Seç
+  btn:
+    add: Ekle
+    update: Güncelle
+    back: Geri
+    detail: Detaylar
+    delete: Sil
+  dock:
+    dashboard: Kontrol Paneli
+    dashboard: Kontrol paneli
+    profile: Profil
+    system_users: Sistem kullanıcıları
+    system_datas: Sistem verileri
+  staging_warning: "<strong> Dikkat! </strong> Lütfen yapacağınız işlemlerde dikkatli olunuz. Şuan da <strong> test </strong> sunucusu üzerinde işlem yapıyorsunuz."
+  internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
+  not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
+  devise:
+    session:
+      title: '%{model} Girişi'
+      button: Giriş Yap
+      remember_me: Beni Hatırla
+      deactivated: Üzgünüz, bu hesap pasif hale getirilmiştir.
+    registration:
+      title: '%{model} Giriş Bilgilerini Güncelle'
+      waiting_confirmation: 'E-posta addresi onayı için bekleniyor: %{email}'
+      hint_password: Değiştirmek istemiyorsanız boş bırakınız
+      hint_current_password: Değişiklikleri onaylamak için şuan ki parolanız girmelisiniz
+      new:
+        title: '%{model}  Kayıt İşlemi'
+        character_hint: 'Minimum %{length} karakter'
+        button:  Kayıt Ol
+      edit:
+        title: '%{model} Giriş Bilgilerini Güncelle'
+    shared:
+      links:
+        signup: Kayıt Ol
+        signin: Giriş Yap
+        forgot_password: Parolanızı mı unuttunuz?
+        confirmation_instructions: Onaylama yönergesini mi almadınız?
+        unlock_instructions: Kapatma yönergesini mi almadınız?
+        signin_with: '%{name} ile Giriş Yap'
+        signup_with: '%{name} ile Kayıt Ol'
+    confirmation:
+      new:
+        title: Onaylama Talimatlarını Yeniden Gönder
+      btn:
+        resend: Gönder
+    password:
+      new:
+        title: Parolanızı mı unuttunuz?
+      reset:
+        instructions: Parola sıfırlama talimatlarını gönder
+      edit:
+        title: Parolanızı Değiştiriniz
+        new_password: Yeni parolanız
+        confirmation: Yeni parola doğrulması
+        button: Parolamı Değiştir

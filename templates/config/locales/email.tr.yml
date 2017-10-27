@@ -1,0 +1,28 @@
+---
+tr:
+  email:
+    salut: 'Merhaba %{user};'
+    hello: 'Merhaba;'
+    devise:
+      confirmation_instruction:
+        desc1: E-posta adresinizi aşağıdaki link ile doğrulayabilirsiniz
+        btn_confirm: Hesabımı doğrula
+      reset_password:
+        desc1: Parolanızı değiştirmek için link isteğinde bulundunuz. Aşağıdaki link ile bunu yapabilirsiniz.
+        change: Parolamı değiştir
+        desc2: Eğer bu isteği siz yapmadıysanız bu e-posta'yı yok sayınız.
+        desc3: Parolanız yukarıdaki link'e erişip yeni bir parola oluşturmadığınız sürece değişmeyecektir.
+    admin:
+      login_info:
+        title: Yönetici Giriş Bilgileriniz
+        first_info: Portal üzerinden yönetici hesabınız oluşturuldu. Artık yönetici portalına giriş yapabilirsiniz.
+        second_info: Giriş bilgileriniz şu şekildedir
+        btn_login: Giriş yapmak için tıklayınız
+        last_info: "Eğer 'Giriş Yap' butonunu kullanamıyorsanız giriş linkiniz şu şekildedir <br/> <strong> Link : </strong> %{link} </br> Bu linki kopyalayıp tarayıcınıza yapıştırınız.."
+    user:
+      login_info:
+        title: Kullanıcı Giriş Bilgileriniz
+        first_info: Portal üzerinden kullanıcı hesabınız oluşturuldu. Artık kullanıcı portalına giriş yapabilirsiniz.
+        second_info: Giriş bilgileriniz şu şekildedir
+        btn_login: Giriş yapmak için tıklayınız
+        last_info: "Eğer 'Giriş Yap' butonunu kullanamıyorsanız giriş linkiniz şu şekildedir <br/> <strong> Link : </strong> %{link} </br> Bu linki kopyalayıp tarayıcınıza yapıştırınız.."

@@ -1,0 +1,34 @@
+---
+tr:
+  phone:
+    formats:
+      long: '+99 (999) 999-9999'
+  date:
+    formats:
+      excel:
+        rails: '%d/%m/%Y'
+      datepicker:
+        rails: '%d/%m/%Y'
+        js: 'd/m/Y'
+      default: "%d/%m/%Y"
+      year_month: "%Y-%B"
+      date: '%d %B %Y'
+  time:
+    formats:
+      certificate_completed_at_english: '%m/%d/%Y'
+      certificate_completed_at: '%d/%m/%Y'
+      datetimepicker_rails: '%d/%m/%Y %H:%M'
+      datetimepicker:
+        rails: '%d/%m/%Y %H:%M'
+        js: 'd/m/Y H:i'
+      default: "%d/%m/%Y %H:%M"
+      year_month: "%Y-%B"
+      date: '%d %B %Y'
+      due_at:
+        rails: '%d/%m/%Y %H:%M'
+        js: 'd/m/Y H:i'
+  number:
+    currency:
+      format:
+        format: "%u %n"
+        unit: "₺"

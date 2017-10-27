@@ -19,8 +19,8 @@ module Cybele
                         'require "application_responder"',
                         "require 'application_responder'"
 
-        # Remove comments in locale/responders.yml
-        uncomment_lines 'config/locales/responders.en.yml', /alert:/
+        remove_file 'config/locales/responders.en.yml', force: true
+        copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'
       end
     end
   end
