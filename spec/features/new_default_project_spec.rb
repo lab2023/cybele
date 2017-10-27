@@ -169,4 +169,13 @@ RSpec.describe 'Create new project with default configuration' do
     secret_file = content('config/secrets.yml')
     expect(secret_file).to match('staging')
   end
+
+  it 'uses haml and haml_rails' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'haml'/)
+    expect(gemfile_file).to match(/^gem 'haml-rails'/)
+
+    expect(File).not_to exist(file_project_path('app/views/layouts/application.html.erb'))
+    expect(File).to exist(file_project_path('app/views/layouts/application.html.haml'))
+  end
 end

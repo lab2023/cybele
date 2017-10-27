@@ -6,7 +6,8 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for')
+    # TODO rubocop metrics/linelength problem
+    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for --skip-haml-and-haml-rails')
     setup_app_dependencies
   end
 
@@ -151,5 +152,14 @@ RSpec.describe 'Create new project without default configuration' do
   it 'make control secret_key_base for staging' do
     secret_file = content('config/secrets.yml')
     expect(secret_file).to match('staging')
+  end
+
+  it 'uses haml and haml_rails' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).not_to match(/^gem 'haml'/)
+    expect(gemfile_file).not_to match(/^gem 'haml-rails'/)
+
+    expect(File).to exist(file_project_path('app/views/layouts/application.html.erb'))
+    expect(File).not_to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
 end
