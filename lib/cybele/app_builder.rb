@@ -8,6 +8,7 @@ module Cybele
     include Cybele::Helpers::Responders
     include Cybele::Helpers::SimpleForm
     include Cybele::Helpers::RecipientInterceptor
+    include Cybele::Helpers::ShowFor
 
     def readme
       template 'README.md.erb',

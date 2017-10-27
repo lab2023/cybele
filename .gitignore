@@ -5,3 +5,4 @@
 *.bundle/install.log
 Gemfile.lock
 tmp/
+.DS_Store
