@@ -141,22 +141,10 @@ RSpec.describe 'Create new project without default configuration' do
     expect(locale_file).to match('number:')
 
     expect(File).to exist(file_project_path('config/locales/email.tr.yml'))
-    locale_file = content('config/locales/email.tr.yml')
-    expect(locale_file).to match('email:')
-    expect(locale_file).to match('devise:')
-    expect(locale_file).to match('admin:')
-    expect(locale_file).to match('user:')
-
     expect(File).to exist(file_project_path('config/locales/models.tr.yml'))
-    locale_file = content('config/locales/models.tr.yml')
-    expect(locale_file).to match('activerecord:')
-    expect(locale_file).to match('models:')
-    expect(locale_file).to match('attributes:')
-
     expect(File).to exist(file_project_path('config/locales/view.tr.yml'))
-    locale_file = content('config/locales/view.tr.yml')
-    expect(locale_file).to match('actions:')
   end
+
 
   it 'uses recipient_interceptor' do
     gemfile_file = content('Gemfile')
