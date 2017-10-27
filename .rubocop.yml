@@ -45,4 +45,4 @@ Style/IndentHeredoc:
 
 Naming/HeredocDelimiterNaming:
   Exclude:
-      - 'spec/features/cli_help_spec.rb'
+    - 'spec/features/cli_help_spec.rb'

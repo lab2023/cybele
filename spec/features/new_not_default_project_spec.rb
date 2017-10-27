@@ -6,7 +6,7 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form')
+    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for')
     setup_app_dependencies
   end
 
@@ -104,6 +104,14 @@ RSpec.describe 'Create new project without default configuration' do
   it 'uses better_errors' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match("gem 'better_errors'")
+  end
+
+  it 'do not use show_for' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).not_to match(/^gem 'show_for'/)
+
+    expect(File).not_to exist(file_project_path('config/initializers/show_for.rb'))
+    expect(File).not_to exist(file_project_path('config/locales/show_for.tr.yml'))
   end
 
   it 'uses config and staging file' do

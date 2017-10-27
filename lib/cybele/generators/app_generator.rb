@@ -48,6 +48,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip simple_form integration. Default: don\'t skip'
+    class_option :skip_show_for,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip show_for integration. Default: don\'t skip'
 
     def initialize(*args)
       super
@@ -61,6 +67,7 @@ module Cybele
       option_with_ask_yes(:skip_create_database)
       option_with_ask_yes(:skip_sidekiq)
       option_with_ask_yes(:skip_simple_form)
+      option_with_ask_yes(:skip_show_for)
       @options.freeze
     end
 
@@ -68,6 +75,7 @@ module Cybele
       say 'Customize gem file', :green
       build :add_gems
       build :add_simple_form_gem unless @options[:skip_simple_form]
+      build :add_show_for_gem unless @options[:skip_show_for]
       bundle_command 'install --binstubs=bin/stubs'
     end
 
@@ -126,6 +134,12 @@ module Cybele
     def setup_rollbar
       say 'Generate rollbar', :green
       build :generate_rollbar
+    end
+
+    def setup_show_for
+      return if @options[:skip_show_for]
+      say 'Generate show_for', :green
+      build :configure_show_for
     end
 
     def setup_simple_form
