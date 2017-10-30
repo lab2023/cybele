@@ -9,7 +9,7 @@ module Cybele
     include Cybele::Helpers::SimpleForm
     include Cybele::Helpers::RecipientInterceptor
     include Cybele::Helpers::ShowFor
-    include Cybele::Helpers::HamlAndHamlRails
+    include Cybele::Helpers::Haml
 
     def readme
       template 'README.md.erb',

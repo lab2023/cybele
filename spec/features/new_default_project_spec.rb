@@ -170,7 +170,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(secret_file).to match('staging')
   end
 
-  it 'uses haml and haml_rails' do
+  it 'uses haml' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'haml'/)
     expect(gemfile_file).to match(/^gem 'haml-rails'/)

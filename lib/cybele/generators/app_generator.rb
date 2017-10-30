@@ -54,7 +54,7 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip show_for integration. Default: don\'t skip'
-    class_option :skip_haml_and_haml_rails,
+    class_option :skip_haml,
                  type: :boolean,
                  aliases: nil,
                  default: false,
@@ -74,7 +74,7 @@ module Cybele
       option_with_ask_yes(:skip_sidekiq)
       option_with_ask_yes(:skip_simple_form)
       option_with_ask_yes(:skip_show_for)
-      option_with_ask_yes(:skip_haml_and_haml_rails)
+      option_with_ask_yes(:skip_haml)
       @options.freeze
     end
 
@@ -83,7 +83,7 @@ module Cybele
       build :add_gems
       build :add_simple_form_gem unless @options[:skip_simple_form]
       build :add_show_for_gem unless @options[:skip_show_for]
-      build :add_haml_and_haml_rails_gems unless @options[:skip_haml_and_haml_rails]
+      build :add_haml_gems unless @options[:skip_haml]
       bundle_command 'install --binstubs=bin/stubs'
     end
 
@@ -156,10 +156,10 @@ module Cybele
       build :configure_simple_form
     end
 
-    def setup_haml_and_haml_rails
-      return if @options[:skip_haml_and_haml_rails]
+    def setup_haml
+      return if @options[:skip_haml]
       say 'Setting up haml and generate haml-rails', :green
-      build :configure_haml_and_haml_rails
+      build :configure_haml
     end
 
     def add_staging_secret_key
