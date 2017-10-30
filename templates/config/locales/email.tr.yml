@@ -1,0 +1,5 @@
+---
+tr:
+  email:
+    salut: 'Merhaba %{user};'
+    hello: 'Merhaba;'

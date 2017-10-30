@@ -6,8 +6,7 @@ module Cybele
       def configure_show_for
         # Run the show_for generator
         bundle_command 'exec rails generate show_for:install'
-        # Remove show_for english file
-        remove_file 'config/locales/show_for.en.yml', force: true
+
         # Add show_for turkish file
         copy_file 'config/locales/show_for.tr.yml', 'config/locales/show_for.tr.yml'
       end
