@@ -168,7 +168,6 @@ RSpec.describe 'Create new project without default configuration' do
     expect(locale_file).to match('view:')
   end
 
-
   it 'uses recipient_interceptor' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'recipient_interceptor'/)
