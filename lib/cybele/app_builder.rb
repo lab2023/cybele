@@ -10,6 +10,7 @@ module Cybele
     include Cybele::Helpers::RecipientInterceptor
     include Cybele::Helpers::ShowFor
     include Cybele::Helpers::Haml
+    include Cybele::Helpers::LocaleLanguage
 
     def readme
       template 'README.md.erb',

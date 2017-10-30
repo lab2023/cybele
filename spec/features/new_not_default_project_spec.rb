@@ -52,7 +52,9 @@ RSpec.describe 'Create new project without default configuration' do
     expect(controller_file).to match('self.responder = ApplicationResponder')
     expect(controller_file).to match('respond_to :html, :js, :json')
 
-    locale_file = content('config/locales/responders.en.yml')
+    expect(File).to exist(file_project_path('config/locales/responders.en.yml'))
+    expect(File).to exist(file_project_path('config/locales/responders.tr.yml'))
+    locale_file = content('config/locales/responders.tr.yml')
     expect(locale_file).not_to match('# alert:')
     expect(locale_file).to match('create:')
     expect(locale_file).to match('update:')
@@ -112,6 +114,7 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).not_to match(/^gem 'show_for'/)
 
     expect(File).not_to exist(file_project_path('config/initializers/show_for.rb'))
+    expect(File).not_to exist(file_project_path('config/locales/show_for.en.yml'))
     expect(File).not_to exist(file_project_path('config/locales/show_for.tr.yml'))
   end
 
@@ -132,6 +135,41 @@ RSpec.describe 'Create new project without default configuration' do
     expect(config_test_file).to match(/^Rails.application.configure/)
   end
 
+  it 'uses locale_language' do
+    expect(File).to exist(file_project_path('config/locales/en.yml'))
+    expect(File).to exist(file_project_path('config/locales/tr.yml'))
+    locale_file = content('config/locales/tr.yml')
+    expect(locale_file).to match('phone:')
+    expect(locale_file).to match('date:')
+    expect(locale_file).to match('time:')
+    expect(locale_file).to match('number:')
+
+    expect(File).to exist(file_project_path('config/locales/email.en.yml'))
+    locale_file = content('config/locales/email.en.yml')
+    expect(locale_file).to match('email:')
+
+    expect(File).to exist(file_project_path('config/locales/email.tr.yml'))
+    locale_file = content('config/locales/email.tr.yml')
+    expect(locale_file).to match('email:')
+
+    expect(File).to exist(file_project_path('config/locales/models.en.yml'))
+    locale_file = content('config/locales/models.en.yml')
+    expect(locale_file).to match('activerecord:')
+
+    expect(File).to exist(file_project_path('config/locales/models.tr.yml'))
+    locale_file = content('config/locales/models.tr.yml')
+    expect(locale_file).to match('activerecord:')
+
+    expect(File).to exist(file_project_path('config/locales/view.en.yml'))
+    locale_file = content('config/locales/view.en.yml')
+    expect(locale_file).to match('view:')
+
+    expect(File).to exist(file_project_path('config/locales/view.tr.yml'))
+    locale_file = content('config/locales/view.tr.yml')
+    expect(locale_file).to match('view:')
+  end
+
+
   it 'uses recipient_interceptor' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'recipient_interceptor'/)
@@ -146,6 +184,7 @@ RSpec.describe 'Create new project without default configuration' do
 
     expect(File).not_to exist(file_project_path('config/initializers/simple_form.rb'))
     expect(File).not_to exist(file_project_path('config/initializers/simple_form_bootstrap.rb'))
+    expect(File).not_to exist(file_project_path('config/locales/simple_form.en.yml'))
     expect(File).not_to exist(file_project_path('config/locales/simple_form.tr.yml'))
   end
 

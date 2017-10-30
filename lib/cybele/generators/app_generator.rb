@@ -144,6 +144,11 @@ module Cybele
       build :generate_rollbar
     end
 
+    def configure_locale_language
+      say 'Configure locale', :green
+      build :configure_locale_language
+    end
+
     def setup_show_for
       return if @options[:skip_show_for]
       say 'Generate show_for', :green

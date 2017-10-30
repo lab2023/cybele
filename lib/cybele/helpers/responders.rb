@@ -21,6 +21,7 @@ module Cybele
 
         # Remove comments in locale/responders.yml
         uncomment_lines 'config/locales/responders.en.yml', /alert:/
+        copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'
       end
     end
   end
