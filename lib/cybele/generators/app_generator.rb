@@ -89,6 +89,11 @@ module Cybele
       build :add_ruby_version
     end
 
+    def setup_cybele_version
+      say 'Add .VERSION.txt file', :green
+      build :add_cybele_version
+    end
+
     def remove_files_we_dont_need
       say 'Remove files we don\'t need', :green
       build :remove_readme_rdoc

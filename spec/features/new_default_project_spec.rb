@@ -69,6 +69,10 @@ RSpec.describe 'Create new project with default configuration' do
     expect(locale_file).to match('destroy:')
   end
 
+  it 'uses cybele_version' do
+    expect(File).to exist(file_project_path('VERSION.txt'))
+  end
+
   it 'uses rollbar' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'rollbar'/)
