@@ -6,8 +6,8 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    # TODO rubocop metrics/linelength problem
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for --skip-haml-and-haml-rails')
+    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for'\
+               ' --skip-haml-and-haml-rails')
     setup_app_dependencies
   end
 
@@ -154,7 +154,7 @@ RSpec.describe 'Create new project without default configuration' do
     expect(secret_file).to match('staging')
   end
 
-  it 'uses haml and haml_rails' do
+  it 'do not use haml and haml_rails' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'haml'/)
     expect(gemfile_file).not_to match(/^gem 'haml-rails'/)
