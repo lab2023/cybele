@@ -1,11 +1,166 @@
 
 #### [Current]
+ * [ea61a85](../../commit/ea61a85) - __(FatihAvsan)__ KBP-142 #time 4h - added VERSION.txt
+ * [8434185](../../commit/8434185) - __(Fatih Avsan)__ Merged in feature/locale_format_into_language (pull request [#8](../../issues/8))
+
+KBP-139 #time 2h - configure locale language
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [f78931e](../../commit/f78931e) - __(FatihAvsan)__ KBP-139 #time 30m - added english language files
+ * [1090abc](../../commit/1090abc) - __(FatihAvsan)__ KBP-139 #time 15m - fixed code
+ * [cbb1c0e](../../commit/cbb1c0e) - __(FatihAvsan)__ KBP-139 #time 10m - update pull request
+ * [8844855](../../commit/8844855) - __(Fatih Avsan)__ Merged in feature/intagrate_important_gems (pull request [#7](../../issues/7))
+
+KBP-134 #time 3h - intagrete important gems
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [e7f9411](../../commit/e7f9411) - __(FatihAvsan)__ KBP-139 #time 2h - configure locale language
+ * [48e2991](../../commit/48e2991) - __(FatihAvsan)__ KBP-134 #time 5m - fixed conflict
+ * [3e3da9b](../../commit/3e3da9b) - __(FatihAvsan)__ KBP-134 #time 3h - intagrete important gems
+ * [3072884](../../commit/3072884) - __(Fatih Avsan)__ Merged in feature/integrate_show_for_gem (pull request [#6](../../issues/6))
+
+KBP-132 #time 4h - integrate show_for gem to cybele
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [2714d2e](../../commit/2714d2e) - __(FatihAvsan)__ KBP-132 #time 10m - fixed rubocop error
+ * [fe43535](../../commit/fe43535) - __(FatihAvsan)__ KBP-132 #time 6h - integrate show_for gem to cybele
+ * [3f132b4](../../commit/3f132b4) - __(Hamdi Bayhan)__ Merged in feature/integrate_recipient_interceptor_gem (pull request [#5](../../issues/5))
+
+KBP-125 KBP-126 KBP-128 KBP-127 KBP-136Feature/integrate recipient interceptor gem
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+
+ * [e6d287c](../../commit/e6d287c) - __(hamdibayhan)__ KBP-127 #time 30m -Code was improved after rubocop
+ * [f207980](../../commit/f207980) - __(hamdibayhan)__ KBP-127 #time 5m -Code was improved
+ * [8f67ade](../../commit/8f67ade) - __(hamdibayhan)__ KBP-127 #time 5m - Files were moved to self main folders
+ * [6e386e5](../../commit/6e386e5) - __(hamdibayhan)__ KBP-127 #time 1m - Code was improved
+ * [f0ba41a](../../commit/f0ba41a) - __(hamdibayhan)__ KBP-127 #time 90m - Code was improved
+ * [6ae4d7b](../../commit/6ae4d7b) - __(hamdibayhan)__ KBP-127 #time 3h - Code was improved and simple_form gem was moved to optional choose
+ * [d97dd54](../../commit/d97dd54) - __(hamdibayhan)__ KBP-136 #time 30m - Test were written for staging secret_key_base and secret_key_base was added to secret.yml file for staging
+ * [823cda7](../../commit/823cda7) - __(hamdibayhan)__ KBP-127 #time 1h - Test were written for config gem, simple_form gem, rollbar gem, recipient_interceptor gem and staging environment
+ * [2dd6b15](../../commit/2dd6b15) - __(hamdibayhan)__ KBP-127 #time 40m - simple_form gem was integrated
+ * [6142c7a](../../commit/6142c7a) - __(hamdibayhan)__ KBP-128 #time 20m - Integrate rollbar GEM
+ * [08199a0](../../commit/08199a0) - __(hamdibayhan)__ KBP-126 #time 40m - Integrate config GEM and fill settings.yml file
+ * [e37e096](../../commit/e37e096) - __(hamdibayhan)__ KBP-125 #time 4h - Integrate recipient_interceptor GEM
+ * [5efa2dc](../../commit/5efa2dc) - __(İsmail Akbudak)__ Merged in feature/integrate_responder (pull request [#4](../../issues/4))
+
+KBP-121 integrate responder
+
+Approved-by: Tayfun Öziş ERİKAN <tayfun.ozis.erikan@lab2023.com>
+
+ * [95f9a5c](../../commit/95f9a5c) - __(İsmail Akbudak)__ KBP-121 #time 1h implement cli helper specs
+ * [e87c3d5](../../commit/e87c3d5) - __(İsmail Akbudak)__ KBP-121 #time 2h implement thor ask questions for cybele options
+ * [74e8468](../../commit/74e8468) - __(İsmail Akbudak)__ KBP-121 #time 7h implement responders gem and code refactor for app builder
+ * [bd60c8e](../../commit/bd60c8e) - __(İsmail Akbudak)__ Merged in feature/integrate_sidekiq (pull request [#3](../../issues/3))
+
+KBP-133 #time 4h implement sidekiq integration
+
+ * [ad5062f](../../commit/ad5062f) - __(İsmail Akbudak)__ KBP-133 #time 4h implement sidekiq integration
+ * [69e5e31](../../commit/69e5e31) - __(İsmail Akbudak)__ Merged in feature/integrate_postgresql (pull request [#2](../../issues/2))
+
+KBP-120 integrate postgresql as a default for cybele
+
+ * [382cffe](../../commit/382cffe) - __(İsmail Akbudak)__ KBP-120 #time 5m update postgresql database template file pool size
+ * [91bbd0e](../../commit/91bbd0e) - __(İsmail Akbudak)__ KBP-120 #time 5m remove unnecessary file for robocop
+ * [13a508b](../../commit/13a508b) - __(İsmail Akbudak)__ KBP-120 #time 3h implement postgresql as a default for cybele
+ * [3dc9205](../../commit/3dc9205) - __(İsmail Akbudak)__ Merged in feature/rails_upgrade (pull request [#1](../../issues/1))
+
+Remove old files and start to create Rails 5 App
+
+ * [4e0c7fe](../../commit/4e0c7fe) - __(İsmail Akbudak)__ Add option for use heroku and update rails version
+ * [1d1cfc1](../../commit/1d1cfc1) - __(İsmail Akbudak)__ Remove old files and start to create Rails 5 App
+ * [e3f3dba](../../commit/e3f3dba) - __(İsmail Akbudak)__ Merge tag 'v1.9.2' into develop
+
+v1.9.2
+
+#### v1.9.2
+ * [214a3f5](../../commit/214a3f5) - __(İsmail Akbudak)__ update version v1.9.2
+ * [b0ea802](../../commit/b0ea802) - __(İsmail Akbudak)__ fix errors
+ * [dcf32d1](../../commit/dcf32d1) - __(İsmail Akbudak)__ [#116](../../issues/116) add heroku procfile
+ * [ca9bd3f](../../commit/ca9bd3f) - __(İsmail Akbudak)__ [#117](../../issues/117) remove sinatra gem from group
+ * [9fe6b69](../../commit/9fe6b69) - __(İsmail Akbudak)__ [#118](../../issues/118) remove unnccessary keyword
+ * [ffd2569](../../commit/ffd2569) - __(İsmail Akbudak)__ [#119](../../issues/119) fix wrong keyword
+ * [159d406](../../commit/159d406) - __(İsmail Akbudak)__ [#120](../../issues/120) remove unused rake task
+ * [8e420a5](../../commit/8e420a5) - __(İsmail Akbudak)__ [#122](../../issues/122) add before filter for time zone setter method
+ * [7b6cb4c](../../commit/7b6cb4c) - __(İsmail Akbudak)__ [#123](../../issues/123) change application layout and add profile link to welcome page and navigation bar
+ * [61cf830](../../commit/61cf830) - __(İsmail Akbudak)__ [#124](../../issues/124) initialize client side validation and enable on forms
+ * [4632634](../../commit/4632634) - __(İsmail Akbudak)__ [#125](../../issues/125) fix element data toggle
+
+#### v1.9.1
+ * [3cbf830](../../commit/3cbf830) - __(ismail Akbudak)__ fix indent error
+ * [fe34adf](../../commit/fe34adf) - __(ismail Akbudak)__ update version v1.9.1
+ * [8048a27](../../commit/8048a27) - __(ismail Akbudak)__ capitalize app name on views
+
+#### v1.9.0
+ * [d76fee1](../../commit/d76fee1) - __(ismail Akbudak)__ update readme
+ * [e9518da](../../commit/e9518da) - __(ismail Akbudak)__ add fontawesome for login layout
+ * [ba99b3d](../../commit/ba99b3d) - __(ismail Akbudak)__ improve audit list page
+ * [ba23509](../../commit/ba23509) - __(ismail Akbudak)__ fix error
+ * [123b032](../../commit/123b032) - __(ismail Akbudak)__ fix error
+ * [a82b49b](../../commit/a82b49b) - __(ismail Akbudak)__ add locales for audit and link on admin portal
+ * [1872c56](../../commit/1872c56) - __(ismail Akbudak)__ add audit controller and shows
+ * [4739ee0](../../commit/4739ee0) - __(ismail Akbudak)__ add portal title
+ * [849a4d7](../../commit/849a4d7) - __(ismail Akbudak)__ add fontawesome to frontend
+ * [0003d38](../../commit/0003d38) - __(ismail Akbudak)__ complete user resource maangement
+ * [35b851f](../../commit/35b851f) - __(ismail Akbudak)__ fix filter query
+ * [f8712e2](../../commit/f8712e2) - __(ismail Akbudak)__ complete admin resource management
+ * [16ab759](../../commit/16ab759) - __(ismail Akbudak)__ add missing locales
+ * [8d81a6c](../../commit/8d81a6c) - __(ismail Akbudak)__ add locations controllers and views
+ * [90e4810](../../commit/90e4810) - __(ismail Akbudak)__ improve readme file
+ * [8621d10](../../commit/8621d10) - __(ismail Akbudak)__ remove git add command
+ * [dae4f83](../../commit/dae4f83) - __(ismail Akbudak)__ add other partial templates and add git commands
+ * [4b78fb7](../../commit/4b78fb7) - __(ismail Akbudak)__ remove unused methods
+ * [8b68e27](../../commit/8b68e27) - __(ismail Akbudak)__ change default favicon
+ * [89362ac](../../commit/89362ac) - __(ismail Akbudak)__ fix errors and improve contents
+ * [74ece79](../../commit/74ece79) - __(ismail Akbudak)__ fix error
+ * [1952557](../../commit/1952557) - __(ismail Akbudak)__ add localization for buttons
+ * [6e6fa6d](../../commit/6e6fa6d) - __(ismail Akbudak)__ add hq layouts partials
+ * [0c104e3](../../commit/0c104e3) - __(ismail Akbudak)__ fix small details
+ * [d19a4b5](../../commit/d19a4b5) - __(ismail Akbudak)__ fix error
+ * [4d454ef](../../commit/4d454ef) - __(ismail Akbudak)__ add force to remvove_file methods
+ * [a2617cf](../../commit/a2617cf) - __(ismail Akbudak)__ fix error
+ * [58527af](../../commit/58527af) - __(ismail Akbudak)__ add required change info to README file
+ * [23810c9](../../commit/23810c9) - __(ismail Akbudak)__ code refactor
+ * [aaa838d](../../commit/aaa838d) - __(ismail Akbudak)__ add user and admin mailer
+ * [bda5265](../../commit/bda5265) - __(ismail Akbudak)__ code refactor
+ * [6df8ef1](../../commit/6df8ef1) - __(ismail Akbudak)__ complete requeired files copy process
+ * [b25e4cf](../../commit/b25e4cf) - __(ismail Akbudak)__ add trix editor and add hq assets
+ * [30e3498](../../commit/30e3498) - __(ismail Akbudak)__ add locale for layouts
+ * [b8e1f1a](../../commit/b8e1f1a) - __(ismail Akbudak)__ complete copiying of files
+ * [6babcef](../../commit/6babcef) - __(ismail Akbudak)__ fix layout error
+ * [c4536a9](../../commit/c4536a9) - __(ismail Akbudak)__ add namespaces controller
+ * [b1b0386](../../commit/b1b0386) - __(ismail Akbudak)__ fix route.rb copy error
+ * [78536e3](../../commit/78536e3) - __(ismail Akbudak)__ fix error
+ * [8cd3bc8](../../commit/8cd3bc8) - __(ismail Akbudak)__ complete model structure
+ * [e2dc390](../../commit/e2dc390) - __(ismail Akbudak)__ add new config to bullet
+ * [2d5b90d](../../commit/2d5b90d) - __(ismail Akbudak)__ code refactor
+ * [1a2b3d2](../../commit/1a2b3d2) - __(ismail Akbudak)__ code refactor and add rollbar generate command
+ * [00b7251](../../commit/00b7251) - __(ismail Akbudak)__ fix setting and mailer error
+ * [ef5bf14](../../commit/ef5bf14) - __(ismail Akbudak)__ complete mailer environement settings
+ * [9e27376](../../commit/9e27376) - __(ismail Akbudak)__ complete assets
+ * [7b9ae50](../../commit/7b9ae50) - __(ismail Akbudak)__ fix missing locale error
+ * [60c8598](../../commit/60c8598) - __(ismail Akbudak)__ add email locale file and improve content of locale files
+ * [c459f7e](../../commit/c459f7e) - __(ismail Akbudak)__ add basci authentication concern and improve application controller content
+ * [0da5a11](../../commit/0da5a11) - __(ismail Akbudak)__ update ruby version and fix error
+ * [22a971d](../../commit/22a971d) - __(ismail Akbudak)__ update version and add new gems to template gemfile
+
+#### v1.8.0
+ * [a2c77a3](../../commit/a2c77a3) - __(Ismail Akbudak)__ update changelog
  * [1688060](../../commit/1688060) - __(Ismail Akbudak)__ update version v1.8.0
  * [e96a7d0](../../commit/e96a7d0) - __(Ismail Akbudak)__ remove rack-timeout gem
  * [67e0433](../../commit/67e0433) - __(Ismail Akbudak)__ update gem versions and add new gems
  * [bfe1199](../../commit/bfe1199) - __(Ismail Akbudak)__ update recipes_matic gem version to v1.3.0
- * [f437335](../../commit/f437335) - __(İsmail Akbudak)__ Update simple_form_bootstrap.rb
- * [f01dec8](../../commit/f01dec8) - __(ismail Akbudak)__ add chosen with boostrap template
+ * [f437335](../../commit/f437335) - __(İsmail)__ Update simple_form_bootstrap.rb
+ * [f01dec8](../../commit/f01dec8) - __(ismail akbudak)__ add chosen with boostrap template
 
 #### v1.7.2
  * [607fd19](../../commit/607fd19) - __(Ismail Akbudak)__ update changelog
