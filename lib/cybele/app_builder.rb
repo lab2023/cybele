@@ -64,7 +64,7 @@ module Cybele
     end
 
     def configure_bullet
-      configure_environment 'development', template_content('bullet/bullet_settings.rb')
+      configure_environment 'development', template_content('bullet/bullet_settings.rb.erb')
     end
 
     private

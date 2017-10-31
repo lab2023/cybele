@@ -187,11 +187,6 @@ module Cybele
       build :configure_bullet
     end
 
-    def setup_dotenv
-      say 'Generate env.sample and .env files', :green
-      build :configure_dotenv
-    end
-
     def setup_paperclip_and_add_aws
       say 'Setting up paperclip, editing settings.yml and env files', :green
       build :configure_paperclip
