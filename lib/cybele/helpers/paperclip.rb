@@ -9,6 +9,7 @@ module Cybele
         run_bundle
 
         create_paperclip_files
+        configure_app_name
       end
 
       private
@@ -18,19 +19,21 @@ module Cybele
         template 'paperclip/paperclip.rb.erb',
                  'config/initializers/paperclip.rb',
                  force: true
-
         # Add paperclip settings to the config/settings.yml file
         append_file 'config/settings.yml',
                     template_content('paperclip/paperclip_settings.yml.erb')
 
         # Add paperclip env to the all env files
         append_file('env.sample', template_content('paperclip/paperclip_env_sample.erb'))
-        gsub_file 'env.sample', /<%= app_name %>/, app_name
         append_file('.env.local', template_content('paperclip/paperclip_env_local.erb'))
-        gsub_file '.env.local', /<%= app_name %>/, app_name
         append_file('.env.staging', template_content('paperclip/paperclip_env_staging.erb'))
-        gsub_file '.env.staging', /<%= app_name %>/, app_name
         append_file('.env.production', template_content('paperclip/paperclip_env_production.erb'))
+      end
+
+      def configure_app_name
+        gsub_file 'env.sample', /<%= app_name %>/, app_name
+        gsub_file '.env.local', /<%= app_name %>/, app_name
+        gsub_file '.env.staging', /<%= app_name %>/, app_name
         gsub_file '.env.production', /<%= app_name %>/, app_name
       end
     end
