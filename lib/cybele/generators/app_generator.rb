@@ -177,6 +177,11 @@ module Cybele
       build :add_staging_secret_key_to_secrets_yml
     end
 
+    def setup_bullet_config
+      say 'Setup bullet config'
+      build :configure_bullet
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end

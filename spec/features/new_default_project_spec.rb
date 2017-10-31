@@ -225,4 +225,15 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).not_to exist(file_project_path('app/views/layouts/application.html.erb'))
     expect(File).to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
+
+  it 'uses bullet' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'bullet'")
+
+    locale_file = content('config/environments/development.rb')
+    expect(locale_file).to match('Bullet')
+
+    locale_file = content('config/environments/test.rb')
+    expect(locale_file).not_to match('Bullet')
+  end
 end
