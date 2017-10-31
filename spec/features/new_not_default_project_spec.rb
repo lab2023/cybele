@@ -178,6 +178,7 @@ RSpec.describe 'Create new project without default configuration' do
 
   it 'uses cybele_version' do
     expect(File).to exist(file_project_path('VERSION.txt'))
+    expect(File).to exist(file_project_path('public/VERSION.txt'))
   end
 
   it 'do not use simple_form' do
