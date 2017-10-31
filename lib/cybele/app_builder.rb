@@ -9,6 +9,7 @@ module Cybele
     include Cybele::Helpers::SimpleForm
     include Cybele::Helpers::RecipientInterceptor
     include Cybele::Helpers::ShowFor
+    include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
 
     def readme
