@@ -177,6 +177,11 @@ module Cybele
       build :add_staging_secret_key_to_secrets_yml
     end
 
+    def setup_dotenv
+      say 'Generate env.sample and .env files', :green
+      build :configure_dotenv
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end

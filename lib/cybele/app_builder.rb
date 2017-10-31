@@ -11,6 +11,7 @@ module Cybele
     include Cybele::Helpers::ShowFor
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
+    include Cybele::Helpers::Dotenv
 
     def readme
       template 'README.md.erb',
