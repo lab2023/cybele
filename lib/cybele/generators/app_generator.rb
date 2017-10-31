@@ -182,6 +182,14 @@ module Cybele
       build :configure_dotenv
     end
 
+    def configure_mail_setting
+      say '-*-*-*-*-*-*-*--*-*-*-*--*-*-*-*--*-*-*-Setup mail settings-*-*-*-*--*-*-*-*--*-*-*--*-*-*-*--**-*-*-*-*-*-*-*-*-*-'
+      build :configure_action_mailer
+      build :configure_smtp
+      build :setup_letter_opener
+      say '-*-*-*-*-*-*-*--*-*-*-*--*-*-*-*--*-*-*-Setup mail settings-*-*-*-*--*-*-*-*--*-*-*--*-*-*-*--**-*-*-*-*-*-*-*-*-*-'
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end

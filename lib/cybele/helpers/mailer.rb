@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+module Cybele
+  module Helpers
+    module Mailer
+      def configure_action_mailer
+        action_mailer_host 'development'
+        action_mailer_host 'staging'
+        action_mailer_host 'production'
+      end
+
+      def configure_smtp
+        # remove_file 'config/settings/production.yml', force: true
+        copy_file 'config/settings/production.yml', 'config/settings/production.yml'
+        copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
+
+        configure_environment 'staging', template_content('recipient_interceptor/recipient_interceptor_staging.rb.erb')
+        configure_environment 'production', template_content('mailer/smtp.rb.erb')
+        configure_environment 'staging', template_content('mailer/smtp.rb.erb')
+      end
+
+      def setup_letter_opener
+        configure_environment 'development', template_content('mailer/letter_opener.rb.erb')
+      end
+    end
+  end
+end

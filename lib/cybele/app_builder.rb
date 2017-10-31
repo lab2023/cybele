@@ -12,6 +12,7 @@ module Cybele
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
     include Cybele::Helpers::Dotenv
+    include Cybele::Helpers::Mailer
 
     def readme
       template 'README.md.erb',
@@ -66,6 +67,14 @@ module Cybele
 
     def configure_environment(rails_env, config)
       inject_into_file("config/environments/#{rails_env}.rb", "\n#{config}", before: "\nend")
+    end
+
+    def action_mailer_host(rails_env)
+      config = <<-RUBY
+  # Mail Setting
+  config.action_mailer.default_url_options = { host: ENV['ROOT_PATH'] }
+      RUBY
+      configure_environment(rails_env, config)
     end
   end
 end
