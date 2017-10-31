@@ -182,6 +182,11 @@ module Cybele
       build :configure_bullet
     end
 
+    def setup_dotenv
+      say 'Generate env.sample and .env files', :green
+      build :configure_dotenv
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end

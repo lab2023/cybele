@@ -109,6 +109,11 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).to match("gem 'better_errors'")
   end
 
+  it 'uses rails-i18n' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'rails-i18n'/)
+  end
+
   it 'do not use show_for' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'show_for'/)
@@ -188,9 +193,6 @@ RSpec.describe 'Create new project without default configuration' do
 
     locale_file = content('config/environments/development.rb')
     expect(locale_file).to match('Bullet')
-
-    locale_file = content('config/environments/test.rb')
-    expect(locale_file).not_to match('Bullet')
   end
 
   it 'do not use simple_form' do
@@ -206,6 +208,27 @@ RSpec.describe 'Create new project without default configuration' do
   it 'make control secret_key_base for staging' do
     secret_file = content('config/secrets.yml')
     expect(secret_file).to match('staging')
+  end
+
+  it 'control env.sample and .env files' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'dotenv-rails'/)
+
+    expect(File).to exist(file_project_path('env.sample'))
+    env_sample_file = content('env.sample')
+    expect(env_sample_file).to match('ROOT_PATH=http://localhost:3000')
+
+    expect(File).to exist(file_project_path('.env.local'))
+    env_local_file = content('.env.local')
+    expect(env_local_file).to match('ROOT_PATH=http://localhost:3000')
+
+    expect(File).to exist(file_project_path('.env.staging'))
+    env_staging_file = content('.env.staging')
+    expect(env_staging_file).to match('ROOT_PATH=https://staging-dummy_app.herokuapp.com')
+
+    expect(File).to exist(file_project_path('.env.production'))
+    env_production_file = content('.env.production')
+    expect(env_production_file).to match('ROOT_PATH=https://dummy_app.herokuapp.com')
   end
 
   it 'do not use haml' do

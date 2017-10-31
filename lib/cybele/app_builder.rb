@@ -11,7 +11,7 @@ module Cybele
     include Cybele::Helpers::ShowFor
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
-    include Cybele::Helpers::Bullet
+    include Cybele::Helpers::Dotenv
 
     def readme
       template 'README.md.erb',
@@ -60,6 +60,10 @@ module Cybele
 
     def generate_rollbar
       generate 'rollbar'
+    end
+
+    def configure_bullet
+      configure_environment 'development', template_content('bullet/bullet_settings.rb')
     end
 
     private
