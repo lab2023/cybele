@@ -112,6 +112,11 @@ module Cybele
       build :generate_config
     end
 
+    def setup_dotenv
+      say 'Generate env.sample and .env files', :green
+      build :configure_dotenv
+    end
+
     def setup_database
       if @options[:database] == 'postgresql'
         say 'Set up postgresql template', :green
@@ -185,6 +190,11 @@ module Cybele
     def setup_dotenv
       say 'Generate env.sample and .env files', :green
       build :configure_dotenv
+    end
+
+    def setup_paperclip_and_add_aws
+      say 'Setting up paperclip, editing settings.yml and env files', :green
+      build :configure_paperclip
     end
 
     def goodbye

@@ -1,0 +1,10 @@
+
+AWS:
+  S3:
+    bucket: <%= ENV['S3_BUCKET_NAME'] %>
+    access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+    secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+    aws_url: http://<%= ENV['AWS_RAW_URL'] %>
+    aws_raw_url: <%= ENV['AWS_RAW_URL'] %>
+    # Bucket region should be ireland for this setting
+    end_point: s3-eu-west-1.amazonaws.com
