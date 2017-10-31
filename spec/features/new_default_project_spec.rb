@@ -69,6 +69,11 @@ RSpec.describe 'Create new project with default configuration' do
     expect(locale_file).to match('destroy:')
   end
 
+  it 'uses cybele_version' do
+    expect(File).to exist(file_project_path('VERSION.txt'))
+    expect(File).to exist(file_project_path('public/VERSION.txt'))
+  end
+
   it 'uses rollbar' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'rollbar'/)
@@ -231,5 +236,14 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).to exist(file_project_path('.env.production'))
     env_production_file = content('.env.production')
     expect(env_production_file).to match('ROOT_PATH=https://dummy_app.herokuapp.com')
+  end
+
+  it 'uses haml' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'haml'/)
+    expect(gemfile_file).to match(/^gem 'haml-rails'/)
+
+    expect(File).not_to exist(file_project_path('app/views/layouts/application.html.erb'))
+    expect(File).to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
 end
