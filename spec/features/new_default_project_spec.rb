@@ -69,6 +69,11 @@ RSpec.describe 'Create new project with default configuration' do
     expect(locale_file).to match('destroy:')
   end
 
+  it 'uses cybele_version' do
+    expect(File).to exist(file_project_path('VERSION.txt'))
+    expect(File).to exist(file_project_path('public/VERSION.txt'))
+  end
+
   it 'uses rollbar' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'rollbar'/)
@@ -215,5 +220,14 @@ RSpec.describe 'Create new project with default configuration' do
   it 'make control secret_key_base for staging' do
     secret_file = content('config/secrets.yml')
     expect(secret_file).to match('staging')
+  end
+
+  it 'uses haml' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'haml'/)
+    expect(gemfile_file).to match(/^gem 'haml-rails'/)
+
+    expect(File).not_to exist(file_project_path('app/views/layouts/application.html.erb'))
+    expect(File).to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
 end
