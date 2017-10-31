@@ -7,11 +7,12 @@ module Cybele
     include Cybele::Helpers::Sidekiq
     include Cybele::Helpers::Responders
     include Cybele::Helpers::SimpleForm
+    include Cybele::Helpers::Dotenv
     include Cybele::Helpers::RecipientInterceptor
     include Cybele::Helpers::ShowFor
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
-    include Cybele::Helpers::Dotenv
+    include Cybele::Helpers::Paperclip
 
     def readme
       template 'README.md.erb',

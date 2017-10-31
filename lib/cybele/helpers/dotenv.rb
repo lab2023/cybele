@@ -6,7 +6,7 @@ module Cybele
       def configure_dotenv
         # Add dotenv gem
         inject_into_file 'Gemfile', template_content('dotenv/dotenv_Gemfile.erb'),
-                          before: "# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'"
+                         before: "# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'"
         run_bundle
 
         # Create dotenv files
