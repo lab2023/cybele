@@ -25,9 +25,13 @@ module Cybele
 
         # Add paperclip env to the all env files
         append_file('env.sample', template_content('paperclip/paperclip_env_sample.erb'))
+        gsub_file 'env.sample', /<%= app_name %>/, app_name
         append_file('.env.local', template_content('paperclip/paperclip_env_local.erb'))
+        gsub_file '.env.local', /<%= app_name %>/, app_name
         append_file('.env.staging', template_content('paperclip/paperclip_env_staging.erb'))
+        gsub_file '.env.staging', /<%= app_name %>/, app_name
         append_file('.env.production', template_content('paperclip/paperclip_env_production.erb'))
+        gsub_file '.env.production', /<%= app_name %>/, app_name
       end
     end
   end

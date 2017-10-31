@@ -6,7 +6,8 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for')
+    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for'\
+               ' --skip-haml')
     setup_app_dependencies
   end
 
@@ -108,6 +109,11 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).to match("gem 'better_errors'")
   end
 
+  it 'uses rails-i18n' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'rails-i18n'/)
+  end
+
   it 'do not use show_for' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'show_for'/)
@@ -176,6 +182,11 @@ RSpec.describe 'Create new project without default configuration' do
     expect(config_staging_file).to match('RecipientInterceptor.new')
   end
 
+  it 'uses cybele_version' do
+    expect(File).to exist(file_project_path('VERSION.txt'))
+    expect(File).to exist(file_project_path('public/VERSION.txt'))
+  end
+
   it 'do not use simple_form' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'simple_form'/)
@@ -219,5 +230,35 @@ RSpec.describe 'Create new project without default configuration' do
     expect(env_production_file).to match('AWS_RAW_URL=dummy_app.s3.amazonaws.com')
     expect(env_production_file).to match('AWS_ACCESS_KEY_ID=')
     expect(env_production_file).to match('AWS_SECRET_ACCESS_KEY=')
+  end
+
+  it 'control env.sample and .env files' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'dotenv-rails'/)
+
+    expect(File).to exist(file_project_path('env.sample'))
+    env_sample_file = content('env.sample')
+    expect(env_sample_file).to match('ROOT_PATH=http://localhost:3000')
+
+    expect(File).to exist(file_project_path('.env.local'))
+    env_local_file = content('.env.local')
+    expect(env_local_file).to match('ROOT_PATH=http://localhost:3000')
+
+    expect(File).to exist(file_project_path('.env.staging'))
+    env_staging_file = content('.env.staging')
+    expect(env_staging_file).to match('ROOT_PATH=https://staging-dummy_app.herokuapp.com')
+
+    expect(File).to exist(file_project_path('.env.production'))
+    env_production_file = content('.env.production')
+    expect(env_production_file).to match('ROOT_PATH=https://dummy_app.herokuapp.com')
+  end
+
+  it 'do not use haml' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).not_to match(/^gem 'haml'/)
+    expect(gemfile_file).not_to match(/^gem 'haml-rails'/)
+
+    expect(File).to exist(file_project_path('app/views/layouts/application.html.erb'))
+    expect(File).not_to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
 end
