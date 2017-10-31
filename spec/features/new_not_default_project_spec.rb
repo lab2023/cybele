@@ -108,6 +108,11 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).to match("gem 'better_errors'")
   end
 
+  it 'uses rails-i18n' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'rails-i18n'/)
+  end
+
   it 'do not use show_for' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'show_for'/)
@@ -167,7 +172,6 @@ RSpec.describe 'Create new project without default configuration' do
     locale_file = content('config/locales/view.tr.yml')
     expect(locale_file).to match('view:')
   end
-
 
   it 'uses recipient_interceptor' do
     gemfile_file = content('Gemfile')
