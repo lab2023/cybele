@@ -182,6 +182,16 @@ module Cybele
       build :add_staging_secret_key_to_secrets_yml
     end
 
+    def setup_bullet_config
+      say 'Setup bullet config'
+      build :configure_bullet
+    end
+
+    def setup_dotenv
+      say 'Generate env.sample and .env files', :green
+      build :configure_dotenv
+    end
+
     def setup_paperclip_and_add_aws
       say 'Setting up paperclip, editing settings.yml and env files', :green
       build :configure_paperclip

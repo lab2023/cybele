@@ -63,6 +63,10 @@ module Cybele
       generate 'rollbar'
     end
 
+    def configure_bullet
+      configure_environment 'development', template_content('bullet/bullet_settings.rb')
+    end
+
     private
 
     def configure_environment(rails_env, config)

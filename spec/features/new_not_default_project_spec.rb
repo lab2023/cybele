@@ -187,6 +187,14 @@ RSpec.describe 'Create new project without default configuration' do
     expect(File).to exist(file_project_path('public/VERSION.txt'))
   end
 
+  it 'uses bullet' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'bullet'")
+
+    locale_file = content('config/environments/development.rb')
+    expect(locale_file).to match('Bullet')
+  end
+
   it 'do not use simple_form' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'simple_form'/)
