@@ -262,6 +262,9 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses mailer' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'letter_opener'")
+
     expect(File).to exist(file_project_path('config/settings/production.yml'))
     expect(File).to exist(file_project_path('config/settings/staging.yml'))
 
