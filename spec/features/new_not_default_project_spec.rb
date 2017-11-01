@@ -28,6 +28,7 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).not_to match(/^gem 'sidekiq'/)
     expect(gemfile_file).not_to match(/^gem 'sidekiq-cron'/)
     expect(gemfile_file).not_to match(/^gem 'cocaine'/)
+    expect(gemfile_file).not_to match(/^gem 'devise-async'/)
 
     expect(File).not_to exist(file_project_path('config/sidekiq.yml'))
 
@@ -268,5 +269,50 @@ RSpec.describe 'Create new project without default configuration' do
 
     expect(File).to exist(file_project_path('app/views/layouts/application.html.erb'))
     expect(File).not_to exist(file_project_path('app/views/layouts/application.html.haml'))
+  end
+
+  it 'uses devise' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'devise'/)
+
+    initializers_devise = content('config/initializers/devise.rb')
+    expect(initializers_devise).to match('mailer')
+    expect(initializers_devise).to match('mailer_sender')
+
+    filter_parameter_logging = content('config/initializers/filter_parameter_logging.rb')
+    expect(filter_parameter_logging).to match(':password')
+    expect(filter_parameter_logging).to match(':password_confirmation')
+
+    devise_model_file = content('app/models/user.rb')
+    expect(devise_model_file).to match(':database_authenticatable')
+    expect(devise_model_file).to match(':registerable')
+    expect(devise_model_file).to match(':recoverable')
+    expect(devise_model_file).to match(':rememberable')
+    expect(devise_model_file).to match(':trackable')
+    expect(devise_model_file).to match(':validatable')
+
+    devise_user_sanitizer = content('lib/user_sanitizer.rb')
+    expect(devise_user_sanitizer).to match(':name')
+    expect(devise_user_sanitizer).to match(':surname')
+    expect(devise_user_sanitizer).to match(':email')
+    expect(devise_user_sanitizer).to match(':password')
+    expect(devise_user_sanitizer).to match(':password_confirmation')
+    expect(devise_user_sanitizer).to match(':time_zone')
+
+    devise_sanitizers = content('config/initializers/sanitizers.rb')
+    expect(devise_sanitizers).to match('require')
+
+    devise_route = content('config/routes.rb')
+    expect(devise_route).to match('devise_for :users')
+
+    expect(File).to exist(file_project_path('app/views/devise/confirmations'))
+    expect(File).to exist(file_project_path('app/views/devise/mailer'))
+    expect(File).to exist(file_project_path('app/views/devise/passwords'))
+    expect(File).to exist(file_project_path('app/views/devise/registrations'))
+    expect(File).to exist(file_project_path('app/views/devise/sessions'))
+    expect(File).to exist(file_project_path('app/views/devise/shared'))
+    expect(File).to exist(file_project_path('app/views/devise/unlocks'))
+
+    expect(File).not_to exist(file_project_path('config/locales/devise.en.yml'))
   end
 end
