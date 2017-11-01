@@ -75,11 +75,7 @@ module Cybele
     end
 
     def action_mailer_host(rails_env)
-      config = <<-RUBY
-  # Mail Setting
-  config.action_mailer.default_url_options = { host: ENV['ROOT_PATH'] }
-      RUBY
-      configure_environment(rails_env, config)
+      configure_environment(rails_env, template_content('mailer/host.rb.erb'))
     end
   end
 end
