@@ -10,8 +10,6 @@ module Cybele
       end
 
       def configure_smtp
-        copy_file 'config/settings/production.yml', 'config/settings/production.yml'
-        copy_file 'config/settings/staging.yml', 'config/settings/staging.yml'
         configure_environment 'staging',
                               template_content('recipient_interceptor/recipient_interceptor_staging.rb.erb')
         configure_environment 'production', template_content('mailer/smtp.rb.erb')
