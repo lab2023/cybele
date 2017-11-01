@@ -187,6 +187,14 @@ RSpec.describe 'Create new project without default configuration' do
     expect(File).to exist(file_project_path('public/VERSION.txt'))
   end
 
+  it 'uses bullet' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'bullet'")
+
+    locale_file = content('config/environments/development.rb')
+    expect(locale_file).to match('Bullet')
+  end
+
   it 'do not use simple_form' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'simple_form'/)
@@ -200,6 +208,36 @@ RSpec.describe 'Create new project without default configuration' do
   it 'make control secret_key_base for staging' do
     secret_file = content('config/secrets.yml')
     expect(secret_file).to match('staging')
+  end
+
+  it 'uses paperclip' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem "paperclip"/)
+    expect(gemfile_file).to match(/^gem 'aws-sdk'/)
+
+    env_sample_file = content('env.sample')
+    expect(env_sample_file).to match('S3_BUCKET_NAME=')
+    expect(env_sample_file).to match('AWS_RAW_URL=')
+    expect(env_sample_file).to match('AWS_ACCESS_KEY_ID=')
+    expect(env_sample_file).to match('AWS_SECRET_ACCESS_KEY=')
+
+    env_local_file = content('.env.local')
+    expect(env_local_file).to match('S3_BUCKET_NAME=dummy_app-development')
+    expect(env_local_file).to match('AWS_RAW_URL=dummy_app-development.s3.amazonaws.com')
+    expect(env_local_file).to match('AWS_ACCESS_KEY_ID=')
+    expect(env_local_file).to match('AWS_SECRET_ACCESS_KEY=')
+
+    env_staging_file = content('.env.staging')
+    expect(env_staging_file).to match('S3_BUCKET_NAME=dummy_app-staging')
+    expect(env_staging_file).to match('AWS_RAW_URL=dummy_app-staging.s3.amazonaws.com')
+    expect(env_staging_file).to match('AWS_ACCESS_KEY_ID=')
+    expect(env_staging_file).to match('AWS_SECRET_ACCESS_KEY=')
+
+    env_production_file = content('.env.production')
+    expect(env_production_file).to match('S3_BUCKET_NAME=dummy_app')
+    expect(env_production_file).to match('AWS_RAW_URL=dummy_app.s3.amazonaws.com')
+    expect(env_production_file).to match('AWS_ACCESS_KEY_ID=')
+    expect(env_production_file).to match('AWS_SECRET_ACCESS_KEY=')
   end
 
   it 'control env.sample and .env files' do
@@ -221,6 +259,44 @@ RSpec.describe 'Create new project without default configuration' do
     expect(File).to exist(file_project_path('.env.production'))
     env_production_file = content('.env.production')
     expect(env_production_file).to match('ROOT_PATH=https://dummy_app.herokuapp.com')
+  end
+
+  it 'uses mailer' do
+    expect(File).to exist(file_project_path('config/settings/production.yml'))
+    expect(File).to exist(file_project_path('config/settings/staging.yml'))
+
+    settings_yml = content('config/settings.yml')
+    expect(settings_yml).to match('smtp:')
+    expect(settings_yml).to match('address:')
+    expect(settings_yml).to match('port:')
+    expect(settings_yml).to match('enable_starttls_auto:')
+    expect(settings_yml).to match('user_name:')
+    expect(settings_yml).to match('password:')
+    expect(settings_yml).to match('authentication:')
+
+    production_file = content('config/environments/production.rb')
+    expect(production_file).to match('host:')
+    expect(production_file).to match(':smtp')
+    expect(production_file).to match('address:')
+    expect(production_file).to match('port:')
+    expect(production_file).to match('enable_starttls_auto:')
+    expect(production_file).to match('user_name:')
+    expect(production_file).to match('password:')
+    expect(production_file).to match('authentication:')
+
+    staging_file = content('config/environments/staging.rb')
+    expect(staging_file).to match('host:')
+    expect(staging_file).to match(':smtp')
+    expect(staging_file).to match('address:')
+    expect(staging_file).to match('port:')
+    expect(staging_file).to match('enable_starttls_auto:')
+    expect(staging_file).to match('user_name:')
+    expect(staging_file).to match('password:')
+    expect(staging_file).to match('authentication:')
+
+    development_file = content('config/environments/development.rb')
+    expect(development_file).to match('host:')
+    expect(development_file).to match(':letter_opener')
   end
 
   it 'do not use haml' do

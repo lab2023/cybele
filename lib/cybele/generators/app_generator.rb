@@ -112,6 +112,11 @@ module Cybele
       build :generate_config
     end
 
+    def setup_dotenv
+      say 'Generate env.sample and .env files', :green
+      build :configure_dotenv
+    end
+
     def setup_database
       if @options[:database] == 'postgresql'
         say 'Set up postgresql template', :green
@@ -177,17 +182,21 @@ module Cybele
       build :add_staging_secret_key_to_secrets_yml
     end
 
-    def setup_dotenv
-      say 'Generate env.sample and .env files', :green
-      build :configure_dotenv
+    def setup_bullet_config
+      say 'Setup bullet config'
+      build :configure_bullet
+    end
+
+    def setup_paperclip_and_add_aws
+      say 'Setting up paperclip, editing settings.yml and env files', :green
+      build :configure_paperclip
     end
 
     def configure_mail_setting
-      say '-*-*-*-*-*-*-*--*-*-*-*--*-*-*-*--*-*-*-Setup mail settings-*-*-*-*--*-*-*-*--*-*-*--*-*-*-*--**-*-*-*-*-*-*-*-*-*-'
+      say 'Setup mail settings'
       build :configure_action_mailer
       build :configure_smtp
       build :setup_letter_opener
-      say '-*-*-*-*-*-*-*--*-*-*-*--*-*-*-*--*-*-*-Setup mail settings-*-*-*-*--*-*-*-*--*-*-*--*-*-*-*--**-*-*-*-*-*-*-*-*-*-'
     end
 
     def goodbye

@@ -7,12 +7,13 @@ module Cybele
     include Cybele::Helpers::Sidekiq
     include Cybele::Helpers::Responders
     include Cybele::Helpers::SimpleForm
+    include Cybele::Helpers::Dotenv
     include Cybele::Helpers::RecipientInterceptor
     include Cybele::Helpers::ShowFor
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
-    include Cybele::Helpers::Dotenv
     include Cybele::Helpers::Mailer
+    include Cybele::Helpers::Paperclip
 
     def readme
       template 'README.md.erb',
@@ -61,6 +62,10 @@ module Cybele
 
     def generate_rollbar
       generate 'rollbar'
+    end
+
+    def configure_bullet
+      configure_environment 'development', template_content('bullet/bullet_settings.rb.erb')
     end
 
     private
