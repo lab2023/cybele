@@ -56,7 +56,6 @@ def responder_test_helper
   expect(controller_file).to match('respond_to :html, :js, :json')
 
   expect(File).to exist(file_project_path('config/locales/responders.en.yml'))
-  expect(File).to exist(file_project_path('config/locales/responders.tr.yml'))
   locale_file = content('config/locales/responders.tr.yml')
   expect(locale_file).not_to match('# alert:')
   expect(locale_file).to match('create:')
@@ -66,34 +65,27 @@ end
 
 def locale_language_test_helper
   expect(File).to exist(file_project_path('config/locales/en.yml'))
-  expect(File).to exist(file_project_path('config/locales/tr.yml'))
   locale_file = content('config/locales/tr.yml')
   expect(locale_file).to match('phone:')
   expect(locale_file).to match('date:')
   expect(locale_file).to match('time:')
   expect(locale_file).to match('number:')
 
-  expect(File).to exist(file_project_path('config/locales/email.en.yml'))
   locale_file = content('config/locales/email.en.yml')
   expect(locale_file).to match('email:')
 
-  expect(File).to exist(file_project_path('config/locales/email.tr.yml'))
   locale_file = content('config/locales/email.tr.yml')
   expect(locale_file).to match('email:')
 
-  expect(File).to exist(file_project_path('config/locales/models.en.yml'))
   locale_file = content('config/locales/models.en.yml')
   expect(locale_file).to match('activerecord:')
 
-  expect(File).to exist(file_project_path('config/locales/models.tr.yml'))
   locale_file = content('config/locales/models.tr.yml')
   expect(locale_file).to match('activerecord:')
 
-  expect(File).to exist(file_project_path('config/locales/view.en.yml'))
   locale_file = content('config/locales/view.en.yml')
   expect(locale_file).to match('view:')
 
-  expect(File).to exist(file_project_path('config/locales/view.tr.yml'))
   locale_file = content('config/locales/view.tr.yml')
   expect(locale_file).to match('view:')
 end
