@@ -16,7 +16,6 @@ module Cybele
 
       def generate_devise_user
         generate 'devise User name:string surname:string is_active:boolean time_zone:string'
-        generate_devise_strong_parameters('user')
         remove_file 'config/locales/devise.en.yml', force: true
       end
 

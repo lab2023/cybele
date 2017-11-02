@@ -70,31 +70,6 @@ module Cybele
 
     private
 
-    def generate_devise_strong_parameters(model_name)
-      create_sanitizer_lib(model_name)
-      create_sanitizer_initializer(model_name)
-    end
-
-    def create_sanitizer_lib(model_name)
-      create_file "lib/#{model_name.parameterize}_sanitizer.rb", <<-CODE
-      class #{model_name.classify}::ParameterSanitizer < Devise::ParameterSanitizer
-        private
-        def sign_up
-          default_params.permit(:name, :surname, :email, :password, :password_confirmation, :time_zone) # TODO add other params here
-        end
-      end
-      CODE
-    end
-
-    def create_sanitizer_initializer(model_name)
-      path = '#'
-      path += '{Rails.application.root}'
-      path += "/lib/#{model_name.parameterize}_sanitizer.rb"
-      initializer 'sanitizers.rb', <<-CODE
-      require "#{path}"
-      CODE
-    end
-
     def configure_environment(rails_env, config)
       inject_into_file("config/environments/#{rails_env}.rb", "\n#{config}", before: "\nend")
     end
