@@ -14,6 +14,7 @@ module Cybele
     include Cybele::Helpers::LocaleLanguage
     include Cybele::Helpers::Mailer
     include Cybele::Helpers::Paperclip
+    include Cybele::Helpers::Devise
 
     def readme
       template 'README.md.erb',

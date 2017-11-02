@@ -192,6 +192,15 @@ module Cybele
       build :configure_paperclip
     end
 
+    def setup_devise
+      say 'Generate devise'
+      build :generate_devise_settings
+      say 'Adding devise user model'
+      build :generate_devise_user
+      build :generate_devise_views
+      say 'Generate devise'
+    end
+
     def configure_mail_setting
       say 'Setup mail settings'
       build :configure_action_mailer

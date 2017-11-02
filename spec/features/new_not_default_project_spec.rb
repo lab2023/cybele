@@ -28,6 +28,7 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).not_to match(/^gem 'sidekiq'/)
     expect(gemfile_file).not_to match(/^gem 'sidekiq-cron'/)
     expect(gemfile_file).not_to match(/^gem 'cocaine'/)
+    expect(gemfile_file).not_to match(/^gem 'devise-async'/)
 
     expect(File).not_to exist(file_project_path('config/sidekiq.yml'))
 
@@ -41,24 +42,7 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses responders' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'responders'/)
-
-    lib_file = content('lib/application_responder.rb')
-    expect(lib_file).to match(/^class ApplicationResponder/)
-
-    controller_file = content('app/controllers/application_controller.rb')
-    expect(controller_file).to match("^require 'application_responder'")
-    expect(controller_file).to match('self.responder = ApplicationResponder')
-    expect(controller_file).to match('respond_to :html, :js, :json')
-
-    expect(File).to exist(file_project_path('config/locales/responders.en.yml'))
-    expect(File).to exist(file_project_path('config/locales/responders.tr.yml'))
-    locale_file = content('config/locales/responders.tr.yml')
-    expect(locale_file).not_to match('# alert:')
-    expect(locale_file).to match('create:')
-    expect(locale_file).to match('update:')
-    expect(locale_file).to match('destroy:')
+    responder_test_helper
   end
 
   it 'uses rollbar' do
@@ -124,54 +108,11 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses config and staging file' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'config'/)
-
-    config_development_file = content('config/environments/development.rb')
-    expect(config_development_file).to match(/^Rails.application.configure/)
-
-    config_staging_file = content('config/environments/staging.rb')
-    expect(config_staging_file).to match(/^Rails.application.configure/)
-
-    config_production_file = content('config/environments/production.rb')
-    expect(config_production_file).to match(/^Rails.application.configure/)
-
-    config_test_file = content('config/environments/test.rb')
-    expect(config_test_file).to match(/^Rails.application.configure/)
+    config_test_helper
   end
 
   it 'uses locale_language' do
-    expect(File).to exist(file_project_path('config/locales/en.yml'))
-    expect(File).to exist(file_project_path('config/locales/tr.yml'))
-    locale_file = content('config/locales/tr.yml')
-    expect(locale_file).to match('phone:')
-    expect(locale_file).to match('date:')
-    expect(locale_file).to match('time:')
-    expect(locale_file).to match('number:')
-
-    expect(File).to exist(file_project_path('config/locales/email.en.yml'))
-    locale_file = content('config/locales/email.en.yml')
-    expect(locale_file).to match('email:')
-
-    expect(File).to exist(file_project_path('config/locales/email.tr.yml'))
-    locale_file = content('config/locales/email.tr.yml')
-    expect(locale_file).to match('email:')
-
-    expect(File).to exist(file_project_path('config/locales/models.en.yml'))
-    locale_file = content('config/locales/models.en.yml')
-    expect(locale_file).to match('activerecord:')
-
-    expect(File).to exist(file_project_path('config/locales/models.tr.yml'))
-    locale_file = content('config/locales/models.tr.yml')
-    expect(locale_file).to match('activerecord:')
-
-    expect(File).to exist(file_project_path('config/locales/view.en.yml'))
-    locale_file = content('config/locales/view.en.yml')
-    expect(locale_file).to match('view:')
-
-    expect(File).to exist(file_project_path('config/locales/view.tr.yml'))
-    locale_file = content('config/locales/view.tr.yml')
-    expect(locale_file).to match('view:')
+    locale_language_test_helper
   end
 
   it 'uses recipient_interceptor' do
@@ -211,54 +152,11 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses paperclip' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem "paperclip"/)
-    expect(gemfile_file).to match(/^gem 'aws-sdk'/)
-
-    env_sample_file = content('env.sample')
-    expect(env_sample_file).to match('S3_BUCKET_NAME=')
-    expect(env_sample_file).to match('AWS_RAW_URL=')
-    expect(env_sample_file).to match('AWS_ACCESS_KEY_ID=')
-    expect(env_sample_file).to match('AWS_SECRET_ACCESS_KEY=')
-
-    env_local_file = content('.env.local')
-    expect(env_local_file).to match('S3_BUCKET_NAME=dummy_app-development')
-    expect(env_local_file).to match('AWS_RAW_URL=dummy_app-development.s3.amazonaws.com')
-    expect(env_local_file).to match('AWS_ACCESS_KEY_ID=')
-    expect(env_local_file).to match('AWS_SECRET_ACCESS_KEY=')
-
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).to match('S3_BUCKET_NAME=dummy_app-staging')
-    expect(env_staging_file).to match('AWS_RAW_URL=dummy_app-staging.s3.amazonaws.com')
-    expect(env_staging_file).to match('AWS_ACCESS_KEY_ID=')
-    expect(env_staging_file).to match('AWS_SECRET_ACCESS_KEY=')
-
-    env_production_file = content('.env.production')
-    expect(env_production_file).to match('S3_BUCKET_NAME=dummy_app')
-    expect(env_production_file).to match('AWS_RAW_URL=dummy_app.s3.amazonaws.com')
-    expect(env_production_file).to match('AWS_ACCESS_KEY_ID=')
-    expect(env_production_file).to match('AWS_SECRET_ACCESS_KEY=')
+    paperclip_test_helper
   end
 
   it 'control env.sample and .env files' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'dotenv-rails'/)
-
-    expect(File).to exist(file_project_path('env.sample'))
-    env_sample_file = content('env.sample')
-    expect(env_sample_file).to match('ROOT_PATH=http://localhost:3000')
-
-    expect(File).to exist(file_project_path('.env.local'))
-    env_local_file = content('.env.local')
-    expect(env_local_file).to match('ROOT_PATH=http://localhost:3000')
-
-    expect(File).to exist(file_project_path('.env.staging'))
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).to match('ROOT_PATH=https://staging-dummy_app.herokuapp.com')
-
-    expect(File).to exist(file_project_path('.env.production'))
-    env_production_file = content('.env.production')
-    expect(env_production_file).to match('ROOT_PATH=https://dummy_app.herokuapp.com')
+    dotenv_test_helper
   end
 
   it 'uses mailer' do
@@ -284,5 +182,9 @@ RSpec.describe 'Create new project without default configuration' do
 
     expect(File).to exist(file_project_path('app/views/layouts/application.html.erb'))
     expect(File).not_to exist(file_project_path('app/views/layouts/application.html.haml'))
+  end
+
+  it 'uses devise' do
+    devise_test_helper
   end
 end
