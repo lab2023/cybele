@@ -201,6 +201,13 @@ module Cybele
       say 'Generate devise'
     end
 
+    def configure_mail_setting
+      say 'Setup mail settings'
+      build :configure_action_mailer
+      build :configure_smtp
+      build :setup_letter_opener
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end

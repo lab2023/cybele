@@ -12,6 +12,7 @@ module Cybele
     include Cybele::Helpers::ShowFor
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
+    include Cybele::Helpers::Mailer
     include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
 
@@ -72,6 +73,10 @@ module Cybele
 
     def configure_environment(rails_env, config)
       inject_into_file("config/environments/#{rails_env}.rb", "\n#{config}", before: "\nend")
+    end
+
+    def action_mailer_host(rails_env)
+      configure_environment(rails_env, template_content('mailer/host.rb.erb'))
     end
   end
 end
