@@ -208,6 +208,11 @@ module Cybele
       build :setup_letter_opener
     end
 
+    def gitignore_files_and_folders
+      build :setup_gitignore_files
+      build :setup_gitignore_folders
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end
