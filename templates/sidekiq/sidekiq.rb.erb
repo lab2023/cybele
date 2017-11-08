@@ -1,17 +1,17 @@
 require 'sidekiq'
 require 'sidekiq/web'
 
+Rails.application.config.active_job.queue_adapter = :sidekiq
+
 namespace = "<%= app_name.parameterize %>_#{Rails.env}"
 settings = {
-  url: ENV['REDIS_URL'] || 'redis://localhost:6379/0',
+  url: ENV['REDISTOGO_URL'] || 'redis://localhost:6379/0',
   namespace: namespace
 }
 
 Sidekiq.configure_server { |config| config.redis = settings }
 Sidekiq.configure_client { |config| config.redis = settings }
 Sidekiq.options[:labels] << namespace
-
-Rails.application.config.active_job.queue_adapter = :sidekiq
 
 # Open this if you have scheduled jobs
 # schedule_file = 'config/sidekiq_schedule.yml'
