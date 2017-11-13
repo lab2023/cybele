@@ -69,6 +69,26 @@ module Cybele
       configure_environment 'development', template_content('bullet/bullet_settings.rb.erb')
     end
 
+    def setup_gitignore_files
+      remove_file '.gitignore', force: true
+      copy_file 'cybele_gitignore', '.gitignore'
+    end
+
+    def setup_gitignore_folders
+      %w(
+        app/assets/images
+        db/migrate
+        spec/support
+        spec/lib
+        spec/models
+        spec/views
+        spec/controllers
+        spec/helpers
+      ).each do |dir|
+        empty_directory_with_keep_file dir
+      end
+    end
+
     private
 
     def configure_environment(rails_env, config)
