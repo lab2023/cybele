@@ -15,6 +15,7 @@ module Cybele
     include Cybele::Helpers::Mailer
     include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
+    include Cybele::Helpers::ErrorPages
 
     def readme
       template 'README.md.erb',
@@ -75,7 +76,7 @@ module Cybele
     end
 
     def setup_gitignore_folders
-      %w(
+      %w[
         app/assets/images
         db/migrate
         spec/support
@@ -84,7 +85,7 @@ module Cybele
         spec/views
         spec/controllers
         spec/helpers
-      ).each do |dir|
+      ].each do |dir|
         empty_directory_with_keep_file dir
       end
     end

@@ -10,8 +10,6 @@ module MailTestHelpers
     expect(file).to match('user_name:')
     expect(file).to match('password:')
     expect(file).to match('authentication:')
-    unless content('config/settings.yml').present?
-      expect(file).to match('host:')
-    end
+    expect(file).to match('host:') unless content('config/settings.yml').present?
   end
 end

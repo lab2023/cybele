@@ -31,7 +31,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(gemfile_file).to match(/^gem 'devise-async'/)
 
     sidekiq_file = content('config/sidekiq.yml')
-    expect(sidekiq_file).to match(/^:concurrency: 25/)
+    expect(sidekiq_file).to match('[high_priority, 2]')
 
     sidekiq_schedule_file = content('config/sidekiq_schedule.yml')
     expect(sidekiq_schedule_file).to match(/-> Daily at midnight/)
@@ -206,5 +206,13 @@ RSpec.describe 'Create new project with default configuration' do
 
   it 'uses devise' do
     devise_test_helper
+  end
+
+  it 'uses error_pages' do
+    error_pages_helper
+  end
+
+  it 'uses gitignore' do
+    gitignore_helper
   end
 end

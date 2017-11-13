@@ -145,4 +145,23 @@ module GemTestHelpers
     config_test_file = content('config/environments/test.rb')
     expect(config_test_file).to match(/^Rails.application.configure/)
   end
+
+  def error_pages_helper
+    application_controller_file = content('app/controllers/application_controller.rb')
+    expect(application_controller_file).to match('rescue_from Exception')
+    expect(application_controller_file).to match('rescue_from ActiveRecord::RecordNotFound')
+    expect(application_controller_file).to match('rescue_from ActionController::RoutingError')
+    expect(application_controller_file).to match('server_error')
+    expect(application_controller_file).to match('page_not_found')
+
+    route_file = content('config/routes.rb')
+    expect(route_file).to match('unmatched_route')
+  end
+
+  def gitignore_helper
+    application_controller_file = content('.gitignore')
+    expect(application_controller_file).to match('.DS_Store')
+    expect(application_controller_file).to match('.secret')
+    expect(application_controller_file).to match('.env')
+  end
 end

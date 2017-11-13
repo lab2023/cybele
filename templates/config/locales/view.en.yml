@@ -1,2 +1,5 @@
 en:
   view:
+    error:
+      internal_server_error: "We are sorry. An error occured. Our engineers are working on it. We will solve it as soon as possible."
+      not_found: "We are sorry. Page was not found. It may have been moved."

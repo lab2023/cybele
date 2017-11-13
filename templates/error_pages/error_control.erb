@@ -1,0 +1,5 @@
+
+  rescue_from Exception, with: :server_error if Rails.env.production? or Rails.env.staging?
+  rescue_from ActiveRecord::RecordNotFound, with: :page_not_found if Rails.env.production? or Rails.env.staging?
+  rescue_from ActionController::RoutingError, with: :page_not_found if Rails.env.production? or Rails.env.staging?
+

@@ -187,4 +187,12 @@ RSpec.describe 'Create new project without default configuration' do
   it 'uses devise' do
     devise_test_helper
   end
+
+  it 'uses error_pages' do
+    error_pages_helper
+  end
+
+  it 'uses gitignore' do
+    gitignore_helper
+  end
 end
