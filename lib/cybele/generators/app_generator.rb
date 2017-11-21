@@ -60,6 +60,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip haml and haml-rails integration. Default: don\'t skip'
+    class_option :skip_docker,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip docker development environment. Default: don\'t skip'
 
     def initialize(*args)
       super
@@ -75,6 +81,7 @@ module Cybele
       option_with_ask_yes(:skip_simple_form)
       option_with_ask_yes(:skip_show_for)
       option_with_ask_yes(:skip_haml)
+      option_with_ask_yes(:skip_docker)
       @options.freeze
     end
 
@@ -211,6 +218,12 @@ module Cybele
     def gitignore_files_and_folders
       build :setup_gitignore_files
       build :setup_gitignore_folders
+    end
+
+    def docker_development_env
+      return if @options[:skip_docker]
+      say 'Setup docker development environment', :green
+      build :setup_docker_development_env
     end
 
     def goodbye
