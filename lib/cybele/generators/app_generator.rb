@@ -218,6 +218,11 @@ module Cybele
       build :setup_gitignore_folders
     end
 
+    def configure_error_pages
+      say 'Setup custom exception pages and 404 page'
+      build :configure_error_pages
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end
