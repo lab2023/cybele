@@ -6,7 +6,7 @@ module Cybele
       def configure_error_pages
         inject_into_file 'app/controllers/application_controller.rb',
                          template_content('error_pages/error_control.erb'),
-                         before: 'self.responder'
+                         after: 'class ApplicationController < ActionController::Base'
 
         inject_into_file 'app/controllers/application_controller.rb',
                          template_content('error_pages/error_method.erb'),
