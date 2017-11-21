@@ -7,7 +7,7 @@ RSpec.describe 'Create new project without default configuration' do
     drop_dummy_database
     remove_project_directory
     run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for'\
-               ' --skip-haml')
+               ' --skip-haml --skip-docker')
     setup_app_dependencies
   end
 
@@ -198,5 +198,24 @@ RSpec.describe 'Create new project without default configuration' do
 
   it 'uses ssl_setting' do
     force_ssl
+  end
+
+  it "don't use docker development environment" do
+    expect(File).not_to exist(file_project_path('docker-compose.yml'))
+    expect(File).not_to exist(file_project_path('Dockerfile'))
+    expect(File).not_to exist(file_project_path('bin/start-app.sh'))
+    expect(File).not_to exist(file_project_path('bin/start-sidekiq.sh'))
+
+    env_sample_file = content('env.sample')
+    expect(env_sample_file).not_to match('REDISTOGO_URL=redis://redis:6379/0')
+
+    env_local_file = content('.env.local')
+    expect(env_local_file).not_to match('REDISTOGO_URL=redis://redis:6379/0')
+
+    env_staging_file = content('.env.staging')
+    expect(env_staging_file).not_to match('REDISTOGO_URL=')
+
+    env_production_file = content('.env.production')
+    expect(env_production_file).not_to match('REDISTOGO_URL=')
   end
 end

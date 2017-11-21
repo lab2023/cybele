@@ -9,7 +9,7 @@ module Cybele
         run_bundle
 
         create_paperclip_files
-        configure_app_name
+        configure_app_name(['env.sample', '.env.local', '.env.staging', '.env.production'])
       end
 
       private
@@ -28,13 +28,6 @@ module Cybele
         append_file('.env.local', template_content('paperclip/paperclip_env_local.erb'))
         append_file('.env.staging', template_content('paperclip/paperclip_env_staging.erb'))
         append_file('.env.production', template_content('paperclip/paperclip_env_production.erb'))
-      end
-
-      def configure_app_name
-        gsub_file 'env.sample', /<%= app_name %>/, app_name
-        gsub_file '.env.local', /<%= app_name %>/, app_name
-        gsub_file '.env.staging', /<%= app_name %>/, app_name
-        gsub_file '.env.production', /<%= app_name %>/, app_name
       end
     end
   end

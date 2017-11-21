@@ -10,6 +10,8 @@ module Cybele
         # Add recipient_interceptor staging settings to staging environment file
         append_file 'config/settings.yml',
                     template_content('recipient_interceptor/recipient_interceptor_settings.yml.erb')
+
+        configure_app_name(['config/settings.yml'])
       end
     end
   end
