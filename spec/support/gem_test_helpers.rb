@@ -145,4 +145,13 @@ module GemTestHelpers
     config_test_file = content('config/environments/test.rb')
     expect(config_test_file).to match(/^Rails.application.configure/)
   end
+
+  def force_ssl
+    config_staging_file = content('config/environments/staging.rb')
+    expect(config_staging_file).to match('config.force_ssl')
+
+    config_production_file = content('config/environments/staging.rb')
+    expect(config_production_file).to match('config.force_ssl')
+  end
+
 end

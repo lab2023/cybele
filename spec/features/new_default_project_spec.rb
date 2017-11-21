@@ -207,4 +207,8 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses devise' do
     devise_test_helper
   end
+
+  it 'uses ssl_setting' do
+    force_ssl
+  end
 end

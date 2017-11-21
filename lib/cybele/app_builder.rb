@@ -32,6 +32,13 @@ module Cybele
       append_file('Gemfile', template_content('Gemfile.erb'))
     end
 
+    def force_ssl_setting
+      gsub_file 'config/environments/production.rb',
+                /# config.force_ssl = true/, "config.force_ssl = ENV['RAILS_FORCE_SSL'].present?"
+      gsub_file 'config/environments/staging.rb',
+                /# config.force_ssl = true/, "config.force_ssl = ENV['RAILS_FORCE_SSL'].present?"
+    end
+
     def add_editor_config
       copy_file 'editorconfig', '.editorconfig'
     end

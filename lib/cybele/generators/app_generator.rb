@@ -187,6 +187,11 @@ module Cybele
       build :configure_bullet
     end
 
+    def force_ssl
+      say 'Add ssl control into staging.rb and production.rb', :green
+      build :force_ssl_setting
+    end
+
     def setup_paperclip_and_add_aws
       say 'Setting up paperclip, editing settings.yml and env files', :green
       build :configure_paperclip
