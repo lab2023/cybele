@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module LocalLanguageTestHelper
+module LocaleLanguageTestHelper
   def locale_language_test
     expect(File).to exist(file_project_path('config/locales/en.yml'))
 
