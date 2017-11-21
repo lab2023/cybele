@@ -25,9 +25,9 @@ module Cybele
 
       def docker_dotenv_files
         append_file('env.sample', template_content('docker/docker_env_sample.erb'))
-        append_file('.env.local', template_content('docker/docker_env_local.erb'))
-        append_file('.env.staging', template_content('docker/docker_env_staging.erb'))
-        append_file('.env.production', template_content('docker/docker_env_production.erb'))
+        %w[local staging production].each do |env|
+          append_file(".env.#{env}", template_content("docker/docker_env_#{env}.erb"))
+        end
       end
     end
   end
