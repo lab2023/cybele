@@ -11,7 +11,14 @@ Dir['./spec/support/**/*.rb'].each { |file| require file }
 
 RSpec.configure do |config|
   config.include CybeleTestHelpers
-  config.include GemTestHelpers
+  config.include DotenvTestHelper
+  config.include ConfigTestHelper
+  config.include DeviseTestHelper
+  config.include PaperclipTestHelper
+  config.include LocaleLanguageTestHelper
+  config.include ResponderTestHelper
+  config.include ErrorPagesTestHelper
+  config.include GitIgnoreTestHelper
   config.include MailTestHelpers
 
   config.before(:all) do

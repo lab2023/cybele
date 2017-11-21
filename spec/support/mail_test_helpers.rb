@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MailTestHelpers
-  def mail_test_helper(path)
+  def mail_test_helper(path) # rubocop:disable Metrics/AbcSize
     file = content(path)
     expect(file).to match('smtp')
     expect(file).to match('address:')
@@ -10,8 +10,6 @@ module MailTestHelpers
     expect(file).to match('user_name:')
     expect(file).to match('password:')
     expect(file).to match('authentication:')
-    unless content('config/settings.yml').present?
-      expect(file).to match('host:')
-    end
+    expect(file).to match('host:') unless content('config/settings.yml').present?
   end
 end
