@@ -220,6 +220,11 @@ module Cybele
       build :setup_gitignore_folders
     end
 
+    def configure_error_pages
+      say 'Setup custom exception pages and 404 page', :green
+      build :configure_error_pages
+    end
+
     def docker_development_env
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green

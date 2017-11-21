@@ -1,0 +1,7 @@
+
+
+  if Rails.env.production? || Rails.env.staging?
+    rescue_from Exception, with: :server_error
+    rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
+    rescue_from ActionController::RoutingError, with: :page_not_found
+  end
