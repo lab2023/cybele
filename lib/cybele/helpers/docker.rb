@@ -18,6 +18,12 @@ module Cybele
                  'bin/start-sidekiq.sh',
                  force: true
 
+        docker_dotenv_files
+      end
+
+      private
+
+      def docker_dotenv_files
         append_file('env.sample', template_content('docker/docker_env_sample.erb'))
         append_file('.env.local', template_content('docker/docker_env_local.erb'))
         append_file('.env.staging', template_content('docker/docker_env_staging.erb'))
