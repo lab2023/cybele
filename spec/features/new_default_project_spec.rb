@@ -6,7 +6,7 @@ RSpec.describe 'Create new project with default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele
+    run_cybele('--skip-create-database')
     setup_app_dependencies
   end
 
