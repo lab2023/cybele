@@ -16,5 +16,11 @@ module Cybele
     def template_content(file)
       File.read(File.expand_path(find_in_source_paths(file)))
     end
+
+    def configure_app_name(files)
+      files.each do |file|
+        gsub_file file, /<%= app_name %>/, app_name
+      end
+    end
   end
 end
