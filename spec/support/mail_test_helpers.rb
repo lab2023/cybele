@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MailTestHelpers
-  def mail_test_helper(path)
+  def mail_test_helper(path) # rubocop:disable Metrics/AbcSize
     file = content(path)
     expect(file).to match('smtp')
     expect(file).to match('address:')

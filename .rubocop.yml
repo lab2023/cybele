@@ -16,12 +16,7 @@ Metrics/LineLength:
 
 Metrics/ClassLength:
   Exclude:
-    - 'spec/support/gem_test_helpers.rb'
     - 'lib/cybele/generators/app_generator.rb'
-
-Metrics/ModuleLength:
-  Exclude:
-    - 'spec/support/gem_test_helpers.rb'
 
 Style/AccessorMethodName:
   Exclude:
@@ -30,13 +25,6 @@ Style/AccessorMethodName:
 Metrics/MethodLength:
   CountComments: false
   Max: 15
-  Exclude:
-    - 'spec/support/gem_test_helpers.rb'
-
-Metrics/AbcSize:
-  Exclude:
-    - 'spec/support/gem_test_helpers.rb'
-    - 'spec/support/mail_test_helpers.rb'
 
 Metrics/BlockLength:
   CountComments: false
@@ -47,7 +35,6 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'lib/cybele/app_builder.rb'
     - 'lib/cybele/generators/app_generator.rb'
-    - 'spec/support/cybele_test_helpers.rb'
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: when_needed

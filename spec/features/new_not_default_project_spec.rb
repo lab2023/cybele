@@ -42,7 +42,7 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses responders' do
-    responder_test_helper
+    responder_test
   end
 
   it 'uses rollbar' do
@@ -108,11 +108,11 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses config and staging file' do
-    config_test_helper
+    config_test
   end
 
   it 'uses locale_language' do
-    locale_language_test_helper
+    locale_language_test
   end
 
   it 'uses recipient_interceptor' do
@@ -152,11 +152,11 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses paperclip' do
-    paperclip_test_helper
+    paperclip_test
   end
 
   it 'control env.sample and .env files' do
-    dotenv_test_helper
+    dotenv_test
   end
 
   it 'uses mailer' do
@@ -185,14 +185,14 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses devise' do
-    devise_test_helper
+    devise_test
   end
 
   it 'uses error_pages' do
-    error_pages_helper
+    error_pages_test
   end
 
   it 'uses gitignore' do
-    gitignore_helper
+    git_ignore_test
   end
 end
