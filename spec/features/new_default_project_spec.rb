@@ -216,6 +216,10 @@ RSpec.describe 'Create new project with default configuration' do
     git_ignore_test
   end
 
+  it 'uses ssl_setting' do
+    force_ssl
+  end
+
   it 'uses docker development environment' do
     expect(File).to exist(file_project_path('docker-compose.yml'))
     expect(File).to exist(file_project_path('Dockerfile'))
