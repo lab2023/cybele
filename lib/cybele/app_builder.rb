@@ -16,6 +16,7 @@ module Cybele
     include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
     include Cybele::Helpers::ErrorPages
+    include Cybele::Helpers::Docker
 
     def readme
       template 'README.md.erb',
