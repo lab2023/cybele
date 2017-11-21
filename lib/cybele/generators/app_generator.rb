@@ -88,6 +88,7 @@ module Cybele
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
+      bundle_command 'update thor'
       build :add_simple_form_gem unless @options[:skip_simple_form]
       build :add_show_for_gem unless @options[:skip_show_for]
       build :add_haml_gems unless @options[:skip_haml]
@@ -234,6 +235,11 @@ module Cybele
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green
       build :setup_docker_development_env
+    end
+
+    def setup_pronto_config
+      say 'Setup pronto config', :green
+      build :configure_pronto
     end
 
     def goodbye

@@ -244,4 +244,8 @@ RSpec.describe 'Create new project with default configuration' do
     env_production_file = content('.env.production')
     expect(env_production_file).to match('REDISTOGO_URL=')
   end
+
+  it 'uses pronto' do
+    pronto_test
+  end
 end
