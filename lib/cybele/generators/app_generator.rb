@@ -60,6 +60,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip haml and haml-rails integration. Default: don\'t skip'
+    class_option :skip_docker,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip docker development environment. Default: don\'t skip'
 
     def initialize(*args)
       super
@@ -75,12 +81,14 @@ module Cybele
       option_with_ask_yes(:skip_simple_form)
       option_with_ask_yes(:skip_show_for)
       option_with_ask_yes(:skip_haml)
+      option_with_ask_yes(:skip_docker)
       @options.freeze
     end
 
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
+      bundle_command 'update thor'
       build :add_simple_form_gem unless @options[:skip_simple_form]
       build :add_show_for_gem unless @options[:skip_show_for]
       build :add_haml_gems unless @options[:skip_haml]
@@ -187,6 +195,11 @@ module Cybele
       build :configure_bullet
     end
 
+    def force_ssl
+      say 'Add ssl control into staging.rb and production.rb', :green
+      build :force_ssl_setting
+    end
+
     def setup_paperclip_and_add_aws
       say 'Setting up paperclip, editing settings.yml and env files', :green
       build :configure_paperclip
@@ -214,13 +227,24 @@ module Cybele
     end
 
     def configure_error_pages
-      say 'Setup custom exception pages and 404 page'
+      say 'Setup custom exception pages and 404 page', :green
       build :configure_error_pages
     end
 
     def setup_git_and_git_flow
-      say 'Initialize git'
+      say 'Initialize git and git flow'
       build :git_and_git_flow_commands
+    end
+
+    def docker_development_env
+      return if @options[:skip_docker]
+      say 'Setup docker development environment', :green
+      build :setup_docker_development_env
+    end
+
+    def setup_pronto_config
+      say 'Setup pronto config', :green
+      build :configure_pronto
     end
 
     def goodbye

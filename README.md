@@ -65,6 +65,11 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 
 http://github.com/lab2023/cybele/issues
 
+## Development
+* Clone project
+* Run: brew install cmake
+* Run: bundle
+
 ## Contributing
 
 Cybele uses [rDoc](http://rubydoc.info/gems/cybele) and [SemVer](http://semver.org/), and takes it seriously.

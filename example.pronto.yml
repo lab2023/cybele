@@ -1,0 +1,8 @@
+all:
+  exclude:
+    - 'spec/**/*'
+bitbucket:
+  slug: 'lab2023corp/cybele'
+  username: 'username'
+  password: 'password'
+max_warnings: 150
