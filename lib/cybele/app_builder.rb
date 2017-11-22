@@ -90,6 +90,13 @@ module Cybele
       end
     end
 
+    def git_and_git_flow_commands
+      git :init
+      git flow: 'init -d -f'
+      git add: '.'
+      git commit: '-m "Project initialized"'
+    end
+
     private
 
     def configure_environment(rails_env, config)

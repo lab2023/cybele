@@ -218,6 +218,11 @@ module Cybele
       build :configure_error_pages
     end
 
+    def setup_git_and_git_flow
+      say 'Initialize git'
+      build :git_and_git_flow_commands
+    end
+
     def goodbye
       say 'Congratulations! That\'s all...', :green
     end

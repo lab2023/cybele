@@ -49,6 +49,16 @@ module CybeleTestHelpers
     end
   end
 
+  def cybele_help_run(command: 'ls')
+    Dir.chdir("#{tmp_path}/#{app_name}") do
+      Bundler.with_clean_env do
+        `
+        #{command}
+        `
+      end
+    end
+  end
+
   def setup_app_dependencies
     return unless File.exist?(project_path)
     Dir.chdir(project_path) do
