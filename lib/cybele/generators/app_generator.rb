@@ -231,6 +231,11 @@ module Cybele
       build :configure_error_pages
     end
 
+    def setup_git_and_git_flow
+      say 'Initialize git and git flow'
+      build :git_and_git_flow_commands
+    end
+
     def docker_development_env
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green
