@@ -60,6 +60,12 @@ module Cybele
                  default: false,
                  group: :cybele,
                  desc: 'Skip haml and haml-rails integration. Default: don\'t skip'
+    class_option :skip_view_files,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip view files. Default: don\'t skip'
     class_option :skip_docker,
                  type: :boolean,
                  aliases: nil,
@@ -81,6 +87,7 @@ module Cybele
       option_with_ask_yes(:skip_simple_form)
       option_with_ask_yes(:skip_show_for)
       option_with_ask_yes(:skip_haml)
+      option_with_ask_yes(:skip_view_files)
       option_with_ask_yes(:skip_docker)
       @options.freeze
     end
@@ -92,6 +99,7 @@ module Cybele
       build :add_simple_form_gem unless @options[:skip_simple_form]
       build :add_show_for_gem unless @options[:skip_show_for]
       build :add_haml_gems unless @options[:skip_haml]
+      build :add_required_view_gems unless @options[:skip_view_files]
       bundle_command 'install --binstubs=bin/stubs'
     end
 
@@ -229,6 +237,12 @@ module Cybele
     def configure_error_pages
       say 'Setup custom exception pages and 404 page', :green
       build :configure_error_pages
+    end
+
+    def customize_view_files
+      return if @options[:skip_view_files]
+      say 'Customize view files', :green
+      build :customize_assets_files
     end
 
     def setup_git_and_git_flow

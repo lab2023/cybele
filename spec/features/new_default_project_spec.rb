@@ -216,6 +216,25 @@ RSpec.describe 'Create new project with default configuration' do
     git_ignore_test
   end
 
+  it 'uses assets files' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match(/^gem 'bootstrap'/)
+
+    expect(File).not_to exist(file_project_path('app/assets/stylesheets/application.css'))
+
+    application_stylesheets_file = content('app/assets/stylesheets/application.css.sass')
+    expect(application_stylesheets_file).to match('@import "bootstrap"')
+
+    hq_stylesheets_js_file = content('app/assets/stylesheets/hq/application.css.sass')
+    expect(hq_stylesheets_js_file).to match('@import "bootstrap"')
+
+    application_js_file = content('app/assets/javascripts/application.js')
+    expect(application_js_file).to match('require bootstrap')
+
+    hq_application_js_file = content('app/assets/javascripts/hq/application.js')
+    expect(hq_application_js_file).to match('require bootstrap')
+  end
+
   it 'uses ssl_setting' do
     force_ssl
   end

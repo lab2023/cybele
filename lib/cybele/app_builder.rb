@@ -16,6 +16,8 @@ module Cybele
     include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
     include Cybele::Helpers::ErrorPages
+    include Cybele::Helpers::ViewFiles::AssetsFiles
+    include Cybele::Helpers::ViewFiles::ViewGems
     include Cybele::Helpers::Docker
     include Cybele::Helpers::Pronto
 
