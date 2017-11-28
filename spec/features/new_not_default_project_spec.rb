@@ -7,7 +7,7 @@ RSpec.describe 'Create new project without default configuration' do
     drop_dummy_database
     remove_project_directory
     run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for'\
-               ' --skip-haml')
+               ' --skip-haml --skip-view-files')
     setup_app_dependencies
   end
 
@@ -194,5 +194,17 @@ RSpec.describe 'Create new project without default configuration' do
 
   it 'uses gitignore' do
     git_ignore_test
+  end
+
+  it 'do not use assets files' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).not_to match(/^gem 'bootstrap'/)
+
+    expect(File).to exist(file_project_path('app/assets/stylesheets/application.css'))
+    expect(File).not_to exist(file_project_path('app/assets/stylesheets/application.css.sass'))
+    expect(File).not_to exist(file_project_path('app/assets/stylesheets/hq/application.css.sass'))
+
+    expect(File).to exist(file_project_path('app/assets/javascripts/application.js'))
+    expect(File).not_to exist(file_project_path('app/assets/javascripts/hq/application.js'))
   end
 end
