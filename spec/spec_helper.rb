@@ -20,6 +20,8 @@ RSpec.configure do |config|
   config.include ErrorPagesTestHelper
   config.include GitIgnoreTestHelper
   config.include MailTestHelpers
+  config.include ForceSSLTestHelper
+  config.include ProntoTestHelpers
 
   config.before(:all) do
     create_tmp_directory

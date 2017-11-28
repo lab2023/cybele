@@ -46,3 +46,4 @@ Style/IndentHeredoc:
 Naming/HeredocDelimiterNaming:
   Exclude:
     - 'spec/features/cli_help_spec.rb'
+    - 'spec/features/git_and_git_flow_spec.rb'

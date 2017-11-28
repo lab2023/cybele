@@ -6,7 +6,7 @@ RSpec.describe 'Create new project with default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele
+    run_cybele('--skip-create-database')
     setup_app_dependencies
   end
 
@@ -233,5 +233,38 @@ RSpec.describe 'Create new project with default configuration' do
 
     hq_application_js_file = content('app/assets/javascripts/hq/application.js')
     expect(hq_application_js_file).to match('require bootstrap')
+  end
+
+  it 'uses ssl_setting' do
+    force_ssl
+  end
+
+  it 'uses docker development environment' do
+    expect(File).to exist(file_project_path('docker-compose.yml'))
+    expect(File).to exist(file_project_path('Dockerfile'))
+    expect(File).to exist(file_project_path('bin/start-app.sh'))
+    expect(File).to exist(file_project_path('bin/start-sidekiq.sh'))
+
+    env_sample_file = content('env.sample')
+    expect(env_sample_file).to match('REDISTOGO_URL=redis://redis:6379/0')
+    expect(env_sample_file).to match('RACK_ENV=development')
+    expect(env_sample_file).to match('POSTGRESQL_HOST=postgres')
+    expect(env_sample_file).to match('REDIS_HOST=redis')
+
+    env_local_file = content('.env.local')
+    expect(env_local_file).to match('REDISTOGO_URL=redis://redis:6379/0')
+    expect(env_local_file).to match('RACK_ENV=development')
+    expect(env_local_file).to match('POSTGRESQL_HOST=postgres')
+    expect(env_local_file).to match('REDIS_HOST=redis')
+
+    env_staging_file = content('.env.staging')
+    expect(env_staging_file).to match('REDISTOGO_URL=')
+
+    env_production_file = content('.env.production')
+    expect(env_production_file).to match('REDISTOGO_URL=')
+  end
+
+  it 'uses pronto' do
+    pronto_test
   end
 end
