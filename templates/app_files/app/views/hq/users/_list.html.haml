@@ -1,0 +1,15 @@
+.panel-body.filters
+  = render 'filters'
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :id, t('activerecord.attributes.user.id'))
+      %th= sort_link(@search, :name, t('activerecord.attributes.user.name'))
+      %th= sort_link(@search, :email, t('activerecord.attributes.user.email'))
+      %th= sort_link(@search, :current_sign_in_at, t('activerecord.attributes.user.current_sign_in_at'))
+      %th= sort_link(@search, :last_sign_in_at, t('activerecord.attributes.user.last_sign_in_at'))
+      %th= sort_link(@search, :is_active, t('activerecord.attributes.user.is_active'))
+      %th.actions
+        = t('view.actions')
+  %tbody.users
+    = render @users

@@ -1,0 +1,14 @@
+---
+en:
+  flash:
+    actions:
+      toggle_is_active:
+        passive: '%{resource_name} was set passive successfully.'
+        active: '%{resource_name} was set active successfully.'
+      create:
+        notice: '%{resource_name} created successfully.'
+      update:
+        notice: '%{resource_name} updated successfully.'
+      destroy:
+        notice: '%{resource_name} deleted successfully.'
+        alert: 'Cannot delete %{resource_name}'

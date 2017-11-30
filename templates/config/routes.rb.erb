@@ -1,0 +1,23 @@
+
+  concern :activeable do
+    post :toggle_is_active, on: :member
+  end
+
+  # Admins
+  devise_for :admins, controllers: { sessions: 'hq/sessions', registrations: 'hq/registrations', passwords: 'hq/passwords' },
+             path: 'hq',
+             path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',  confirmation: 'verification' }
+
+  as :admin do
+    get 'hq/edit' => 'hq/registrations#edit', as: 'edit_admin_registration'
+    put 'hq' => 'hq/registrations#update', as: 'admin_registration'
+  end
+
+  namespace :hq do
+    root to: 'dashboard#index'
+    resources :dashboard, only: [:index]
+    resources :admins, concerns: [:activeable]
+    resources :users, concerns: [:activeable]
+    resources :audits, only: [:index, :show]
+  end
+

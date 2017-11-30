@@ -1,5 +1,110 @@
 en:
   view:
+    excel_export: Export as Excel
+    make_passive: Make Passive
+    make_active: Make Active
+    actions: Actions
+    edit: Edit
+    select: Select
+    active: Active
+    passive: Passive
+    start: Start
+    end: End
+    used: Used
+    not_used: Not Used
+    cancel: Cancel
+    all: All
+    reset: Reset
+    quick_search: Search...
+    reload: Reload
+    hello: "Hello %{user}"
+    there_is_no_data: "There is no %{resource}."
+    create_resource_mail_info: "When you add a new %{resource}, login information will be sent to your e-mail address."
+    admin_info: Admin Info
+    title:
+      edit: "Edit %{resource_name}"
+      show: "Detail %{resource_name}"
+      new: "Add %{resource_name}"
+    actions:
+      update: Update
+      create: Create
+      destroy: Destroy
+      delete: Delete
+    navbar:
+      settings: Settings
+      signup: Sign Up
+      signin: Sign In
+      sign_out: Sign Out
+      edit_login_info: Edit Login Info
+      edit_profile_info: Edit Profile Info
+      home_page: Home Page
+      admin_portal: Admin Portal
+      profile: Profile
+    tooltips:
+      zoom: "Detail"
+      edit: "Edit"
+      delete: "Delete"
+      new: "New"
+      are_you_sure: "Are you sure you want to continue?"
+      choose: "Select"
+      show: "Show"
+    btn:
+      add: Add
+      update: Update
+      back: Back
+      detail: Detail
+      delete: Delete
+    dock:
+      dashboard: "Control Panel"
+      profile: "Profile"
+      system_users: "System users"
+      system_datas: "System data"
+      system: "System"
     error:
       internal_server_error: "We are sorry. An error occured. Our engineers are working on it. We will solve it as soon as possible."
       not_found: "We are sorry. Page was not found. It may have been moved."
+  devise:
+    shared:
+      links:
+        login: "Log in"
+        sign_up: "Sign up"
+        forgot_your_password: "Forgot your password?"
+        did_not_receive_confirmation_instructions: "Resend confirmation email"
+        did_not_receive_unlock_instructions: "Resend confirmation email"
+        sign_in_with: "Sign in with %{name}"
+        sign_up_with: "Sign up with %{name}"
+    sessions:
+      new:
+        title: "Log in"
+        submit_button: "Log in"
+    unlocks:
+      new:
+        title: "Resend unlock instructions"
+        submit_button: "Resend unlock instructions"
+    registrations:
+      new:
+        submit_button: "Sign up"
+        title: "Sign up"
+        no_model_title: "Sign up for Free"
+        title: "%{model} Sign up"
+        password_hint: "%{length} characters minimum"
+      edit:
+        title: "Edit log in info"
+        password_hint: "Leave it blank if you don't want to change it"
+        current_password_hint: "we need your current password to confirm your changes"
+        submit_button: "Update"
+        unconfirmed_email: "Currently waiting confirmation for: %{email}"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        submit_button: "Send me reset password instructions"
+        password_hint: "%{length} characters minimum"
+      edit:
+        title: "Change your password"
+        submit_button: "Change my password"
+        new_password: "New password"
+        confirm_new_password: "Confirm your new password"
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        submit_button: "Resend confirmation instructions"

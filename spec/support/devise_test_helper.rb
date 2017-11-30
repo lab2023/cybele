@@ -38,15 +38,7 @@ module DeviseTestHelper
     expect(devise_model_file).to match(':validatable')
   end
 
-  def file_control_test # rubocop:disable Metrics/AbcSize
-    expect(File).to exist(file_project_path('app/views/devise/confirmations'))
-    expect(File).to exist(file_project_path('app/views/devise/mailer'))
-    expect(File).to exist(file_project_path('app/views/devise/passwords'))
-    expect(File).to exist(file_project_path('app/views/devise/registrations'))
-    expect(File).to exist(file_project_path('app/views/devise/sessions'))
-    expect(File).to exist(file_project_path('app/views/devise/shared'))
-    expect(File).to exist(file_project_path('app/views/devise/unlocks'))
-
+  def file_control_test
     expect(File).not_to exist(file_project_path('config/locales/devise.en.yml'))
   end
 end

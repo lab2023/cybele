@@ -1,5 +1,0 @@
----
-en:
-  email:
-    salut: 'Hello %{user};'
-    hello: 'Hello;'
