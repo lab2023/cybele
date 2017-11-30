@@ -20,6 +20,7 @@ module Cybele
     include Cybele::Helpers::ViewFiles::ViewGems
     include Cybele::Helpers::Docker
     include Cybele::Helpers::Pronto
+    include Cybele::Helpers::LandingPages
 
     def readme
       template 'README.md.erb',

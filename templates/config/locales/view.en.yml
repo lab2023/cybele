@@ -3,3 +3,15 @@ en:
     error:
       internal_server_error: "We are sorry. An error occured. Our engineers are working on it. We will solve it as soon as possible."
       not_found: "We are sorry. Page was not found. It may have been moved."
+    navbar:
+      settings: Settings
+      signup: Signup
+      signin: Signin
+      sign_out: Sign Out
+      edit_login_info: Edit Login Info
+      edit_profile_info: Edit Profile Info
+      home_page: Home Page
+      admin_portal: Admin Portal
+      profile: Profile
+      about: About
+      contact: Contact

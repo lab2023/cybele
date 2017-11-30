@@ -1,0 +1,34 @@
+!!!
+%html{lang: I18n.locale}
+  %head
+    %title= content_for?(:title) ? "#{yield(:title)} - <%= app_name.capitalize %>" : '<%= app_name.capitalize %>'
+    %meta(http-equiv="content-type" content="text/html" charset="utf-8")
+    %meta(http-equiv="x-ua-compatible" content="ie=edge,chrome=1")
+    %meta(name="description" content="<%= app_name.capitalize %>")
+    %meta(name="author" content="<%= app_name.capitalize %>")
+    %link(rel="shortcut icon" href="/images/favicon.png")
+
+    = stylesheet_link_tag 'application', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+                          media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = yield :headls
+  %body
+    = render 'layouts/partials/warnings'
+    .container-narrow
+      .header
+        %nav
+          / Brand and toggle get grouped for better mobile display
+          = link_to root_path, class: 'navbar-brand' do
+            %i.fa.fa-home
+            = "<%= app_name.capitalize %>"
+          %ul.nav.nav-pills.float-right
+            %li.nav-item
+              %a.nav-link{href: about_welcome_index_path}
+                = t('navbar.about')
+            %li.nav-item
+              %a.nav-link{href: contact_welcome_index_path}
+                = t('navbar.contact')
+      = yield
+      .footer
+        %p Dummy_app Copyright &copy; #{Time.zone.now.year} Tüm Hakları Saklıdır.

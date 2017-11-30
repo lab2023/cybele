@@ -245,11 +245,6 @@ module Cybele
       build :customize_assets_files
     end
 
-    def setup_git_and_git_flow
-      say 'Initialize git and git flow'
-      build :git_and_git_flow_commands
-    end
-
     def docker_development_env
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green
@@ -259,6 +254,16 @@ module Cybele
     def setup_pronto_config
       say 'Setup pronto config', :green
       build :configure_pronto
+    end
+
+    def setup_landing_pages
+      say 'Generate Landing Pages'
+      build :generate_landing_pages
+    end
+
+    def setup_git_and_git_flow
+      say 'Initialize git and git flow'
+      build :git_and_git_flow_commands
     end
 
     def goodbye

@@ -3,3 +3,15 @@ tr:
     error:
       internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
       not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
+    navbar:
+      settings: Ayarlar
+      signup: Kayıt ol
+      signin: Giriş Yap
+      sign_out: Çıkış yap
+      edit_login_info: Giriş bilgilerini güncelle
+      edit_profile_info: Profil bilgilerini güncelle
+      home_page: Anasayfa
+      admin_portal: Yönetici Portalı
+      profile: Profil
+      about: Hakkında
+      contact: İletişim
