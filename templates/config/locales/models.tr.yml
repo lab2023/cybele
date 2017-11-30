@@ -1,2 +1,46 @@
 tr:
+  timestamp_fields: &timestamp
+    created_at: Oluşturulma tarihi
+    updated_at: Güncellenme tarihi
   activerecord:
+    models:
+      schemamigration: Schemamigration
+      admin: Yönetici
+      admins: Yöneticiler
+      audit: İşlem Geçmişi
+      audits: İşlem Geçmişleri
+    attributes:
+      admin:
+        id: ID
+        email: E-posta
+        password: Parola
+        current_password: Şu anki parolanız
+        password_confirmation: Parola tekrarı
+        remember_me: Beni hatırla
+        encrypted_password: Şifrelenmiş parola
+        reset_password_token: Parola sıfırlama token'ı
+        reset_password_sent_at: Parola sıfırlama isteği gönderilme zamanı
+        remember_created_at: Beni hatırla oluşturulma zamanı
+        sign_in_count: Giriş sayısı
+        current_sign_in_at: Güncel giriş tarihi
+        last_sign_in_at: Son giriş tarihi
+        last_seen_at: Son görülme tarihi
+        current_sign_in_ip: Güncel girişe ait IP
+        last_sign_in_ip: Son giriş işlemine ait IP
+        authentication_token: Giriş token'ı
+        name: İsim
+        surname: Soyisim
+        is_active: Aktif mi?
+        <<: *timestamp
+      audits:
+        id: ID
+        user_type: İşlemi yapan kullanıcı tipi
+        user: İşlemi yapan kullanıcı
+        type: Tip
+        type_id: Tip ID
+        action: İşlem
+        user_id: İşlemi yapan
+        auditable_type: İşlem yapılan
+        auditable_id: İşlem yapılan ID
+        action: İşlem Türü
+        <<: *timestamp

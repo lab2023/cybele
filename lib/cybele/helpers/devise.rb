@@ -14,13 +14,20 @@ module Cybele
         end
       end
 
-      def generate_devise_user
+      def generate_devise_models
         generate 'devise User name:string surname:string is_active:boolean time_zone:string'
+        generate 'devise Admin name:string surname:string is_active:boolean time_zone:string'
         remove_file 'config/locales/devise.en.yml', force: true
       end
 
       def generate_devise_views
-        generate 'devise:views'
+        directory 'devise/devise_views', 'app/views/devise'
+      end
+
+      def add_devise_authenticate_admin
+        inject_into_file 'app/controllers/hq/application_controller.rb',
+                         template_content('devise/devise_authenticate_admin.rb.erb'),
+                         after: 'class Hq::ApplicationController < ApplicationController'
       end
     end
   end

@@ -20,8 +20,8 @@ module LocaleLanguageTestHelper
   end
 
   def english_file_test
-    locale_file = content('config/locales/email.en.yml')
-    expect(locale_file).to match('email:')
+    locale_file = content('config/locales/mailer.en.yml')
+    expect(locale_file).to match('mailer:')
 
     locale_file = content('config/locales/models.en.yml')
     expect(locale_file).to match('activerecord:')
@@ -31,8 +31,8 @@ module LocaleLanguageTestHelper
   end
 
   def turkish_file_test
-    locale_file = content('config/locales/email.tr.yml')
-    expect(locale_file).to match('email:')
+    locale_file = content('config/locales/mailer.tr.yml')
+    expect(locale_file).to match('mailer:')
 
     locale_file = content('config/locales/models.tr.yml')
     expect(locale_file).to match('activerecord:')
