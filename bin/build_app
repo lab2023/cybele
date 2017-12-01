@@ -4,9 +4,9 @@
 echo "Build cybele gem"
 ./bin/build_gem
 
-# Remove example
-echo "Remove test"
-rm -rf tmp/example
+# Remove dummy_app
+echo "Remove dummy_app"
+rm -rf tmp/dummy_app
 
 # Disable spring
 export DISABLE_SPRING=1
@@ -14,5 +14,5 @@ export DISABLE_SPRING=1
 # ps ax | grep spring | grep dummy_app | cut -f1 -d' ' | xargs kill
 
 # Create dummy_app
-echo "Create example"
-cybele tmp/example --skip-ask
+echo "Create dummy_app"
+cybele tmp/dummy_app --skip-create-database

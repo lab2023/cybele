@@ -74,6 +74,7 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses will_paginate' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'will_paginate'/)
+    expect(gemfile_file).to match(/^gem 'will_paginate-bootstrap'/)
   end
 
   it 'uses to_xls' do
@@ -216,7 +217,7 @@ RSpec.describe 'Create new project with default configuration' do
     git_ignore_test
   end
 
-  it 'uses assets files' do
+  it 'uses asset files' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'bootstrap'/)
 
@@ -233,6 +234,111 @@ RSpec.describe 'Create new project with default configuration' do
 
     hq_application_js_file = content('app/assets/javascripts/hq/application.js')
     expect(hq_application_js_file).to match('require bootstrap')
+  end
+
+  it 'uses controller files' do
+    application_controller = content('app/controllers/application_controller.rb')
+    expect(application_controller).to match('class ApplicationController')
+
+    hq_admins_controller = content('app/controllers/hq/admins_controller.rb')
+    expect(hq_admins_controller).to match('class AdminsController')
+
+    hq_application_controller = content('app/controllers/hq/application_controller.rb')
+    expect(hq_application_controller).to match('class ApplicationController')
+
+    hq_audits_controller = content('app/controllers/hq/audits_controller.rb')
+    expect(hq_audits_controller).to match('class AuditsController')
+
+    hq_dashboard_controller = content('app/controllers/hq/dashboard_controller.rb')
+    expect(hq_dashboard_controller).to match('class DashboardController')
+
+    hq_passwords_controller = content('app/controllers/hq/passwords_controller.rb')
+    expect(hq_passwords_controller).to match('class PasswordsController')
+
+    hq_registrations_controller = content('app/controllers/hq/registrations_controller.rb')
+    expect(hq_registrations_controller).to match('class RegistrationsController')
+
+    hq_sessions_controller = content('app/controllers/hq/sessions_controller.rb')
+    expect(hq_sessions_controller).to match('class SessionsController')
+
+    hq_users_controller = content('app/controllers/hq/users_controller.rb')
+    expect(hq_users_controller).to match('class UsersController')
+  end
+
+  it 'uses view files with option' do
+    # HQ files
+    hq_admins_view = content('app/views/hq/admins/index.html.haml')
+    expect(hq_admins_view).to match('@admins')
+
+    hq_audits_view = content('app/views/hq/audits/index.html.haml')
+    expect(hq_audits_view).to match('@audits')
+
+    hq_dashboard_view = content('app/views/hq/dashboard/index.html.haml')
+    expect(hq_dashboard_view).to match('current_admin.email')
+
+    hq_passwords_view = content('app/views/hq/passwords/new.html.haml')
+    expect(hq_passwords_view).to match('password_path')
+
+    hq_registrations_view = content('app/views/hq/registrations/edit.html.haml')
+    expect(hq_registrations_view).to match('admin_registration_path')
+
+    hq_sessions_view = content('app/views/hq/sessions/new.html.haml')
+    expect(hq_sessions_view).to match('session_path')
+
+    hq_users_view = content('app/views/hq/users/index.html.haml')
+    expect(hq_users_view).to match('@users')
+
+    # Layouts
+    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_dock.html.haml'))
+    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_breadcrumb.html.haml'))
+    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_footer.html.haml'))
+    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_navbar.html.haml'))
+    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_toolbar.html.haml'))
+    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_trackers.html.haml'))
+
+    expect(File).to exist(file_project_path('app/views/layouts/partials/_messages.html.haml'))
+    expect(File).to exist(file_project_path('app/views/layouts/partials/_warnings.html.haml'))
+
+    # Devise view files
+    expect(File).to exist(file_project_path('app/views/devise/confirmations'))
+    expect(File).to exist(file_project_path('app/views/devise/mailer'))
+    expect(File).to exist(file_project_path('app/views/devise/passwords'))
+    expect(File).to exist(file_project_path('app/views/devise/registrations'))
+    expect(File).to exist(file_project_path('app/views/devise/sessions'))
+    expect(File).to exist(file_project_path('app/views/devise/shared'))
+    expect(File).to exist(file_project_path('app/views/devise/unlocks'))
+
+    # Welcome view files
+    expect(File).to exist(file_project_path('app/views/welcome/about.html.haml'))
+    expect(File).to exist(file_project_path('app/views/welcome/contact.html.haml'))
+    expect(File).to exist(file_project_path('app/views/welcome/index.html.haml'))
+  end
+
+  it 'uses default view files' do
+    # Mailer files
+    hq_admins_view = content('app/views/admin_mailer/login_info.html.haml')
+    expect(hq_admins_view).to match('@admin')
+  end
+
+  it 'configure routes file' do
+    route_file = content('config/routes.rb')
+    expect(route_file).to match('concern :activeable')
+  end
+
+  it 'uses model files' do
+    admin_model = content('app/models/admin.rb')
+    expect(admin_model).to match('AdminMailer.login_info')
+
+    audit_model = content('app/models/audit.rb')
+    expect(audit_model).to match('class Audit')
+  end
+
+  it 'uses mailer files' do
+    admin_mailer = content('app/mailers/admin_mailer.rb')
+    expect(admin_mailer).to match('class AdminMailer')
+
+    application_mailer = content('app/mailers/application_mailer.rb')
+    expect(application_mailer).to match('Settings.email.noreply')
   end
 
   it 'uses ssl_setting' do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Cybele
-  class AppBuilder < Rails::AppBuilder
+  class AppBuilder < Rails::AppBuilder # rubocop:disable Metrics/ClassLength
     include Cybele::Helpers
     include Cybele::Helpers::Staging
     include Cybele::Helpers::Sidekiq
@@ -16,11 +16,17 @@ module Cybele
     include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
     include Cybele::Helpers::ErrorPages
-    include Cybele::Helpers::ViewFiles::AssetsFiles
-    include Cybele::Helpers::ViewFiles::ViewGems
+    include Cybele::Helpers::Audited
+    include Cybele::Helpers::Routes
+    include Cybele::Helpers::AppFiles::AssetsFiles
+    include Cybele::Helpers::AppFiles::ControllerFiles
+    include Cybele::Helpers::AppFiles::ModelFiles
+    include Cybele::Helpers::AppFiles::MailerFiles
+    include Cybele::Helpers::AppFiles::HelperFiles
+    include Cybele::Helpers::AppFiles::ViewFiles
+    include Cybele::Helpers::AppFiles::ViewGems
     include Cybele::Helpers::Docker
     include Cybele::Helpers::Pronto
-    include Cybele::Helpers::LandingPages
 
     def readme
       template 'README.md.erb',

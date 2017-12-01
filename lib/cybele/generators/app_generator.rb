@@ -216,9 +216,8 @@ module Cybele
     def setup_devise
       say 'Generate devise'
       build :generate_devise_settings
-      say 'Adding devise user model'
-      build :generate_devise_user
-      build :generate_devise_views
+      say 'Adding devise models'
+      build :generate_devise_models
       say 'Generate devise'
     end
 
@@ -239,12 +238,6 @@ module Cybele
       build :configure_error_pages
     end
 
-    def customize_view_files
-      return if @options[:skip_view_files]
-      say 'Customize view files', :green
-      build :customize_assets_files
-    end
-
     def docker_development_env
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green
@@ -256,9 +249,30 @@ module Cybele
       build :configure_pronto
     end
 
-    def setup_landing_pages
-      say 'Generate Landing Pages'
-      build :generate_landing_pages
+    def setup_audited
+      say 'Setup audited gem', :green
+      build :configure_audited
+    end
+
+    def customize_view_files
+      return if @options[:skip_view_files]
+      say 'Customize view files', :green
+      build :customize_assets_files
+    end
+
+    def customize_app_files
+      build :customize_model_files
+      build :customize_mailer_files
+      build :customize_default_view_files
+      return if @options[:skip_view_files]
+      say 'Customize app files', :green
+      build :customize_assets_files
+      build :customize_helper_files
+      build :customize_view_files_with_option
+      build :generate_devise_views
+      build :configure_routes
+      build :customize_controller_files
+      build :add_devise_authenticate_admin
     end
 
     def setup_git_and_git_flow

@@ -1,9 +1,0 @@
-
-  # Common pages
-  root to: 'welcome#index'
-
-  resources :welcome, path: '', only: :index do
-    get :about, on: :collection
-    get :contact, on: :collection
-  end
-

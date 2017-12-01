@@ -1,0 +1,11 @@
+%h2
+  = t('devise.session.title', model: resource.class.model_name.human )
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-inputs
+    = f.input :email, required: false, autofocus: true
+    = f.input :password, required: false
+    = f.input :remember_me, as: :boolean,label: t('devise.session.remember_me') if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, t('devise.session.button'), class: 'btn btn-primary'
+%br/
+= render 'devise/shared/links'
