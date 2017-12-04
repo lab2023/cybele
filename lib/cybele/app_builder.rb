@@ -80,6 +80,7 @@ module Cybele
       generate 'config:install'
       run 'cp config/settings/development.yml config/settings/staging.yml'
       append_file('config/settings.yml', template_content('settings.yml.erb'))
+      remove_file 'config/settings.local.yml', force: true
     end
 
     def generate_rollbar
@@ -93,10 +94,6 @@ module Cybele
     def setup_gitignore_files
       remove_file '.gitignore', force: true
       copy_file 'cybele_gitignore', '.gitignore'
-    end
-
-    def remove_setting_local_yml_file
-      remove_file 'config/settings.local.yml', force: true
     end
 
     def setup_gitignore_folders

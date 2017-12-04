@@ -4,6 +4,7 @@ module ConfigTestHelper
   def config_test
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match(/^gem 'config'/)
+    expect(File).not_to exist(file_project_path('config/settings.local.yml'))
 
     config_development_file_test
     config_staging_file_test
