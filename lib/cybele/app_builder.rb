@@ -87,6 +87,11 @@ module Cybele
       generate 'rollbar'
     end
 
+    def generate_guard
+      bundle_command 'exec guard init'
+      inject_into_file('Guardfile', template_content('guardfile/guardfile_settings.rb.erb'))
+    end
+
     def configure_bullet
       configure_environment 'development', template_content('bullet/bullet_settings.rb.erb')
     end

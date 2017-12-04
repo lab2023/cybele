@@ -170,6 +170,11 @@ module Cybele
       build :generate_rollbar
     end
 
+    def setup_guard
+      say 'Generate guard', :green
+      build :generate_guard
+    end
+
     def configure_locale_language
       say 'Configure locale', :green
       build :configure_locale_language
