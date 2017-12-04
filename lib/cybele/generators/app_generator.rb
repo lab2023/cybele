@@ -175,7 +175,7 @@ module Cybele
       build :configure_locale_language
     end
 
-    def setup_settings_local_yml_files
+    def remove_settings_local_yml_files
       say 'Remove config/settings.local.yml file', :green
       build :remove_setting_local_yml_file
     end
