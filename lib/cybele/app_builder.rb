@@ -95,6 +95,10 @@ module Cybele
       copy_file 'cybele_gitignore', '.gitignore'
     end
 
+    def remove_setting_local_yml_file
+      remove_file 'config/settings.local.yml', force: true
+    end
+
     def setup_gitignore_folders
       %w[
         app/assets/images

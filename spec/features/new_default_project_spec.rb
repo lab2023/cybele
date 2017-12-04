@@ -368,4 +368,8 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses pronto' do
     pronto_test
   end
+
+  it 'remove settings.local.yml file' do
+    expect(File).not_to exist(file_project_path('config/settings.local.yml'))
+  end
 end
