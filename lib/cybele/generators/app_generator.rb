@@ -175,11 +175,6 @@ module Cybele
       build :configure_locale_language
     end
 
-    def remove_settings_local_yml_files
-      say 'Remove config/settings.local.yml file', :green
-      build :remove_setting_local_yml_file
-    end
-
     def setup_show_for
       return if @options[:skip_show_for]
       say 'Generate show_for', :green
