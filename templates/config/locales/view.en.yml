@@ -66,6 +66,11 @@ en:
     error:
       internal_server_error: "We are sorry. An error occured. Our engineers are working on it. We will solve it as soon as possible."
       not_found: "We are sorry. Page was not found. It may have been moved."
+    welcome:
+      navbar:
+        about: About
+        contact: Contact
+      footer: "%{app_name} Copyright &copy; %{year} All Rights Reserved."
   devise:
     session:
       title: "%{model} Log in"

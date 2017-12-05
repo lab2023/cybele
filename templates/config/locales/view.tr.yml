@@ -61,6 +61,11 @@ tr:
     error:
       internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
       not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
+    welcome:
+      navbar:
+        about: Hakkında
+        contact: İletişim
+      footer: "%{app_name} Copyright &copy; %{year} Tüm Hakları Saklıdır."
   devise:
     session:
       title: '%{model} Girişi'

@@ -309,6 +309,11 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).to exist(file_project_path('app/views/devise/sessions'))
     expect(File).to exist(file_project_path('app/views/devise/shared'))
     expect(File).to exist(file_project_path('app/views/devise/unlocks'))
+
+    # Welcome view files
+    expect(File).to exist(file_project_path('app/views/welcome/about.html.haml'))
+    expect(File).to exist(file_project_path('app/views/welcome/contact.html.haml'))
+    expect(File).to exist(file_project_path('app/views/welcome/index.html.haml'))
   end
 
   it 'uses default view files' do
