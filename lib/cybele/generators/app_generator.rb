@@ -266,11 +266,13 @@ module Cybele
       return if @options[:skip_view_files]
       say 'Customize app files', :green
       build :customize_assets_files
+      build :customize_vendor_files
       build :customize_helper_files
       build :customize_view_files_with_option
       build :generate_devise_views
       build :configure_routes
       build :customize_controller_files
+      build :add_devise_strong_parameter
       build :add_devise_authenticate_admin
     end
 

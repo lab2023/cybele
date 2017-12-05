@@ -1,12 +1,12 @@
 - content_for :toolbar do
-  = link_to edit_hq_admin_path(@admin ), class: 'btn btn-default' do
-    %i.icon-pencil
+  = link_to edit_hq_admin_path(@admin), class: 'btn btn-default btn-primary' do
+    %i.fa.fa-pencil
     = t('view.edit')
-.panel.panel-default
-  .panel-heading
-    %i.icon-edit.icon-large
+.card
+  .card-header
+    %i.fa.fa-edit
     = t('view.tooltips.show', resource_name: Admin.model_name.human)
-  .panel-body
+  .card-body
     = show_for @admin do |s|
       = s.attribute :name
       = s.attribute :surname
