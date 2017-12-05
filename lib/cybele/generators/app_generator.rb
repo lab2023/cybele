@@ -238,11 +238,6 @@ module Cybele
       build :configure_error_pages
     end
 
-    def setup_git_and_git_flow
-      say 'Initialize git and git flow'
-      build :git_and_git_flow_commands
-    end
-
     def docker_development_env
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green
@@ -257,6 +252,12 @@ module Cybele
     def setup_audited
       say 'Setup audited gem', :green
       build :configure_audited
+    end
+
+    def customize_view_files
+      return if @options[:skip_view_files]
+      say 'Customize view files', :green
+      build :customize_assets_files
     end
 
     def customize_app_files
@@ -274,6 +275,11 @@ module Cybele
       build :customize_controller_files
       build :add_devise_strong_parameter
       build :add_devise_authenticate_admin
+    end
+
+    def setup_git_and_git_flow
+      say 'Initialize git and git flow'
+      build :git_and_git_flow_commands
     end
 
     def goodbye
