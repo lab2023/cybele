@@ -1,27 +1,82 @@
-%i#toggle.icon-align-justify.icon-large
+#sidebar.col-md-2.float-left.col-1.pl-0.pr-0.collapse.width.show
+  .list-group.border-0.card.text-center.text-md-left
+    %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", href: hq_dashboard_index_path}
+      %i.fa.fa-dashboard
+      %span.d-none.d-md-inline= t('view.dock.dashboard')
+    %a.list-group-item.d-inline-block.collapsed{"aria-expanded" => "false", "data-parent" => "#sidebar", "data-toggle" => "collapse", href: "#menu1"}
+      %i.fa.fa-list
+      %span.d-none.d-md-inline
+        = t('view.dock.system_users')
+    #menu1.collapse
+      %a.list-group-item{"data-parent" => "#menu1", href: hq_admins_path}
+        %i.fa.fa-users
+        = t('activerecord.models.admins')
+      %a.list-group-item{"data-parent" => "#menu1", href: hq_users_path}
+        %i.fa.fa-users
+        = t('activerecord.models.users')
 
-%ul#dock
 
-  %li.launcher
-    %i.icon-dashboard
-    =link_to  t('dock.dashboard'), hq_dashboard_index_path
-
-  %li.launcher.dropdown.hover
-    %i.fa.fa-list
-    %a{href: '#'}= t('dock.system_users')
-    %ul.dropdown-menu
-      %li
-        = link_to hq_admins_path do
-          %i.fa.fa-users
-          = t('activerecord.models.admins')
-      %li
-        = link_to hq_users_path do
-          %i.fa.fa-users
-          = t('activerecord.models.users')
-
-  %br/
-  %li.launcher.dropdown.hover
-    %i.fa.fa-list
-    %a{href: '#'}= t('dock.system_datas')
-
-#beaker{data: {toggle: 'tooltip'}, title: 'Made by lab2023'}
+-#>>>>>>>   Sidebar Example
+-#   .row.d-flex.d-md-block.flex-nowrap.wrapper
+-#     #sidebar.col-md-3.float-left.col-1.pl-0.pr-0.collapse.width.show
+-#       .list-group.border-0.card.text-center.text-md-left
+-#         %a.list-group-item.d-inline-block.collapsed{"aria-expanded" => "false", "data-parent" => "#sidebar", "data-toggle" => "collapse", :href => "#menu1"}
+-#           %i.fa.fa-dashboard
+-#           %span.d-none.d-md-inline Item 1
+-#         #menu1.collapse
+-#           %a.list-group-item{"aria-expanded" => "false", "data-toggle" => "collapse", :href => "#menu1sub1"} Subitem 1
+-#           #menu1sub1.collapse
+-#             %a.list-group-item{"data-parent" => "#menu1sub1", :href => "#"} Subitem 1 a
+-#             %a.list-group-item{"data-parent" => "#menu1sub1", :href => "#"} Subitem 2 b
+-#             %a.list-group-item{"aria-expanded" => "false", "data-toggle" => "collapse", :href => "#menu1sub1sub1"} Subitem 3 c
+-#             #menu1sub1sub1.collapse
+-#               %a.list-group-item{"data-parent" => "#menu1sub1sub1", :href => "#"} Subitem 3 c.1
+-#               %a.list-group-item{"data-parent" => "#menu1sub1sub1", :href => "#"} Subitem 3 c.2
+-#             %a.list-group-item{"data-parent" => "#menu1sub1", :href => "#"} Subitem 4 d
+-#             %a.list-group-item{"aria-expanded" => "false", "data-toggle" => "collapse", :href => "#menu1sub1sub2"} Subitem 5 e
+-#             #menu1sub1sub2.collapse
+-#               %a.list-group-item{"data-parent" => "#menu1sub1sub2", :href => "#"} Subitem 5 e.1
+-#               %a.list-group-item{"data-parent" => "#menu1sub1sub2", :href => "#"} Subitem 5 e.2
+-#           %a.list-group-item{"data-parent" => "#menu1", :href => "#"} Subitem 2
+-#           %a.list-group-item{"data-parent" => "#menu1", :href => "#"} Subitem 3
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-film
+-#           %span.d-none.d-md-inline Item 2
+-#         %a.list-group-item.d-inline-block.collapsed{"aria-expanded" => "false", "data-parent" => "#sidebar", "data-toggle" => "collapse", :href => "#menu3"}
+-#           %i.fa.fa-book
+-#           %span.d-none.d-md-inline Item 3
+-#         #menu3.collapse
+-#           %a.list-group-item{"data-parent" => "#menu3", :href => "#"} 3.1
+-#           %a.list-group-item{"aria-expanded" => "false", "data-toggle" => "collapse", :href => "#menu3sub2"} 3.2
+-#           #menu3sub2.collapse
+-#             %a.list-group-item{"data-parent" => "#menu3sub2", :href => "#"} 3.2 a
+-#             %a.list-group-item{"data-parent" => "#menu3sub2", :href => "#"} 3.2 b
+-#             %a.list-group-item{"data-parent" => "#menu3sub2", :href => "#"} 3.2 c
+-#           %a.list-group-item{"data-parent" => "#menu3", :href => "#"} 3.3
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-heart
+-#           %span.d-none.d-md-inline Item 4
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-list
+-#           %span.d-none.d-md-inline Item 5
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-clock-o
+-#           %span.d-none.d-md-inline Link
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-th
+-#           %span.d-none.d-md-inline Link
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-gear
+-#           %span.d-none.d-md-inline Link
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-calendar
+-#           %span.d-none.d-md-inline Link
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-envelope
+-#           %span.d-none.d-md-inline Link
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-bar-chart-o
+-#           %span.d-none.d-md-inline Link
+-#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
+-#           %i.fa.fa-star
+-#           %span.d-none.d-md-inline Link

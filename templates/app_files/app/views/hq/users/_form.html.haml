@@ -1,8 +1,8 @@
-.panel.panel-default
-  .panel-heading
-    %i.icon-edit.icon-large
+.card
+  .card-header
+    %i.fa.fa-edit
     = yield :form_title
-  .panel-body
+  .card-body
     = simple_form_for([:hq, @user], validate: true) do |f|
       = f.error_notification
 
@@ -10,7 +10,6 @@
         = f.input :name
         = f.input :surname
         = f.input :email
-        = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
 
       .form-actions
         - text = @user.id.present? ? t('view.btn.update') : t('view.btn.add')

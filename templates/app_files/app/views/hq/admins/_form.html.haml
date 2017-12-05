@@ -1,8 +1,8 @@
-.panel.panel-default
-  .panel-heading
-    %i.icon-edit.icon-large
+.card
+  .card-header
+    %i.fa.fa-edit
     = yield :form_title
-  .panel-body
+  .card-body
     = simple_form_for([:hq, @admin], validate: true) do |f|
       = f.error_notification
 

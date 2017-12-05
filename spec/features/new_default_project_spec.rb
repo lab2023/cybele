@@ -239,12 +239,14 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses controller files' do
     application_controller = content('app/controllers/application_controller.rb')
     expect(application_controller).to match('class ApplicationController')
+    expect(application_controller).to match('configure_devise_permitted_parameters')
 
     hq_admins_controller = content('app/controllers/hq/admins_controller.rb')
     expect(hq_admins_controller).to match('class AdminsController')
 
     hq_application_controller = content('app/controllers/hq/application_controller.rb')
     expect(hq_application_controller).to match('class ApplicationController')
+    expect(hq_application_controller).to match('before_action :authenticate_admin!')
 
     hq_audits_controller = content('app/controllers/hq/audits_controller.rb')
     expect(hq_audits_controller).to match('class AuditsController')

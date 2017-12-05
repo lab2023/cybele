@@ -1,5 +1,5 @@
-.panel.panel-default.grid
+.card
   = render 'list'
-  .panel-footer
+  .card-footer
     .pagination.pagination-sm
       = will_paginate @audits, renderer: BootstrapPagination::Rails, bootstrap: 3

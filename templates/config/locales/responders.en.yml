@@ -1,4 +1,3 @@
----
 en:
   flash:
     actions:
@@ -6,9 +5,11 @@ en:
         passive: '%{resource_name} was set passive successfully.'
         active: '%{resource_name} was set active successfully.'
       create:
-        notice: '%{resource_name} created successfully.'
+        notice: '%{resource_name} was successfully created.'
+        alert: '%{resource_name} could not be created.'
       update:
-        notice: '%{resource_name} updated successfully.'
+        notice: '%{resource_name} was successfully updated.'
+        alert: '%{resource_name} could not be updated.'
       destroy:
-        notice: '%{resource_name} deleted successfully.'
-        alert: 'Cannot delete %{resource_name}'
+        notice: '%{resource_name} was successfully destroyed.'
+        alert: '%{resource_name} could not be destroyed.'

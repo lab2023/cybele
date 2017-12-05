@@ -11,3 +11,38 @@
  *= require_self
 
 @import "bootstrap"
+@import "sidebar"
+@import "footable.bootstrap.min"
+
+body
+  main
+    @media (max-width: 767px)
+      margin-left: 2.45rem
+  .users
+    .active
+      color: green !important
+    .passive
+      background-color: rgba(230, 161, 161, 0.37) !important
+
+  .table
+    tbody
+      .action
+        a
+          margin: 0.5px
+
+  .filters
+    a
+      margin: 1px 1px
+    form
+      input
+        min-width: 115px
+
+  #toolbar
+    a
+      margin-bottom: 12px
+
+  #admin-devise-page
+    .card
+      margin-top: 70px
+      width: 30rem
+
