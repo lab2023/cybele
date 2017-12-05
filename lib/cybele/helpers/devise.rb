@@ -29,6 +29,16 @@ module Cybele
                          template_content('devise/devise_authenticate_admin.rb.erb'),
                          after: 'class Hq::ApplicationController < ApplicationController'
       end
+
+      def add_devise_strong_parameter
+        inject_into_file 'app/controllers/application_controller.rb',
+                         template_content('devise/devise_strong_parameter.rb.erb'),
+                         after: 'protect_from_forgery with: :exception'
+
+        inject_into_file 'app/controllers/application_controller.rb',
+                         template_content('devise/devise_before_action_strong_parameter.rb.erb'),
+                         after: 'class ApplicationController < ActionController::Base'
+      end
     end
   end
 end

@@ -1,0 +1,11 @@
+
+
+  def configure_devise_permitted_parameters
+    if resource_class == User
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :name, :surname])
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :password_confirmation, :current_password])
+    elsif resource_class == Admin
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :name, :surname])
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :password_confirmation, :current_password])
+    end
+  end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Hq
-  class AuditsController < Hq::ApplicationController
+  class AuditsController < ApplicationController
     add_breadcrumb I18n.t('activerecord.models.audits'), :hq_audits_path
 
     def index

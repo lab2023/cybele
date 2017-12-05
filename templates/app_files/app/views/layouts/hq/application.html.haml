@@ -20,36 +20,31 @@
 
     / Stylesheets (Don't change include order)
     = stylesheet_link_tag 'hq/application',
-                          '//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css',
                           '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-                          media: 'all', 'data-turbolinks-track' => true
+                          media: 'all', 'data-turbolinks-track': 'reload'
 
     / Javascripts
-    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js',
-                              'hq/application', 'data-turbolinks-track' => true
+    = javascript_include_tag  '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js',
+                              'hq/application', 'data-turbolinks-track': 'reload'
     = yield :head
 
-  %body.main
-
+  %body
     / Navbar
     = render partial: 'layouts/hq/partials/navbar'
-
-    #wrapper
-
-      / Sidebar
-      %section#sidebar
+    .container-fluid
+      .row.d-flex.d-md-block.flex-nowrap.wrapper
         = render partial: 'layouts/hq/partials/dock'
+        %main.col-md-10.float-left.pt-2.main
+          / Tools
+          %section#tools
+            = render partial: 'layouts/hq/partials/breadcrumb'
+            = render partial: 'layouts/hq/partials/toolbar'
 
-      / Tools
-      %section#tools
-        = render partial: 'layouts/hq/partials/breadcrumb'
-        = render partial: 'layouts/hq/partials/toolbar'
-
-      / Content
-      #content
-        = render 'layouts/partials/warnings'
-        = render partial: 'layouts/partials/messages'
-        = yield
+          / Content
+          #content
+            = render 'layouts/partials/warnings'
+            = render partial: 'layouts/partials/messages'
+            = yield
 
     / Footer
     = render partial: 'layouts/hq/partials/footer'

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Hq
-  class AdminsController < Hq::ApplicationController
+  class AdminsController < ApplicationController
     before_action :set_admin, only: %i[show edit update destroy toggle_is_active]
     add_breadcrumb I18n.t('activerecord.models.admins'), :hq_admins_path
 
