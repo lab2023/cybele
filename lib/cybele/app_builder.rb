@@ -80,6 +80,7 @@ module Cybele
       generate 'config:install'
       run 'cp config/settings/development.yml config/settings/staging.yml'
       append_file('config/settings.yml', template_content('settings.yml.erb'))
+      remove_file 'config/settings.local.yml', force: true
     end
 
     def generate_rollbar

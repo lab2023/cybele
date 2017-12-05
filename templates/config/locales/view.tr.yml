@@ -3,7 +3,7 @@ tr:
     excel_export: Excel Olarak Çıkart
     make_passive: Pasif et
     make_active: Aktif et
-    actions: İşlemler
+    table_actions: İşlemler
     select: Seçiniz
     active: Aktif
     passive: Pasif
@@ -29,6 +29,7 @@ tr:
       create: Oluşturma
       destroy: Silme
       delete: Silme
+      new: "Yeni %{resource_name}"
     navbar:
       settings: Ayarlar
       signup: Kayıt ol
@@ -39,6 +40,8 @@ tr:
       home_page: Anasayfa
       admin_portal: Yönetici Portalı
       profile: Profil
+    form:
+      new_title: "Yeni %{resource_name}"
     tooltips:
       delete: Sil
       are_you_sure: Devam etmek istedğinize emin misiniz?

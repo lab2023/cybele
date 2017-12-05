@@ -16,6 +16,9 @@ module Cybele
 
           # Add fontawesome gem
           append_file('Gemfile', template_content('app_files/fontawesome_Gemfile.erb'))
+
+          # Add jquery gem
+          append_file('Gemfile', template_content('app_files/jquery_Gemfile.erb'))
         end
       end
     end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Hq
-  class UsersController < Hq::ApplicationController
+  class UsersController < ApplicationController
     before_action :set_user, only: %i[show edit update destroy toggle_is_active]
     add_breadcrumb I18n.t('activerecord.models.users'), :hq_users_path
 

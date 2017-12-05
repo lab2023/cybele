@@ -3,7 +3,7 @@ en:
     excel_export: Export as Excel
     make_passive: Make Passive
     make_active: Make Active
-    actions: Actions
+    table_actions: Actions
     edit: Edit
     select: Select
     active: Active
@@ -26,6 +26,7 @@ en:
       show: "Detail %{resource_name}"
       new: "Add %{resource_name}"
     actions:
+      new: "New %{resource_name}"
       update: Update
       create: Create
       destroy: Destroy
@@ -40,6 +41,8 @@ en:
       home_page: Home Page
       admin_portal: Admin Portal
       profile: Profile
+    form:
+      new_title: "New %{resource_name}"
     tooltips:
       zoom: "Detail"
       edit: "Edit"
@@ -69,47 +72,43 @@ en:
         contact: Contact
       footer: "%{app_name} Copyright &copy; %{year} All Rights Reserved."
   devise:
+    session:
+      title: "%{model} Log in"
+      button: Log In
+      remember_me: Remember me
+      deactivated: "Sorry, this account has been disabled."
+    registration:
+      title: 'Update %{model} Login Info'
+      waiting_confirmation: "Currently waiting confirmation for: %{email}"
+      hint_password: "Leave it blank if you don't want to change it"
+      hint_current_password: "we need your current password to confirm your changes"
+      new:
+        title: '%{model} Sign Up'
+        character_hint: "%{length} characters minimum"
+        button: Sign Up
+      edit:
+        title: '%{model} Log in info'
     shared:
       links:
-        login: "Log in"
-        sign_up: "Sign up"
-        forgot_your_password: "Forgot your password?"
-        did_not_receive_confirmation_instructions: "Resend confirmation email"
-        did_not_receive_unlock_instructions: "Resend confirmation email"
+        signup: Sign Up
+        signin: Log In
+        forgot_password: "Forgot your password?"
+        confirmation_instructions: "Did not you get the confirmation instructions?"
+        unlock_instructions: "Did not you get the unlock instructions?"
         sign_in_with: "Sign in with %{name}"
         sign_up_with: "Sign up with %{name}"
-    sessions:
-      new:
-        title: "Log in"
-        submit_button: "Log in"
-    unlocks:
-      new:
-        title: "Resend unlock instructions"
-        submit_button: "Resend unlock instructions"
-    registrations:
-      new:
-        submit_button: "Sign up"
-        title: "Sign up"
-        no_model_title: "Sign up for Free"
-        title: "%{model} Sign up"
-        password_hint: "%{length} characters minimum"
-      edit:
-        title: "Edit log in info"
-        password_hint: "Leave it blank if you don't want to change it"
-        current_password_hint: "we need your current password to confirm your changes"
-        submit_button: "Update"
-        unconfirmed_email: "Currently waiting confirmation for: %{email}"
-    passwords:
-      new:
-        title: "Forgot your password?"
-        submit_button: "Send me reset password instructions"
-        password_hint: "%{length} characters minimum"
-      edit:
-        title: "Change your password"
-        submit_button: "Change my password"
-        new_password: "New password"
-        confirm_new_password: "Confirm your new password"
-    confirmations:
+    confirmation:
       new:
         title: "Resend confirmation instructions"
-        submit_button: "Resend confirmation instructions"
+      btn:
+        resend: Resend
+    password:
+      new:
+        title: "Forgot your password?"
+      reset:
+        instructions: Send password reset instructions
+      edit:
+        title: "Change your password"
+        new_password: "New password"
+        confirmation: "Confirm your new password"
+        button: "Change my password"
