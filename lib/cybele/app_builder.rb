@@ -89,7 +89,8 @@ module Cybele
 
     def generate_guard
       bundle_command 'exec guard init'
-      inject_into_file('Guardfile', template_content('guardfile/guardfile_settings.rb.erb'))
+      inject_into_file('Guardfile', "\n\n#{template_content('guardfile/guardfile_settings.rb.erb')}",
+                       after: 'config/Guardfile" instead of "Guardfile"')
     end
 
     def configure_bullet
