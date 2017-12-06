@@ -18,6 +18,7 @@ module Cybele
     include Cybele::Helpers::ErrorPages
     include Cybele::Helpers::Audited
     include Cybele::Helpers::Routes
+    include Cybele::Helpers::BasicAuthentication
     include Cybele::Helpers::AppFiles::AssetsFiles
     include Cybele::Helpers::AppFiles::ControllerFiles
     include Cybele::Helpers::AppFiles::ModelFiles
