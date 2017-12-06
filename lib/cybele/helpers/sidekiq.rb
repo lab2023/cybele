@@ -38,6 +38,10 @@ module Cybele
         template 'sidekiq/sidekiq_schedule.yml.erb',
                  'config/sidekiq_schedule.yml',
                  force: true
+        # Proc file
+        template 'sidekiq/sidekiq_Procfile.erb',
+                 'Procfile.erb',
+                 force: true
       end
     end
   end

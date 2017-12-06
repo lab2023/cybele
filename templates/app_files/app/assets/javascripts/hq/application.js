@@ -12,7 +12,7 @@
 //
 //= require popper
 //= require jquery
-//= require jquery_ujs
+//= require rails-ujs
 //= require turbolinks
 //= require bootstrap
 //= require footable.min
@@ -20,26 +20,6 @@
 //= require trix
 //= require jquery.datetimepicker
 //= require nprogress
-
-this.App = (function() {
-    function App() {}
-
-    App.ready = function() {
-            $('.changeable_select').on('change', function() {
-            var $hiden_area, values;
-            $hiden_area = $($('#hider-id').data('hiden-area'));
-            values = $('#hider-id').data('hiden-on').split(',');
-            if ($.inArray($(this).val(), values) !== -1) {
-                $hiden_area.addClass('hidden');
-            } else {
-                $hiden_area.removeClass('hidden');
-            }
-        });
-    };
-
-    return App;
-
-})();
 
 var ready = function(){
     App.ready();

@@ -1,0 +1,32 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand{href: root_path}
+    %i.fa.fa-home
+    = "<%= app_name.capitalize %>"
+  %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarNavDropdown.collapse.navbar-collapse
+    %ul.navbar-nav.ml-auto
+      %li.nav-item
+        = link_to about_welcome_index_path, class: 'nav-link' do
+          = t('view.welcome.navbar.about')
+      %li.nav-item
+        = link_to contact_welcome_index_path, class: 'nav-link' do
+          = t('view.welcome.navbar.contact')
+      - if user_signed_in?
+        %li.nav-item
+          = link_to destroy_user_session_path, class: 'nav-link', method: :delete do
+            %i.fa.fa-sign-out
+            = t('navbar.sign_out')
+        %li.nav-item
+          = link_to user_profile_path(current_user), class: 'nav-link' do
+            %i.fa.fa-user
+            = t('navbar.profile')
+      - else
+        %li.nav-item
+          = link_to new_user_session_path, class: 'nav-link' do
+            %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+            = t('navbar.signin')
+        %li.nav-item
+          = link_to new_user_registration_path, class: 'nav-link' do
+            %i.fa.fa-user{"aria-hidden" => "true"}
+            = t('navbar.signup')

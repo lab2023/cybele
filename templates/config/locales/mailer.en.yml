@@ -18,3 +18,10 @@ en:
         second_info: Your login information is
         btn_login: Click to login
         last_info: "If you can not use 'Login' button, your login <br/> <strong> Link : </strong> %{link} </br> Copy this link and paste it into your browser."
+    user:
+      login_info:
+        title: User Login Information
+        first_info: Your user account has been created. You can now log in to the user portal.
+        second_info: Your login information is
+        btn_login: Click to login
+        last_info: "If you can not use 'Login' button, your login <br/> <strong> Link : </strong> %{link} </br> Copy this link and paste it into your browser."

@@ -39,6 +39,7 @@ module DeviseTestHelper
   end
 
   def file_control_test
-    expect(File).not_to exist(file_project_path('config/locales/devise.en.yml'))
+    expect(File).to exist(file_project_path('config/locales/devise.en.yml'))
+    expect(File).to exist(file_project_path('config/locales/devise.tr.yml'))
   end
 end

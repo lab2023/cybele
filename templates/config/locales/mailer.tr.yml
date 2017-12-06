@@ -18,3 +18,10 @@ tr:
         second_info: Giriş bilgileriniz şu şekildedir
         btn_login: Giriş yapmak için tıklayınız
         last_info: "Eğer 'Giriş Yap' butonunu kullanamıyorsanız giriş linkiniz şu şekildedir <br/> <strong> Link : </strong> %{link} </br> Bu linki kopyalayıp tarayıcınıza yapıştırınız.."
+    user:
+      login_info:
+        title: Kullanıcı Giriş Bilgileriniz
+        first_info: Portal üzerinden kullanıcı hesabınız oluşturuldu. Artık kullanıcı portalına giriş yapabilirsiniz.
+        second_info: Giriş bilgileriniz şu şekildedir
+        btn_login: Giriş yapmak için tıklayınız
+        last_info: "Eğer 'Giriş Yap' butonunu kullanamıyorsanız giriş linkiniz şu şekildedir <br/> <strong> Link : </strong> %{link} </br> Bu linki kopyalayıp tarayıcınıza yapıştırınız.."

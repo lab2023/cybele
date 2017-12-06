@@ -1,0 +1,42 @@
+en:
+  devise:
+    session:
+      title: "%{model} Log in"
+      button: Log In
+      remember_me: Remember me
+      deactivated: "Sorry, this account has been disabled."
+    registration:
+      title: 'Update %{model} Login Info'
+      waiting_confirmation: "Currently waiting confirmation for: %{email}"
+      hint_password: "Leave it blank if you don't want to change it"
+      hint_current_password: "we need your current password to confirm your changes"
+      new:
+        title: '%{model} Sign Up'
+        character_hint: "%{length} characters minimum"
+        button: Sign Up
+      edit:
+        title: '%{model} Log in info'
+    shared:
+      links:
+        signup: Sign Up
+        signin: Log In
+        forgot_password: "Forgot your password?"
+        confirmation_instructions: "Did not you get the confirmation instructions?"
+        unlock_instructions: "Did not you get the unlock instructions?"
+        sign_in_with: "Sign in with %{name}"
+        sign_up_with: "Sign up with %{name}"
+    confirmation:
+      new:
+        title: "Resend confirmation instructions"
+      btn:
+        resend: Resend
+    password:
+      new:
+        title: "Forgot your password?"
+      reset:
+        instructions: Send password reset instructions
+      edit:
+        title: "Change your password"
+        new_password: "New password"
+        confirmation: "Confirm your new password"
+        button: "Change my password"

@@ -9,26 +9,16 @@
     %link(rel="shortcut icon" href="/images/favicon.png")
 
     = stylesheet_link_tag 'application', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-                          media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+                          media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
-    = yield :headls
+    = yield :head
   %body
     = render 'layouts/partials/warnings'
     .container-narrow
       .header
-        %nav
-          / Brand and toggle get grouped for better mobile display
-          = link_to root_path, class: 'navbar-brand' do
-            %i.fa.fa-home
-            = "<%= app_name.capitalize %>"
-          %ul.nav.nav-pills.float-right
-            %li.nav-item
-              %a.nav-link{href: about_welcome_index_path}
-                = t('view.welcome.navbar.about')
-            %li.nav-item
-              %a.nav-link{href: contact_welcome_index_path}
-                = t('view.welcome.navbar.contact')
+        = render partial: 'layouts/partials/navbar'
+      = render partial: 'layouts/partials/messages'
       = yield
       .footer
         %p
