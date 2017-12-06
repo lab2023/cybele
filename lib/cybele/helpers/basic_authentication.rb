@@ -14,7 +14,7 @@ module Cybele
       private
 
       def create_basic_authentication_files
-        # Initialize file
+        # Concern file
         template 'basic_authentication/basic_authentication.rb',
                  'app/controllers/concerns/basic_authentication.rb',
                  force: true
