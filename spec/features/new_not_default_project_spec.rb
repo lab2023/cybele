@@ -171,10 +171,6 @@ RSpec.describe 'Create new project without default configuration' do
     mail_test_helper('config/environments/production.rb')
     mail_test_helper('config/environments/staging.rb')
     mail_test_helper('config/environments/development.rb')
-
-    development_file = content('config/environments/development.rb')
-    expect(development_file).to match('host:')
-    expect(development_file).to match(':smtp')
   end
 
   it 'do not use haml' do
