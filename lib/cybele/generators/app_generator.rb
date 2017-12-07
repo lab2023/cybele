@@ -275,6 +275,7 @@ module Cybele
       build :customize_controller_files
       build :add_devise_strong_parameter
       build :add_devise_authenticate_admin
+      build :configure_basic_authentication
     end
 
     def setup_git_and_git_flow

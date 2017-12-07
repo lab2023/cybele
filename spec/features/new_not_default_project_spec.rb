@@ -272,6 +272,24 @@ RSpec.describe 'Create new project without default configuration' do
     expect(File).not_to exist(file_project_path('app/views/welcome/about.html.haml'))
     expect(File).not_to exist(file_project_path('app/views/devise/contact.html.haml'))
     expect(File).not_to exist(file_project_path('app/views/devise/index.html.haml'))
+
+    # Basic authentication files
+    expect(File).not_to exist(file_project_path('app/controllers/concerns/basic_authentication.rb'))
+
+    application_controller = content('app/controllers/application_controller.rb')
+    expect(application_controller).not_to match('include BasicAuthentication')
+
+    env_sample_file = content('env.sample')
+    expect(env_sample_file).not_to match('BASIC_AUTH_IS_ACTIVE=no')
+
+    env_local_file = content('.env.local')
+    expect(env_local_file).not_to match('BASIC_AUTH_IS_ACTIVE=no')
+
+    env_staging_file = content('.env.staging')
+    expect(env_staging_file).not_to match('BASIC_AUTH_IS_ACTIVE=yes')
+
+    env_production_file = content('.env.production')
+    expect(env_production_file).not_to match('BASIC_AUTH_IS_ACTIVE=no')
   end
 
   it 'uses default view files' do
