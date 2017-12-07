@@ -36,7 +36,7 @@ module Cybele
 
       def include_basic_authentication_module
         inject_into_file 'app/controllers/application_controller.rb',
-                         template_content('basic_authentication/include_module.rb'),
+                         template_content('basic_authentication/include_module.erb'),
                          after: 'class ApplicationController < ActionController::Base'
       end
     end

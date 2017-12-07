@@ -254,18 +254,16 @@ module Cybele
       build :configure_audited
     end
 
-    def customize_view_files
-      return if @options[:skip_view_files]
-      say 'Customize view files', :green
-      build :customize_assets_files
-    end
-
     def customize_app_files
+      say 'Customize default files', :green
       build :customize_model_files
       build :customize_mailer_files
       build :customize_default_view_files
+    end
+
+    def customize_optional_view_files
       return if @options[:skip_view_files]
-      say 'Customize app files', :green
+      say 'Customize optional view files', :green
       build :customize_assets_files
       build :customize_vendor_files
       build :customize_helper_files
