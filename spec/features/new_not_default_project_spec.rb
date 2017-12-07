@@ -162,7 +162,7 @@ RSpec.describe 'Create new project without default configuration' do
 
   it 'uses mailer' do
     gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'letter_opener'")
+    expect(gemfile_file).to match("gem 'mailtrap'")
 
     expect(File).to exist(file_project_path('config/settings/production.yml'))
     expect(File).to exist(file_project_path('config/settings/staging.yml'))
@@ -170,10 +170,11 @@ RSpec.describe 'Create new project without default configuration' do
     mail_test_helper('config/settings.yml')
     mail_test_helper('config/environments/production.rb')
     mail_test_helper('config/environments/staging.rb')
+    mail_test_helper('config/environments/development.rb')
 
     development_file = content('config/environments/development.rb')
     expect(development_file).to match('host:')
-    expect(development_file).to match(':letter_opener')
+    expect(development_file).to match(':smtp')
   end
 
   it 'do not use haml' do
