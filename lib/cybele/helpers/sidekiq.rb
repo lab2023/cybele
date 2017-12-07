@@ -40,7 +40,7 @@ module Cybele
                  force: true
         # Proc file
         template 'sidekiq/sidekiq_Procfile.erb',
-                 'Procfile.erb',
+                 'Procfile',
                  force: true
       end
     end
