@@ -241,34 +241,55 @@ RSpec.describe 'Create new project with default configuration' do
     expect(application_controller).to match('class ApplicationController')
     expect(application_controller).to match('configure_devise_permitted_parameters')
 
+    # Hq files
     hq_admins_controller = content('app/controllers/hq/admins_controller.rb')
-    expect(hq_admins_controller).to match('class AdminsController')
+    expect(hq_admins_controller).to match('class Hq::AdminsController')
 
     hq_application_controller = content('app/controllers/hq/application_controller.rb')
-    expect(hq_application_controller).to match('class ApplicationController')
+    expect(hq_application_controller).to match('class Hq::ApplicationController')
     expect(hq_application_controller).to match('before_action :authenticate_admin!')
 
     hq_audits_controller = content('app/controllers/hq/audits_controller.rb')
-    expect(hq_audits_controller).to match('class AuditsController')
+    expect(hq_audits_controller).to match('class Hq::AuditsController')
 
     hq_dashboard_controller = content('app/controllers/hq/dashboard_controller.rb')
-    expect(hq_dashboard_controller).to match('class DashboardController')
+    expect(hq_dashboard_controller).to match('class Hq::DashboardController')
 
     hq_passwords_controller = content('app/controllers/hq/passwords_controller.rb')
-    expect(hq_passwords_controller).to match('class PasswordsController')
+    expect(hq_passwords_controller).to match('class Hq::PasswordsController')
 
     hq_registrations_controller = content('app/controllers/hq/registrations_controller.rb')
-    expect(hq_registrations_controller).to match('class RegistrationsController')
+    expect(hq_registrations_controller).to match('class Hq::RegistrationsController')
 
     hq_sessions_controller = content('app/controllers/hq/sessions_controller.rb')
-    expect(hq_sessions_controller).to match('class SessionsController')
+    expect(hq_sessions_controller).to match('class Hq::SessionsController')
 
     hq_users_controller = content('app/controllers/hq/users_controller.rb')
-    expect(hq_users_controller).to match('class UsersController')
+    expect(hq_users_controller).to match('class Hq::UsersController')
+
+    # User files
+    user_application_controller = content('app/controllers/user/application_controller.rb')
+    expect(user_application_controller).to match('class User::ApplicationController')
+    expect(user_application_controller).to match('before_action :authenticate_user!')
+
+    user_dashboard_controller = content('app/controllers/user/dashboard_controller.rb')
+    expect(user_dashboard_controller).to match('class User::DashboardController')
+
+    user_passwords_controller = content('app/controllers/user/passwords_controller.rb')
+    expect(user_passwords_controller).to match('class User::PasswordsController')
+
+    user_profile_controller = content('app/controllers/user/profile_controller.rb')
+    expect(user_profile_controller).to match('class User::ProfileController')
+
+    user_registrations_controller = content('app/controllers/user/registrations_controller.rb')
+    expect(user_registrations_controller).to match('class User::RegistrationsController')
+
+    user_sessions_controller = content('app/controllers/user/sessions_controller.rb')
+    expect(user_sessions_controller).to match('class User::SessionsController')
   end
 
   it 'uses view files with option' do
-    # HQ files
+    # Hq files
     hq_admins_view = content('app/views/hq/admins/index.html.haml')
     expect(hq_admins_view).to match('@admins')
 
@@ -289,6 +310,22 @@ RSpec.describe 'Create new project with default configuration' do
 
     hq_users_view = content('app/views/hq/users/index.html.haml')
     expect(hq_users_view).to match('@users')
+
+    # User files
+    user_dashboard_view = content('app/views/user/dashboard/index.html.haml')
+    expect(user_dashboard_view).to match('current_user.email')
+
+    user_passwords_view = content('app/views/user/passwords/new.html.haml')
+    expect(user_passwords_view).to match('password_path')
+
+    user_registrations_view = content('app/views/user/registrations/edit.html.haml')
+    expect(user_registrations_view).to match('user_registration_path')
+
+    user_sessions_view = content('app/views/user/sessions/new.html.haml')
+    expect(user_sessions_view).to match('session_path')
+
+    user_profile_view = content('app/views/user/profile/show.html.haml')
+    expect(user_profile_view).to match('@profile')
 
     # Layouts
     expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_dock.html.haml'))

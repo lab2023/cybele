@@ -1,19 +1,20 @@
 # frozen_string_literal: true
 
-class Admin < ApplicationRecord
+class User < ApplicationRecord
   # Virtual attributes
   attr_accessor :is_generated_password
+
+  # Scopes
+  scope :active, -> { where(is_active: true) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
+         :registerable,
          :recoverable,
          :rememberable,
          :trackable,
          :validatable
-
-  # Scopes
-  scope :active, -> { where(is_active: true) }
 
   # Send devise emails with background job
   def send_devise_notification(notification, *args)
@@ -53,6 +54,6 @@ class Admin < ApplicationRecord
   end
 
   def send_login_info
-    AdminMailer.login_info(id, password).deliver_later! if is_generated_password
+    UserMailer.login_info(id, password).deliver_later! if is_generated_password
   end
 end

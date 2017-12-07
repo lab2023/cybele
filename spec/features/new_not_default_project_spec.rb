@@ -211,6 +211,8 @@ RSpec.describe 'Create new project without default configuration' do
 
   it 'do not use controller files' do
     expect(File).to exist(file_project_path('app/controllers/application_controller.rb'))
+
+    # Hq files
     expect(File).not_to exist(file_project_path('app/controllers/hq/admins_controller.rb'))
     expect(File).not_to exist(file_project_path('app/controllers/hq/application_controller.rb'))
     expect(File).not_to exist(file_project_path('app/controllers/hq/audits_controller.rb'))
@@ -219,10 +221,18 @@ RSpec.describe 'Create new project without default configuration' do
     expect(File).not_to exist(file_project_path('app/controllers/hq/registrations_controller.rb'))
     expect(File).not_to exist(file_project_path('app/controllers/hq/sessions_controller.rb'))
     expect(File).not_to exist(file_project_path('app/controllers/hq/users_controller.rb'))
+
+    # User files
+    expect(File).not_to exist(file_project_path('app/controllers/user/application_controller.rb'))
+    expect(File).not_to exist(file_project_path('app/controllers/user/dashboard_controller.rb'))
+    expect(File).not_to exist(file_project_path('app/controllers/user/passwords_controller.rb'))
+    expect(File).not_to exist(file_project_path('app/controllers/user/registrations_controller.rb'))
+    expect(File).not_to exist(file_project_path('app/controllers/user/sessions_controller.rb'))
+    expect(File).not_to exist(file_project_path('app/controllers/user/profile_controller.rb'))
   end
 
   it 'do not use view files with option' do
-    # HQ files
+    # Hq files
     expect(File).not_to exist(file_project_path('app/views/hq/admins/index.html.haml'))
     expect(File).not_to exist(file_project_path('app/views/hq/audits/index.html.haml'))
     expect(File).not_to exist(file_project_path('app/views/hq/dashboard/index.html.haml'))
@@ -230,6 +240,13 @@ RSpec.describe 'Create new project without default configuration' do
     expect(File).not_to exist(file_project_path('app/views/hq/registrations/edit.html.haml'))
     expect(File).not_to exist(file_project_path('app/views/hq/sessions/new.html.haml'))
     expect(File).not_to exist(file_project_path('app/views/hq/users/index.html.haml'))
+
+    # User files
+    expect(File).not_to exist(file_project_path('app/views/user/dashboard/index.html.haml'))
+    expect(File).not_to exist(file_project_path('app/views/user/passwords/new.html.haml'))
+    expect(File).not_to exist(file_project_path('app/views/user/registrations/edit.html.haml'))
+    expect(File).not_to exist(file_project_path('app/views/user/sessions/new.html.haml'))
+    expect(File).not_to exist(file_project_path('app/views/user/profile/show.html.haml'))
 
     # Layouts
     expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_breadcrumb.html.haml'))

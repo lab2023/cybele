@@ -22,6 +22,7 @@ module Cybele
     include Cybele::Helpers::AppFiles::AssetsFiles
     include Cybele::Helpers::AppFiles::ControllerFiles
     include Cybele::Helpers::AppFiles::ModelFiles
+    include Cybele::Helpers::AppFiles::VendorFiles
     include Cybele::Helpers::AppFiles::MailerFiles
     include Cybele::Helpers::AppFiles::HelperFiles
     include Cybele::Helpers::AppFiles::ViewFiles

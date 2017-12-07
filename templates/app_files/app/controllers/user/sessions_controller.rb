@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
-class Hq::SessionsController < Devise::SessionsController
-  layout 'hq/login'
-
+class User::SessionsController < Devise::SessionsController
   private
 
   # Overwriting the sign_out redirect path method
   def after_sign_in_path_for(_resource_or_scope)
-    hq_root_path
+    user_root_path
   end
 
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(_resource_or_scope)
-    new_admin_session_path
+    new_user_session_path
   end
 end

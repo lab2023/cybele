@@ -18,6 +18,8 @@ module Cybele
         generate 'devise User name:string surname:string is_active:boolean time_zone:string'
         generate 'devise Admin name:string surname:string is_active:boolean time_zone:string'
         remove_file 'config/locales/devise.en.yml', force: true
+        copy_file 'config/locales/devise.en.yml', 'config/locales/devise.en.yml'
+        copy_file 'config/locales/devise.tr.yml', 'config/locales/devise.tr.yml'
       end
 
       def generate_devise_views

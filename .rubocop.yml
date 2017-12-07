@@ -47,3 +47,7 @@ Naming/HeredocDelimiterNaming:
   Exclude:
     - 'spec/features/cli_help_spec.rb'
     - 'spec/features/git_and_git_flow_spec.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'templates/app_files/app/controllers/**/*.rb'

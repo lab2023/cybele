@@ -5,8 +5,8 @@ module Cybele
     module AppFiles
       module VendorFiles
         def customize_vendor_files
-          # View files with option
-          directory 'app_files/app/vendor', 'app/vendor'
+          # javascript and stylesheet files in vendor
+          directory 'app_files/app/vendor/assets', 'vendor/assets'
         end
       end
     end
