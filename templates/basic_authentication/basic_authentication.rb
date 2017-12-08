@@ -4,7 +4,7 @@ module BasicAuthentication
   extend ActiveSupport::Concern
 
   included do
-    before_filter :authenticate
+    before_action :authenticate
   end
 
   private
