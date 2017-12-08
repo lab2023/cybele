@@ -430,4 +430,11 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses pronto' do
     pronto_test
   end
+
+  it 'uses guardfile' do
+    gemfile_file = content('Gemfile')
+    expect(gemfile_file).to match("gem 'guard'")
+
+    expect(File).to exist(file_project_path('Guardfile'))
+  end
 end
