@@ -18,7 +18,7 @@ module Cybele
       end
 
       def setup_mailtrap
-        configure_environment 'development', template_content('mailer/smtp.rb.erb')
+        configure_environment 'development', template_content('mailer/mailtrap.rb.erb')
         append_file('.env.local', "\n\n#{template_content('mailer/.env.local.erb')}")
       end
     end

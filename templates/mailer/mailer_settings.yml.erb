@@ -6,3 +6,6 @@ smtp:
   user_name: <%= ENV['SMTP_USER_NAME'] %>
   password: <%= ENV['SMTP_PASSWORD'] %>
   authentication: 'plain'
+  mailtrap:
+    port: <%= ENV['SMTP_PORT'] %>
+    authentication: <%= ENV['SMTP_AUTHENTICATION'] %>
