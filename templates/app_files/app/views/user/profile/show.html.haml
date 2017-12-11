@@ -1,6 +1,6 @@
 .card
   .card-header
-    %i.fa.fa-edit
+    %i.fas.fa-edit
     = t('view.title.show', resource_name: User.model_name.human)
   .card-body
     = show_for @profile do |s|
@@ -11,8 +11,8 @@
       = s.attribute :updated_at
   .card-footer
     = link_to root_path, class: 'btn' do
-      %i.fa.fa-arrow-left
+      %i.fas.fa-arrow-left
       = t('view.btn.back')
     = link_to edit_user_profile_path(@profile), class: 'btn btn-primary' do
-      %i.fa.fa-pencil
+      %i.fas.fa-pencil
       = t('view.navbar.edit_profile_info')

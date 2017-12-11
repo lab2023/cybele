@@ -1,7 +1,7 @@
 .card
   .card-header
-    %i.fa.fa-edit
-      = t('devise.registration.edit.title', model: resource.class.model_name.human)
+    %i.fas.fa-edit
+    = t('devise.registration.edit.title', model: resource.class.model_name.human)
   .card-body
     = simple_form_for(resource, as: resource_name, url: admin_registration_path, html: { method: :put }) do |f|
       = f.error_notification

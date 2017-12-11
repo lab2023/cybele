@@ -22,8 +22,6 @@
 //= require nprogress
 
 var ready = function(){
-    App.ready();
-
     $('.table').footable();
 
     $('.datetimepicker').datetimepicker({
@@ -35,7 +33,7 @@ var ready = function(){
     });
 
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
     });
 
     $("[data-mask]").each(function(index, element) {
@@ -49,9 +47,14 @@ var ready = function(){
     });
 };
 
-$(document).on('page:load', ready);
+document.addEventListener("turbolinks:load", ready);
 
-document.addEventListener("turbolinks:load", ready)
+$(document).on('turbolinks:load', function () {
+    ready();
+    var script = document.createElement("script");
+    script.src = "https://use.fontawesome.com/releases/v5.0.1/js/all.js";
+    document.head.appendChild(script);
+});
 
 $(window).on('page:load', ready);
 

@@ -1,18 +1,18 @@
 #sidebar.col-md-2.float-left.col-1.pl-0.pr-0.collapse.width.show
   .list-group.border-0.card.text-center.text-md-left
     %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", href: hq_dashboard_index_path}
-      %i.fa.fa-dashboard
+      %i.fas.fa-home
       %span.d-none.d-md-inline= t('view.dock.dashboard')
     %a.list-group-item.d-inline-block.collapsed{"aria-expanded" => "false", "data-parent" => "#sidebar", "data-toggle" => "collapse", href: "#menu1"}
-      %i.fa.fa-list
+      %i.fas.fa-list
       %span.d-none.d-md-inline
         = t('view.dock.system_users')
     #menu1.collapse
       %a.list-group-item{"data-parent" => "#menu1", href: hq_admins_path}
-        %i.fa.fa-users
+        %i.fas.fa-users
         = t('activerecord.models.admins')
       %a.list-group-item{"data-parent" => "#menu1", href: hq_users_path}
-        %i.fa.fa-users
+        %i.fas.fa-users
         = t('activerecord.models.users')
 
 
@@ -21,7 +21,7 @@
 -#     #sidebar.col-md-3.float-left.col-1.pl-0.pr-0.collapse.width.show
 -#       .list-group.border-0.card.text-center.text-md-left
 -#         %a.list-group-item.d-inline-block.collapsed{"aria-expanded" => "false", "data-parent" => "#sidebar", "data-toggle" => "collapse", :href => "#menu1"}
--#           %i.fa.fa-dashboard
+-#           %i.fas.fa-home
 -#           %span.d-none.d-md-inline Item 1
 -#         #menu1.collapse
 -#           %a.list-group-item{"aria-expanded" => "false", "data-toggle" => "collapse", :href => "#menu1sub1"} Subitem 1
@@ -40,10 +40,10 @@
 -#           %a.list-group-item{"data-parent" => "#menu1", :href => "#"} Subitem 2
 -#           %a.list-group-item{"data-parent" => "#menu1", :href => "#"} Subitem 3
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-film
+-#           %i.fas.fa-film
 -#           %span.d-none.d-md-inline Item 2
 -#         %a.list-group-item.d-inline-block.collapsed{"aria-expanded" => "false", "data-parent" => "#sidebar", "data-toggle" => "collapse", :href => "#menu3"}
--#           %i.fa.fa-book
+-#           %i.fas.fa-book
 -#           %span.d-none.d-md-inline Item 3
 -#         #menu3.collapse
 -#           %a.list-group-item{"data-parent" => "#menu3", :href => "#"} 3.1
@@ -54,29 +54,29 @@
 -#             %a.list-group-item{"data-parent" => "#menu3sub2", :href => "#"} 3.2 c
 -#           %a.list-group-item{"data-parent" => "#menu3", :href => "#"} 3.3
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-heart
+-#           %i.fas.fa-heart
 -#           %span.d-none.d-md-inline Item 4
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-list
+-#           %i.fas.fa-list
 -#           %span.d-none.d-md-inline Item 5
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-clock-o
+-#           %i.fas.fa-clock-o
 -#           %span.d-none.d-md-inline Link
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-th
+-#           %i.fas.fa-th
 -#           %span.d-none.d-md-inline Link
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-gear
+-#           %i.fas.fa-gear
 -#           %span.d-none.d-md-inline Link
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-calendar
+-#           %i.fas.fa-calendar
 -#           %span.d-none.d-md-inline Link
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-envelope
+-#           %i.fas.fa-envelope
 -#           %span.d-none.d-md-inline Link
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-bar-chart-o
+-#           %i.fas.fa-bar-chart-o
 -#           %span.d-none.d-md-inline Link
 -#         %a.list-group-item.d-inline-block.collapsed{"data-parent" => "#sidebar", :href => "#"}
--#           %i.fa.fa-star
+-#           %i.fas.fa-star
 -#           %span.d-none.d-md-inline Link
