@@ -230,7 +230,7 @@ module Cybele
       say 'Setup mail settings'
       build :configure_action_mailer
       build :configure_smtp
-      build :setup_letter_opener
+      build :setup_mailtrap
     end
 
     def gitignore_files_and_folders

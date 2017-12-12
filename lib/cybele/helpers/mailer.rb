@@ -17,8 +17,9 @@ module Cybele
         append_file 'config/settings.yml', template_content('mailer/mailer_settings.yml.erb')
       end
 
-      def setup_letter_opener
-        configure_environment 'development', template_content('mailer/letter_opener.rb.erb')
+      def setup_mailtrap
+        configure_environment 'development', template_content('mailer/smtp.rb.erb')
+        append_file('.env.local', "\n\n#{template_content('mailer/.env.local.erb')}")
       end
     end
   end
