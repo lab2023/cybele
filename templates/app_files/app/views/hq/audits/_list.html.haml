@@ -1,9 +1,9 @@
 .card-header
-  %i.fa.fa-list
+  %i.fas.fa-list
   = t('activerecord.models.audits')
   .float-right
     %a.btn{href: hq_audits_path, data: {toggle: 'toolbar-tooltip'}, title: t('view.reload')}
-      %i.fa.fa-refresh
+      %i.fas.fa-sync
     .badge.badge-pill.badge-secondary= @audits.total_entries
 .card-body.filters
   = render 'filters'
@@ -15,7 +15,7 @@
       %th= sort_link(@search, :user_id, t('activerecord.attributes.audits.user'))
       %th{ data: { breakpoints: 'xs sm' }}= sort_link(@search, :auditable_type, t('activerecord.attributes.audits.auditable_type'))
       %th{ data: { breakpoints: 'xs sm' }}= sort_link(@search, :auditable_id, t('activerecord.attributes.audits.auditable_id'))
-      %th{ data: { breakpoints: 'xs sm' }}= sort_link(@search, :auditable_id, t('activerecord.attributes.audits.created_at'))
+      %th{ data: { breakpoints: 'xs sm' }}= sort_link(@search, :created_at, t('activerecord.attributes.audits.created_at'))
       %th{ data: { breakpoints: 'xs sm' }}= sort_link(@search, :action, t('activerecord.attributes.audits.action'))
       %th.actions{ data: { breakpoints: 'xs' }}
         = t('view.table_actions')
@@ -32,4 +32,4 @@
         %td= t("actions.#{audit.action}")
         %td.actions
           = link_to(hq_audit_path(id: audit), class: 'btn btn-success btn-sm', 'data-toggle' => 'tooltip', title: t('view.tooltips.zoom')) do
-            %i.fa.fa-eye
+            %i.fas.fa-eye

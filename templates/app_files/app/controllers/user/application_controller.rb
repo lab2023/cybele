@@ -2,7 +2,7 @@
 
 class User::ApplicationController < ApplicationController
   layout 'application'
-  before_filter :set_audit_user, :set_user_time_zone
+  before_action :set_audit_user, :set_user_time_zone
   before_action :authenticate_user!
 
   protected

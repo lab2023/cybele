@@ -21,16 +21,14 @@
     .list-group-item
       padding: .75rem 1.25rem
       &[aria-expanded="false"]::after
-        content: " \f0d7"
-        font-family: FontAwesome
+        content: '>'
         display: inline
         text-align: right
         padding-left: 5px
       &[aria-expanded="true"]
         background-color: #222
         &::after
-          content: " \f0da"
-          font-family: FontAwesome
+          content: '<'
           display: inline
           text-align: right
           padding-left: 5px

@@ -17,9 +17,11 @@
     %link(rel="shortcut icon" href="/images/favicon.png")
 
     / Stylesheets (Don't change include order)
-    = stylesheet_link_tag 'hq/application',
-                          '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-                          media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'hq/application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    / Javascripts
+    = javascript_include_tag  '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js',
+                              'hq/application', 'data-turbolinks-track': 'reload'
     = yield :head
 
   %body.login

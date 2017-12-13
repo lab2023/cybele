@@ -14,9 +14,6 @@ module Cybele
           # Add breadcrumb gem
           append_file('Gemfile', template_content('app_files/breadcrumb_Gemfile.erb'))
 
-          # Add fontawesome gem
-          append_file('Gemfile', template_content('app_files/fontawesome_Gemfile.erb'))
-
           # Add jquery gem
           append_file('Gemfile', template_content('app_files/jquery_Gemfile.erb'))
         end
