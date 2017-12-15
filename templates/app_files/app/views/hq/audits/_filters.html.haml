@@ -11,7 +11,7 @@
         = f.label :user_type, label: t('activerecord.attributes.audits.user_type')
         = f.input_field :user_type_eq, label: false, class: 'form-control chosen-select',
                         placeholder: t('activerecord.attributes.audits.user'),
-                        collection: get_audit_users, include_blank: t('view.select')
+                        collection: audit_users, include_blank: t('view.select')
 
         - if params[:q].present? and params[:q][:user_type_eq].present?
           - type = params[:q][:user_type_eq]
@@ -19,12 +19,12 @@
             = f.label :user, label: t('activerecord.attributes.audits.user')
             = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select',
                             placeholder: t('activerecord.attributes.audits.user'),
-                            collection: get_admins, include_blank: t('view.select')
+                            collection: admins, include_blank: t('view.select')
           - elsif type == 'User'
             = f.label :user, label: t('activerecord.attributes.audits.user')
             = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select',
                             placeholder: t('activerecord.attributes.audits.user'),
-                            collection: get_users, include_blank: t('view.select')
+                            collection: users, include_blank: t('view.select')
 
         = f.label :auditable_type, label: t('activerecord.attributes.audits.auditable_type')
         = f.input_field :auditable_type_eq, label: false, class: 'form-control chosen-select',

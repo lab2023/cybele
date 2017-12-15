@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Hq::ApplicationController < ApplicationController
-  before_action :authenticate_admin!
   before_action :set_audit_user
   layout 'hq/application'
 
