@@ -1,19 +1,23 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def get_active_users
-    User.active.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
+  def devise_model_map(model_name)
+    model_name.map { |c| ["#{c.email} - #{c.full_name}", c.id] }
   end
 
-  def get_users
-    User.all.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
+  def active_users
+    devise_model_map(User.active)
   end
 
-  def get_admins
-    Admin.all.map{|c| ["#{c.email} - #{c.full_name}", c.id] }
+  def users
+    devise_model_map(User.all)
   end
 
-  def get_audit_users
+  def admins
+    devise_model_map(Admin.all)
+  end
+
+  def audit_users
     [[t('activerecord.models.admin'), 'Admin'], [t('activerecord.models.user'), 'User']]
   end
 end

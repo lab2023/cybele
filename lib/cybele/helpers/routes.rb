@@ -15,7 +15,7 @@ module Cybele
                         ''
 
         inject_into_file 'config/routes.rb', template_content('config/routes.rb.erb'),
-                         before: 'if Rails.env.production? || Rails.env.staging?'
+                         before: "match '*unmatched_route'"
       end
     end
   end
