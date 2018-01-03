@@ -3,7 +3,7 @@
 module PaperclipTestHelper
   def paperclip_test
     gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem "paperclip"/)
+    expect(gemfile_file).to match(/^gem 'paperclip'/)
     expect(gemfile_file).to match(/^gem 'aws-sdk'/)
 
     env_sample_file_test

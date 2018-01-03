@@ -11,6 +11,12 @@ module Cybele
         template 'pronto/example.pronto.yml.erb',
                  '.pronto.yml',
                  force: true
+        template 'pronto/.haml-lint.yml.erb',
+                 '.haml-lint.yml',
+                 force: true
+        template 'pronto/config.reek.erb',
+                 'config.reek',
+                 force: true
         template 'pronto/.rubocop.yml.erb',
                  '.rubocop.yml',
                  force: true

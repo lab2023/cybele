@@ -34,9 +34,22 @@ group :development, :test do
   gem 'colorize', '~> 0.8.1'
   gem 'guard', '~> 2.14', '>= 2.14.1'
   gem 'mailtrap', '~> 0.2.1'
+end
+
+# Pronto runners
+group :development do
   gem 'pronto', '~> 0.9.5'
-  gem 'pronto-flay', '~> 0.9.0', require: false
-  gem 'pronto-rubocop', '~> 0.9.0', require: false
+  gem 'pronto-brakeman', require: false
+  gem 'pronto-fasterer', require: false
+  gem 'pronto-flay', require: false
+  gem 'pronto-haml', require: false
+  gem 'pronto-jscs', require: false
+  gem 'pronto-poper', require: false
+  gem 'pronto-rails_best_practices', require: false
+  gem 'pronto-reek', require: false
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-scss', require: false
+  gem 'pronto-spell', require: false
 end
 
 # A set of common locale data and translations to internationalize and/or localize your Rails applications.
