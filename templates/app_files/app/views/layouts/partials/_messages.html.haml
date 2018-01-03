@@ -3,10 +3,9 @@
     - key = 'success'
   - if key.to_s == 'alert'
     - key = 'danger'
-  %div{class: "alert alert-dismissable alert-#{key}"}
+  .alert.alert-dismissable.message{ class: `alert-#{key}` }
     - if key.to_s == 'danger' || key.to_s == 'warning'
       %i.fas.fa-exclamation-triangle.fa-lg
-
     - else
-      %i.far.fa-smile.fa-lg{:style => 'padding: 0px 5px;'}
+      %i.far.fa-smile.fa-lg
     = value

@@ -18,7 +18,7 @@ Metrics/ClassLength:
   Exclude:
     - 'lib/cybele/generators/app_generator.rb'
 
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Exclude:
     - 'lib/cybele/generators/app_generator.rb'
 
@@ -38,8 +38,10 @@ Metrics/BlockLength:
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: when_needed
+  Exclude:
+    - 'templates/error_pages/**/*.rb'
 
-Style/IndentHeredoc:
+Layout/IndentHeredoc:
   Exclude:
     - 'spec/features/cli_help_spec.rb'
 
@@ -47,6 +49,10 @@ Naming/HeredocDelimiterNaming:
   Exclude:
     - 'spec/features/cli_help_spec.rb'
     - 'spec/features/git_and_git_flow_spec.rb'
+
+Layout/InitialIndentation:
+  Exclude:
+    - 'templates/error_pages/**/*.rb'
 
 Style/ClassAndModuleChildren:
   Exclude:

@@ -223,7 +223,6 @@ module Cybele
       build :generate_devise_settings
       say 'Adding devise models'
       build :generate_devise_models
-      say 'Generate devise'
     end
 
     def configure_mail_setting

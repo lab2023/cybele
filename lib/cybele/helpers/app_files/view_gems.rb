@@ -5,17 +5,15 @@ module Cybele
     module AppFiles
       module ViewGems
         def add_required_view_gems
-          # Add bootstrap gem
-          append_file('Gemfile', template_content('app_files/bootstrap_Gemfile.erb'))
-
-          # Add blankable gem
-          append_file('Gemfile', template_content('app_files/blankable_Gemfile.erb'))
-
-          # Add breadcrumb gem
-          append_file('Gemfile', template_content('app_files/breadcrumb_Gemfile.erb'))
-
-          # Add jquery gem
-          append_file('Gemfile', template_content('app_files/jquery_Gemfile.erb'))
+          files = %w[
+            app_files/bootstrap_Gemfile.erb
+            app_files/blankable_Gemfile.erb
+            app_files/breadcrumb_Gemfile.erb
+            app_files/jquery_Gemfile.erb
+          ]
+          files.each do |file|
+            append_template_to_file('Gemfile', file)
+          end
         end
       end
     end

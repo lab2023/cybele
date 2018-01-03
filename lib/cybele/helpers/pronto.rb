@@ -5,21 +5,7 @@ module Cybele
     module Pronto
       def configure_pronto
         # Create pronto files
-        template 'pronto/example.pronto.yml.erb',
-                 'example.pronto.yml',
-                 force: true
-        template 'pronto/example.pronto.yml.erb',
-                 '.pronto.yml',
-                 force: true
-        template 'pronto/.haml-lint.yml.erb',
-                 '.haml-lint.yml',
-                 force: true
-        template 'pronto/config.reek.erb',
-                 'config.reek',
-                 force: true
-        template 'pronto/.rubocop.yml.erb',
-                 '.rubocop.yml',
-                 force: true
+        create_config_files
         template 'pronto/rubo.erb',
                  'bin/rubo',
                  force: true
@@ -27,6 +13,20 @@ module Cybele
 
         # Ignore secret information file
         append_file('.gitignore', '.pronto.yml')
+      end
+
+      private
+
+      def create_config_files
+        template 'pronto/example.pronto.yml.erb',
+                 '.pronto.yml',
+                 force: true
+        files_to_template(
+          'pronto/example.pronto.yml.erb' => 'example.pronto.yml',
+          'pronto/.haml-lint.yml.erb' => '.haml-lint.yml',
+          'pronto/config.reek.erb' => 'config.reek',
+          'pronto/.rubocop.yml.erb' => '.rubocop.yml'
+        )
       end
     end
   end

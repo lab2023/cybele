@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Hq::AdminsController < Hq::ApplicationController
+  include Activatable
+
   before_action :set_admin, only: %i[show edit update destroy toggle_is_active]
   add_breadcrumb I18n.t('activerecord.models.admins'), :hq_admins_path
 
@@ -43,12 +45,7 @@ class Hq::AdminsController < Hq::ApplicationController
   end
 
   def toggle_is_active
-    if @admin.update(is_active: !@admin.is_active)
-      flash[:info] = t("flash.actions.toggle_is_active.#{@admin.is_active ? 'active' : 'passive'}",
-                       resource_name: Admin.model_name.human)
-    else
-      flash[:danger] = t('flash.messages.error_occurred')
-    end
+    activation_toggle(@admin)
     respond_with(:hq, @admin, location: request.referer)
   end
 

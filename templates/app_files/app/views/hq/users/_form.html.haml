@@ -3,7 +3,7 @@
     %i.fas.fa-edit
     = yield :form_title
   .card-body
-    = simple_form_for([:hq, @user], validate: true) do |f|
+    = simple_form_for([:hq, user], validate: true) do |f|
       = f.error_notification
 
       .form-inputs
@@ -12,6 +12,6 @@
         = f.input :email
 
       .form-actions
-        - text = @user.id.present? ? t('view.btn.update') : t('view.btn.add')
+        - text = user.id.present? ? t('view.btn.update') : t('view.btn.add')
         = f.button :submit, text, class: 'btn btn-primary'
         = link_to t('view.cancel'), hq_users_path, class: 'btn'

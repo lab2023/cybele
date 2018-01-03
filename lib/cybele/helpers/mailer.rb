@@ -14,7 +14,7 @@ module Cybele
                               template_content('recipient_interceptor/recipient_interceptor_staging.rb.erb')
         configure_environment 'production', template_content('mailer/smtp.rb.erb')
         configure_environment 'staging', template_content('mailer/smtp.rb.erb')
-        append_file 'config/settings.yml', template_content('mailer/mailer_settings.yml.erb')
+        append_template_to_file 'config/settings.yml', 'mailer/mailer_settings.yml.erb'
       end
 
       def setup_mailtrap

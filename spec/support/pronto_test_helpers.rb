@@ -11,18 +11,23 @@ module ProntoTestHelpers
 
   def file_exist_test
     gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'pronto'")
-    expect(gemfile_file).to match("gem 'pronto-brakeman'")
-    expect(gemfile_file).to match("gem 'pronto-fasterer'")
-    expect(gemfile_file).to match("gem 'pronto-flay'")
-    expect(gemfile_file).to match("gem 'pronto-haml'")
-    expect(gemfile_file).to match("gem 'pronto-jscs'")
-    expect(gemfile_file).to match("gem 'pronto-poper'")
-    expect(gemfile_file).to match("gem 'pronto-rails_best_practices'")
-    expect(gemfile_file).to match("gem 'pronto-reek'")
-    expect(gemfile_file).to match("gem 'pronto-rubocop'")
-    expect(gemfile_file).to match("gem 'pronto-scss'")
-    expect(gemfile_file).to match("gem 'pronto-spell'")
+    pronto_gems.each do |gem|
+      expect(gemfile_file).to match(gem)
+    end
+  end
+
+  def pronto_gems
+    [
+      "gem 'pronto'",
+      "gem 'pronto-brakeman'",
+      "gem 'pronto-fasterer'",
+      "gem 'pronto-flay'",
+      "gem 'pronto-haml'",
+      "gem 'pronto-poper'",
+      "gem 'pronto-rails_best_practices'",
+      "gem 'pronto-reek'",
+      "gem 'pronto-rubocop'"
+    ]
   end
 
   def file_content_test # rubocop:disable Metrics/AbcSize

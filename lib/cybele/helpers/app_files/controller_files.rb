@@ -5,6 +5,9 @@ module Cybele
     module AppFiles
       module ControllerFiles
         def customize_controller_files
+          # Controller concern files
+          directory 'app_files/app/controllers/concerns', 'app/controllers/concerns'
+
           # Hq controller files
           directory 'app_files/app/controllers/hq', 'app/controllers/hq'
 

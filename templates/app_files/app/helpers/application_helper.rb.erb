@@ -20,4 +20,24 @@ module ApplicationHelper
   def audit_users
     [[t('activerecord.models.admin'), 'Admin'], [t('activerecord.models.user'), 'User']]
   end
+
+  def blankable(contents, search)
+    render partial: contents.size == 0 ? 'blank' : 'list', contents: contents, search: search
+  end
+
+  def auditable_types_collection(auditable_types)
+    auditable_types.map do |a|
+      [t("activerecord.models.#{a.auditable_type.try(:underscore)}"), a.auditable_type]
+    end
+  end
+
+  def query_present?(array)
+    q = params[:q]
+    return false unless params[:q].present?
+    q.any? {|k,v| k.to_s.in?(array) && v.present? }
+  end
+
+  def actions_collection
+    %w(create update destroy).map {|a| [t("actions.#{a}"), a] }
+  end
 end
