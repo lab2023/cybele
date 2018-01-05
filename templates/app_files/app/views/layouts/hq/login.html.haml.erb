@@ -37,7 +37,8 @@
   %body.login
     = render 'layouts/partials/warnings'
     .wrapper
-      = render partial: 'layouts/partials/messages'
+      .text-center
+        = render partial: 'layouts/partials/messages'
       = yield
 
       %br/

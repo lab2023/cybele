@@ -11,6 +11,12 @@ module Cybele
         # Add initializers
         bundle_command 'exec rails generate responders:install'
 
+        replace_responders_file_contents
+      end
+
+      private
+
+      def replace_responders_file_contents
         # Add js and json to respond :html
         replace_in_file 'app/controllers/application_controller.rb',
                         'respond_to :html',
@@ -18,7 +24,6 @@ module Cybele
         replace_in_file 'app/controllers/application_controller.rb',
                         'require "application_responder"',
                         "require 'application_responder'"
-
         # Remove comments in locale/responders.yml
         uncomment_lines 'config/locales/responders.en.yml', /alert:/
         copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'

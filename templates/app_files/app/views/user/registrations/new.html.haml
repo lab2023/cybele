@@ -6,7 +6,7 @@
       - resource_class.omniauth_providers.each do |provider|
         = link_to omniauth_authorize_path(resource_name, provider),
                   class: 'btn btn-lg btn-primary btn-block' do
-          %i.fa.fa-facebook
+          %i.fas.fa-facebook
           = t('devise.shared.links.signup_with', name: provider.to_s.titleize)
       %h3.text-center
         = t('view.or')

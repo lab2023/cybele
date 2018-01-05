@@ -24,7 +24,6 @@ module ProntoTestHelpers
       "gem 'pronto-flay'",
       "gem 'pronto-haml'",
       "gem 'pronto-poper'",
-      "gem 'pronto-rails_best_practices'",
       "gem 'pronto-reek'",
       "gem 'pronto-rubocop'"
     ]

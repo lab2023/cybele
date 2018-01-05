@@ -349,6 +349,9 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).to exist(file_project_path('app/views/welcome/contact.html.haml'))
     expect(File).to exist(file_project_path('app/views/welcome/index.html.haml'))
 
+    # Public files
+    expect(File).to exist(file_project_path('public/images/favicon.png'))
+
     # Basic authentication files
     expect(File).to exist(file_project_path('app/controllers/concerns/basic_authentication.rb'))
 
@@ -381,7 +384,7 @@ RSpec.describe 'Create new project with default configuration' do
 
   it 'uses model files' do
     admin_model = content('app/models/admin.rb')
-    expect(admin_model).to match('AdminMailer.login_info')
+    expect(admin_model).to match('login_info_mailer')
 
     audit_model = content('app/models/audit.rb')
     expect(audit_model).to match('class Audit')

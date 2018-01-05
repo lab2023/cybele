@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include PasswordCreatable
+
   # Scopes
   scope :active, -> { where(is_active: true) }
 
@@ -25,13 +27,6 @@ class User < ApplicationRecord
   validates_presence_of :name, :email, :surname
   validates :email, uniqueness: true
 
-  # Callbacks
-  after_commit :send_login_info, on: :create
-  before_validation :create_password, on: :create
-  after_initialize do |obj|
-    obj.is_generated_password = false
-  end
-
   def active_for_authentication?
     super && is_active
   end
@@ -42,18 +37,7 @@ class User < ApplicationRecord
 
   private
 
-  # Virtual attributes
-  attr_accessor :is_generated_password
-
-  def create_password
-    return if password.present?
-    password = Devise.friendly_token.first(8)
-    self.password = password
-    self.password_confirmation = password
-    self.is_generated_password = true
-  end
-
-  def send_login_info
-    UserMailer.login_info(id, password).deliver_later! if is_generated_password
+  def login_info_mailer
+    UserMailer
   end
 end

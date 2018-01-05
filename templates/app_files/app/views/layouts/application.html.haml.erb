@@ -22,4 +22,4 @@
       = yield
       .footer
         %p
-          = t('view.welcome.footer', app_name: "<%= app_name.capitalize %>", year: Time.zone.now.year)
+          = t('view.welcome.footer', app_name: "<%= app_name.capitalize %>", year: Time.zone.now.year).html_safe

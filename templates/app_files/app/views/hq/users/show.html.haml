@@ -1,10 +1,10 @@
 - content_for :toolbar do
   = link_to edit_hq_user_path(@user), class: 'btn btn-default btn-primary' do
-    %i.fa.fa-pencil
+    %i.fas.fa-pencil
     = t('view.edit')
 .card
   .card-header
-    %i.fa.fa-edit
+    %i.fas.fa-edit
     = t('view.tooltips.show', resource_name: User.model_name.human)
   .card-body
     = show_for @user do |s|

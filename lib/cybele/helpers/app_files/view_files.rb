@@ -6,40 +6,51 @@ module Cybele
       module ViewFiles
         def customize_view_files_with_option
           # View files with option
-          directory 'app_files/app/views/hq', 'app/views/hq'
-          directory 'app_files/app/views/user', 'app/views/user'
-          directory 'app_files/app/views/layouts/hq', 'app/views/layouts/hq'
-          directory 'app_files/app/views/layouts/partials', 'app/views/layouts/partials'
-          directory 'app_files/app/views/welcome', 'app/views/welcome'
-          replace_erb_with_haml
+          dirs_to_directory(
+            'app_files/app/views/hq' => 'app/views/hq',
+            'app_files/app/views/user' => 'app/views/user',
+            'app_files/app/views/layouts/hq' => 'app/views/layouts/hq',
+            'app_files/app/views/layouts/partials' => 'app/views/layouts/partials',
+            'app_files/app/views/welcome' => 'app/views/welcome',
+            'app_files/public' => 'public'
+          )
+          template_files = %w[
+            app/views/welcome/index.html.haml.erb
+            app/views/layouts/mailer.html.haml.erb
+            app/views/layouts/application.html.haml.erb
+            app/views/layouts/partials/_navbar.html.haml.erb
+            app/views/layouts/hq/application.html.haml.erb
+            app/views/layouts/hq/login.html.haml.erb
+          ]
+          replace_erb_with_haml(template_files)
         end
 
         def customize_default_view_files
           # Default view files
-          directory 'app_files/app/views/admin_mailer', 'app/views/admin_mailer'
-          directory 'app_files/app/views/user_mailer', 'app/views/user_mailer'
+          dirs_to_directory(
+            'app_files/app/views/admin_mailer' => 'app/views/admin_mailer',
+            'app_files/app/views/user_mailer' => 'app/views/user_mailer'
+          )
         end
 
-        def replace_erb_with_haml
-          remove_file 'app/views/welcome/index.html.erb', force: true
-          template 'app_files/app/views/welcome/index.html.erb',
-                   'app/views/welcome/index.html.haml', force: true
+        private
 
-          remove_file 'app/views/layouts/mailer.html.erb', force: true
-          template 'app_files/app/views/layouts/mailer.html.erb',
-                   'app/views/layouts/mailer.html.haml', force: true
+        def remove_erb_files(template_files)
+          remove_file 'app/views/layouts/mailer.html.erb',
+                      force: true
+          remove_files(template_files)
+        end
 
-          remove_file 'app/views/layouts/application.html.erb', force: true
-          template 'app_files/app/views/layouts/application.html.erb',
-                   'app/views/layouts/application.html.haml', force: true
-
-          remove_file 'app/views/layouts/partials/_navbar.html.erb', force: true
-          template 'app_files/app/views/layouts/partials/_navbar.html.erb',
-                   'app/views/layouts/partials/_navbar.html.haml', force: true
-
-          remove_file 'app/views/layouts/hq/application.html.erb', force: true
-          template 'app_files/app/views/layouts/hq/application.html.erb',
-                   'app/views/layouts/hq/application.html.haml', force: true
+        def replace_erb_with_haml(template_files)
+          remove_erb_files(template_files)
+          files_to_template(
+            'app_files/app/views/welcome/index.html.haml.erb' => 'app/views/welcome/index.html.haml',
+            'app_files/app/views/layouts/mailer.html.haml.erb' => 'app/views/layouts/mailer.html.haml',
+            'app_files/app/views/layouts/application.html.haml.erb' => 'app/views/layouts/application.html.haml',
+            'app_files/app/views/layouts/partials/_navbar.html.haml.erb' => 'app/views/layouts/partials/_navbar.html.haml',
+            'app_files/app/views/layouts/hq/application.html.haml.erb' => 'app/views/layouts/hq/application.html.haml',
+            'app_files/app/views/layouts/hq/login.html.haml.erb' => 'app/views/layouts/hq/login.html.haml'
+          )
         end
       end
     end

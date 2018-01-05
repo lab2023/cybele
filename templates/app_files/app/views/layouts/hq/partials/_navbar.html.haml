@@ -25,6 +25,11 @@
             = current_admin.email
           %b.caret
         .dropdown-menu{ 'aria-labelledby' => 'navbarDropdownMenuLink' }
-          = link_to t('view.navbar.edit_login_info'), edit_admin_registration_path, class: 'dropdown-item'
-          %div.dropdown-divider
-          = link_to t('view.navbar.signout'), destroy_admin_session_path, method: :delete, class: 'dropdown-item'
+          = link_to t('view.navbar.edit_login_info'),
+                    edit_admin_registration_path,
+                    class: 'dropdown-item'
+          .dropdown-divider
+          = link_to t('view.navbar.signout'),
+                    destroy_admin_session_path,
+                    method: :delete,
+                    class: 'dropdown-item'

@@ -265,6 +265,7 @@ module Cybele
       build :customize_default_view_files
     end
 
+    # :reek:TooManyStatements
     def customize_optional_view_files
       return if @options[:skip_view_files]
       say 'Customize optional view files', :green

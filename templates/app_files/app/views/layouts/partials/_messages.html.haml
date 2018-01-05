@@ -3,9 +3,9 @@
     - key = 'success'
   - if key.to_s == 'alert'
     - key = 'danger'
-  .alert.alert-dismissable.message{ class: `alert-#{key}` }
+  .alert.alert-dismissable.message{ class: "alert-#{key}" }
     - if key.to_s == 'danger' || key.to_s == 'warning'
       %i.fas.fa-exclamation-triangle.fa-lg
     - else
-      %i.far.fa-smile.fa-lg
+      %i.fas.fa-smile.fa-lg
     = value
