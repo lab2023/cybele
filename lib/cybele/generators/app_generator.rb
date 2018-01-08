@@ -78,7 +78,7 @@ module Cybele
       # Set options
       @options = options.dup
 
-      return if @options[:skip_ask]
+      return dependency_control(@options) if @options[:skip_ask]
 
       say 'Ask cybele options', :green
       option_with_ask_limited(:database, DATABASES)
@@ -90,6 +90,7 @@ module Cybele
       option_with_ask_yes(:skip_view_files)
       option_with_ask_yes(:skip_docker)
       @options.freeze
+      dependency_control(@options)
     end
 
     def customize_gemfile
@@ -311,6 +312,27 @@ module Cybele
 
     def option_with_ask_limited(key, limits)
       @options = @options.merge(key => ask("#{key.to_s.humanize} :", limited_to: limits))
+    end
+
+    def dependency_control(selected_options)
+      arg_checker(selected_options, :skip_view_files, %i[skip_haml skip_show_for skip_simple_form])
+    end
+
+    def arg_checker(selected_options, option, option_array)
+      return if selected_options[option]
+      puts "#{option} dependency error!"
+      failed = false
+      option_array.each do |opt|
+        if selected_options[opt]
+          puts "Don't #{opt}"
+          failed = true
+        end
+      end
+      if failed
+        puts
+        puts 'See --help for more info'
+        exit 0
+      end
     end
   end
 end
