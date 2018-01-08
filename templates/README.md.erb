@@ -1,6 +1,12 @@
 # <%= app_name.capitalize %>
 
 # TODOs
+- Change email sender domain address and basic_auth info in `config/settings.yml`
+- Change email sender domain address in `config/initializers/devise.rb`
+- Add your secret keys to `.env.local` file
+
+<% unless @options[:skip_docker] %>
+# Docker development
 ➜ ✗ docker-compose build
 ➜ ✗ docker-compose run app bundle
 ➜ ✗ docker-compose run app bundle exec rails db:create
@@ -8,3 +14,4 @@
 ➜ ✗ docker-compose run app bundle exec rails db:seed
 ➜ ✗ docker-compose up
 Look: localhost:3000 or lvh.me:3000
+<% end %>

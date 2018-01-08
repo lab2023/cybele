@@ -229,7 +229,6 @@ module Cybele
       say 'Setup mail settings'
       build :configure_action_mailer
       build :configure_smtp
-      build :setup_mailtrap
     end
 
     def gitignore_files_and_folders
@@ -240,12 +239,6 @@ module Cybele
     def configure_error_pages
       say 'Setup custom exception pages and 404 page', :green
       build :configure_error_pages
-    end
-
-    def docker_development_env
-      return if @options[:skip_docker]
-      say 'Setup docker development environment', :green
-      build :setup_docker_development_env
     end
 
     def setup_pronto_config
@@ -279,6 +272,12 @@ module Cybele
       build :add_devise_strong_parameter
       build :add_devise_authenticate_admin
       build :configure_basic_authentication
+    end
+
+    def docker_development_env
+      return if @options[:skip_docker]
+      say 'Setup docker development environment', :green
+      build :setup_docker_development_env
     end
 
     def setup_git_and_git_flow

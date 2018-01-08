@@ -14,12 +14,11 @@ module Cybele
                               template_content('recipient_interceptor/recipient_interceptor_staging.rb.erb')
         configure_environment 'production', template_content('mailer/smtp.rb.erb')
         configure_environment 'staging', template_content('mailer/smtp.rb.erb')
-        append_template_to_file 'config/settings.yml', 'mailer/mailer_settings.yml.erb'
-      end
-
-      def setup_mailtrap
         configure_environment 'development', template_content('mailer/smtp.rb.erb')
-        append_file('.env.local', "\n\n#{template_content('mailer/.env.local.erb')}")
+        append_template_to_file 'config/settings.yml', 'mailer/mailer_settings.yml.erb'
+        %w[.env.local .env.production .env.staging env.sample].each do |env|
+          append_file(env, template_content('mailer/.env.local.erb'))
+        end
       end
     end
   end
