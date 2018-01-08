@@ -1,4 +1,10 @@
 # <%= app_name.capitalize %>
 
 # TODOs
-➜ ✗ npm install jscs -g
+➜ ✗ docker-compose build
+➜ ✗ docker-compose run app bundle
+➜ ✗ docker-compose run app bundle exec rails db:create
+➜ ✗ docker-compose run app bundle exec rails db:migrate
+➜ ✗ docker-compose run app bundle exec rails db:seed
+➜ ✗ docker-compose up
+Look: localhost:3000 or lvh.me:3000
