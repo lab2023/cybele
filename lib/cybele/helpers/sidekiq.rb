@@ -15,6 +15,9 @@ module Cybele
         inject_into_file 'config/routes.rb',
                          template_content('sidekiq/sidekiq_routes_mount.erb'),
                          after: 'Rails.application.routes.draw do'
+        inject_into_file 'config/application.rb',
+                         template_content('sidekiq/sidekiq_application.rb.erb'),
+                         after: 'class Application < Rails::Application'
       end
 
       private

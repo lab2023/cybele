@@ -5,8 +5,7 @@ module PasswordCreatable
 
   included do
     # Virtual attributes
-    attr_accessor :is_generated_password
-    
+    attr_reader :is_generated_password
     # Callbacks
     after_commit :send_login_info, on: :create
     before_validation :create_password, on: :create
@@ -14,6 +13,11 @@ module PasswordCreatable
       obj.is_generated_password = false
     end
   end
+
+  protected
+
+  # Virtual attributes
+  attr_writer :is_generated_password
 
   private
 

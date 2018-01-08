@@ -1,12 +1,12 @@
 %h2= t('mailer.hello')
 
 %p= t('mailer.admin.login_info.first_info')
-%p= `#{t('mailer.admin.login_info.second_info')} :`
+%p= "#{t('mailer.admin.login_info.second_info')} :"
 %p
-  %strong= `#{t('activerecord.attributes.admin.email')} :`
+  %strong= "#{t('activerecord.attributes.admin.email')} :"
   = @admin.email
 %p
-  %strong=  `#{t('activerecord.attributes.admin.password')} :`
+  %strong=  "#{t('activerecord.attributes.admin.password')} :"
   = @password
 %p= link_to t('mailer.admin.login_info.btn_login'), new_admin_session_url
 

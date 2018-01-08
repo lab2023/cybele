@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   def blankable(contents, search)
-    render partial: contents.size == 0 ? 'blank' : 'list', contents: contents, search: search
+    render partial: contents.size == 0 ? 'blank' : 'list', locals: { contents: contents, search: search }
   end
 
   def auditable_types_collection(auditable_types)
@@ -33,11 +33,24 @@ module ApplicationHelper
 
   def query_present?(array)
     q = params[:q]
-    return false unless params[:q].present?
+    return false unless q.present?
+    q = q.permit!.to_h
     q.any? {|k,v| k.to_s.in?(array) && v.present? }
   end
 
   def actions_collection
     %w(create update destroy).map {|a| [t("actions.#{a}"), a] }
+  end
+
+  def css_class(paths, exist: '', not_exist: '')
+    if paths.is_a? Array
+      p = request.path
+      paths.each do |path|
+        return exist if p.include? path
+      end
+      return not_exist
+    end
+    return request.path == paths ? exist : not_exist if paths.is_a? String
+    raise NotImplementedError
   end
 end

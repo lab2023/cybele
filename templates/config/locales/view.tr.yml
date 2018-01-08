@@ -4,6 +4,7 @@ tr:
     make_passive: Pasif et
     make_active: Aktif et
     table_actions: İşlemler
+    edit: Düzenle
     select: Seçiniz
     active: Aktif
     passive: Pasif
@@ -43,9 +44,13 @@ tr:
     form:
       new_title: "Yeni %{resource_name}"
     tooltips:
-      delete: Sil
-      are_you_sure: Devam etmek istedğinize emin misiniz?
-      choose: Seç
+      zoom: "Detay"
+      edit: "Düzenle"
+      delete: "Sil"
+      new: "Yeni"
+      are_you_sure: "Devam etmek istediğinize emin misiniz?"
+      choose: "Seçiniz"
+      show: "Göster"
     btn:
       add: Ekle
       update: Güncelle

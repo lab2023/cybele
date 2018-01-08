@@ -20,6 +20,13 @@ module Cybele
         remove_file 'config/locales/devise.en.yml', force: true
         copy_file 'config/locales/devise.en.yml', 'config/locales/devise.en.yml'
         copy_file 'config/locales/devise.tr.yml', 'config/locales/devise.tr.yml'
+        inject_into_file 'db/seeds.rb', after: "#   Character.create(name: 'Luke', movie: movies.first)\n" do
+          template_content('devise/seeds.rb.erb')
+        end
+        configure_app_name(%w[db/seeds.rb])
+        Dir.glob('db/migrate/*devise_create*.rb') do |f|
+          replace_in_file f, 't.boolean :is_active', 't.boolean :is_active, default: true'
+        end
       end
 
       def generate_devise_views

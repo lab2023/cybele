@@ -7,7 +7,6 @@ module Cybele
         def add_required_view_gems
           files = %w[
             app_files/bootstrap_Gemfile.erb
-            app_files/blankable_Gemfile.erb
             app_files/breadcrumb_Gemfile.erb
             app_files/jquery_Gemfile.erb
           ]

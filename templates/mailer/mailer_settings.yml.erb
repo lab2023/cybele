@@ -1,8 +1,8 @@
 
 smtp:
   address: <%= ENV['SMTP_ADDRESS'] %>
-  port: 587
+  port: <%= ENV['SMTP_PORT'] %>
   enable_starttls_auto: true
   user_name: <%= ENV['SMTP_USER_NAME'] %>
   password: <%= ENV['SMTP_PASSWORD'] %>
-  authentication: 'plain'
+  authentication: <%= ENV['SMTP_AUTHENTICATION'] %>

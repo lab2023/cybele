@@ -16,17 +16,17 @@
         %li.nav-item
           = link_to destroy_user_session_path, class: 'nav-link', method: :delete do
             %i.fas.fa-sign-out-alt
-            = t('navbar.sign_out')
+            = t('view.navbar.sign_out')
         %li.nav-item
           = link_to user_profile_path(current_user), class: 'nav-link' do
             %i.fas.fa-user
-            = t('navbar.profile')
+            = t('view.navbar.profile')
       - else
         %li.nav-item
           = link_to new_user_session_path, class: 'nav-link' do
             %i.fas.fa-sign-in-alt{"aria-hidden" => "true"}
-            = t('navbar.signin')
+            = t('view.navbar.signin')
         %li.nav-item
           = link_to new_user_registration_path, class: 'nav-link' do
             %i.fas.fa-user-plus{"aria-hidden" => "true"}
-            = t('navbar.signup')
+            = t('view.navbar.signup')

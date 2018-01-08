@@ -2,6 +2,11 @@ tr:
   mailer:
     salut: 'Merhaba %{user};'
     hello: 'Merhaba;'
+    all_rights_reserved: "Tüm Hakları Saklıdır"
+    web_address: Web adresi
+    email_address: E-posta
+    phone: Telefon
+    sent_at: Gönderim zamanı
     devise:
       confirmation_instruction:
         desc1: E-posta adresinizi aşağıdaki link ile doğrulayabilirsiniz

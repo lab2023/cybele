@@ -5,7 +5,7 @@ class Hq::PasswordsController < Devise::PasswordsController
 
   private
 
-  def after_resetting_password_path_for
+  def after_resetting_password_path_for(_resource)
     hq_root_path
   end
 end

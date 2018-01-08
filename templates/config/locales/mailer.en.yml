@@ -1,7 +1,12 @@
 en:
   mailer:
-    salut: 'Hello %{email},'
+    salut: 'Hello %{user},'
     hello: 'Welcome,'
+    all_rights_reserved: "All Rights Reserved"
+    web_address: Web address
+    email_address: Email
+    phone: Phone
+    sent_at: Sent time
     devise:
       confirmation_instruction:
         desc1: "You can confirm your account email through the link below:"

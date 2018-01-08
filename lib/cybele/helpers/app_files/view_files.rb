@@ -14,15 +14,7 @@ module Cybele
             'app_files/app/views/welcome' => 'app/views/welcome',
             'app_files/public' => 'public'
           )
-          template_files = %w[
-            app/views/welcome/index.html.haml.erb
-            app/views/layouts/mailer.html.haml.erb
-            app/views/layouts/application.html.haml.erb
-            app/views/layouts/partials/_navbar.html.haml.erb
-            app/views/layouts/hq/application.html.haml.erb
-            app/views/layouts/hq/login.html.haml.erb
-          ]
-          replace_erb_with_haml(template_files)
+          replace_erb_with_haml
         end
 
         def customize_default_view_files
@@ -41,7 +33,17 @@ module Cybele
           remove_files(template_files)
         end
 
-        def replace_erb_with_haml(template_files)
+        # rubocop:disable Metrics/MethodLength
+        # rubocop:disable Metrics/LineLength
+        def replace_erb_with_haml
+          template_files = %w[
+            app/views/welcome/index.html.haml.erb
+            app/views/layouts/mailer.html.haml.erb
+            app/views/layouts/application.html.haml.erb
+            app/views/layouts/partials/_navbar.html.haml.erb
+            app/views/layouts/hq/application.html.haml.erb
+            app/views/layouts/hq/login.html.haml.erb
+          ]
           remove_erb_files(template_files)
           files_to_template(
             'app_files/app/views/welcome/index.html.haml.erb' => 'app/views/welcome/index.html.haml',
@@ -52,6 +54,8 @@ module Cybele
             'app_files/app/views/layouts/hq/login.html.haml.erb' => 'app/views/layouts/hq/login.html.haml'
           )
         end
+        # rubocop:enable Metrics/MethodLength
+        # rubocop:enable Metrics/LineLength
       end
     end
   end

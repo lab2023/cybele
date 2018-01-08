@@ -14,6 +14,9 @@ module Cybele
           'config/locales/models.en.yml' => 'config/locales/models.en.yml',
           'config/locales/view.en.yml' => 'config/locales/view.en.yml'
         )
+        inject_into_file 'config/application.rb',
+                         template_content('config/config_application.rb.erb'),
+                         after: 'class Application < Rails::Application'
       end
     end
   end

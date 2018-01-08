@@ -55,6 +55,7 @@ tr:
         name: İsim
         surname: Soyisim
         is_active: Aktif mi?
+        time_zone: Zaman bölgesi
         <<: *timestamp
       audits:
         id: ID

@@ -31,14 +31,14 @@
         %td= audit.id
         %td
           - if audit.try(:user_type).present?
-            = t(`activerecord.models.#{audit.try(:user_type).try(:downcase)}`)
-        %td= `#{audit.try(:user).try(:full_name)} - #{audit.try(:user).try(:email)}`
+            = t("activerecord.models.#{audit.try(:user_type).try(:downcase)}")
+        %td= "#{audit.try(:user).try(:full_name)} - #{audit.try(:user).try(:email)}"
         %td
           - if audit.try(:auditable_type).present?
-            = t(`activerecord.models.#{audit.try(:auditable_type).try(:underscore)}`)
+            = t("activerecord.models.#{audit.try(:auditable_type).try(:underscore)}")
         %td= audit.auditable_id
         %td= l audit.created_at
-        %td= t(`actions.#{audit.action}`)
+        %td= t("actions.#{audit.action}")
         %td.actions
           = link_to(hq_audit_path(id: audit),
             class: 'btn btn-success btn-sm',

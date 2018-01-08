@@ -5,3 +5,4 @@
       username == 'sidekiq' && password == 'sidekiq'
     end
   end
+  mount Sidekiq::Web, at: '/sidekiq'

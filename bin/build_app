@@ -4,15 +4,15 @@
 echo "Build cybele gem"
 ./bin/build_gem
 
-# Remove dummy_app_2
-echo "Remove dummy_app_2"
-rm -rf tmp/dummy_app_2
+# Remove dummy_app_3
+echo "Remove dummy_app_3"
+rm -rf tmp/dummy_app_3
 
 # Disable spring
 export DISABLE_SPRING=1
 # or you can run this command
-# ps ax | grep spring | grep dummy_app_2 | cut -f1 -d' ' | xargs kill
+# ps ax | grep spring | grep dummy_app_3 | cut -f1 -d' ' | xargs kill
 
-# Create dummy_app_2
-echo "Create dummy_app_2"
-cybele tmp/dummy_app_2 --skip-create-database
+# Create dummy_app_3
+echo "Create dummy_app_3"
+cybele tmp/dummy_app_3 --skip-create-database

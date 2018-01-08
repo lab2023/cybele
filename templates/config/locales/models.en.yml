@@ -47,6 +47,7 @@ en:
         surname: Last name
         is_active: Active?
         is_blocked: Blocked?
+        time_zone: Time zone
         <<: *timestamp
       user:
         id: ID
