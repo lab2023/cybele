@@ -1,7 +1,7 @@
 
 
   def configure_devise_permitted_parameters
-    sign_up_attributes = %i[email password password_confirmation name surname]
+    sign_up_attributes = %i[email password password_confirmation name surname time_zone]
     sign_in_attributes = %i[email password password_confirmation current_password]
     if resource_class == User
       devise_parameter_sanitizer.permit(:sign_up, keys: sign_up_attributes)
