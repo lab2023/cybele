@@ -25,7 +25,8 @@ module Cybele
           'pronto/example.pronto.yml.erb' => 'example.pronto.yml',
           'pronto/.haml-lint.yml.erb' => '.haml-lint.yml',
           'pronto/config.reek.erb' => 'config.reek',
-          'pronto/.rubocop.yml.erb' => '.rubocop.yml'
+          'pronto/.rubocop.yml.erb' => '.rubocop.yml',
+          'pronto/.flayignore.erb' => '.flayignore'
         )
       end
     end

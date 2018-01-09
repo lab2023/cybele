@@ -11,7 +11,7 @@
                       url: hq_audits_path) do |f|
       .form-group
         %label
-          = "#{ t('activerecord.attributes.audits.user_type') }: "
+          = "#{t('activerecord.attributes.audits.user_type')}: "
         = f.input_field :user_type_eq, label: false, class: 'form-control chosen-select',
                         placeholder: t('activerecord.attributes.audits.user'),
                         collection: audit_users, include_blank: t('view.select')
@@ -20,13 +20,13 @@
           - type = params[:q][:user_type_eq]
           - if type == 'Admin'
             %label
-              = "#{ t('activerecord.attributes.audits.user') }: "
+              = "#{t('activerecord.attributes.audits.user')}: "
             = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select',
                             placeholder: t('activerecord.attributes.audits.user'),
                             collection: admins, include_blank: t('view.select')
       .form-group
         %label
-          = "#{ t('activerecord.attributes.audits.action') }: "
+          = "#{t('activerecord.attributes.audits.action')}: "
         = f.input_field :action_eq, label: false, class: 'form-control chosen-select',
                         placeholder: t('activerecord.attributes.audits.action'),
                         collection: actions_collection,
@@ -34,7 +34,7 @@
       .form-group
         .input-group
           %label
-            = "#{ t('activerecord.attributes.audits.auditable_type') }: "
+            = "#{t('activerecord.attributes.audits.auditable_type')}: "
           = f.input_field :auditable_type_eq, label: false, class: 'form-control chosen-select',
                           placeholder: t('activerecord.attributes.audits.auditable_type'),
                           collection: auditable_types_collection(auditable_types),

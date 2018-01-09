@@ -78,21 +78,11 @@ module Cybele
       # Set options
       @options = options.dup
 
-      return dependency_control(@options) if @options[:skip_ask]
-
-      say 'Ask cybele options', :green
-      option_with_ask_limited(:database, DATABASES)
-      option_with_ask_yes(:skip_create_database)
-      option_with_ask_yes(:skip_sidekiq)
-      option_with_ask_yes(:skip_simple_form)
-      option_with_ask_yes(:skip_show_for)
-      option_with_ask_yes(:skip_haml)
-      option_with_ask_yes(:skip_view_files)
-      option_with_ask_yes(:skip_docker)
-      @options.freeze
-      dependency_control(@options)
+      dependency_control(@options) if @options[:skip_ask]
+      ask_questions(@options) unless @options[:skip_ask]
     end
 
+    # :reek:TooManyStatements
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
@@ -302,6 +292,21 @@ module Cybele
 
     private
 
+    # :reek:TooManyStatements
+    def ask_questions(options)
+      say 'Ask cybele options', :green
+      option_with_ask_limited(:database, DATABASES)
+      option_with_ask_yes(:skip_create_database)
+      option_with_ask_yes(:skip_sidekiq)
+      option_with_ask_yes(:skip_simple_form)
+      option_with_ask_yes(:skip_show_for)
+      option_with_ask_yes(:skip_haml)
+      option_with_ask_yes(:skip_view_files)
+      option_with_ask_yes(:skip_docker)
+      options.freeze
+      dependency_control(options)
+    end
+
     def option_with_ask_yes(key)
       say "==> #{key.to_s.humanize}", :green
       say 'Type for answer yes: y|yes', :green
@@ -318,6 +323,7 @@ module Cybele
       arg_checker(selected_options, :skip_view_files, %i[skip_haml skip_show_for skip_simple_form])
     end
 
+    # :reek:TooManyStatements
     def arg_checker(selected_options, option, option_array)
       return if selected_options[option]
       puts "#{option} dependency error!"
@@ -328,11 +334,10 @@ module Cybele
           failed = true
         end
       end
-      if failed
-        puts
-        puts 'See --help for more info'
-        exit 0
-      end
+      return unless failed
+      puts
+      puts 'See --help for more info'
+      exit 0
     end
   end
 end

@@ -2,22 +2,24 @@
   .list-group.border-0.card.text-center.text-md-left
     %a.list-group-item.d-inline-block{ 'data-parent' => '#sidebar',
                                        href: hq_dashboard_index_path,
-                                       class: css_class(hq_dashboard_index_path, not_exist: 'collapsed')  }
+                                       class: css_class(hq_dashboard_index_path,
+                                                        not_exist: 'collapsed') }
       %i.fas.fa-home
       %span.d-none.d-md-inline= t('view.dock.dashboard')
     %a.list-group-item.d-inline-block{ 'aria-expanded' => 'false',
                                        'data-parent' => '#sidebar',
                                        'data-toggle' => 'collapse',
-                                       href: '#menu_users',
-                                       class: css_class([hq_admins_path, hq_users_path], not_exist: 'collapsed') }
+                                       href: '#menu-users',
+                                       class: css_class([hq_admins_path, hq_users_path],
+                                                        not_exist: 'collapsed') }
       %i.fas.fa-list
       %span.d-none.d-md-inline
         = t('view.dock.system_users')
-    .collapse#menu_users{ class: css_class([hq_admins_path, hq_users_path], exist: 'show') }
-      %a.list-group-item{ 'data-parent' => '#menu_users', href: hq_admins_path }
+    .collapse#menu-users{ class: css_class([hq_admins_path, hq_users_path], exist: 'show') }
+      %a.list-group-item{ 'data-parent' => '#menu-users', href: hq_admins_path }
         %i.fas.fa-users
         = t('activerecord.models.admins')
-      %a.list-group-item{ 'data-parent' => '#menu_users', href: hq_users_path }
+      %a.list-group-item{ 'data-parent' => '#menu-users', href: hq_users_path }
         %i.fas.fa-users
         = t('activerecord.models.users')
 

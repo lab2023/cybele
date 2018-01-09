@@ -23,3 +23,7 @@ FeatureEnvy:
 
 UtilityFunction:
   public_methods_only: true
+
+TooManyStatements:
+  enabled: true
+  max_statements: 6

@@ -25,20 +25,27 @@ module Cybele
       private
 
       def docker_dotenv_files
-        unless @options[:skip_sidekiq]
-          %w[.env.local env.sample].each do |env|
-            append_file(env, template_content('docker/docker_env_local_sample_sidekiq.erb'))
-          end
-          %w[staging production].each do |env|
-            append_file(".env.#{env}", template_content('docker/docker_env_staging_production_sidekiq.erb'))
-          end
+        docker_dotenv_sidekiq
+        %w[.env.local env.sample].each do |env|
+          append_template_to_file(env, 'docker/docker_env_local_sample.erb')
         end
-        append_file('env.sample', template_content('docker/docker_env_local_sample.erb'))
-        append_file('.env.local', template_content('docker/docker_env_local_sample.erb'))
-        unless @options[:skip_sidekiq]
-          %w[.env.local env.sample].each do |env|
-            append_file(env, template_content('docker/docker_env_local_sample_host.erb'))
-          end
+        docker_dotenv_sidekiq_local
+      end
+
+      def docker_dotenv_sidekiq_local
+        return if @options[:skip_sidekiq]
+        %w[.env.local env.sample].each do |env|
+          append_template_to_file(env, 'docker/docker_env_local_sample_host.erb')
+        end
+      end
+
+      def docker_dotenv_sidekiq
+        return if @options[:skip_sidekiq]
+        %w[.env.local env.sample].each do |env|
+          append_template_to_file(env, 'docker/docker_env_local_sample_sidekiq.erb')
+        end
+        %w[staging production].each do |env|
+          append_template_to_file(".env.#{env}", 'docker/docker_env_staging_production_sidekiq.erb')
         end
       end
     end
