@@ -312,11 +312,11 @@ module Cybele
       say 'Type for answer yes: y|yes', :green
       say 'Type for answer no: n|no|any character', :yellow
 
-      options.merge!(key => yes?('Ans :', :green))
+      options[key] = yes?('Ans :', :green)
     end
 
     def option_with_ask_limited(options, key, limits)
-      options.merge!(key => ask("#{key.to_s.humanize} :", limited_to: limits))
+      options[key] = ask("#{key.to_s.humanize} :", limited_to: limits)
     end
 
     def dependency_control(selected_options)
