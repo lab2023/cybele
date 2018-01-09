@@ -1,26 +1,24 @@
 # frozen_string_literal: true
 
 module ForceSSLTestHelper
-  def force_ssl
-    ssl_test
-    environment_test
+  def force_ssl_test
+    %w[staging production].each do |env|
+      expect(content("config/environments/#{env}.rb")).to match('config.force_ssl')
+    end
+    force_ssl_environment_test
   end
 
   private
 
-  def ssl_test
-    config_staging_file = content('config/environments/staging.rb')
-    expect(config_staging_file).to match('config.force_ssl')
-
-    config_production_file = content('config/environments/staging.rb')
-    expect(config_production_file).to match('config.force_ssl')
-  end
-
-  def environment_test
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).to match('RAILS_FORCE_SSL=')
-
-    env_production_file = content('.env.production')
-    expect(env_production_file).to match('RAILS_FORCE_SSL=')
+  def force_ssl_environment_test
+    %w[
+      .env.sample
+      .environments/.env.local
+      .environments/.env.staging
+      .environments/.env.production
+    ].each do |env|
+      expect(File).to exist(file_project_path(env))
+      expect(content(env)).to match('RAILS_FORCE_SSL=')
+    end
   end
 end

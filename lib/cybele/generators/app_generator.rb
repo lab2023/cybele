@@ -120,7 +120,7 @@ module Cybele
     end
 
     def setup_dotenv
-      say 'Generate env.sample and .env files', :green
+      say 'Generate .env.* files', :green
       build :configure_dotenv
     end
 

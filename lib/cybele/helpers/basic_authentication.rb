@@ -28,7 +28,7 @@ module Cybele
 
       def add_to_dotenv_files
         # Add basic authentication env to the all env files
-        append_template_to_file('env.sample', 'basic_authentication/no_basic_authentication.erb')
+        append_template_to_file('.env.sample', 'basic_authentication/no_basic_authentication.erb')
         append_template_to_file('.env.local', 'basic_authentication/no_basic_authentication.erb')
         append_template_to_file('.env.staging', 'basic_authentication/yes_basic_authentication.erb')
         append_template_to_file('.env.production', 'basic_authentication/no_basic_authentication.erb')

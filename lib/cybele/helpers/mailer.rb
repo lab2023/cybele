@@ -16,7 +16,7 @@ module Cybele
           configure_environment env, template_content('mailer/smtp.rb.erb')
         end
         append_template_to_file 'config/settings.yml', 'mailer/mailer_settings.yml.erb'
-        %w[.env.local .env.production .env.staging env.sample].each do |env|
+        %w[.env.local .env.production .env.staging .env.sample].each do |env|
           append_template_to_file(env, 'mailer/.env.local.erb')
         end
       end

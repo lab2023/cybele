@@ -27,12 +27,14 @@ RSpec.describe 'Create new project without default configuration' do
     expect(gemfile_file).not_to match(/^gem 'sidekiq-cron'/)
     expect(gemfile_file).not_to match(/^gem 'cocaine'/)
     expect(gemfile_file).not_to match(/^gem 'devise-async'/)
-
-    expect(File).not_to exist(file_project_path('config/sidekiq.yml'))
-
-    expect(File).not_to exist(file_project_path('config/sidekiq_schedule.yml'))
-    expect(File).not_to exist(file_project_path('config/initializers/sidekiq.rb'))
-    expect(File).not_to exist(file_project_path('lib/tasks/sidekiq.rake'))
+    file_not_exist_test(
+      %w[
+        config/sidekiq.yml
+        config/sidekiq_schedule.yml
+        config/initializers/sidekiq.rb
+        lib/tasks/sidekiq.rake
+      ]
+    )
 
     routes_file = content('config/routes.rb')
     expect(routes_file).not_to match("^require 'sidekiq/web'")
@@ -100,10 +102,13 @@ RSpec.describe 'Create new project without default configuration' do
   it 'do not use show_for' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'show_for'/)
-
-    expect(File).not_to exist(file_project_path('config/initializers/show_for.rb'))
-    expect(File).not_to exist(file_project_path('config/locales/show_for.en.yml'))
-    expect(File).not_to exist(file_project_path('config/locales/show_for.tr.yml'))
+    file_not_exist_test(
+      %w[
+        config/initializers/show_for.rb
+        config/locales/show_for.en.yml
+        config/locales/show_for.tr.yml
+      ]
+    )
   end
 
   it 'uses config and staging file' do
@@ -139,10 +144,14 @@ RSpec.describe 'Create new project without default configuration' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'simple_form'/)
 
-    expect(File).not_to exist(file_project_path('config/initializers/simple_form.rb'))
-    expect(File).not_to exist(file_project_path('config/initializers/simple_form_bootstrap.rb'))
-    expect(File).not_to exist(file_project_path('config/locales/simple_form.en.yml'))
-    expect(File).not_to exist(file_project_path('config/locales/simple_form.tr.yml'))
+    file_not_exist_test(
+      %w[
+        config/initializers/simple_form.rb
+        config/initializers/simple_form_bootstrap.rb
+        config/locales/simple_form.en.yml
+        config/locales/simple_form.tr.yml
+      ]
+    )
   end
 
   it 'make control secret_key_base for staging' do
@@ -154,7 +163,7 @@ RSpec.describe 'Create new project without default configuration' do
     paperclip_test
   end
 
-  it 'control env.sample and .env files' do
+  it 'control .env files' do
     dotenv_test
   end
 
@@ -162,8 +171,12 @@ RSpec.describe 'Create new project without default configuration' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).to match("gem 'mailtrap'")
 
-    expect(File).to exist(file_project_path('config/settings/production.yml'))
-    expect(File).to exist(file_project_path('config/settings/staging.yml'))
+    file_exist_test(
+      %w[
+        config/settings/production.yml
+        config/settings/staging.yml
+      ]
+    )
 
     mail_test_helper('config/settings.yml')
     mail_test_helper('config/environments/production.rb')
@@ -196,77 +209,107 @@ RSpec.describe 'Create new project without default configuration' do
     gemfile_file = content('Gemfile')
     expect(gemfile_file).not_to match(/^gem 'bootstrap'/)
 
-    expect(File).to exist(file_project_path('app/assets/stylesheets/application.css'))
-    expect(File).not_to exist(file_project_path('app/assets/stylesheets/application.css.sass'))
-    expect(File).not_to exist(file_project_path('app/assets/stylesheets/hq/application.css.sass'))
-
-    expect(File).to exist(file_project_path('app/assets/javascripts/application.js'))
-    expect(File).not_to exist(file_project_path('app/assets/javascripts/hq/application.js'))
+    file_exist_test(
+      %w[
+        app/assets/stylesheets/application.css
+        app/assets/javascripts/application.js
+      ]
+    )
+    file_not_exist_test(
+      %w[
+        app/assets/stylesheets/application.css.sass
+        app/assets/stylesheets/hq/application.css.sass
+        app/assets/javascripts/hq/application.js
+      ]
+    )
   end
 
   it 'do not use controller files' do
     expect(File).to exist(file_project_path('app/controllers/application_controller.rb'))
 
     # Hq files
-    expect(File).not_to exist(file_project_path('app/controllers/hq/admins_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/application_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/audits_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/dashboard_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/passwords_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/registrations_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/sessions_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/hq/users_controller.rb'))
-
+    file_not_exist_test(
+      %w[
+        app/controllers/hq/admins_controller.rb
+        app/controllers/hq/application_controller.rb
+        app/controllers/hq/audits_controller.rb
+        app/controllers/hq/dashboard_controller.rb
+        app/controllers/hq/passwords_controller.rb
+        app/controllers/hq/registrations_controller.rb
+        app/controllers/hq/sessions_controller.rb
+        app/controllers/hq/users_controller.rb
+      ]
+    )
     # User files
-    expect(File).not_to exist(file_project_path('app/controllers/user/application_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/user/dashboard_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/user/passwords_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/user/registrations_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/user/sessions_controller.rb'))
-    expect(File).not_to exist(file_project_path('app/controllers/user/profile_controller.rb'))
+    file_not_exist_test(
+      %w[
+        app/controllers/user/application_controller.rb
+        app/controllers/user/dashboard_controller.rb
+        app/controllers/user/passwords_controller.rb
+        app/controllers/user/registrations_controller.rb
+        app/controllers/user/sessions_controller.rb
+        app/controllers/user/profile_controller.rb
+      ]
+    )
   end
 
   it 'do not use view files with option' do
     # Hq files
-    expect(File).not_to exist(file_project_path('app/views/hq/admins/index.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/hq/audits/index.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/hq/dashboard/index.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/hq/passwords/new.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/hq/registrations/edit.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/hq/sessions/new.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/hq/users/index.html.haml'))
-
+    file_not_exist_test(
+      %w[
+        app/views/hq/admins/index.html.haml
+        app/views/hq/audits/index.html.haml
+        app/views/hq/dashboard/index.html.haml
+        app/views/hq/passwords/new.html.haml
+        app/views/hq/registrations/edit.html.haml
+        app/views/hq/sessions/new.html.haml
+        app/views/hq/users/index.html.haml
+      ]
+    )
     # User files
-    expect(File).not_to exist(file_project_path('app/views/user/dashboard/index.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/user/passwords/new.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/user/registrations/edit.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/user/sessions/new.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/user/profile/show.html.haml'))
-
+    file_not_exist_test(
+      %w[
+        app/views/user/dashboard/index.html.haml
+        app/views/user/passwords/new.html.haml
+        app/views/user/registrations/edit.html.haml
+        app/views/user/sessions/new.html.haml
+        app/views/user/profile/show.html.haml
+      ]
+    )
     # Layouts
-    expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_breadcrumb.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_dock.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_footer.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_navbar.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_toolbar.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/layouts/hq/partials/_trackers.html.haml'))
-
-    expect(File).not_to exist(file_project_path('app/views/layouts/partials/_messages.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/layouts/partials/_warnings.html.haml'))
-
+    file_not_exist_test(
+      %w[
+        app/views/layouts/hq/partials/_dock.html.haml
+        app/views/layouts/hq/partials/_breadcrumb.html.haml
+        app/views/layouts/hq/partials/_footer.html.haml
+        app/views/layouts/hq/partials/_navbar.html.haml
+        app/views/layouts/hq/partials/_toolbar.html.haml
+        app/views/layouts/hq/partials/_trackers.html.haml
+        app/views/layouts/partials/_messages.html.haml
+        app/views/layouts/partials/_warnings.html.haml
+      ]
+    )
     # Devise view files
-    expect(File).not_to exist(file_project_path('app/views/devise/confirmations'))
-    expect(File).not_to exist(file_project_path('app/views/devise/mailer'))
-    expect(File).not_to exist(file_project_path('app/views/devise/passwords'))
-    expect(File).not_to exist(file_project_path('app/views/devise/registrations'))
-    expect(File).not_to exist(file_project_path('app/views/devise/sessions'))
-    expect(File).not_to exist(file_project_path('app/views/devise/shared'))
-    expect(File).not_to exist(file_project_path('app/views/devise/unlocks'))
+    file_not_exist_test(
+      %w[
+        app/views/devise/confirmations
+        app/views/devise/mailer
+        app/views/devise/passwords
+        app/views/devise/registrations
+        app/views/devise/sessions
+        app/views/devise/shared
+        app/views/devise/unlocks
+      ]
+    )
 
     # Welcome view files
-    expect(File).not_to exist(file_project_path('app/views/welcome/about.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/devise/contact.html.haml'))
-    expect(File).not_to exist(file_project_path('app/views/devise/index.html.haml'))
+    file_not_exist_test(
+      %w[
+        app/views/welcome/about.html.haml
+        app/views/welcome/contact.html.haml
+        app/views/welcome/index.html.haml
+      ]
+    )
 
     # Public files
     expect(File).not_to exist(file_project_path('public/images/favicon.png'))
@@ -277,17 +320,18 @@ RSpec.describe 'Create new project without default configuration' do
     application_controller = content('app/controllers/application_controller.rb')
     expect(application_controller).not_to match('include BasicAuthentication')
 
-    env_sample_file = content('env.sample')
-    expect(env_sample_file).not_to match('BASIC_AUTH_IS_ACTIVE=no')
+    %w[
+      .env.sample
+      .env.local
+      .environments/.env.local
+      .environments/.env.production
+    ].each do |env|
+      expect(content(env)).not_to match('BASIC_AUTH_IS_ACTIVE=no')
+    end
 
-    env_local_file = content('.env.local')
-    expect(env_local_file).not_to match('BASIC_AUTH_IS_ACTIVE=no')
-
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).not_to match('BASIC_AUTH_IS_ACTIVE=yes')
-
-    env_production_file = content('.env.production')
-    expect(env_production_file).not_to match('BASIC_AUTH_IS_ACTIVE=no')
+    %w[.environments/.env.staging].each do |env|
+      expect(content(env)).not_to match('BASIC_AUTH_IS_ACTIVE=yes')
+    end
   end
 
   it 'uses default view files' do
@@ -318,26 +362,37 @@ RSpec.describe 'Create new project without default configuration' do
   end
 
   it 'uses ssl_setting' do
-    force_ssl
+    force_ssl_test
   end
 
   it "don't use docker development environment" do
-    expect(File).not_to exist(file_project_path('docker-compose.yml'))
-    expect(File).not_to exist(file_project_path('Dockerfile'))
-    expect(File).not_to exist(file_project_path('bin/start-app.sh'))
-    expect(File).not_to exist(file_project_path('bin/start-sidekiq.sh'))
+    file_not_exist_test(
+      %w[
+        docker-compose.yml
+        Dockerfile
+        bin/start-app.sh
+        bin/start-sidekiq.sh
+      ]
+    )
 
-    env_sample_file = content('env.sample')
-    expect(env_sample_file).not_to match('REDISTOGO_URL=redis://redis:6379/0')
+    file_exist_test(
+      %w[
+        .env.sample
+        .env.local
+        .environments/.env.local
+      ]
+    ) do |env|
+      expect(content(env)).not_to match('REDISTOGO_URL=redis://redis:6379/0')
+    end
 
-    env_local_file = content('.env.local')
-    expect(env_local_file).not_to match('REDISTOGO_URL=redis://redis:6379/0')
-
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).not_to match('REDISTOGO_URL=')
-
-    env_production_file = content('.env.production')
-    expect(env_production_file).not_to match('REDISTOGO_URL=')
+    file_exist_test(
+      %w[
+        .environments/.env.staging
+        .environments/.env.production
+      ]
+    ) do |env|
+      expect(content(env)).not_to match('REDISTOGO_URL=')
+    end
   end
 
   it 'uses pronto' do

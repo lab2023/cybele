@@ -52,6 +52,12 @@ module Cybele
     end
 
     def git_and_git_flow_commands
+      run 'mkdir .environments'
+      run 'mv .env.local .environments/'
+      run 'mv .env.production .environments/'
+      run 'mv .env.staging .environments/'
+      run 'ln -s .environments/.env.local .env.local'
+      run 'cd .environments && git init && git add . && git commit -m "Env initialized" && cd ..'
       git :init
       git flow: 'init -d -f'
       git add: '.'

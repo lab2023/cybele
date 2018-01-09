@@ -9,7 +9,7 @@ module Cybele
         run_bundle
 
         create_paperclip_files
-        configure_app_name(%w[env.sample .env.local .env.staging .env.production])
+        configure_app_name(%w[.env.sample .env.local .env.staging .env.production])
       end
 
       private
@@ -22,7 +22,7 @@ module Cybele
         # Add paperclip settings to the config/settings.yml file
         append_template_to_files(
           'config/settings.yml' => 'paperclip/paperclip_settings.yml.erb',
-          'env.sample' => 'paperclip/paperclip_env_sample.erb',
+          '.env.sample' => 'paperclip/paperclip_env_sample.erb',
           '.env.local' => 'paperclip/paperclip_env_local.erb',
           '.env.staging' => 'paperclip/paperclip_env_staging.erb',
           '.env.production' => 'paperclip/paperclip_env_production.erb'

@@ -163,7 +163,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(secret_file).to match('staging')
   end
 
-  it 'control env.sample and .env files' do
+  it 'control .env files' do
     dotenv_test
   end
 
@@ -324,29 +324,40 @@ RSpec.describe 'Create new project with default configuration' do
     expect(user_profile_view).to match('@profile')
 
     # Layouts
-    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_dock.html.haml'))
-    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_breadcrumb.html.haml'))
-    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_footer.html.haml'))
-    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_navbar.html.haml'))
-    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_toolbar.html.haml'))
-    expect(File).to exist(file_project_path('app/views/layouts/hq/partials/_trackers.html.haml'))
-
-    expect(File).to exist(file_project_path('app/views/layouts/partials/_messages.html.haml'))
-    expect(File).to exist(file_project_path('app/views/layouts/partials/_warnings.html.haml'))
+    file_exist_test(
+      %w[
+        app/views/layouts/hq/partials/_dock.html.haml
+        app/views/layouts/hq/partials/_breadcrumb.html.haml
+        app/views/layouts/hq/partials/_footer.html.haml
+        app/views/layouts/hq/partials/_navbar.html.haml
+        app/views/layouts/hq/partials/_toolbar.html.haml
+        app/views/layouts/hq/partials/_trackers.html.haml
+        app/views/layouts/partials/_messages.html.haml
+        app/views/layouts/partials/_warnings.html.haml
+      ]
+    )
 
     # Devise view files
-    expect(File).to exist(file_project_path('app/views/devise/confirmations'))
-    expect(File).to exist(file_project_path('app/views/devise/mailer'))
-    expect(File).to exist(file_project_path('app/views/devise/passwords'))
-    expect(File).to exist(file_project_path('app/views/devise/registrations'))
-    expect(File).to exist(file_project_path('app/views/devise/sessions'))
-    expect(File).to exist(file_project_path('app/views/devise/shared'))
-    expect(File).to exist(file_project_path('app/views/devise/unlocks'))
+    file_exist_test(
+      %w[
+        app/views/devise/confirmations
+        app/views/devise/mailer
+        app/views/devise/passwords
+        app/views/devise/registrations
+        app/views/devise/sessions
+        app/views/devise/shared
+        app/views/devise/unlocks
+      ]
+    )
 
     # Welcome view files
-    expect(File).to exist(file_project_path('app/views/welcome/about.html.haml'))
-    expect(File).to exist(file_project_path('app/views/welcome/contact.html.haml'))
-    expect(File).to exist(file_project_path('app/views/welcome/index.html.haml'))
+    file_exist_test(
+      %w[
+        app/views/welcome/about.html.haml
+        app/views/welcome/contact.html.haml
+        app/views/welcome/index.html.haml
+      ]
+    )
 
     # Public files
     expect(File).to exist(file_project_path('public/images/favicon.png'))
@@ -357,17 +368,20 @@ RSpec.describe 'Create new project with default configuration' do
     application_controller = content('app/controllers/application_controller.rb')
     expect(application_controller).to match('include BasicAuthentication')
 
-    env_sample_file = content('env.sample')
-    expect(env_sample_file).to match('BASIC_AUTH_IS_ACTIVE=no')
+    file_exist_test(
+      %w[
+        .env.sample
+        .env.local
+        .environments/.env.local
+        .environments/.env.production
+      ]
+    ) do |env|
+      expect(content(env)).to match('BASIC_AUTH_IS_ACTIVE=no')
+    end
 
-    env_local_file = content('.env.local')
-    expect(env_local_file).to match('BASIC_AUTH_IS_ACTIVE=no')
-
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).to match('BASIC_AUTH_IS_ACTIVE=yes')
-
-    env_production_file = content('.env.production')
-    expect(env_production_file).to match('BASIC_AUTH_IS_ACTIVE=no')
+    file_exist_test(%w[.environments/.env.staging]) do |env|
+      expect(content(env)).to match('BASIC_AUTH_IS_ACTIVE=yes')
+    end
   end
 
   it 'uses default view files' do
@@ -398,32 +412,42 @@ RSpec.describe 'Create new project with default configuration' do
   end
 
   it 'uses ssl_setting' do
-    force_ssl
+    force_ssl_test
   end
 
   it 'uses docker development environment' do
-    expect(File).to exist(file_project_path('docker-compose.yml'))
-    expect(File).to exist(file_project_path('Dockerfile'))
-    expect(File).to exist(file_project_path('bin/start-app.sh'))
-    expect(File).to exist(file_project_path('bin/start-sidekiq.sh'))
 
-    env_sample_file = content('env.sample')
-    expect(env_sample_file).to match('REDISTOGO_URL=redis://redis:6379/0')
-    expect(env_sample_file).to match('RACK_ENV=development')
-    expect(env_sample_file).to match('POSTGRESQL_HOST=postgres')
-    expect(env_sample_file).to match('REDIS_HOST=redis')
+    file_exist_test(
+      %w[
+        docker-compose.yml
+        Dockerfile
+        bin/start-app.sh
+        bin/start-sidekiq.sh
+      ]
+    )
 
-    env_local_file = content('.env.local')
-    expect(env_local_file).to match('REDISTOGO_URL=redis://redis:6379/0')
-    expect(env_local_file).to match('RACK_ENV=development')
-    expect(env_local_file).to match('POSTGRESQL_HOST=postgres')
-    expect(env_local_file).to match('REDIS_HOST=redis')
+    file_exist_test(
+      %w[
+        .env.sample
+        .env.local
+        .environments/.env.local
+      ]
+    ) do |env|
+      file = content(env)
+      expect(file).to match('REDISTOGO_URL=redis://redis:6379/0')
+      expect(file).to match('RACK_ENV=development')
+      expect(file).to match('POSTGRESQL_HOST=postgres')
+      expect(file).to match('REDIS_HOST=redis')
+    end
 
-    env_staging_file = content('.env.staging')
-    expect(env_staging_file).to match('REDISTOGO_URL=')
-
-    env_production_file = content('.env.production')
-    expect(env_production_file).to match('REDISTOGO_URL=')
+    file_exist_test(
+      %w[
+        .environments/.env.staging
+        .environments/.env.production
+      ]
+    ) do |env|
+      expect(content(env)).to match('REDISTOGO_URL=')
+    end
   end
 
   it 'uses pronto' do

@@ -2,19 +2,24 @@
 
 module ProntoTestHelpers
   def pronto_test
-    file_exist_test
-    file_content_test
-    gitignore_test
-  end
-
-  private
-
-  def file_exist_test
     gemfile_file = content('Gemfile')
     pronto_gems.each do |gem|
       expect(gemfile_file).to match(gem)
     end
+    file_exist_test(
+        %w[
+        example.pronto.yml
+        .pronto.yml
+        .haml-lint.yml
+        config.reek
+        .rubocop.yml
+        bin/rubo
+      ]
+    )
+    pronto_gitignore_test
   end
+
+  private
 
   def pronto_gems
     [
@@ -29,16 +34,7 @@ module ProntoTestHelpers
     ]
   end
 
-  def file_content_test # rubocop:disable Metrics/AbcSize
-    expect(File).to exist(file_project_path('example.pronto.yml'))
-    expect(File).to exist(file_project_path('.pronto.yml'))
-    expect(File).to exist(file_project_path('.haml-lint.yml'))
-    expect(File).to exist(file_project_path('config.reek'))
-    expect(File).to exist(file_project_path('.rubocop.yml'))
-    expect(File).to exist(file_project_path('bin/rubo'))
-  end
-
-  def gitignore_test
+  def pronto_gitignore_test
     gemfile_file = content('.gitignore')
     expect(gemfile_file).to match('.pronto.yml')
   end

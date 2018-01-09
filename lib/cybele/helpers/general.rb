@@ -24,7 +24,7 @@ module Cybele
                   /# config.force_ssl = true/, "config.force_ssl = ENV['RAILS_FORCE_SSL'].present?"
         gsub_file 'config/environments/staging.rb',
                   /# config.force_ssl = true/, "config.force_ssl = ENV['RAILS_FORCE_SSL'].present?"
-        %w[.env.local .env.production .env.staging env.sample].each do |env|
+        %w[.env.local .env.production .env.staging .env.sample].each do |env|
           append_file(env, template_content('ssl/ssl_env_all.erb'))
         end
       end

@@ -12,7 +12,7 @@ module Cybele
 
         # Create dotenv files
         files_to_template(
-          'dotenv/env.sample.erb' => 'env.sample',
+          'dotenv/.env.sample.erb' => '.env.sample',
           'dotenv/.env.local.erb' => '.env.local',
           'dotenv/.env.staging.erb' => '.env.staging',
           'dotenv/.env.production.erb' => '.env.production'

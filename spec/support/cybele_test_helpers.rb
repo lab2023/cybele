@@ -85,6 +85,20 @@ module CybeleTestHelpers
     @usage_path ||= File.join(root_path, 'USAGE')
   end
 
+  def file_exist_test(files)
+    files.each do |file|
+      expect(File).to exist(file_project_path(file))
+      yield file if block_given?
+    end
+  end
+
+  def file_not_exist_test(files)
+    files.each do |file|
+      expect(File).not_to exist(file_project_path(file))
+      yield file if block_given?
+    end
+  end
+
   private
 
   def tmp_path
