@@ -1,7 +1,8 @@
 .card
   .card-body
-    - @audit.audited_changes.keys.each do |key|
+    - @audit.audited_changes.each_key do |key|
       %p
         %strong
-          = t("activerecord.attributes.#{@audit.try(:auditable_type).try(:underscore)}.#{key}") if @audit.try(:auditable_type).present?
+          - if @audit.try(:auditable_type).present?
+            = t("activerecord.attributes.#{@audit.try(:auditable_type).try(:underscore)}.#{key}")
         = @audit.audited_changes[key]

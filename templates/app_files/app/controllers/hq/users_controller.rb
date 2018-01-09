@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Hq::UsersController < Hq::ApplicationController
+  include Activatable
+
   before_action :set_user, only: %i[show edit update destroy toggle_is_active]
   add_breadcrumb I18n.t('activerecord.models.users'), :hq_users_path
 
@@ -43,12 +45,7 @@ class Hq::UsersController < Hq::ApplicationController
   end
 
   def toggle_is_active
-    if @user.update(is_active: !@user.is_active)
-      flash[:info] = t("flash.actions.toggle_is_active.#{@user.is_active ? 'active' : 'passive'}",
-                       resource_name: User.model_name.human)
-    else
-      flash[:danger] = t('flash.messages.error_occurred')
-    end
+    activation_toggle(@user)
     respond_with(:hq, @user, location: request.referer)
   end
 

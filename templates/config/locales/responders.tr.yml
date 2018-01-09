@@ -1,4 +1,3 @@
----
 tr:
   flash:
     actions:
@@ -7,8 +6,10 @@ tr:
         active: '%{resource_name} başarıyla aktif edildi.'
       create:
         notice: '%{resource_name} başarı ile yaratıldı.'
+        alert: '%{resource_name} yaratılamadı.'
       update:
         notice: '%{resource_name} başarı ile güncellendi.'
+        alert: '%{resource_name} güncellenemedi.'
       destroy:
         notice: '%{resource_name} başarı ile silindi.'
         alert: '%{resource_name} silinemedi.'

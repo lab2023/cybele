@@ -1,5 +1,5 @@
 - if params[:q].present?
-  = render 'list'
+  = render 'list', contents: contents, search: search
 - else
   .alert.alert-warning
     %p

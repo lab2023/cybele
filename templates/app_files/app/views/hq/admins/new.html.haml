@@ -2,4 +2,4 @@
   = t('view.form.new_title', resource_name: Admin.model_name.human)
 .alert.alert-info
   = t('view.create_resource_mail_info', resource: Admin.model_name.human.downcase)
-= render 'form'
+= render 'form', admin: @admin

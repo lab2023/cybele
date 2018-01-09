@@ -1,0 +1,33 @@
+!!!
+%html{ lang: I18n.locale }
+  %head
+    %title
+      - if content_for?(:title)
+        = "#{yield(:title)} - <%= app_name.capitalize %>"
+      - else
+        = '<%= app_name.capitalize %>'
+    %meta{ 'http-equiv': 'content-type', content: 'text/html', charset: 'utf-8' }
+    %meta{ 'http-equiv': 'x-ua-compatible', content: 'ie=edge,chrome=1' }
+    %meta{ name: 'description', content: '<%= app_name.capitalize %>' }
+    %meta{ name: 'author', content: '<%= app_name.capitalize %>' }
+    %link{ rel: 'shortcut icon', href: '/images/favicon.png' }
+
+    = stylesheet_link_tag 'application',
+                          '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+                          media: 'all',
+                          'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application',
+                             'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+    = yield :head
+  %body
+    = render 'layouts/partials/warnings'
+    .container-narrow
+      .header
+        = render 'layouts/partials/navbar'
+      = render 'layouts/partials/messages'
+      = yield
+      .footer
+        %p
+          = t('view.welcome.footer', app_name: '<%= app_name.capitalize %>',
+                                     year: Time.zone.now.year).html_safe

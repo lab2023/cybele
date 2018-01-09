@@ -4,7 +4,6 @@ require 'spec_helper'
 
 RSpec.describe 'Create new project with default configuration' do
   before(:all) do
-    drop_dummy_database
     remove_project_directory
     run_cybele('--skip-create-database')
     setup_app_dependencies
@@ -220,10 +219,10 @@ RSpec.describe 'Create new project with default configuration' do
 
     expect(File).not_to exist(file_project_path('app/assets/stylesheets/application.css'))
 
-    application_stylesheets_file = content('app/assets/stylesheets/application.css.sass')
+    application_stylesheets_file = content('app/assets/stylesheets/application.sass')
     expect(application_stylesheets_file).to match('@import "bootstrap"')
 
-    hq_stylesheets_js_file = content('app/assets/stylesheets/hq/application.css.sass')
+    hq_stylesheets_js_file = content('app/assets/stylesheets/hq/application.sass')
     expect(hq_stylesheets_js_file).to match('@import "bootstrap"')
 
     application_js_file = content('app/assets/javascripts/application.js')
@@ -349,6 +348,9 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).to exist(file_project_path('app/views/welcome/contact.html.haml'))
     expect(File).to exist(file_project_path('app/views/welcome/index.html.haml'))
 
+    # Public files
+    expect(File).to exist(file_project_path('public/images/favicon.png'))
+
     # Basic authentication files
     expect(File).to exist(file_project_path('app/controllers/concerns/basic_authentication.rb'))
 
@@ -381,7 +383,7 @@ RSpec.describe 'Create new project with default configuration' do
 
   it 'uses model files' do
     admin_model = content('app/models/admin.rb')
-    expect(admin_model).to match('AdminMailer.login_info')
+    expect(admin_model).to match('login_info_mailer')
 
     audit_model = content('app/models/audit.rb')
     expect(audit_model).to match('class Audit')

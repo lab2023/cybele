@@ -4,13 +4,17 @@
       = t('devise.registration.new.title', model: resource.class.model_name.human)
     - if devise_mapping.omniauthable?
       - resource_class.omniauth_providers.each do |provider|
-        = link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-lg btn-primary btn-block' do
-          %i.fa.fa-facebook
+        = link_to omniauth_authorize_path(resource_name, provider),
+                  class: 'btn btn-lg btn-primary btn-block' do
+          %i.fas.fa-facebook
           = t('devise.shared.links.signup_with', name: provider.to_s.titleize)
       %h3.text-center
         = t('view.or')
   .card-body
-    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f|
+    = simple_form_for resource,
+                      as: resource_name,
+                      url: registration_path(resource_name),
+                      validate: true do |f|
       = f.error_notification
       .form-inputs
         = f.input :email
@@ -18,8 +22,12 @@
         = f.input :password_confirmation
         = f.input :name
         = f.input :surname
-        = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
+        = f.input :time_zone,
+                  input_html: { class: 'chosen-select' },
+                  include_blank: t('view.select')
       .form-actions
-        = f.button :submit, t('devise.registration.new.button'), class: 'btn btn-primary btn-block'
+        = f.button :submit,
+                   t('devise.registration.new.button'),
+                   class: 'btn btn-primary btn-block'
   .card-footer.text-center
     = render 'devise/shared/links'

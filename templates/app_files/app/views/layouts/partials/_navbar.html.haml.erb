@@ -1,10 +1,15 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand{href: root_path}
+  %a.navbar-brand{ href: root_path }
     %i.fas.fa-home
-    = "<%= app_name.capitalize %>"
-  %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+    = '<%= app_name.capitalize %>'
+  %button.navbar-toggler{ 'aria-controls' => 'navbar-nav-dropdown',
+                          'aria-expanded' => 'false',
+                          'aria-label' => 'Toggle navigation',
+                          'data-target' => '#navbar-nav-dropdown',
+                          'data-toggle' => 'collapse',
+                          type: 'button' }
     %span.navbar-toggler-icon
-  #navbarNavDropdown.collapse.navbar-collapse
+  .collapse.navbar-collapse#navbar-nav-dropdown
     %ul.navbar-nav.ml-auto
       %li.nav-item
         = link_to about_welcome_index_path, class: 'nav-link' do
@@ -16,17 +21,17 @@
         %li.nav-item
           = link_to destroy_user_session_path, class: 'nav-link', method: :delete do
             %i.fas.fa-sign-out-alt
-            = t('navbar.sign_out')
+            = t('view.navbar.sign_out')
         %li.nav-item
           = link_to user_profile_path(current_user), class: 'nav-link' do
             %i.fas.fa-user
-            = t('navbar.profile')
+            = t('view.navbar.profile')
       - else
         %li.nav-item
           = link_to new_user_session_path, class: 'nav-link' do
-            %i.fas.fa-sign-in-alt{"aria-hidden" => "true"}
-            = t('navbar.signin')
+            %i.fas.fa-sign-in-alt{ 'aria-hidden' => 'true' }
+            = t('view.navbar.signin')
         %li.nav-item
           = link_to new_user_registration_path, class: 'nav-link' do
-            %i.fas.fa-user-plus{"aria-hidden" => "true"}
-            = t('navbar.signup')
+            %i.fas.fa-user-plus{ 'aria-hidden' => 'true' }
+            = t('view.navbar.signup')

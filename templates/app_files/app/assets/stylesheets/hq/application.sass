@@ -14,6 +14,11 @@
 @import "sidebar"
 @import "footable.bootstrap.min"
 
+/* from vendor
+@import "nprogress"
+@import "trix"
+@import "jquery.datetimepicker"
+
 body
   main
     @media (max-width: 767px)
@@ -38,11 +43,32 @@ body
         min-width: 115px
 
   #toolbar
+    text-align: right
     a
       margin-bottom: 12px
 
   #admin-devise-page
     .card
-      margin-top: 70px
+      margin-top: 50px
       width: 30rem
 
+  .simple_form
+    .form-actions
+      text-align: right
+
+    .form-group
+      .checkbox
+        label
+          input[type="checkbox"]
+            margin: 0 10px 0 0
+
+  .audit.form-inline
+    .form-group
+      margin: 0px 10px
+
+      label
+        padding: 0 5px
+
+.alert.message
+  .far.fa-smile
+    padding: 0 5px

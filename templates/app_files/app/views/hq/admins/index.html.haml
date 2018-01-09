@@ -9,10 +9,10 @@
     = t('activerecord.models.admins')
     .float-right
       .btn-group
-        %a.btn{href: hq_admins_path, data: {toggle: 'tooltip'}, title: t('view.reload')}
+        %a.btn{ href: hq_admins_path, data: { toggle: 'tooltip' }, title: t('view.reload') }
           %i.fas.fa-sync
       .badge.badge-pill.badge-secondary= @admins.total_entries
-  =blankable(@admins)
+  = blankable(@admins, @search)
   .card-footer
     .pagination.pagination-sm
       = will_paginate @admins, renderer: BootstrapPagination::Rails, bootstrap: 3

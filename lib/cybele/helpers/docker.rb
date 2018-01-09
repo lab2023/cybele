@@ -14,19 +14,38 @@ module Cybele
         template 'docker/start-app.sh.erb',
                  'bin/start-app.sh',
                  force: true
-        template 'docker/start-sidekiq.sh.erb',
-                 'bin/start-sidekiq.sh',
-                 force: true
-
+        unless @options[:skip_sidekiq]
+          template 'docker/start-sidekiq.sh.erb',
+                   'bin/start-sidekiq.sh',
+                   force: true
+        end
         docker_dotenv_files
       end
 
       private
 
       def docker_dotenv_files
-        append_file('env.sample', template_content('docker/docker_env_sample.erb'))
-        %w[local staging production].each do |env|
-          append_file(".env.#{env}", template_content("docker/docker_env_#{env}.erb"))
+        docker_dotenv_sidekiq
+        %w[.env.local env.sample].each do |env|
+          append_template_to_file(env, 'docker/docker_env_local_sample.erb')
+        end
+        docker_dotenv_sidekiq_local
+      end
+
+      def docker_dotenv_sidekiq_local
+        return if @options[:skip_sidekiq]
+        %w[.env.local env.sample].each do |env|
+          append_template_to_file(env, 'docker/docker_env_local_sample_host.erb')
+        end
+      end
+
+      def docker_dotenv_sidekiq
+        return if @options[:skip_sidekiq]
+        %w[.env.local env.sample].each do |env|
+          append_template_to_file(env, 'docker/docker_env_local_sample_sidekiq.erb')
+        end
+        %w[staging production].each do |env|
+          append_template_to_file(".env.#{env}", 'docker/docker_env_staging_production_sidekiq.erb')
         end
       end
     end

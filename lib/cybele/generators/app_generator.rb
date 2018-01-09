@@ -65,7 +65,7 @@ module Cybele
                  aliases: nil,
                  default: false,
                  group: :cybele,
-                 desc: 'Skip view files. Default: don\'t skip'
+                 desc: 'Skip view files. Default: don\'t skip. Dependent: haml, show-for, simple-form'
     class_option :skip_docker,
                  type: :boolean,
                  aliases: nil,
@@ -78,20 +78,11 @@ module Cybele
       # Set options
       @options = options.dup
 
-      return if @options[:skip_ask]
-
-      say 'Ask cybele options', :green
-      option_with_ask_limited(:database, DATABASES)
-      option_with_ask_yes(:skip_create_database)
-      option_with_ask_yes(:skip_sidekiq)
-      option_with_ask_yes(:skip_simple_form)
-      option_with_ask_yes(:skip_show_for)
-      option_with_ask_yes(:skip_haml)
-      option_with_ask_yes(:skip_view_files)
-      option_with_ask_yes(:skip_docker)
-      @options.freeze
+      dependency_control(@options) if @options[:skip_ask]
+      ask_questions(@options) unless @options[:skip_ask]
     end
 
+    # :reek:TooManyStatements
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
@@ -223,14 +214,12 @@ module Cybele
       build :generate_devise_settings
       say 'Adding devise models'
       build :generate_devise_models
-      say 'Generate devise'
     end
 
     def configure_mail_setting
       say 'Setup mail settings'
       build :configure_action_mailer
       build :configure_smtp
-      build :setup_mailtrap
     end
 
     def gitignore_files_and_folders
@@ -241,12 +230,6 @@ module Cybele
     def configure_error_pages
       say 'Setup custom exception pages and 404 page', :green
       build :configure_error_pages
-    end
-
-    def docker_development_env
-      return if @options[:skip_docker]
-      say 'Setup docker development environment', :green
-      build :setup_docker_development_env
     end
 
     def setup_pronto_config
@@ -266,6 +249,7 @@ module Cybele
       build :customize_default_view_files
     end
 
+    # :reek:TooManyStatements
     def customize_optional_view_files
       return if @options[:skip_view_files]
       say 'Customize optional view files', :green
@@ -279,6 +263,12 @@ module Cybele
       build :add_devise_strong_parameter
       build :add_devise_authenticate_admin
       build :configure_basic_authentication
+    end
+
+    def docker_development_env
+      return if @options[:skip_docker]
+      say 'Setup docker development environment', :green
+      build :setup_docker_development_env
     end
 
     def setup_git_and_git_flow
@@ -302,16 +292,52 @@ module Cybele
 
     private
 
-    def option_with_ask_yes(key)
+    # :reek:TooManyStatements
+    def ask_questions(options)
+      say 'Ask cybele options', :green
+      option_with_ask_limited(options, :database, DATABASES)
+      option_with_ask_yes(options, :skip_create_database)
+      option_with_ask_yes(options, :skip_sidekiq)
+      option_with_ask_yes(options, :skip_simple_form)
+      option_with_ask_yes(options, :skip_show_for)
+      option_with_ask_yes(options, :skip_haml)
+      option_with_ask_yes(options, :skip_view_files)
+      option_with_ask_yes(options, :skip_docker)
+      options.freeze
+      dependency_control(options)
+    end
+
+    def option_with_ask_yes(options, key)
       say "==> #{key.to_s.humanize}", :green
       say 'Type for answer yes: y|yes', :green
       say 'Type for answer no: n|no|any character', :yellow
 
-      @options = @options.merge(key => yes?('Ans :', :green))
+      options.merge!(key => yes?('Ans :', :green))
     end
 
-    def option_with_ask_limited(key, limits)
-      @options = @options.merge(key => ask("#{key.to_s.humanize} :", limited_to: limits))
+    def option_with_ask_limited(options, key, limits)
+      options.merge!(key => ask("#{key.to_s.humanize} :", limited_to: limits))
+    end
+
+    def dependency_control(selected_options)
+      arg_checker(selected_options, :skip_view_files, %i[skip_haml skip_show_for skip_simple_form])
+    end
+
+    # :reek:TooManyStatements
+    def arg_checker(selected_options, option, option_array)
+      return if selected_options[option]
+      failed = false
+      option_array.each do |opt|
+        if selected_options[opt]
+          puts "Don't #{opt}"
+          failed = true
+        end
+      end
+      return unless failed
+      puts "#{option} dependency error!"
+      puts
+      puts 'See --help for more info'
+      exit 0
     end
   end
 end

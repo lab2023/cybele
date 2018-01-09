@@ -26,16 +26,16 @@ module Cybele
           # Css Assets files
           remove_file 'app/assets/stylesheets/application.css', force: true
 
-          template 'app_files/app/assets/stylesheets/application.css.sass',
-                   'app/assets/stylesheets/application.css.sass',
+          template 'app_files/app/assets/stylesheets/application.sass',
+                   'app/assets/stylesheets/application.sass',
                    force: true
 
-          template 'app_files/app/assets/stylesheets/hq/application.css.sass',
-                   'app/assets/stylesheets/hq/application.css.sass',
+          template 'app_files/app/assets/stylesheets/hq/application.sass',
+                   'app/assets/stylesheets/hq/application.sass',
                    force: true
 
-          copy_file 'app_files/app/assets/stylesheets/hq/_sidebar.css.sass',
-                    'app/assets/stylesheets/hq/_sidebar.css.sass'
+          copy_file 'app_files/app/assets/stylesheets/hq/_sidebar.sass',
+                    'app/assets/stylesheets/hq/_sidebar.sass'
         end
       end
     end

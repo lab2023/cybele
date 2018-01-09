@@ -22,16 +22,16 @@ module Cybele
 
       def add_to_settings_yml
         # Add basic authentication settings to the config/settings.yml file
-        append_file 'config/settings.yml',
-                    template_content('basic_authentication/basic_authentication_settings.yml.erb')
+        append_template_to_file 'config/settings.yml',
+                                'basic_authentication/basic_authentication_settings.yml.erb'
       end
 
       def add_to_dotenv_files
         # Add basic authentication env to the all env files
-        append_file('env.sample', template_content('basic_authentication/no_basic_authentication.erb'))
-        append_file('.env.local', template_content('basic_authentication/no_basic_authentication.erb'))
-        append_file('.env.staging', template_content('basic_authentication/yes_basic_authentication.erb'))
-        append_file('.env.production', template_content('basic_authentication/no_basic_authentication.erb'))
+        append_template_to_file('env.sample', 'basic_authentication/no_basic_authentication.erb')
+        append_template_to_file('.env.local', 'basic_authentication/no_basic_authentication.erb')
+        append_template_to_file('.env.staging', 'basic_authentication/yes_basic_authentication.erb')
+        append_template_to_file('.env.production', 'basic_authentication/no_basic_authentication.erb')
       end
 
       def include_basic_authentication_module

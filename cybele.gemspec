@@ -26,7 +26,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'bundler', '~> 1.5'
   spec.add_runtime_dependency 'rails', '~> 5.0', Cybele::RAILS_VERSION
   spec.add_development_dependency 'pronto', '~> 0.9.5'
+  spec.add_development_dependency 'pronto-fasterer', '~> 0.9.0'
   spec.add_development_dependency 'pronto-flay', '~> 0.9.0'
+  spec.add_development_dependency 'pronto-reek', '~> 0.9.0'
   spec.add_development_dependency 'pronto-rubocop', '~> 0.9.0'
   spec.add_development_dependency 'rspec', '~> 3.5'
   spec.add_development_dependency 'thor', '~> 0.19.4'

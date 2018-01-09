@@ -1,8 +1,6 @@
 require 'sidekiq'
 require 'sidekiq/web'
 
-Rails.application.config.active_job.queue_adapter = :sidekiq
-
 namespace = "<%= app_name.parameterize %>_#{Rails.env}"
 settings = {
   url: ENV['REDISTOGO_URL'] || 'redis://localhost:6379/0',

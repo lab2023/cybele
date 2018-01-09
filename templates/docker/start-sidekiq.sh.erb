@@ -3,11 +3,23 @@
 bundle check || bundle install
 bundle config git.allow_insecure true
 
-echo 'Stopping sidekiq if exists'
-bundle exec sidekiqctl stop tmp/pids/sidekiq.pid
+# Create directory if not exists
+if [ ! -d ./tmp/pids ]; then
+    mkdir ./tmp/pids
+fi
 
-echo 'Stopped sidekiq'
-rm -rf ./tmp/pids/sidekiq.pid
+# If file exist stop sidekiq
+if [ -f ./tmp/pids/sidekiq.pid ]; then
+{
+    echo 'Stopping sidekiq'
+    bundle exec sidekiqctl stop tmp/pids/sidekiq.pid
+
+    echo 'Stopped sidekiq'
+    rm -rf ./tmp/pids/sidekiq.pid
+} || {
+    echo 'Error occurred when stopping sidekiq'
+}
+fi
 
 echo 'Starting sidekiq'
 bundle exec sidekiq -C config/sidekiq.yml

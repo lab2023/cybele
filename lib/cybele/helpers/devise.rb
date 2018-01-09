@@ -17,9 +17,10 @@ module Cybele
       def generate_devise_models
         generate 'devise User name:string surname:string is_active:boolean time_zone:string'
         generate 'devise Admin name:string surname:string is_active:boolean time_zone:string'
-        remove_file 'config/locales/devise.en.yml', force: true
-        copy_file 'config/locales/devise.en.yml', 'config/locales/devise.en.yml'
-        copy_file 'config/locales/devise.tr.yml', 'config/locales/devise.tr.yml'
+        configure_devise_locale_files
+        devise_seeds
+        configure_app_name(%w[db/seeds.rb])
+        add_default_value_to_migrations
       end
 
       def generate_devise_views
@@ -40,6 +41,26 @@ module Cybele
         inject_into_file 'app/controllers/application_controller.rb',
                          template_content('devise/devise_before_action_strong_parameter.rb.erb'),
                          after: 'class ApplicationController < ActionController::Base'
+      end
+
+      private
+
+      def configure_devise_locale_files
+        remove_file 'config/locales/devise.en.yml', force: true
+        copy_file 'config/locales/devise.en.yml', 'config/locales/devise.en.yml'
+        copy_file 'config/locales/devise.tr.yml', 'config/locales/devise.tr.yml'
+      end
+
+      def devise_seeds
+        inject_into_file 'db/seeds.rb', after: "#   Character.create(name: 'Luke', movie: movies.first)\n" do
+          template_content('devise/seeds.rb.erb')
+        end
+      end
+
+      def add_default_value_to_migrations
+        Dir.glob('db/migrate/*devise_create*.rb') do |file|
+          replace_in_file file, 't.boolean :is_active', 't.boolean :is_active, default: true'
+        end
       end
     end
   end

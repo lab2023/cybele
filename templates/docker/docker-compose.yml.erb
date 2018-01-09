@@ -10,7 +10,9 @@ services:
       - "3000:3000"
     links:
       - postgres
+      <% unless @options[:skip_sidekiq] %>
       - redis
+      <% end %>
     volumes_from:
       - box
   box:
@@ -21,6 +23,7 @@ services:
     image: postgres:9.5
     ports:
       - "5433:5432"
+  <% unless @options[:skip_sidekiq] %>
   redis:
     image: redis:3.2
     env_file: ./.env.local
@@ -40,3 +43,4 @@ services:
       - postgres
       - redis
     command: bash ./bin/start-sidekiq.sh
+  <% end %>
