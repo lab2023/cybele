@@ -17,7 +17,7 @@ module ResponderTestHelper
   def controller_file_test
     controller_file = content('app/controllers/application_controller.rb')
     expect(controller_file).to match("^require 'application_responder'")
-    expect(controller_file).to match('self.responder = ApplicationResponder')
+    expect(controller_file).to match('# self.responder = ApplicationResponder')
     expect(controller_file).to match('respond_to :html, :js, :json')
   end
 

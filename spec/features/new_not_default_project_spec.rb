@@ -4,7 +4,6 @@ require 'spec_helper'
 
 RSpec.describe 'Create new project without default configuration' do
   before(:all) do
-    drop_dummy_database
     remove_project_directory
     run_cybele(cybele_not_default_parameters)
     setup_app_dependencies

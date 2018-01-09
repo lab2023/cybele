@@ -65,7 +65,7 @@ module Cybele
                  aliases: nil,
                  default: false,
                  group: :cybele,
-                 desc: 'Skip view files. Default: don\'t skip'
+                 desc: 'Skip view files. Default: don\'t skip. Dependent: haml, show-for, simple-form'
     class_option :skip_docker,
                  type: :boolean,
                  aliases: nil,
@@ -295,28 +295,28 @@ module Cybele
     # :reek:TooManyStatements
     def ask_questions(options)
       say 'Ask cybele options', :green
-      option_with_ask_limited(:database, DATABASES)
-      option_with_ask_yes(:skip_create_database)
-      option_with_ask_yes(:skip_sidekiq)
-      option_with_ask_yes(:skip_simple_form)
-      option_with_ask_yes(:skip_show_for)
-      option_with_ask_yes(:skip_haml)
-      option_with_ask_yes(:skip_view_files)
-      option_with_ask_yes(:skip_docker)
+      option_with_ask_limited(options, :database, DATABASES)
+      option_with_ask_yes(options, :skip_create_database)
+      option_with_ask_yes(options, :skip_sidekiq)
+      option_with_ask_yes(options, :skip_simple_form)
+      option_with_ask_yes(options, :skip_show_for)
+      option_with_ask_yes(options, :skip_haml)
+      option_with_ask_yes(options, :skip_view_files)
+      option_with_ask_yes(options, :skip_docker)
       options.freeze
       dependency_control(options)
     end
 
-    def option_with_ask_yes(key)
+    def option_with_ask_yes(options, key)
       say "==> #{key.to_s.humanize}", :green
       say 'Type for answer yes: y|yes', :green
       say 'Type for answer no: n|no|any character', :yellow
 
-      @options = @options.merge(key => yes?('Ans :', :green))
+      options.merge!(key => yes?('Ans :', :green))
     end
 
-    def option_with_ask_limited(key, limits)
-      @options = @options.merge(key => ask("#{key.to_s.humanize} :", limited_to: limits))
+    def option_with_ask_limited(options, key, limits)
+      options.merge!(key => ask("#{key.to_s.humanize} :", limited_to: limits))
     end
 
     def dependency_control(selected_options)
@@ -326,7 +326,6 @@ module Cybele
     # :reek:TooManyStatements
     def arg_checker(selected_options, option, option_array)
       return if selected_options[option]
-      puts "#{option} dependency error!"
       failed = false
       option_array.each do |opt|
         if selected_options[opt]
@@ -335,6 +334,7 @@ module Cybele
         end
       end
       return unless failed
+      puts "#{option} dependency error!"
       puts
       puts 'See --help for more info'
       exit 0

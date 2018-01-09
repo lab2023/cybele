@@ -4,6 +4,7 @@ class User::ApplicationController < ApplicationController
   layout 'application'
   before_action :authenticate_user!
   before_action :set_user_time_zone
+  self.responder = ApplicationResponder
 
   protected
 

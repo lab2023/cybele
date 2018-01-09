@@ -3,6 +3,7 @@
 class Hq::ApplicationController < ApplicationController
   before_action :set_audit_user
   layout 'hq/application'
+  self.responder = ApplicationResponder
 
   private
 
