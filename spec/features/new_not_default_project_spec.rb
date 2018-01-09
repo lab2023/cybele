@@ -6,8 +6,7 @@ RSpec.describe 'Create new project without default configuration' do
   before(:all) do
     drop_dummy_database
     remove_project_directory
-    run_cybele('--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for'\
-               ' --skip-haml --skip-docker --skip-view-files')
+    run_cybele(cybele_not_default_parameters)
     setup_app_dependencies
   end
 

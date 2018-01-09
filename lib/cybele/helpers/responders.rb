@@ -24,6 +24,9 @@ module Cybele
         replace_in_file 'app/controllers/application_controller.rb',
                         'require "application_responder"',
                         "require 'application_responder'"
+        replace_in_file 'app/controllers/application_controller.rb',
+                        'self.responder = ApplicationResponder',
+                        'self.responder = ApplicationResponder unless :devise_controller?'
         # Remove comments in locale/responders.yml
         remove_file 'config/locales/responders.en.yml', force: true
         copy_file 'config/locales/responders.tr.yml', 'config/locales/responders.tr.yml'

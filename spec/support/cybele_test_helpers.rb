@@ -23,6 +23,10 @@ module CybeleTestHelpers
     end
   end
 
+  def cybele_not_default_parameters
+    '--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for --skip-haml --skip-docker --skip-view-files'
+  end
+
   def content(file_path)
     IO.read(file_project_path(file_path))
   end
