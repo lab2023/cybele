@@ -11,8 +11,12 @@ RSpec.describe 'Create new project without default configuration' do
 
   it 'uses sqlite3 instead of default pg in Gemfile' do
     gemfile_file = content('Gemfile')
+    readme_file = content('README.md')
     expect(gemfile_file).not_to match(/^gem 'pg'/)
     expect(gemfile_file).to match(/^gem 'sqlite3'/)
+    expect(readme_file).to match(/^# #{app_name.capitalize}/)
+    expect(readme_file).not_to match(/^# Docker development/)
+    expect(readme_file).not_to match(/^➜ ✗ redis-server/)
   end
 
   it 'uses sqlite3 database template' do

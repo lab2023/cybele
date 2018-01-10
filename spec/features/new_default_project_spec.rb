@@ -14,6 +14,8 @@ RSpec.describe 'Create new project with default configuration' do
     readme_file = content('README.md')
     expect(gemfile_file).to match(/^gem 'rails', '#{Cybele::RAILS_VERSION}'/)
     expect(readme_file).to match(/^# #{app_name.capitalize}/)
+    expect(readme_file).to match(/^# Docker development/)
+    expect(readme_file).to match(/^➜ ✗ redis-server/)
   end
 
   it 'uses postgresql database template' do
