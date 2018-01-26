@@ -1,0 +1,89 @@
+#sidebar
+  overflow: hidden
+  z-index: 3
+  .list-group
+    min-width: 400px
+    background-color: #343a40
+    min-height: 100vh
+  i
+    margin-right: 6px
+  .list-group-item
+    border-radius: 0
+    background-color: #343a40
+    color: #ccc
+    border-left: 0
+    border-right: 0
+    border-color: #2c2c2c
+    white-space: nowrap
+    &:not(.collapsed)
+      background-color: #222
+  .list-group
+    .list-group-item
+      padding: .75rem 1.25rem
+      &[aria-expanded="false"]::after
+        content: '>'
+        display: inline
+        text-align: right
+        padding-left: 5px
+      &[aria-expanded="true"]
+        background-color: #222
+        &::after
+          content: '<'
+          display: inline
+          text-align: right
+          padding-left: 5px
+    .collapse .list-group-item, .collapsing .list-group-item
+      padding-left: 20px
+    .collapse > .collapse .list-group-item, .collapsing .list-group-item
+      padding-left: 1.25rem
+      .collapse > .collapse .list-group-item
+        padding-left: 40px
+
+
+@media (max-width: 768px)
+  #sidebar
+    min-width: 35px
+    max-width: 40px
+    overflow-y: auto
+    overflow-x: visible
+    transition: all 0.25s ease
+    transform: translateX(-45px)
+    position: fixed
+    &.show
+      transform: translateX(0)
+    &::-webkit-scrollbar
+      width: 0px
+    overflow: visible
+    .list-group
+      min-width: 40px
+      overflow: visible
+      .collapse.show, .collapsing
+        position: relative
+        z-index: 1
+        width: 190px
+        top: 0
+      > .list-group-item
+        text-align: center
+        padding: .75rem .75rem
+        &[aria-expanded="true"]::after, &[aria-expanded="false"]::after
+          display: none
+/* overlay sub levels on small screens
+/* hide caret icons of top level when collapsed
+
+.collapse.show
+  visibility: visible
+
+.collapsing
+  visibility: visible
+  height: 0
+  -webkit-transition-property: height, visibility
+  transition-property: height, visibility
+  -webkit-transition-timing-function: ease-out
+  transition-timing-function: ease-out
+  &.width
+    -webkit-transition-property: width, visibility
+    transition-property: width, visibility
+    width: 0
+    height: 100%
+    -webkit-transition-timing-function: ease-out
+    transition-timing-function: ease-out

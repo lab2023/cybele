@@ -1,0 +1,35 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  %a.navbar-brand{ href: hq_dashboard_index_path }
+    %i.fas.fa-coffee
+    = t('view.navbar.admin_portal')
+  %button.navbar-toggler{ 'aria-controls' => 'navbar-nav-dropdown',
+                          'aria-expanded' => 'false',
+                          'aria-label' => 'Toggle navigation',
+                          'data-target' => '#navbar-nav-dropdown',
+                          'data-toggle' => 'collapse',
+                          type: 'button' }
+    %span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbar-nav-dropdown
+    %ul.navbar-nav.ml-auto
+      %li.nav-item
+        = link_to hq_audits_path, class: 'nav-link' do
+          %i.icon-cog
+          = t('activerecord.models.audits')
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle#navbar-dropdown-menu-link{ 'aria-expanded' => 'false',
+                                                               'aria-haspopup' => 'true',
+                                                               'data-toggle' => 'dropdown',
+                                                               href: '#' }
+          %i.icon-user
+          %strong
+            = current_admin.email
+          %b.caret
+        .dropdown-menu{ 'aria-labelledby' => 'navbar-dropdown-menu-link' }
+          = link_to t('view.navbar.edit_login_info'),
+                    edit_admin_registration_path,
+                    class: 'dropdown-item'
+          .dropdown-divider
+          = link_to t('view.navbar.sign_out'),
+                    destroy_admin_session_path,
+                    method: :delete,
+                    class: 'dropdown-item'

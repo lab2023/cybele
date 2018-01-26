@@ -1,0 +1,48 @@
+.table-header.row
+  .col-lg-2
+    - if params[:q].present?
+      = link_to hq_audits_path, class: 'btn btn-info' do
+        = t('view.all')
+        %span.badge= Audit.count
+  .col-lg-10
+    = search_form_for(search,
+                      builder: SimpleForm::FormBuilder,
+                      html: { class: 'audit form-inline', data: { turboform: true } },
+                      url: hq_audits_path) do |f|
+      .form-group
+        %label
+          = "#{t('activerecord.attributes.audits.user_type')}: "
+        = f.input_field :user_type_eq, label: false, class: 'form-control chosen-select',
+                        placeholder: t('activerecord.attributes.audits.user'),
+                        collection: audit_users, include_blank: t('view.select')
+
+        - if params[:q].present? && params[:q][:user_type_eq].present?
+          - type = params[:q][:user_type_eq]
+          - if type == 'Admin'
+            %label
+              = "#{t('activerecord.attributes.audits.user')}: "
+            = f.input_field :user_id_eq, label: false, class: 'form-control chosen-select',
+                            placeholder: t('activerecord.attributes.audits.user'),
+                            collection: admins, include_blank: t('view.select')
+      .form-group
+        %label
+          = "#{t('activerecord.attributes.audits.action')}: "
+        = f.input_field :action_eq, label: false, class: 'form-control chosen-select',
+                        placeholder: t('activerecord.attributes.audits.action'),
+                        collection: actions_collection,
+                        include_blank: t('view.select')
+      .form-group
+        .input-group
+          %label
+            = "#{t('activerecord.attributes.audits.auditable_type')}: "
+          = f.input_field :auditable_type_eq, label: false, class: 'form-control chosen-select',
+                          placeholder: t('activerecord.attributes.audits.auditable_type'),
+                          collection: auditable_types_collection(auditable_types),
+                          include_blank: t('view.select')
+          = f.input_field :auditable_id_eq,
+                          label: false,
+                          class: 'form-control',
+                          placeholder: t('activerecord.attributes.audits.auditable_id')
+          %span.input-group-btn
+            = button_tag(class: 'btn btn-primary') do
+              %i.fas.fa-search

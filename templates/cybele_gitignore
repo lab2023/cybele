@@ -17,12 +17,13 @@
 /tmp
 !.keep
 *.swp
-.env
 bin/stubs
-/.env.*
-/.env.local
 public/system
 vendor/bundler_gems
+
+# Ignore secret keys
+.environments
+.environments/*
 
 # Ignore ide and text editor
 .idea

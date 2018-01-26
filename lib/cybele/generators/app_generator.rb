@@ -1,218 +1,197 @@
+# frozen_string_literal: true
+
 require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 
 module Cybele
-  
   class AppGenerator < Rails::Generators::AppGenerator
+    @options = nil
 
-    class_option :database, :type => :string, :aliases => '-d', :default => 'postgresql',
-                 :desc => "Preconfigure for selected database (options: #{DATABASES.join('/')})"
+    # Default settings
+    class_option :database,
+                 type: :string,
+                 aliases: '-d',
+                 default: 'postgresql',
+                 desc: "Configure for selected database (options: #{DATABASES.join('/')})"
+    class_option :version,
+                 type: :boolean,
+                 aliases: '-v',
+                 group: :cybele,
+                 desc: 'Show cybele version number and quit'
+    class_option :help,
+                 type: :boolean,
+                 aliases: '-h',
+                 group: :cybele,
+                 desc: 'Show cybele help message and quit'
+    # Ask cybele options
+    class_option :skip_ask,
+                 type: :boolean,
+                 aliases: nil,
+                 default: true,
+                 group: :cybele,
+                 desc: 'Skip ask for cybele options. Default: skip'
+    class_option :skip_create_database,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip create database. Default: don\'t skip'
+    class_option :skip_sidekiq,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip sidekiq integration. Default: don\'t skip'
+    class_option :skip_simple_form,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip simple_form integration. Default: don\'t skip'
+    class_option :skip_show_for,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip show_for integration. Default: don\'t skip'
+    class_option :skip_haml,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip haml and haml-rails integration. Default: don\'t skip'
+    class_option :skip_view_files,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip view files. Default: don\'t skip. Dependent: haml, show-for, simple-form'
+    class_option :skip_docker,
+                 type: :boolean,
+                 aliases: nil,
+                 default: false,
+                 group: :cybele,
+                 desc: 'Skip docker development environment. Default: don\'t skip'
 
-    class_option :skip_test_unit, :type => :boolean, :aliases => '-T', :default => true,
-                 :desc => 'Skip Test::Unit files'
-
-    def finish_template
-      invoke :customization
+    def initialize(*args)
       super
+      # Set options
+      @options = options.dup
+
+      dependency_control(@options) if @options[:skip_ask]
+      ask_questions(@options) unless @options[:skip_ask]
     end
 
-    def customization
-      invoke :customize_gemfile
-      invoke :setup_editorconfig
-      invoke :setup_ruby_version
-      invoke :setup_add_disable_xml_params
-      invoke :setup_add_paperclip_aws
-      invoke :setup_database
-      invoke :remove_files_we_dont_need
-      invoke :replace_files
-      invoke :install_gems
-      invoke :gitignore_files_and_folders
-      invoke :setup_bootstrap_sass_coffee
-      invoke :copy_vendor_files
-      invoke :setup_rails_config
-      invoke :setup_staging_environment
-      invoke :configure_mail_setting
-      invoke :setup_rspec
-      invoke :setup_capybara
-      invoke :setup_factory_girl
-      invoke :setup_simple_form
-      invoke :setup_exception_notification
-      invoke :setup_exception_notification_to_environments
-      invoke :setup_welcome_page
-      invoke :setup_devise
-      invoke :setup_time_zone
-      invoke :setup_bullet_config
-      invoke :setup_namespaces
-    end
-
+    # :reek:TooManyStatements
     def customize_gemfile
-      build :replace_gemfile
+      say 'Customize gem file', :green
+      build :add_gems
+      bundle_command 'update thor'
+      build :add_simple_form_gem unless @options[:skip_simple_form]
+      build :add_show_for_gem unless @options[:skip_show_for]
+      build :add_haml_gems unless @options[:skip_haml]
+      build :add_required_view_gems unless @options[:skip_view_files]
       bundle_command 'install --binstubs=bin/stubs'
     end
 
-    def setup_editorconfig
-      say 'Add .editorconfig file'
-      build :add_editorconfig
+    def setup_editor_config
+      say 'Add .editor_config file', :green
+      build :add_editor_config
     end
 
     def setup_ruby_version
-      say 'Add .ruby-version file'
+      say 'Add .ruby-version file', :green
       build :add_ruby_version
     end
 
-    def setup_add_disable_xml_params
-      say 'Add disable_xml_params.rb file to initilizers'
-      build :add_disable_xml_params
-    end
-
-    def setup_add_paperclip_aws
-      say 'Add paperclip.rb file to initilizers'
-      build :add_paperclip_aws
+    def setup_cybele_version
+      say 'Add .VERSION.txt file', :green
+      build :add_cybele_version
     end
 
     def remove_files_we_dont_need
-      say 'Remove files we don\'t need'
+      say 'Remove files we don\'t need', :green
       build :remove_readme_rdoc
     end
 
-    def replace_files
-      say 'Replace files'
-      build :replace_erb_with_haml
-      build :replace_database_yml
+    def setup_config
+      say 'Generate config', :green
+      build :generate_config
     end
 
-    def install_gems
-      say 'Install gems'
-      say 'Install responder gem'
-      build :install_responder_gem
+    def setup_dotenv
+      say 'Generate .env.* files', :green
+      build :configure_dotenv
     end
 
     def setup_database
-      say 'Setting up database'
-
-      if 'postgresql' == options[:database]
-        build :replace_database_yml
+      if @options[:database] == 'postgresql'
+        say 'Set up postgresql template', :green
+        build :use_postgres_config_template
       end
 
+      return if @options[:skip_create_database]
+      say 'Create database', :green
       build :create_database
     end
 
+    def setup_sidekiq
+      return if @options[:skip_sidekiq]
+      say 'Setting up sidekiq', :green
+      build :configure_sidekiq
+    end
+
+    def setup_responders
+      say 'Setting up responders', :green
+      build :configure_responders
+    end
+
     def setup_staging_environment
-      say 'Setting up the staging environment'
+      say 'Setting up the staging environment', :green
       build :setup_staging_environment
     end
 
-    def gitignore_files_and_folders
-      build :setup_gitignore_files
-      build :setup_gitignore_folders
+    def configure_recipient_interceptor
+      say 'Setup mail settings with recipient_interceptor in staging', :green
+      build :configure_recipient_interceptor
     end
 
-    def setup_bootstrap_sass_coffee
-      say 'Setup bootstrap'
-      build :setup_asset_precompile
-      build :setup_application_js
-      build :convert_application_js_to_coffee
-      build :convert_application_css_to_sass
+    def setup_rollbar
+      say 'Generate rollbar', :green
+      build :generate_rollbar
     end
 
-    def copy_vendor_files
-      say 'Copy vendor assets'
-      build :copy_vendor_assets
+    def setup_guard
+      say 'Generate guard', :green
+      build :generate_guard
     end
 
-    def configure_mail_setting
-      say 'Setup mail settings'
-      build :configure_action_mailer
-      build :configure_smtp
-      build :setup_letter_opener
+    def configure_locale_language
+      say 'Configure locale', :green
+      build :configure_locale_language
     end
 
-    def setup_rspec
-      say 'Generate rspec'
-      build :generate_rspec
-    end
-
-    def setup_capybara
-      say 'Generate capybara'
-      build :generate_capybara
-    end
-
-    def setup_factory_girl
-      say 'Generate factory girl'
-      build :generate_factory_girl
+    def setup_show_for
+      return if @options[:skip_show_for]
+      say 'Generate show_for', :green
+      build :configure_show_for
     end
 
     def setup_simple_form
-      say 'Generate simple form files'
-      build :generate_simple_form
+      return if @options[:skip_simple_form]
+      say 'Setting up simple_form', :green
+      build :configure_simple_form
     end
 
-    def setup_exception_notification
-      say 'Generate exception notification'
-      say 'Do not forget to configure config/initializers/exception_notification.rb file'
-      build :generate_exception_notification
+    def setup_haml
+      return if @options[:skip_haml]
+      say 'Setting up haml and generate haml-rails', :green
+      build :configure_haml
     end
 
-    def setup_rails_config
-      say 'Generate rails config'
-      build :generate_rails_config
-    end
-
-    def setup_devise
-      say 'Generate devise'
-      build :generate_devise_settings
-      say 'Adding devise user model'
-      build :generate_devise_user
-      build :generate_devise_views
-    end
-
-    def setup_welcome_page
-      say 'Generate Welcome Page'
-      build :generate_welcome_page
-    end
-
-    def setup_time_zone
-      say 'Setup time zone'
-      build :set_time_zone
-    end
-
-    def setup_hierapolis
-      say 'Setup hierapolis'
-      build :create_hierapolis_theme
-    end
-
-    def setup_sipmle_form_wrapper
-      say 'Setup sipmle form wrapper'
-      build :replace_simple_form_wrapper
-    end
-
-    def setup_exception_notification_to_environments
-      say 'Setup exception notification for environments'
-      build :add_exception_notification_to_environments
-    end
-
-    def install_capistrano
-      say 'Setup capistrano'
-      build :setup_capistrano
-    end
-
-    def setup_capistrano_settings
-      say 'Setup capistrano settings'
-      build :setup_capistrano_settings
-    end
-
-    def setup_recipes
-      build :setup_recipes
-    end
-
-    def setup_client_side_validations
-      say 'Setup client_side_validations'
-      build :setup_client_side_validations
-    end
-
-    def setup_secret_token
-      say 'Setup secret token'
-      build :update_secret_token
+    def add_staging_secret_key
+      say 'Add staging secret key to secret.yml file', :green
+      build :add_staging_secret_key_to_secrets_yml
     end
 
     def setup_bullet_config
@@ -220,64 +199,145 @@ module Cybele
       build :configure_bullet
     end
 
-    def install_show_for
-      say 'Setup show_for'
-      build :setup_show_for
+    def force_ssl
+      say 'Add ssl control into staging.rb and production.rb', :green
+      build :force_ssl_setting
     end
 
-    def create_dev_rake
-      say 'Create dev_rake'
-      build :create_dev_rake
+    def setup_paperclip_and_add_aws
+      say 'Setting up paperclip, editing settings.yml and env files', :green
+      build :configure_paperclip
     end
 
-    def custom_exception_page
-      say 'Setup custom exception pages'
-      build :custom_exception_page
+    def setup_devise
+      say 'Generate devise'
+      build :generate_devise_settings
+      say 'Adding devise models'
+      build :generate_devise_models
     end
 
-    def custom_404
-      say 'Setup 404 page'
-      build :custom_404
+    def configure_mail_setting
+      say 'Setup mail settings'
+      build :configure_action_mailer
+      build :configure_smtp
     end
 
-    def add_seeds
-      say 'Add seeds main'
-      build :add_seeds
+    def gitignore_files_and_folders
+      build :setup_gitignore_files
+      build :setup_gitignore_folders
     end
 
-    def setup_namespaces
-      say 'Generate namespaces'
-      build :setup_namespaces
+    def configure_error_pages
+      say 'Setup custom exception pages and 404 page', :green
+      build :configure_error_pages
     end
 
-    def setup_models
-      say 'Setup models'
-      build :create_location_models
+    def setup_pronto_config
+      say 'Setup pronto config', :green
+      build :configure_pronto
     end
 
-    def copy_all_files
-      say 'Copy files'
-      build :copy_files
+    def setup_audited
+      say 'Setup audited gem', :green
+      build :configure_audited
     end
 
-    def setup_helpers
-      say 'Create helpers'
-      build :create_jobs_helper_lib
+    def customize_app_files
+      say 'Customize default files', :green
+      build :customize_model_files
+      build :customize_mailer_files
+      build :customize_default_view_files
     end
 
-    def setup_git
-      say 'Initialize git'
-      build :git_commands
+    # :reek:TooManyStatements
+    def customize_optional_view_files
+      return if @options[:skip_view_files]
+      say 'Customize optional view files', :green
+      build :customize_assets_files
+      build :customize_vendor_files
+      build :customize_helper_files
+      build :customize_view_files_with_option
+      build :generate_devise_views
+      build :configure_routes
+      build :customize_controller_files
+      build :add_devise_strong_parameter
+      build :add_devise_authenticate_admin
+      build :configure_basic_authentication
+    end
+
+    def docker_development_env
+      return if @options[:skip_docker]
+      say 'Setup docker development environment', :green
+      build :setup_docker_development_env
+    end
+
+    def setup_git_and_git_flow
+      say 'Initialize git and git flow'
+      build :git_and_git_flow_commands
     end
 
     def goodbye
-      say 'Congratulations! That\'s all...'
+      say 'Congratulations! That\'s all...', :green
+    end
+
+    def self.banner
+      "cybele #{arguments.map(&:usage).join(' ')} [options]"
     end
 
     protected
 
     def get_builder_class
       Cybele::AppBuilder
+    end
+
+    private
+
+    # :reek:TooManyStatements
+    def ask_questions(options)
+      say 'Ask cybele options', :green
+      option_with_ask_limited(options, :database, DATABASES)
+      option_with_ask_yes(options, :skip_create_database)
+      option_with_ask_yes(options, :skip_sidekiq)
+      option_with_ask_yes(options, :skip_simple_form)
+      option_with_ask_yes(options, :skip_show_for)
+      option_with_ask_yes(options, :skip_haml)
+      option_with_ask_yes(options, :skip_view_files)
+      option_with_ask_yes(options, :skip_docker)
+      options.freeze
+      dependency_control(options)
+    end
+
+    def option_with_ask_yes(options, key)
+      say "==> #{key.to_s.humanize}", :green
+      say 'Type for answer yes: y|yes', :green
+      say 'Type for answer no: n|no|any character', :yellow
+
+      options[key] = yes?('Ans :', :green)
+    end
+
+    def option_with_ask_limited(options, key, limits)
+      options[key] = ask("#{key.to_s.humanize} :", limited_to: limits)
+    end
+
+    def dependency_control(selected_options)
+      arg_checker(selected_options, :skip_view_files, %i[skip_haml skip_show_for skip_simple_form])
+    end
+
+    # :reek:TooManyStatements
+    def arg_checker(selected_options, option, option_array)
+      return if selected_options[option]
+      failed = false
+      option_array.each do |opt|
+        if selected_options[opt]
+          puts "Don't #{opt}"
+          failed = true
+        end
+      end
+      return unless failed
+      puts "#{option} dependency error!"
+      puts
+      puts 'See --help for more info'
+      exit 0
     end
   end
 end

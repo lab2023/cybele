@@ -1,0 +1,38 @@
+AllCops:
+  Include:
+    - 'Rakefile'
+    - 'config.ru'
+    - 'Gemfile'
+  Exclude:
+    - Guardfile
+    - bin/**/**
+    - db/**/**
+    - tmp/**/**/**/**
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 110
+  Exclude:
+    - 'Gemfile'
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 40
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'config/routes.rb'
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: when_needed
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/**/*.rb'

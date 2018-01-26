@@ -1,0 +1,95 @@
+.col-md-2.float-left.col-1.pl-0.pr-0.collapse.width.show#sidebar
+  .list-group.border-0.card.text-center.text-md-left
+    %a.list-group-item.d-inline-block{ 'data-parent' => '#sidebar',
+                                       href: hq_dashboard_index_path,
+                                       class: css_class(hq_dashboard_index_path,
+                                                        not_exist: 'collapsed') }
+      %i.fas.fa-home
+      %span.d-none.d-md-inline= t('view.dock.dashboard')
+    %a.list-group-item.d-inline-block{ 'aria-expanded' => 'false',
+                                       'data-parent' => '#sidebar',
+                                       'data-toggle' => 'collapse',
+                                       href: '#menu-users',
+                                       class: css_class([hq_admins_path, hq_users_path],
+                                                        not_exist: 'collapsed') }
+      %i.fas.fa-list
+      %span.d-none.d-md-inline
+        = t('view.dock.system_users')
+    .collapse#menu-users{ class: css_class([hq_admins_path, hq_users_path], exist: 'show') }
+      %a.list-group-item{ 'data-parent' => '#menu-users', href: hq_admins_path }
+        %i.fas.fa-users
+        = t('activerecord.models.admins')
+      %a.list-group-item{ 'data-parent' => '#menu-users', href: hq_users_path }
+        %i.fas.fa-users
+        = t('activerecord.models.users')
+
+-# Sidebar Example
+  .row.d-flex.d-md-block.flex-nowrap.wrapper
+    .col-md-3.float-left.col-1.pl-0.pr-0.collapse.width.show#sidebar
+      .list-group.border-0.card.text-center.text-md-left
+        %a.list-group-item.d-inline-block.collapsed{ 'aria-expanded' => 'false',
+                                                     'data-parent' => '#sidebar',
+                                                     'data-toggle' => 'collapse',
+                                                     href: '#menu1' }
+          %i.fas.fa-home
+          %span.d-none.d-md-inline Item 1
+        .collapse#menu1
+          %a.list-group-item{ 'aria-expanded' => 'false',
+                              'data-toggle' => 'collapse',
+                              href: '#menu1sub1' } Subitem 1
+          .collapse#menu1sub1
+            %a.list-group-item{ 'data-parent' => '#menu1sub1',
+                                href: '#' } Subitem 1 a
+            %a.list-group-item{ 'data-parent' => '#menu1sub1',
+                                href: '#' } Subitem 2 b
+            %a.list-group-item{ 'aria-expanded' => 'false',
+                                'data-toggle' => 'collapse',
+                                href: '#menu1sub1sub1' } Subitem 3 c
+            .collapse#menu1sub1sub1
+              %a.list-group-item{ 'data-parent' => '#menu1sub1sub1',
+                                  href: '#' } Subitem 3 c.1
+              %a.list-group-item{ 'data-parent' => '#menu1sub1sub1',
+                                  href: '#' } Subitem 3 c.2
+            %a.list-group-item{ 'data-parent' => '#menu1sub1',
+                                href: '#' } Subitem 4 d
+            %a.list-group-item{ 'aria-expanded' => 'false',
+                                'data-toggle' => 'collapse',
+                                href: '#menu1sub1sub2' } Subitem 5 e
+            .collapse#menu1sub1sub2
+              %a.list-group-item{ 'data-parent' => '#menu1sub1sub2',
+                                  href: '#' } Subitem 5 e.1
+              %a.list-group-item{ 'data-parent' => '#menu1sub1sub2',
+                                  href: '#' } Subitem 5 e.2
+          %a.list-group-item{ 'data-parent' => '#menu1',
+                              href: '#' } Subitem 2
+          %a.list-group-item{ 'data-parent' => '#menu1',
+                              href: '#' } Subitem 3
+        %a.list-group-item.d-inline-block.collapsed{ 'data-parent' => '#sidebar',
+                                                     href: '#' }
+          %i.fas.fa-film
+          %span.d-none.d-md-inline Item 2
+        %a.list-group-item.d-inline-block.collapsed{ 'aria-expanded' => 'false',
+                                                     'data-parent' => '#sidebar',
+                                                     'data-toggle' => 'collapse',
+                                                     href: '#menu3' }
+          %i.fas.fa-book
+          %span.d-none.d-md-inline Item 3
+        .collapse#menu3
+          %a.list-group-item{ 'data-parent' => '#menu3',
+                              href: '#' } 3.1
+          %a.list-group-item{ 'aria-expanded' => 'false',
+                              'data-toggle' => 'collapse',
+                              href: '#menu3sub2' } 3.2
+          .collapse#menu3sub2
+            %a.list-group-item{ 'data-parent' => '#menu3sub2',
+                                href: '#' } 3.2 a
+            %a.list-group-item{ 'data-parent' => '#menu3sub2',
+                                href: '#' } 3.2 b
+            %a.list-group-item{ 'data-parent' => '#menu3sub2',
+                                href: '#' } 3.2 c
+          %a.list-group-item{ 'data-parent' => '#menu3',
+                              href: '#' } 3.3
+        %a.list-group-item.d-inline-block.collapsed{ 'data-parent' => '#sidebar',
+                                                     href: '#' }
+          %i.fas.fa-heart
+          %span.d-none.d-md-inline Item 4

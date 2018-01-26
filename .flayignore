@@ -1,0 +1,3 @@
+templates/app_files/app/controllers/**/*.rb
+templates/app_files/app/mailers/**/*.rb
+lib/cybele/helpers/paperclip.rb

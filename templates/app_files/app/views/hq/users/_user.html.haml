@@ -1,0 +1,38 @@
+%tr{ class: user.is_active ? 'active' : 'passive' }
+  %td= user.id
+  %td= user.full_name
+  %td= mail_to user.email, user.email
+  %td= l user.current_sign_in_at if user.current_sign_in_at.present?
+  %td= l user.last_sign_in_at if user.last_sign_in_at.present?
+  %td= user.is_active ? t('view.active') : t('view.passive')
+  %td.action
+    = link_to [:hq, user],
+              class: 'btn btn-success btn-sm',
+              data: { toggle: :tooltip },
+              title: t('view.tooltips.zoom') do
+      %i.fas.fa-search-plus
+    = link_to edit_hq_user_path(user),
+              class: 'btn btn-info btn-sm',
+              data: { toggle: :tooltip },
+              title: t('view.tooltips.edit') do
+      %i.fas.fa-edit
+    = link_to [:hq, user],
+              class: 'btn btn-danger btn-sm',
+              method: :delete,
+              data: { confirm: t('view.tooltips.are_you_sure'), toggle: :tooltip },
+              title: t('view.tooltips.delete') do
+      %i.fas.fa-trash
+    - if user.is_active
+      = link_to toggle_is_active_hq_user_path(user),
+                class: 'btn btn-danger btn-sm',
+                method: :post,
+                data: { toggle: :tooltip },
+                title: t('view.make_passive') do
+        %i.fas.fa-ban
+    - else
+      = link_to toggle_is_active_hq_user_path(user),
+                class: 'btn btn-info btn-sm',
+                method: :post,
+                data: { toggle: :tooltip },
+                title: t('view.make_active') do
+        %i.fas.fa-check

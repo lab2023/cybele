@@ -1,0 +1,47 @@
+.card-header
+  %i.fas.fa-list
+  = t('activerecord.models.audits')
+  .float-right
+    %a.btn{ href: hq_audits_path, data: { toggle: 'toolbar-tooltip' }, title: t('view.reload') }
+      %i.fas.fa-sync
+    .badge.badge-pill.badge-secondary= audits.total_entries
+.card-body.filters
+  = render 'filters', search: search, auditable_types: auditable_types
+%table.table
+  %thead
+    %tr
+      %th{ data: { breakpoints: 'xs' } }
+        = sort_link(search, :id, t('activerecord.attributes.audits.id'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :user_type, t('activerecord.attributes.audits.user_type'))
+      %th= sort_link(search, :user_id, t('activerecord.attributes.audits.user'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :auditable_type, t('activerecord.attributes.audits.auditable_type'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :auditable_id, t('activerecord.attributes.audits.auditable_id'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :created_at, t('activerecord.attributes.audits.created_at'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :action, t('activerecord.attributes.audits.action'))
+      %th.actions{ data: { breakpoints: 'xs' } }
+        = t('view.table_actions')
+  %tbody
+    - audits.each do |audit|
+      %tr
+        %td= audit.id
+        %td
+          - if audit.try(:user_type).present?
+            = t("activerecord.models.#{audit.try(:user_type).try(:downcase)}")
+        %td= "#{audit.try(:user).try(:full_name)} - #{audit.try(:user).try(:email)}"
+        %td
+          - if audit.try(:auditable_type).present?
+            = t("activerecord.models.#{audit.try(:auditable_type).try(:underscore)}")
+        %td= audit.auditable_id
+        %td= l audit.created_at
+        %td= t("actions.#{audit.action}")
+        %td.actions
+          = link_to(hq_audit_path(id: audit),
+            class: 'btn btn-success btn-sm',
+            'data-toggle' => 'tooltip',
+            title: t('view.tooltips.zoom')) do
+            %i.fas.fa-eye

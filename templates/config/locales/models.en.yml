@@ -1,0 +1,74 @@
+en:
+  timestamp_fields: &timestamp
+    created_at: Creation date
+    updated_at: Updated date
+  activerecord:
+    models:
+      schemamigration: Schemamigration
+      admin: Admin
+      admins: Admins
+      user: User
+      users: Users
+      audit: Transaction history
+      audits: Transaction histories
+    attributes:
+      audits:
+        id: ID
+        user_type: User type
+        user: User
+        type: Type
+        type_id: Type ID
+        action: Action
+        actions: Actions
+        user_id: User ID
+        auditable_type: Auditable type
+        auditable_id: Auditable ID
+        action: Action type
+        <<: *timestamp
+      admin:
+        id: ID
+        email: Email Address
+        password: Password
+        current_password: Current password
+        password_confirmation: Password again
+        remember_me: Remember me
+        encrypted_password: Encrypted password
+        reset_password_token: Reset password token
+        reset_password_sent_at: Reset password sent date
+        remember_created_at: remember me creation date
+        sign_in_count: Sign in count
+        current_sign_in_at: Last login date
+        last_sign_in_at: Previous login date
+        last_seen_at: Last seen date
+        current_sign_in_ip: Current Sign in IP
+        last_sign_in_ip: last sign in IP
+        authentication_token: Authentication IP
+        name: First name
+        surname: Last name
+        is_active: Active?
+        is_blocked: Blocked?
+        time_zone: Time zone
+        <<: *timestamp
+      user:
+        id: ID
+        email: Email Address
+        password: Password
+        current_password: Current password
+        password_confirmation: Password again
+        remember_me: Remember me
+        encrypted_password: Encrypted password
+        reset_password_token: Reset password token
+        reset_password_sent_at: Reset password sent date
+        remember_created_at: remember me creation date
+        sign_in_count: Sign in count
+        current_sign_in_at: Last login date
+        last_sign_in_at: Previous login date
+        last_seen_at: Last seen date
+        current_sign_in_ip: Current Sign in IP
+        last_sign_in_ip: last sign in IP
+        authentication_token: Authentication IP
+        name: First name
+        surname: Last name
+        is_active: Active?
+        is_blocked: Blocked?
+        <<: *timestamp

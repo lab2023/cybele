@@ -1,0 +1,27 @@
+all:
+  exclude:
+    - 'spec/**/*'
+bitbucket:
+  slug: 'lab2023corp/<%= app_name%>'
+  username: 'username'
+  password: 'password'
+max_warnings: 50
+verbose: true
+
+## for local changes before the commit
+# before git add .
+# pronto run --unstaged
+# after git add .
+# pronto run --staged
+
+## for branch commits analyze different between develop
+# pronto run
+# pronto run -c origin/develop
+
+## for pull request
+# pronto run -f bitbucket_pr
+# pronto run -f bitbucket_pr -c origin/develop
+
+## for commit
+# pronto run -f bitbucket
+# pronto run -f bitbucket -c origin/develop

@@ -1,0 +1,3 @@
+- content_for :form_title do
+  = t('view.title.edit', resource_name: User.model_name.human)
+= render 'form', profile: @profile

@@ -1,0 +1,7 @@
+character_limit:
+  enabled: false
+  number: 72
+
+summary_character_limit:
+  enabled: false
+  number: 50

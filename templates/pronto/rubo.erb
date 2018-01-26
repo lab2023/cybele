@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'English'
+require 'rubocop'
+
+DISABLE_DIRECTORY = %w[db].freeze
+ADDED_OR_MODIFIED = /A|AM|^M/
+
+changed_files = `git status --porcelain`.split(/\n/).select do |file_name_with_status|
+  file_name_with_status =~ ADDED_OR_MODIFIED
+end
+changed_files = changed_files.map do |file_name_with_status|
+  file_name_with_status.split(' ')[1]
+end
+changed_files = changed_files.select do |file_name|
+  directory = file_name.split('/')[0]
+  !DISABLE_DIRECTORY.include?(directory) && File.extname(file_name) == '.rb'
+end
+changed_files = changed_files.join(' ')
+
+system("rubocop #{changed_files}") unless changed_files.empty?
+
+exit $CHILD_STATUS.to_s[-1].to_i

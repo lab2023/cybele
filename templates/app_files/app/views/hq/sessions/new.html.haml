@@ -1,0 +1,20 @@
+#admin-devise-page
+  .row.justify-content-center
+    .card
+      .card-header
+        %h3.text-center
+          = t('devise.session.title', model: resource.class.model_name.human)
+      .card-body
+        = simple_form_for resource,
+                          as: resource_name,
+                          url: session_path(resource_name) do |f|
+          .form-inputs
+            = f.input :email, required: false, autofocus: true
+            = f.input :password, required: false
+            - if devise_mapping.rememberable?
+              = f.input :remember_me, as: :boolean, label: t('devise.session.remember_me')
+          .form-actions
+            = f.button :submit, t('devise.session.button'), class: 'btn btn-primary btn-block'
+        %br/
+        .text-center
+          = render 'devise/shared/links'

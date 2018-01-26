@@ -1,11 +1,467 @@
 
 #### [Current]
+ * [320d265](../../commit/320d265) - __(İsmail AKBUDAK)__ Update README.md
+ * [2b203bd](../../commit/2b203bd) - __(İsmail Akbudak)__ Update README file
+ * [69f24dc](../../commit/69f24dc) - __(İsmail Akbudak)__ Merged in feature/remove_env_local_from_gitignore (pull request [#41](../../issues/41))
+
+Remove .env.local file from gitignore list
+
+ * [49a1a3d](../../commit/49a1a3d) - __(İsmail Akbudak)__ Remove .env.local file from gitignore list
+ * [abc7bc1](../../commit/abc7bc1) - __(İsmail Akbudak)__ Add local development commands to project template README.md
+ * [74b9143](../../commit/74b9143) - __(İsmail Akbudak)__ Code refactor for rspec tests
+ * [26f93a1](../../commit/26f93a1) - __(İsmail Akbudak)__ Pronto fasterer warning removed
+ * [eaf47e2](../../commit/eaf47e2) - __(İsmail Akbudak)__ Merged in feature/new_pronto_runners (pull request [#40](../../issues/40))
+
+KBP-175 KBP-181 implement new pronto runners and code refactor
+
+ * [5c3fbd3](../../commit/5c3fbd3) - __(İsmail Akbudak)__ KBP-175 #time 1h change application_responder setting mechanism and code refactor for project initialization
+ * [64838a3](../../commit/64838a3) - __(İsmail Akbudak)__ KBP-175 #time 30m fix rails console warnings
+ * [0edb266](../../commit/0edb266) - __(İsmail Akbudak)__ KBP-175 #time 30m add devise failure messages
+ * [377f36d](../../commit/377f36d) - __(İsmail Akbudak)__ KBP-175 #time 1h code refactor for viev files
+ * [951aa81](../../commit/951aa81) - __(İsmail Akbudak)__ KBP-175 #time 1h code refactor for view layouts
+ * [9d4c156](../../commit/9d4c156) - __(İsmail Akbudak)__ KBP-175 #time 1h pronto runner problems solved
+ * [6d980cc](../../commit/6d980cc) - __(İsmail Akbudak)__ KBP-175 #time 40m fix routes view and add dependency controller
+ * [1cd981c](../../commit/1cd981c) - __(İsmail Akbudak)__ KBP-175 KBP-181 #time 2h fix environment variable definition and add sidekiq control in docker
+ * [dae9146](../../commit/dae9146) - __(İsmail Akbudak)__ KBP-175 KBP-181 #time 1h fix app_name errors
+ * [e164182](../../commit/e164182) - __(İsmail Akbudak)__ KBP-175 KBP-181 #time 10h code refactor for project template
+ * [48c2607](../../commit/48c2607) - __(İsmail Akbudak)__ KBP-175 #time 10h code refactor and add missing files
+ * [f45680e](../../commit/f45680e) - __(İsmail Akbudak)__ KBP-175 #time 5h improve code quality
+ * [2daa208](../../commit/2daa208) - __(İsmail Akbudak)__ KBP-175 #time 3h add usefull pronto runners
+ * [bc8dd3b](../../commit/bc8dd3b) - __(Hamdi Bayhan)__ Merged in feature/fix_rubocop_warnings_for_first_create (pull request [#38](../../issues/38))
+
+KBP-179 #time 90m - Edit rubocop warnings
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [2e2fdb8](../../commit/2e2fdb8) - __(hamdibayhan)__ KBP-179 #time 90m - Edit rubocop warnings
+ * [346a510](../../commit/346a510) - __(Hamdi Bayhan)__ Merged in feature/update_fontawesome_version (pull request [#37](../../issues/37))
+
+KBP-180 #time 3h - Fontawesome version was updated
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [ff613ce](../../commit/ff613ce) - __(Fadime Özhan)__ Merged in feature/integrate_mailtrap_instead_of_letter_opener (pull request [#36](../../issues/36))
+
+KBP-171 #time 2h - integrate mailtrap instead of letter_opener
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [b7014b2](../../commit/b7014b2) - __(fadimezhan)__ KBP-171 #time 10m - join mailtrap settings with smtp
+ * [9b61161](../../commit/9b61161) - __(hamdibayhan)__ KBP-180 #time 3h - Fontawesome version was updated
+ * [66c4895](../../commit/66c4895) - __(fadimezhan)__ KBP-171 #time 1h - add missing environment variables
+ * [2abdbfc](../../commit/2abdbfc) - __(Hamdi Bayhan)__ Merged in feature/edit_rubocop_warnings (pull request [#35](../../issues/35))
+
+KBP-179 #time 10m - Edit rubocop warnings
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [19a0b04](../../commit/19a0b04) - __(Fadime Özhan)__ Merged in feature/add_guardfile_to_project_folder (pull request [#33](../../issues/33))
+
+KBP-173 #time 1h - add guardfile gem
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [de4f710](../../commit/de4f710) - __(hamdibayhan)__ KBP-179 #time 10m - Change before_filter with before_action
+ * [e34e314](../../commit/e34e314) - __(fadimezhan)__ KBP-171 #time 5m - refactor on test for mailer
+ * [d19728b](../../commit/d19728b) - __(fadimezhan)__ KBP-171 #time 2h - integrate mailtrap instead of letter_opener
+ * [3bc916c](../../commit/3bc916c) - __(hamdibayhan)__ KBP-179 #time 10m - Edit rubocop warnings
+ * [1c57749](../../commit/1c57749) - __(Hamdi Bayhan)__ Merged in feature/make_user_side (pull request [#32](../../issues/32))
+
+KBP-117 #time 1d - User side was done
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [0ac62dd](../../commit/0ac62dd) - __(hamdibayhan)__ KBP-117 #time 3m - Conflict was done
+ * [d4fa96b](../../commit/d4fa96b) - __(hamdibayhan)__ KBP-117 #time 3m - Procfile file name bug was edited
+ * [d841e7c](../../commit/d841e7c) - __(Hamdi Bayhan)__ Merged in feature/make_basic_authentication (pull request [#34](../../issues/34))
+
+KBP-178 #time 2h - Implement basic authentication was done
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [dd4b75b](../../commit/dd4b75b) - __(hamdibayhan)__ KBP-178 #time 1m - Change comment
+ * [1b48709](../../commit/1b48709) - __(hamdibayhan)__ KBP-178 #time 2h - Implement basic authentication was done
+ * [a32de32](../../commit/a32de32) - __(fadimezhan)__ KBP-173 #time 1h - inject guardfile content
+ * [dc4226a](../../commit/dc4226a) - __(hamdibayhan)__ KBP-117 #time 1d - User side was done
+ * [251a5e9](../../commit/251a5e9) - __(Eşref VİDUŞLU)__ Merged in feature/landing_pages (pull request [#29](../../issues/29))
+
+KBP-119 #time 8h - Landing pages created.
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [7647fcc](../../commit/7647fcc) - __(esref.viduslu)__ KBP-119 #time 5m - Conflict resolved.
+ * [8dd3651](../../commit/8dd3651) - __(hamdibayhan)__ KBP-118 #time 1.5d - Hq side design was done
+ * [10224c6](../../commit/10224c6) - __(fadimezhan)__ KBP-172 #time 15m - remove settings.local.yml file after generating config
+ * [d4c076e](../../commit/d4c076e) - __(fadimezhan)__ KBP-172 #time 5m - rename method name
+ * [265796b](../../commit/265796b) - __(fadimezhan)__ KBP-172 #time 1h - remove config/settings.local.yml file
+ * [9905a08](../../commit/9905a08) - __(esref.viduslu)__ KBP-119 #time 5m - Conflict resolved.
+ * [0932e38](../../commit/0932e38) - __(Hamdi Bayhan)__ Merged in feature/make_hq_side_design (pull request [#31](../../issues/31))
+
+KBP-118 #time 1.5d - Hq side design was done
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [f9ef025](../../commit/f9ef025) - __(hamdibayhan)__ KBP-118 #time 1.5d - Hq side design was done
+ * [06aa859](../../commit/06aa859) - __(fadimezhan)__ KBP-173 #time 1h - add guardfile gem
+ * [0228f4c](../../commit/0228f4c) - __(Fadime Özhan)__ Merged in feature/remove_config/settings.local.yml_file (pull request [#30](../../issues/30))
+
+KBP-172 #time 1h - remove config/settings.local.yml file
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [b986d82](../../commit/b986d82) - __(fadimezhan)__ KBP-172 #time 15m - remove settings.local.yml file after generating config
+ * [cf69c9a](../../commit/cf69c9a) - __(fadimezhan)__ KBP-172 #time 5m - rename method name
+ * [2aaab09](../../commit/2aaab09) - __(fadimezhan)__ KBP-172 #time 1h - remove config/settings.local.yml file
+ * [ff21cca](../../commit/ff21cca) - __(esref.viduslu)__ KBP-119 #time 3h - Welcome controller and views created
+ * [edcbf38](../../commit/edcbf38) - __(Hamdi Bayhan)__ Merged in feature/make_hq_side (pull request [#28](../../issues/28))
+
+KBP-118 #time 2d - Hq side was done without simple admin template
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [941958b](../../commit/941958b) - __(esref.viduslu)__ ARI-119 #time 8h - Landing pages created.
+ * [0ae610a](../../commit/0ae610a) - __(hamdibayhan)__ KBP-118 #time 1m - Remove unnecessary space line
+ * [37e651a](../../commit/37e651a) - __(hamdibayhan)__ KBP-118 #time 2d - Hq side was done without simple admin template
+ * [3fb4c48](../../commit/3fb4c48) - __(Hamdi Bayhan)__ Merged in feature/configure_bootstrap_and_sass (pull request [#27](../../issues/27))
+
+KBP-116 #time 3h - Configure bootstrap and sass
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [3e06f11](../../commit/3e06f11) - __(hamdibayhan)__ KBP-116 #time 15m - Conflict was resolved
+ * [b17d216](../../commit/b17d216) - __(hamdibayhan)__ KBP-116 #time 3h - Configure bootstrap and sass
+ * [11f3ec3](../../commit/11f3ec3) - __(Eşref VİDUŞLU)__ Merged in feature/git_and_gitflow_integration (pull request [#26](../../issues/26))
+
+KBP-141 #time 2h - Git and git flow integrated.
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+
+ * [d7e1329](../../commit/d7e1329) - __(esref.viduslu)__ KBP-141 #time 5m - Conflict fixed.
+ * [c1a306a](../../commit/c1a306a) - __(esref.viduslu)__ KBP-141 #time 2h - Git and git flow integrated.
+ * [ad8e286](../../commit/ad8e286) - __(İsmail Akbudak)__ Merge with develop and add dependency for thor and development info to README
+ * [407d8e5](../../commit/407d8e5) - __(İsmail Akbudak)__ Add dependency for thor and development info to README
+ * [ee248f5](../../commit/ee248f5) - __(Fatih Avsan)__ Merged in feature/force_ssl (pull request [#24](../../issues/24))
+
+KBP-138 #time 1.5h - added ssl control staging and production
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [fd1f038](../../commit/fd1f038) - __(FatihAvsan)__ KBP-138 #time 20m - fixed conflict and fix rubocop error
+ * [a5ae640](../../commit/a5ae640) - __(FatihAvsan)__ KBP-138 #time 20m - fixed conflict
+ * [e97d883](../../commit/e97d883) - __(İsmail Akbudak)__ Merged in feature/pronto_implementation (pull request [#25](../../issues/25))
+
+KBP-145 #time 1h add pronto and rubocop to created project
+
+ * [505c73b](../../commit/505c73b) - __(FatihAvsan)__ KBP-138 #time 20m - added RAILS_FORCE_SSL environments
+ * [95659f9](../../commit/95659f9) - __(İsmail Akbudak)__ KBP-145 #time 1h add pronto and rubocop to created project
+ * [30dce39](../../commit/30dce39) - __(İsmail Akbudak)__ Merged in feature/docker_environment (pull request [#23](../../issues/23))
+
+KBP-144 use docker in development environment
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+
+ * [365bb6a](../../commit/365bb6a) - __(İsmail Akbudak)__ KBP-144 #time 5m code refactor for pronto result
+ * [6ec9e08](../../commit/6ec9e08) - __(İsmail Akbudak)__ KBP-144 #time 5m code refactor for pronto result
+ * [fb6d99c](../../commit/fb6d99c) - __(FatihAvsan)__ KBP-138 #time 10m - fixed code
+ * [07f3b07](../../commit/07f3b07) - __(İsmail Akbudak)__ Add pronto to gem development dependencies
+ * [ce012b8](../../commit/ce012b8) - __(İsmail Akbudak)__ KBP-144 #time 20m implement docker development environment specs
+ * [c153106](../../commit/c153106) - __(Hamdi Bayhan)__ Merged in feature/fix_settings_appname (pull request [#22](../../issues/22))
+
+KBP-169 #time 20m - Fix settings.yml file bug
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [238066e](../../commit/238066e) - __(hamdibayhan)__ KBP-169 #time 2m - Conflict was fixed
+ * [8970d1e](../../commit/8970d1e) - __(İsmail Akbudak)__ Merge with develop
+ * [5179fd2](../../commit/5179fd2) - __(İsmail Akbudak)__ Merged in feature/fix_mailer_settings_yml_content (pull request [#21](../../issues/21))
+
+KBP-170 #time 5m fix email settings.yml content
+
+ * [dda1fbb](../../commit/dda1fbb) - __(hamdibayhan)__ KBP-169 #time 20m - Fix settings.yml file bug
+ * [e4a9922](../../commit/e4a9922) - __(İsmail Akbudak)__ KBP-170 #time 5m fix email settings.yml content
+ * [7769295](../../commit/7769295) - __(Hamdi Bayhan)__ Merged in feature/configure_custom_error_pages (pull request [#20](../../issues/20))
+
+KBP-140 #time 2h - Configure custom error pages
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [f058b96](../../commit/f058b96) - __(hamdibayhan)__ KBP-140 #time 10m - Code was improved
+ * [7015df2](../../commit/7015df2) - __(FatihAvsan)__ KBP-138 #time 1.5h - added ssl control staging and production
+ * [e43d00c](../../commit/e43d00c) - __(İsmail Akbudak)__ KBP-144 #time 1h implement docker development environment
+ * [1fa9310](../../commit/1fa9310) - __(hamdibayhan)__ KBP-140 #time 2m - Code was improved
+ * [7b09310](../../commit/7b09310) - __(hamdibayhan)__ KBP-140 #time 45m - Code was improved
+ * [f30c5a7](../../commit/f30c5a7) - __(hamdibayhan)__ KBP-140 #time 2h - Configure custom error pages
+ * [5abb135](../../commit/5abb135) - __(Hamdi Bayhan)__ Merged in feature/prepare_git_ignore (pull request [#19](../../issues/19))
+
+KBP-135 #time 25m - Prepare ignored files, folders etc. for git via gitignore file
+
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+
+ * [f83a9d1](../../commit/f83a9d1) - __(Hamdi Bayhan)__ Merged in feature/fix_sidekiq_bug (pull request [#18](../../issues/18))
+
+KBP-168 #time 3m - Fix sidekiq bug
+
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+
+ * [438a06b](../../commit/438a06b) - __(hamdibayhan)__ KBP-135 #time 25m - Prepare ignored files, folders etc. for git via gitignore file
+ * [6be2865](../../commit/6be2865) - __(hamdibayhan)__ KBP-168 #time 3m - Fix sidekiq bug
+ * [571b1e4](../../commit/571b1e4) - __(Fatih Avsan)__ Merged in feature/integrate_devise_gem (pull request [#17](../../issues/17))
+
+KBP-129 #time 4h - integrate devise gem
+
+ * [422c0c6](../../commit/422c0c6) - __(FatihAvsan)__ KBP-129 #time 10m - fixed conflict
+ * [a510ba6](../../commit/a510ba6) - __(Fatih Avsan)__ Merged in feature/configure_mailer_settings (pull request [#16](../../issues/16))
+
+KBP-137 Feature/configure mailer settings
+
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [b88705e](../../commit/b88705e) - __(FatihAvsan)__ KBP-137 #time 10m - added mail_test_helpers file
+ * [337e0ee](../../commit/337e0ee) - __(FatihAvsan)__ KBP-129 #time 10m - added gem_test_helpers file
+ * [a6c7940](../../commit/a6c7940) - __(FatihAvsan)__ KBP-137 #time 5m - fixed code
+ * [aa1f34d](../../commit/aa1f34d) - __(FatihAvsan)__ KBP-129 #time 5m - fixed code
+ * [0de34de](../../commit/0de34de) - __(FatihAvsan)__ KBP-129 #time 10m - fixed code
+ * [564f972](../../commit/564f972) - __(FatihAvsan)__ KBP-129 #time 30m - made DRY code
+ * [0b4b361](../../commit/0b4b361) - __(FatihAvsan)__ KBP-137 #time 15m - added spec_helper method
+ * [6080e0e](../../commit/6080e0e) - __(FatihAvsan)__ KBP-137 #time 15m - added letter_opener gem
+ * [6501562](../../commit/6501562) - __(FatihAvsan)__ KBP-129 #time 4h - integrate devise gem
+ * [b4549bb](../../commit/b4549bb) - __(FatihAvsan)__ KBP-137 #time 15m - code fixed
+ * [88f7881](../../commit/88f7881) - __(FatihAvsan)__ KBP-137 #time 10m - code fixed
+ * [98cc4b2](../../commit/98cc4b2) - __(FatihAvsan)__ KBP-137 #time 30m - added mail settings
+ * [d3014c7](../../commit/d3014c7) - __(Eşref VİDUŞLU)__ Merged in feature/fixed_file_extension (pull request [#15](../../issues/15))
+
+Bullet extension fixed, app_generator edited
+
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+
+ * [d8620ce](../../commit/d8620ce) - __(FatihAvsan)__ KBP-137 #time 1h - configure mailer
+ * [5a51e99](../../commit/5a51e99) - __(esref.viduslu)__ Bullet extension fixed, app_generator edited
+ * [2742f8a](../../commit/2742f8a) - __(Fatih Avsan)__ Merged in feature/integrate_bullet_gem (pull request [#13](../../issues/13))
+
+KBP-131 #time 1.5h - integrate bullet gem
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+
+ * [0376775](../../commit/0376775) - __(FatihAvsan)__ KBP-131 #time 5m - fixed conflict
+ * [0d5ab71](../../commit/0d5ab71) - __(Eşref VİDUŞLU)__ Merged in feature/integrate_paperclip (pull request [#14](../../issues/14))
+
+KBP-122 #time 1h 30m - Paperclip was integrated.
+
+ * [f9f4909](../../commit/f9f4909) - __(esref.viduslu)__ KBP-122 #time 10m - Rubocop offenses fixed.
+ * [cdf9e6a](../../commit/cdf9e6a) - __(FatihAvsan)__ KBP-131 #time 30m - code fixed
+ * [46a4c8e](../../commit/46a4c8e) - __(esref.viduslu)__ KBP-122 #time 1h 30m - Paperclip integration edited and conflict resolved
+ * [90d4558](../../commit/90d4558) - __(FatihAvsan)__ KBP-131 #time 1.5h - intagrate bullet gem
+ * [e10314b](../../commit/e10314b) - __(Fatih Avsan)__ Merged in feature/integrate_i18n_gem (pull request [#12](../../issues/12))
+
+KBP-130 #time 30m - integrate rails-i18n gem
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+
+ * [0806df7](../../commit/0806df7) - __(Eşref VİDUŞLU)__ Merged in feature/integrate_dotenv_rails_gem (pull request [#10](../../issues/10))
+
+Feature/integrate dotenv rails gem
+
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+
+ * [a6554e5](../../commit/a6554e5) - __(esref.viduslu)__ KBP-123 #time 5m - Conflict was resolved.
+ * [c9bde7f](../../commit/c9bde7f) - __(esref.viduslu)__ KBP-123 #time 30m - dotenv gem added to the top of the Gemfile list
+ * [aa8dfe6](../../commit/aa8dfe6) - __(FatihAvsan)__ KBP-130 #time 5m - fixed conflict
+ * [51efdd7](../../commit/51efdd7) - __(FatihAvsan)__ KBP-130 #time 30m - integrate rails-i18n gem
+ * [8c6675e](../../commit/8c6675e) - __(Fatih Avsan)__ Merged in feature/version_changelog (pull request [#11](../../issues/11))
+
+KBP-142 KBP-143 Feature/version changelog
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [3980e65](../../commit/3980e65) - __(FatihAvsan)__ KBP-143 #time 10m - code fixed
+ * [2b60565](../../commit/2b60565) - __(FatihAvsan)__ KBP-143 #time 30m - delete CAHNGELOG.md and added test for public/VERSION.txt
+ * [c6dd629](../../commit/c6dd629) - __(Eşref VİDUŞLU)__ Merged in feature/integrate_haml_and_haml_rails_gem (pull request [#9](../../issues/9))
+
+Feature/integrate haml and haml rails gem
+
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [8b5a94b](../../commit/8b5a94b) - __(esref.viduslu)__ KBP-122 #time 1h 30m - Paperclip was integrated.
+ * [600ce7b](../../commit/600ce7b) - __(FatihAvsan)__ KBP-143 #time 30m - updated CHANGELOG.md
+ * [2d428dc](../../commit/2d428dc) - __(esref.viduslu)__ KBP-123 #time 5m - Rubocop offenses fixed
+ * [ea61a85](../../commit/ea61a85) - __(FatihAvsan)__ KBP-142 #time 4h - added VERSION.txt
+ * [dabbefd](../../commit/dabbefd) - __(esref.viduslu)__ KBP-123 #time 3h - Dotenv gem added in gemfile and env.sample, .env.local, .env.staging, .env.production files created.
+ * [34c2630](../../commit/34c2630) - __(esref.viduslu)__ KBP-124 #time 5m - Conflict was resolved.
+ * [98e36cd](../../commit/98e36cd) - __(esref.viduslu)__ KBP-124 #time 15m - File and folder naming changed
+ * [6264cf3](../../commit/6264cf3) - __(esref.viduslu)__ KBP-124 #time 15m - New not default projectc spec edited
+ * [8434185](../../commit/8434185) - __(Fatih Avsan)__ Merged in feature/locale_format_into_language (pull request [#8](../../issues/8))
+
+KBP-139 #time 2h - configure locale language
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [0239a0a](../../commit/0239a0a) - __(esref.viduslu)__ KBP-124 #time 4h - Haml and haml-rails gem integrate cybele gem.
+ * [f78931e](../../commit/f78931e) - __(FatihAvsan)__ KBP-139 #time 30m - added english language files
+ * [1090abc](../../commit/1090abc) - __(FatihAvsan)__ KBP-139 #time 15m - fixed code
+ * [cbb1c0e](../../commit/cbb1c0e) - __(FatihAvsan)__ KBP-139 #time 10m - update pull request
+ * [8844855](../../commit/8844855) - __(Fatih Avsan)__ Merged in feature/intagrate_important_gems (pull request [#7](../../issues/7))
+
+KBP-134 #time 3h - intagrete important gems
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [e7f9411](../../commit/e7f9411) - __(FatihAvsan)__ KBP-139 #time 2h - configure locale language
+ * [48e2991](../../commit/48e2991) - __(FatihAvsan)__ KBP-134 #time 5m - fixed conflict
+ * [3e3da9b](../../commit/3e3da9b) - __(FatihAvsan)__ KBP-134 #time 3h - intagrete important gems
+ * [3072884](../../commit/3072884) - __(Fatih Avsan)__ Merged in feature/integrate_show_for_gem (pull request [#6](../../issues/6))
+
+KBP-132 #time 4h - integrate show_for gem to cybele
+
+Approved-by: Hamdi Bayhan <hamdi.bayhan@lab2023.com>
+Approved-by: Eşref VİDUŞLU <esref.viduslu@lab2023.com>
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [2714d2e](../../commit/2714d2e) - __(FatihAvsan)__ KBP-132 #time 10m - fixed rubocop error
+ * [fe43535](../../commit/fe43535) - __(FatihAvsan)__ KBP-132 #time 6h - integrate show_for gem to cybele
+ * [3f132b4](../../commit/3f132b4) - __(Hamdi Bayhan)__ Merged in feature/integrate_recipient_interceptor_gem (pull request [#5](../../issues/5))
+
+KBP-125 KBP-126 KBP-128 KBP-127 KBP-136Feature/integrate recipient interceptor gem
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+Approved-by: Fatih Avsan <fatih.avsan@lab2023.com>
+
+ * [e6d287c](../../commit/e6d287c) - __(hamdibayhan)__ KBP-127 #time 30m -Code was improved after rubocop
+ * [f207980](../../commit/f207980) - __(hamdibayhan)__ KBP-127 #time 5m -Code was improved
+ * [8f67ade](../../commit/8f67ade) - __(hamdibayhan)__ KBP-127 #time 5m - Files were moved to self main folders
+ * [6e386e5](../../commit/6e386e5) - __(hamdibayhan)__ KBP-127 #time 1m - Code was improved
+ * [f0ba41a](../../commit/f0ba41a) - __(hamdibayhan)__ KBP-127 #time 90m - Code was improved
+ * [6ae4d7b](../../commit/6ae4d7b) - __(hamdibayhan)__ KBP-127 #time 3h - Code was improved and simple_form gem was moved to optional choose
+ * [d97dd54](../../commit/d97dd54) - __(hamdibayhan)__ KBP-136 #time 30m - Test were written for staging secret_key_base and secret_key_base was added to secret.yml file for staging
+ * [823cda7](../../commit/823cda7) - __(hamdibayhan)__ KBP-127 #time 1h - Test were written for config gem, simple_form gem, rollbar gem, recipient_interceptor gem and staging environment
+ * [2dd6b15](../../commit/2dd6b15) - __(hamdibayhan)__ KBP-127 #time 40m - simple_form gem was integrated
+ * [6142c7a](../../commit/6142c7a) - __(hamdibayhan)__ KBP-128 #time 20m - Integrate rollbar GEM
+ * [08199a0](../../commit/08199a0) - __(hamdibayhan)__ KBP-126 #time 40m - Integrate config GEM and fill settings.yml file
+ * [e37e096](../../commit/e37e096) - __(hamdibayhan)__ KBP-125 #time 4h - Integrate recipient_interceptor GEM
+ * [5efa2dc](../../commit/5efa2dc) - __(İsmail Akbudak)__ Merged in feature/integrate_responder (pull request [#4](../../issues/4))
+
+KBP-121 integrate responder
+
+Approved-by: Tayfun Öziş ERİKAN <tayfun.ozis.erikan@lab2023.com>
+
+ * [95f9a5c](../../commit/95f9a5c) - __(İsmail Akbudak)__ KBP-121 #time 1h implement cli helper specs
+ * [e87c3d5](../../commit/e87c3d5) - __(İsmail Akbudak)__ KBP-121 #time 2h implement thor ask questions for cybele options
+ * [74e8468](../../commit/74e8468) - __(İsmail Akbudak)__ KBP-121 #time 7h implement responders gem and code refactor for app builder
+ * [bd60c8e](../../commit/bd60c8e) - __(İsmail Akbudak)__ Merged in feature/integrate_sidekiq (pull request [#3](../../issues/3))
+
+KBP-133 #time 4h implement sidekiq integration
+
+ * [ad5062f](../../commit/ad5062f) - __(İsmail Akbudak)__ KBP-133 #time 4h implement sidekiq integration
+ * [69e5e31](../../commit/69e5e31) - __(İsmail Akbudak)__ Merged in feature/integrate_postgresql (pull request [#2](../../issues/2))
+
+KBP-120 integrate postgresql as a default for cybele
+
+ * [382cffe](../../commit/382cffe) - __(İsmail Akbudak)__ KBP-120 #time 5m update postgresql database template file pool size
+ * [91bbd0e](../../commit/91bbd0e) - __(İsmail Akbudak)__ KBP-120 #time 5m remove unnecessary file for robocop
+ * [13a508b](../../commit/13a508b) - __(İsmail Akbudak)__ KBP-120 #time 3h implement postgresql as a default for cybele
+ * [3dc9205](../../commit/3dc9205) - __(İsmail Akbudak)__ Merged in feature/rails_upgrade (pull request [#1](../../issues/1))
+
+Remove old files and start to create Rails 5 App
+
+ * [4e0c7fe](../../commit/4e0c7fe) - __(İsmail Akbudak)__ Add option for use heroku and update rails version
+ * [1d1cfc1](../../commit/1d1cfc1) - __(İsmail Akbudak)__ Remove old files and start to create Rails 5 App
+ * [e3f3dba](../../commit/e3f3dba) - __(İsmail Akbudak)__ Merge tag 'v1.9.2' into develop
+
+v1.9.2
+
+#### v1.9.2
+ * [214a3f5](../../commit/214a3f5) - __(İsmail Akbudak)__ update version v1.9.2
+ * [b0ea802](../../commit/b0ea802) - __(İsmail Akbudak)__ fix errors
+ * [dcf32d1](../../commit/dcf32d1) - __(İsmail Akbudak)__ [#116](../../issues/116) add heroku procfile
+ * [ca9bd3f](../../commit/ca9bd3f) - __(İsmail Akbudak)__ [#117](../../issues/117) remove sinatra gem from group
+ * [9fe6b69](../../commit/9fe6b69) - __(İsmail Akbudak)__ [#118](../../issues/118) remove unnccessary keyword
+ * [ffd2569](../../commit/ffd2569) - __(İsmail Akbudak)__ [#119](../../issues/119) fix wrong keyword
+ * [159d406](../../commit/159d406) - __(İsmail Akbudak)__ [#120](../../issues/120) remove unused rake task
+ * [8e420a5](../../commit/8e420a5) - __(İsmail Akbudak)__ [#122](../../issues/122) add before filter for time zone setter method
+ * [7b6cb4c](../../commit/7b6cb4c) - __(İsmail Akbudak)__ [#123](../../issues/123) change application layout and add profile link to welcome page and navigation bar
+ * [61cf830](../../commit/61cf830) - __(İsmail Akbudak)__ [#124](../../issues/124) initialize client side validation and enable on forms
+ * [4632634](../../commit/4632634) - __(İsmail Akbudak)__ [#125](../../issues/125) fix element data toggle
+
+#### v1.9.1
+ * [3cbf830](../../commit/3cbf830) - __(ismail Akbudak)__ fix indent error
+ * [fe34adf](../../commit/fe34adf) - __(ismail Akbudak)__ update version v1.9.1
+ * [8048a27](../../commit/8048a27) - __(ismail Akbudak)__ capitalize app name on views
+
+#### v1.9.0
+ * [d76fee1](../../commit/d76fee1) - __(ismail Akbudak)__ update readme
+ * [e9518da](../../commit/e9518da) - __(ismail Akbudak)__ add fontawesome for login layout
+ * [ba99b3d](../../commit/ba99b3d) - __(ismail Akbudak)__ improve audit list page
+ * [ba23509](../../commit/ba23509) - __(ismail Akbudak)__ fix error
+ * [123b032](../../commit/123b032) - __(ismail Akbudak)__ fix error
+ * [a82b49b](../../commit/a82b49b) - __(ismail Akbudak)__ add locales for audit and link on admin portal
+ * [1872c56](../../commit/1872c56) - __(ismail Akbudak)__ add audit controller and shows
+ * [4739ee0](../../commit/4739ee0) - __(ismail Akbudak)__ add portal title
+ * [849a4d7](../../commit/849a4d7) - __(ismail Akbudak)__ add fontawesome to frontend
+ * [0003d38](../../commit/0003d38) - __(ismail Akbudak)__ complete user resource maangement
+ * [35b851f](../../commit/35b851f) - __(ismail Akbudak)__ fix filter query
+ * [f8712e2](../../commit/f8712e2) - __(ismail Akbudak)__ complete admin resource management
+ * [16ab759](../../commit/16ab759) - __(ismail Akbudak)__ add missing locales
+ * [8d81a6c](../../commit/8d81a6c) - __(ismail Akbudak)__ add locations controllers and views
+ * [90e4810](../../commit/90e4810) - __(ismail Akbudak)__ improve readme file
+ * [8621d10](../../commit/8621d10) - __(ismail Akbudak)__ remove git add command
+ * [dae4f83](../../commit/dae4f83) - __(ismail Akbudak)__ add other partial templates and add git commands
+ * [4b78fb7](../../commit/4b78fb7) - __(ismail Akbudak)__ remove unused methods
+ * [8b68e27](../../commit/8b68e27) - __(ismail Akbudak)__ change default favicon
+ * [89362ac](../../commit/89362ac) - __(ismail Akbudak)__ fix errors and improve contents
+ * [74ece79](../../commit/74ece79) - __(ismail Akbudak)__ fix error
+ * [1952557](../../commit/1952557) - __(ismail Akbudak)__ add localization for buttons
+ * [6e6fa6d](../../commit/6e6fa6d) - __(ismail Akbudak)__ add hq layouts partials
+ * [0c104e3](../../commit/0c104e3) - __(ismail Akbudak)__ fix small details
+ * [d19a4b5](../../commit/d19a4b5) - __(ismail Akbudak)__ fix error
+ * [4d454ef](../../commit/4d454ef) - __(ismail Akbudak)__ add force to remvove_file methods
+ * [a2617cf](../../commit/a2617cf) - __(ismail Akbudak)__ fix error
+ * [58527af](../../commit/58527af) - __(ismail Akbudak)__ add required change info to README file
+ * [23810c9](../../commit/23810c9) - __(ismail Akbudak)__ code refactor
+ * [aaa838d](../../commit/aaa838d) - __(ismail Akbudak)__ add user and admin mailer
+ * [bda5265](../../commit/bda5265) - __(ismail Akbudak)__ code refactor
+ * [6df8ef1](../../commit/6df8ef1) - __(ismail Akbudak)__ complete requeired files copy process
+ * [b25e4cf](../../commit/b25e4cf) - __(ismail Akbudak)__ add trix editor and add hq assets
+ * [30e3498](../../commit/30e3498) - __(ismail Akbudak)__ add locale for layouts
+ * [b8e1f1a](../../commit/b8e1f1a) - __(ismail Akbudak)__ complete copiying of files
+ * [6babcef](../../commit/6babcef) - __(ismail Akbudak)__ fix layout error
+ * [c4536a9](../../commit/c4536a9) - __(ismail Akbudak)__ add namespaces controller
+ * [b1b0386](../../commit/b1b0386) - __(ismail Akbudak)__ fix route.rb copy error
+ * [78536e3](../../commit/78536e3) - __(ismail Akbudak)__ fix error
+ * [8cd3bc8](../../commit/8cd3bc8) - __(ismail Akbudak)__ complete model structure
+ * [e2dc390](../../commit/e2dc390) - __(ismail Akbudak)__ add new config to bullet
+ * [2d5b90d](../../commit/2d5b90d) - __(ismail Akbudak)__ code refactor
+ * [1a2b3d2](../../commit/1a2b3d2) - __(ismail Akbudak)__ code refactor and add rollbar generate command
+ * [00b7251](../../commit/00b7251) - __(ismail Akbudak)__ fix setting and mailer error
+ * [ef5bf14](../../commit/ef5bf14) - __(ismail Akbudak)__ complete mailer environement settings
+ * [9e27376](../../commit/9e27376) - __(ismail Akbudak)__ complete assets
+ * [7b9ae50](../../commit/7b9ae50) - __(ismail Akbudak)__ fix missing locale error
+ * [60c8598](../../commit/60c8598) - __(ismail Akbudak)__ add email locale file and improve content of locale files
+ * [c459f7e](../../commit/c459f7e) - __(ismail Akbudak)__ add basci authentication concern and improve application controller content
+ * [0da5a11](../../commit/0da5a11) - __(ismail Akbudak)__ update ruby version and fix error
+ * [22a971d](../../commit/22a971d) - __(ismail Akbudak)__ update version and add new gems to template gemfile
+
+#### v1.8.0
+ * [a2c77a3](../../commit/a2c77a3) - __(Ismail Akbudak)__ update changelog
  * [1688060](../../commit/1688060) - __(Ismail Akbudak)__ update version v1.8.0
  * [e96a7d0](../../commit/e96a7d0) - __(Ismail Akbudak)__ remove rack-timeout gem
  * [67e0433](../../commit/67e0433) - __(Ismail Akbudak)__ update gem versions and add new gems
  * [bfe1199](../../commit/bfe1199) - __(Ismail Akbudak)__ update recipes_matic gem version to v1.3.0
- * [f437335](../../commit/f437335) - __(İsmail Akbudak)__ Update simple_form_bootstrap.rb
- * [f01dec8](../../commit/f01dec8) - __(ismail Akbudak)__ add chosen with boostrap template
+ * [f437335](../../commit/f437335) - __(İsmail)__ Update simple_form_bootstrap.rb
+ * [f01dec8](../../commit/f01dec8) - __(ismail akbudak)__ add chosen with boostrap template
 
 #### v1.7.2
  * [607fd19](../../commit/607fd19) - __(Ismail Akbudak)__ update changelog

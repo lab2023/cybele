@@ -1,0 +1,5 @@
+.card
+  = render 'list', audits: @audits, search: @search, auditable_types: @auditable_types
+  .card-footer
+    .pagination.pagination-sm
+      = will_paginate @audits, renderer: BootstrapPagination::Rails, bootstrap: 3

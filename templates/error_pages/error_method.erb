@@ -1,0 +1,10 @@
+
+
+  def server_error(exception)
+    Rollbar.error "ApplicationController#server_error --exception: #{exception}"
+    render template: 'errors/internal_server_error', status: 500
+  end
+
+  def page_not_found
+    render template: 'errors/not_found', status: 404
+  end

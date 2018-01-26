@@ -13,8 +13,8 @@ western colonies from around the 6th century BCE.
 
 Before generating your application, you will need:
 
-* Ruby ~> 2.3
-* Rails ~> 4.2
+* Ruby ~> 2.3.5
+* Rails ~> 5.1.4
 
 ## Usage
 
@@ -24,36 +24,32 @@ First you should install the cybele gem than you can use it for creating new gem
 gem install cybele
 cybele project_name
 ```
+ 
 
 When the initialization is completed, there will be some required settings.
 
 * Set .env.local variables
-* Set access_token in config/initializers/rollbar.rb
-* Set default values for is_active, time_zone variable using in User and Admin model migrations db/migrate/*.rb
-* Change username and password in config/settings.yml
-* In public folder run this command ln -s ../VERSION.txt VERSION.txt
-
-We are using sidekiq  with redis-server for background jobs.
-Before the run application look our env.sample file. It should be in project root directory with this name .env.local
-```bash
-bundle
-redis-server
-rake sidekiq:start
-rake db:create
-rake db:migrate
-rake dev:seed
-rails s
-```
+* If you don't want to use Rollbar in development environment, you can disable for development environment in config/initializers/rollbar.rb
+* Change username and passwords in config/settings.yml
 
 ## What cybele do and included?
 
-Let's look the [Gemfile](https://raw.github.com/lab2023/cybele/develop/templates/cybele_Gemfile) which created by cybele.
+Let's look options
+
+```ruby
+cybele --help
+```
 
 ## Bugs and  Feedback
 
 If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
 
 http://github.com/lab2023/cybele/issues
+
+## Development
+* Clone project
+* Run: brew install cmake
+* Run: bundle
 
 ## Contributing
 

@@ -1,0 +1,5 @@
+%p= t('mailer.salut', user: @resource.email)
+%p= "#{t('mailer.devise.confirmation_instruction.desc1')} :"
+%p
+  = link_to t('mailer.devise.confirmation_instruction.btn_confirm'),
+            confirmation_url(@resource, confirmation_token: @token)

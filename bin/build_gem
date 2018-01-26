@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Remove previous built file
+echo "Remove previous built file"
+rm -rf cybele-2.*.gem
+
+# Build gemspec
+echo "Build gemspec"
+gem build cybele.gemspec
+
+# Install built gem file
+echo "Install gem"
+gem install cybele-2.*.gem
+
+# Show cybele help
+echo "Show cybele help"
+cybele --help
+
+# Print cybele version
+echo "Cybele version: `cybele -v`"

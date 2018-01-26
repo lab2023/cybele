@@ -1,0 +1,46 @@
+version: '2.1'
+services:
+  app:
+    build: .
+    env_file: ./.env.local
+    command: bash ./bin/start-app.sh
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
+      <% unless @options[:skip_sidekiq] %>
+      - redis
+      <% end %>
+    volumes_from:
+      - box
+  box:
+    image: busybox
+    volumes:
+      - /gems_box
+  postgres:
+    image: postgres:9.5
+    ports:
+      - "5433:5432"
+  <% unless @options[:skip_sidekiq] %>
+  redis:
+    image: redis:3.2
+    env_file: ./.env.local
+    command: redis-server
+    ports:
+      - '6380:6379'
+    volumes:
+      - ./tmp/data:/data
+  sidekiq:
+    build: .
+    env_file: ./.env.local
+    volumes:
+      - .:/app
+    volumes_from:
+      - box
+    links:
+      - postgres
+      - redis
+    command: bash ./bin/start-sidekiq.sh
+  <% end %>

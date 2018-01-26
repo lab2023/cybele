@@ -1,0 +1,19 @@
+- content_for :toolbar do
+  = link_to edit_hq_admin_path(@admin), class: 'btn btn-default btn-primary' do
+    %i.fas.fa-pencil
+    = t('view.edit')
+.card
+  .card-header
+    %i.fas.fa-edit
+    = t('view.tooltips.show', resource_name: Admin.model_name.human)
+  .card-body
+    = show_for @admin do |s|
+      = s.attribute :name
+      = s.attribute :surname
+      = s.attribute :email do
+        = mail_to @admin.email, @admin.email
+      = s.attribute :is_active
+      = s.attribute :current_sign_in_at
+      = s.attribute :last_sign_in_at
+      = s.attribute :created_at
+      = s.attribute :updated_at

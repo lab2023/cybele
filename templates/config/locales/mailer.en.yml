@@ -1,0 +1,32 @@
+en:
+  mailer:
+    salut: 'Hello %{user},'
+    hello: 'Welcome,'
+    all_rights_reserved: "All Rights Reserved"
+    web_address: Web address
+    email_address: Email
+    phone: Phone
+    sent_at: Sent time
+    devise:
+      confirmation_instruction:
+        desc1: "You can confirm your account email through the link below:"
+        btn_confirm: "Confirm my account"
+      reset_password:
+        desc1: "Someone has requested a link to change your password. You can do this through the link below."
+        change: "Change my password"
+        desc2: "If you didn't request this, please ignore this email."
+        desc3: "Your password won't change until you access the link above and create a new one."
+    admin:
+      login_info:
+        title: Your Administrator Login Information
+        first_info: Your admin account has been created. You can now log in to the admin portal.
+        second_info: Your login information is
+        btn_login: Click to login
+        last_info: "If you can not use 'Login' button, your login <br/> <strong> Link : </strong> %{link} </br> Copy this link and paste it into your browser."
+    user:
+      login_info:
+        title: User Login Information
+        first_info: Your user account has been created. You can now log in to the user portal.
+        second_info: Your login information is
+        btn_login: Click to login
+        last_info: "If you can not use 'Login' button, your login <br/> <strong> Link : </strong> %{link} </br> Copy this link and paste it into your browser."

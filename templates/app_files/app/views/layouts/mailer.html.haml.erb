@@ -1,0 +1,255 @@
+!!!
+%html{ xmlns: 'http://www.w3.org/1999/xhtml', 'xmlns:mc' => 'http://www.w3.org/1999/xhtml' }
+  %head
+    %meta{ content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+    %title= @subject
+    :css
+      #outlook a{padding:0;}
+      .ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {line-height: 100%;}
+      body,
+      table,
+      td,
+      p,
+      a,
+      li,
+      blockquote{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+      table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+      img{-ms-interpolation-mode:bicubic;}
+      body{margin:0; padding:0;}
+      img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+      table{border-collapse:collapse !important;}
+      body,
+      #body-table,
+      #body-cell{height:100% !important; margin:0; padding:0; width:100% !important;}
+      #body-cell{padding:20px;}
+      #template-container{width:600px;}
+      body, #body-table{
+          /*@editable*/ background-color:#DEE0E2;
+      }
+      #body-cell{
+          /*@editable*/ border-top:4px solid #BBBBBB;
+      }
+      #template-container{
+          /*@editable*/ border:1px solid #BBBBBB;
+      }
+      h1{
+          /*@editable*/ color:#202020 !important;
+          display:block;
+          /*@editable*/ font-family:Helvetica;
+          /*@editable*/ font-size:26px;
+          /*@editable*/ font-style:normal;
+          /*@editable*/ font-weight:bold;
+          /*@editable*/ line-height:100%;
+          /*@editable*/ letter-spacing:normal;
+          margin-top:0;
+          margin-right:0;
+          margin-bottom:10px;
+          margin-left:0;
+          /*@editable*/ text-align:left;
+      }
+      h2{
+          /*@editable*/ color:#404040 !important;
+          display:block;
+          /*@editable*/ font-family:Helvetica;
+          /*@editable*/ font-size:20px;
+          /*@editable*/ font-style:normal;
+          /*@editable*/ font-weight:bold;
+          /*@editable*/ line-height:100%;
+          /*@editable*/ letter-spacing:normal;
+          margin-top:0;
+          margin-right:0;
+          margin-bottom:10px;
+          margin-left:0;
+          /*@editable*/ text-align:left;
+      }
+      h3{
+          /*@editable*/ color:#606060 !important;
+          display:block;
+          /*@editable*/ font-family:Helvetica;
+          /*@editable*/ font-size:16px;
+          /*@editable*/ font-style:italic;
+          /*@editable*/ font-weight:normal;
+          /*@editable*/ line-height:100%;
+          /*@editable*/ letter-spacing:normal;
+          margin-top:0;
+          margin-right:0;
+          margin-bottom:10px;
+          margin-left:0;
+          /*@editable*/ text-align:left;
+      }
+      h4{
+          /*@editable*/ color:#808080 !important;
+          display:block;
+          /*@editable*/ font-family:Helvetica;
+          /*@editable*/ font-size:14px;
+          /*@editable*/ font-style:italic;
+          /*@editable*/ font-weight:normal;
+          /*@editable*/ line-height:100%;
+          /*@editable*/ letter-spacing:normal;
+          margin-top:0;
+          margin-right:0;
+          margin-bottom:10px;
+          margin-left:0;
+          /*@editable*/ text-align:left;
+      }
+      #template-body{
+          /*@editable*/ background-color:#F4F4F4;
+          /*@editable*/ border-top:1px solid #FFFFFF;
+          /*@editable*/ border-bottom:1px solid #CCCCCC;
+      }
+      .body-content{
+          /*@editable*/ color:#505050;
+          /*@editable*/ font-family:Helvetica;
+          /*@editable*/ font-size:16px;
+          /*@editable*/ line-height:150%;
+          padding-top:20px;
+          padding-right:20px;
+          padding-bottom:20px;
+          padding-left:20px;
+          /*@editable*/ text-align:left;
+      }
+      .body-content a:link,
+      .body-content a:visited,
+      /* Yahoo! Mail Override */ .body-content a .yshortcuts /* Yahoo! Mail Override */{
+          /*@editable*/ color:#EB4102;
+          /*@editable*/ font-weight:normal;
+          /*@editable*/ text-decoration:underline;
+      }
+      .body-content img{
+          display:inline;
+          height:auto;
+          max-width:560px;
+      }
+      #template-footer{
+          /*@editable*/ background-color:#F4F4F4;
+          /*@editable*/ border-top:1px solid #FFFFFF;
+      }
+      .footer-content{
+          /*@editable*/ color:#808080;
+          /*@editable*/ font-family:Helvetica;
+          /*@editable*/ font-size:10px;
+          /*@editable*/ line-height:150%;
+          padding-top:20px;
+          padding-right:20px;
+          padding-bottom:20px;
+          padding-left:20px;
+          /*@editable*/ text-align:left;
+          padding-top:0;
+      }
+      .footer-content a:link,
+      .footer-content a:visited,
+      /* Yahoo! Mail Override */ .footer-content a .yshortcuts,
+      .footer-content a span /* Yahoo! Mail Override */{
+          /*@editable*/ color:#606060;
+          /*@editable*/ font-weight:normal;
+          /*@editable*/ text-decoration:underline;
+      }
+      @media only screen and (max-width: 480px){
+          body,
+          table,
+          td,
+          p,
+          a,
+          li,
+          blockquote{-webkit-text-size-adjust:none !important;}
+          /* Prevent Webkit platforms from changing default text sizes */
+          body{width:100% !important; min-width:100% !important;}
+          /* Prevent iOS Mail from adding padding to the body */
+          #body-cell{padding:10px !important;}
+          #template-container{
+              max-width:600px !important;
+              /*@editable*/ width:100% !important;
+          }
+          h1{
+              /*@editable*/ font-size:24px !important;
+              /*@editable*/ line-height:100% !important;
+          }
+          h2{
+              /*@editable*/ font-size:20px !important;
+              /*@editable*/ line-height:100% !important;
+          }
+          h3{
+              /*@editable*/ font-size:18px !important;
+              /*@editable*/ line-height:100% !important;
+          }
+          h4{
+              /*@editable*/ font-size:16px !important;
+              /*@editable*/ line-height:100% !important;
+          }
+          .body-content{
+              /*@editable*/ font-size:18px !important;
+              /*@editable*/ line-height:125% !important;
+          }
+          .footer-content{
+              /*@editable*/ font-size:14px !important;
+              /*@editable*/ line-height:115% !important;
+          }
+          .footer-content a{display:block !important; padding-top:0 !important;}
+      }
+  %body{ leftmargin: '0', marginheight: '0', marginwidth: '0', offset: '0', topmargin: '0' }
+    %center
+      %table#body-table{ align: 'center',
+                         border: '0',
+                         cellpadding: '0',
+                         cellspacing: '0',
+                         height: '100%',
+                         width: '100%' }
+        %tr
+          %td#body-cell{ align: 'center', valign: 'top' }
+            %table#template-container{ border: '0', cellpadding: '0', cellspacing: '0' }
+              %tr
+                %td{ align: 'center', valign: 'top' }
+                  %table#template-body{ border: '0',
+                                        cellpadding: '0',
+                                        cellspacing: '0',
+                                        width: '100%' }
+                    %tr
+                      %td{ align: 'left', valign: 'top' }
+                        = image_tag "#{Settings.root_path}/images/mail-logo.png",
+                                    width: 150,
+                                    height: 150,
+                                    style: 'padding: 10px 20px'
+                    %tr
+                      %td.body-content{ 'mc:edit' => 'body_content', valign: 'top' }
+                        = yield
+                        %br/
+                        %br/
+              %tr
+                %td{ align: 'center', valign: 'top' }
+                  %table#template-footer{ border: '0',
+                                          cellpadding: '0',
+                                          cellspacing: '0',
+                                          width: '100%' }
+                    %tr
+                      %td.footer-content{ 'mc:edit' => 'footer_content01',
+                                          valign: 'top' }
+                        %br/
+                        %strong
+                          = t('mailer.web_address')
+                          \:
+                        www.<%= app_name %>.com
+                        %br/
+                        %strong
+                          = t('mailer.email_address')
+                          \:
+                        info@<%= app_name %>.com
+                        %br/
+                        %strong
+                          = t('mailer.phone')
+                          \:
+                        +90 (850) XXX XX-XX
+                        %br/
+                        %strong
+                          = t('mailer.sent_at')
+                          \:
+                        = l Time.zone.now
+                        %br/
+                        <%= app_name.capitalize %>
+                        Copyright &copy; #{Time.zone.now.year}
+                        = t('mailer.all_rights_reserved')

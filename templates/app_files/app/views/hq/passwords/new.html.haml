@@ -1,0 +1,21 @@
+#admin-devise-page
+  .row.justify-content-center
+    .card
+      .card-header
+        %h3.text-center
+          = t('devise.password.new.title')
+      .card-body
+        = simple_form_for resource,
+                          as: resource_name,
+                          url: password_path(resource_name),
+                          html: { method: :post } do |f|
+          = f.error_notification
+          .form-inputs
+            = f.input :email, required: true, autofocus: true
+          .form-actions
+            = f.button :submit,
+                       t('devise.password.reset.instructions'),
+                       class: 'btn btn-primary btn-block'
+        %br/
+        .text-center
+          = render 'devise/shared/links'

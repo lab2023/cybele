@@ -1,0 +1,21 @@
+.card-body.filters
+  = render 'filters', search: search
+%table.table
+  %thead
+    %tr
+      %th{ data: { breakpoints: 'xs' } }
+        = sort_link(search, :id, t('activerecord.attributes.user.id'))
+      %th= sort_link(search, :name, t('activerecord.attributes.user.name'))
+      %th{ data: { breakpoints: 'xs' } }
+        = sort_link(search, :email, t('activerecord.attributes.user.email'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link search,
+                    :current_sign_in_at,
+                    t('activerecord.attributes.user.current_sign_in_at')
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :last_sign_in_at, t('activerecord.attributes.user.last_sign_in_at'))
+      %th{ data: { breakpoints: 'xs sm' } }
+        = sort_link(search, :is_active, t('activerecord.attributes.user.is_active'))
+      %th{ data: { breakpoints: 'xs' } }= t('view.table_actions')
+  %tbody.users
+    = render partial: 'user', collection: contents, as: :user

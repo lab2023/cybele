@@ -1,0 +1,26 @@
+.row
+  .col
+    = link_to hq_users_path(q: { is_active_true: 1 }), class: 'btn btn-success' do
+      = t('view.active')
+      %span.badge= User.where(is_active: true).count
+    = link_to hq_users_path(q: { is_active_false: 1 }), class: 'btn btn-warning' do
+      = t('view.passive')
+      %span.badge= User.where(is_active: false).count
+    - if query_present?(%w[is_active_true is_active_false name_or_surname_cont])
+      = link_to hq_users_path, class: 'btn btn-info' do
+        = t('view.all')
+        %span.badge= User.count
+  .col
+    .float-right
+      = search_form_for [:hq, search],
+                        builder: SimpleForm::FormBuilder,
+                        html: { class: 'form-inline', data: { turboform: true } } do |f|
+        .float-right
+          .input-group
+            = f.input_field :name_or_surname_cont,
+                            label: false,
+                            class: 'form-control',
+                            placeholder: t('view.quick_search')
+            %span.input-group-btn
+              = button_tag(class: 'btn btn-primary') do
+                %i.fas.fa-search

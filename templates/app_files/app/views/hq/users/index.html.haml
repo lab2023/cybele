@@ -1,0 +1,18 @@
+- content_for :toolbar do
+  = link_to new_hq_user_path, class: 'btn btn-default btn-primary' do
+    %i.fas.fa-plus
+    = t('view.actions.new', resource_name: User.model_name.human)
+
+.card
+  .card-header
+    %i.fas.fa-table
+    = t('activerecord.models.users')
+    .float-right
+      .btn-group
+        %a.btn{ href: hq_users_path, data: { toggle: 'tooltip' }, title: t('view.reload') }
+          %i.fas.fa-sync
+      .badge.badge-pill.badge-secondary= @users.total_entries
+  = blankable(@users, @search)
+  .card-footer
+    .pagination.pagination-sm
+      = will_paginate @users, renderer: BootstrapPagination::Rails, bootstrap: 3

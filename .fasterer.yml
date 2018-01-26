@@ -1,0 +1,5 @@
+speedups:
+  hash_merge_bang_vs_hash_brackets: true
+
+exclude_paths:
+  - 'tmp/**/*.rb'

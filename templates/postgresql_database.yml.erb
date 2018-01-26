@@ -1,0 +1,24 @@
+connection: &connection
+  adapter: postgresql
+  encoding: UTF-8
+  username: postgres
+  host: <%%= ENV['POSTGRESQL_HOST'] || 'localhost'%>
+  pool: <%%= ENV['DB_POOL'] || 5 %>
+  timeout: 5000
+  port: 5432
+
+development:
+  <<: *connection
+  database: <%= app_name %>_development
+
+staging:
+  <<: *connection
+  database: <%= app_name %>_staging
+
+production:
+  <<: *connection
+  database: <%= app_name %>_production
+
+test:
+  <<: *connection
+  database: <%= app_name %>_test

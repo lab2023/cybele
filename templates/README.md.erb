@@ -1,24 +1,27 @@
 # <%= app_name.capitalize %>
 
 # TODOs
+- Change email sender domain address and basic_auth info in `config/settings.yml`
+- Change email sender domain address in `config/initializers/devise.rb`
+- Add your secret keys to `.environments/` directory. In this directory there mus be .env.local file created from .env.sample
 
-* Set .env.local variables
-* Set access_token in config/initializers/rollbar.rb
-* Set default values for is_active, time_zone variable using in User and Admin model migrations db/migrate/*.rb
-* Change username and password in config/settings.yml
-* In public folder run this command ln -s ../VERSION.txt VERSION.txt
-
-We are using sidekiq  with redis-server for background jobs.
-Clone project run this commands in terminal
-Before the run application look our env.sample file. It should be in project root directory with this name .env.local
-```bash
-bundle
-redis-server
-rake sidekiq:start
-rake db:create
-rake db:migrate
-rake dev:seed
-rails s
-```
-
-
+<% unless @options[:skip_docker] %>
+# Docker development
+- run following commands on terminal
+➜ ✗ docker-compose build
+➜ ✗ docker-compose run app bundle install
+➜ ✗ docker-compose run app bundle exec rails db:create db:migrate db:seed
+➜ ✗ docker-compose up
+- open in your browser localhost:3000 or lvh.me:3000
+<% end %>
+# Local development
+- run following commands on terminal
+➜ ✗ bundle exec rails server
+- open in your browser localhost:3000 or lvh.me:3000
+<% unless @options[:skip_sidekiq] %>
+➜ ✗ redis-server
+➜ ✗ bundle exec rake sidekiq:start
+<% end %>
+# Development
+➜ ✗ pronto run
+➜ ✗ pronto run -r haml

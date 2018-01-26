@@ -1,0 +1,97 @@
+tr:
+  devise:
+    session:
+      title: '%{model} Girişi'
+      button: Giriş Yap
+      remember_me: Beni Hatırla
+      deactivated: Üzgünüz, bu hesap pasif hale getirilmiştir.
+    sessions:
+      signed_in: Giriş başarılı.
+      signed_out: Çıkış başarılı.
+      already_signed_out: Çıkış başarılı.
+    registration:
+      title: '%{model} Giriş Bilgilerini Güncelle'
+      waiting_confirmation: 'E-posta addresi onayı için bekleniyor: %{email}'
+      hint_password: Değiştirmek istemiyorsanız boş bırakınız
+      hint_current_password: Değişiklikleri onaylamak için şuan ki parolanız girmelisiniz
+      new:
+        title: '%{model}  Kayıt İşlemi'
+        character_hint: 'Minimum %{length} karakter'
+        button:  Kayıt Ol
+      edit:
+        title: '%{model} Giriş Bilgilerini Güncelle'
+    registrations:
+      destroyed: "Güle güle! Hesabınız başarıyla iptal edildi. Yakında tekrar görüşmeyi umuyoruz."
+      signed_up: Hoşgeldiniz! Başarıyla üye oldunuz.
+      signed_up_but_inactive: "Başarıyla üye oldunuz. Fakat, hesabınız henüz etkinleştirilmediği için oturum açamadık."
+      signed_up_but_locked: "Başarıyla üye oldunuz. Fakat, hesabınız kilitlendiği için giriş yapamadık."
+      signed_up_but_unconfirmed: "E-posta adresinize bir onay bağlantısı olan bir mesaj gönderildi. Hesabınızı etkinleştirmek için lütfen bağlantıyı tıklayın."
+      update_needs_confirmation: "Hesabınızı başarıyla güncellediniz, fakat yeni e-posta adresinizi doğrulamamız gerekiyor. Lütfen e-postanızı kontrol edin ve yeni e-posta adresinizi onaylamak için onay linkini tıklayın."
+      updated: "Hesabınız başarıyla güncellendi."
+    shared:
+      links:
+        signup: Kayıt Ol
+        signin: Giriş Yap
+        forgot_password: Parolanızı mı unuttunuz?
+        confirmation_instructions: Onaylama yönergesini mi almadınız?
+        unlock_instructions: Kapatma yönergesini mi almadınız?
+        signin_with: '%{name} ile Giriş Yap'
+        signup_with: '%{name} ile Kayıt Ol'
+    confirmation:
+      new:
+        title: Onaylama Talimatlarını Yeniden Gönder
+      btn:
+        resend: Gönder
+    password:
+      new:
+        title: Parolanızı mı unuttunuz?
+      reset:
+        instructions: Parola sıfırlama talimatlarını gönder
+      edit:
+        title: Parolanızı Değiştiriniz
+        new_password: Yeni parolanız
+        confirmation: Yeni parola doğrulması
+        button: Parolamı Değiştir
+    passwords:
+      no_token: "Parola sıfırlama e-postasından gelmeden bu sayfaya erişemezsiniz. Parola sıfırlama e-postasından geliyorsanız lütfen sağlanan tam URL'yi kullandığınızdan emin olun."
+      send_instructions: "Birkaç dakika içinde parolanızı nasıl sıfırlayacağınıza ilişkin talimatları içeren bir e-posta alacaksınız."
+      send_paranoid_instructions: "E-posta adresiniz veritabanımızda mevcutsa, birkaç dakika içinde e-posta adresinize bir parola kurtarma bağlantısı gönderilecektir."
+      updated: Parolanız başarıyla değiştirildi. Şimdi giriş yapınız.
+      updated_not_active: Parolanız başarıyla değiştirildi.
+    failure:
+      already_authenticated: Zaten giriş yaptınız.
+      inactive: Hesabınız henüz aktif değil.
+      invalid: 'Geçersiz %{authentication_keys} veya parola.'
+      locked: Hesabınız kilitlendi.
+      last_attempt: Hesabınız kilitlenmeden önce bir denemeniz daha var.
+      not_found_in_database: 'Geçersiz %{authentication_keys} veya şifre.'
+      timeout: Oturumunuzun süresi doldu. Devam etmek için lütfen tekrar giriş yapınız.
+      unauthenticated: Devam etmeden önce giriş yapmanız veya kayıt olmanız gerekir.
+      unconfirmed: Devam etmeden önce e-posta adresinizi onaylamanız gerekir.
+    mailer:
+      confirmation_instructions:
+        subject: Onay talimatları
+        info: E-posta hesabınızı aşağıdaki bağlantıyı kullanarak onaylayabilirsiniz.
+        welcome: '%{email} Hoş geldiniz!'
+        confirm_link: Hesabımı onayla
+      reset_password_instructions:
+        subject: Parola talimatlarını sıfırla
+        hello: '%{email} Merhaba!'
+        info: "Birisi, parolanızı değiştirmek için bir bağlantı istedi. Bunu aşağıdaki bağlantıyla yapabilirsiniz."
+        change_password_link: Parolamı değiştir
+        desc1: 'Bu talepte bulunmadıysanız, lütfen bu e-postayı yoksayın.'
+        desc2: "Yukarıdaki bağlantıya erişip yeni bir parola oluşturana kadar parolanız değişmeyecektir."
+      unlock_instructions:
+        subject: Talimatların kilidini aç
+        hello: '%{email} Merhaba!'
+        info: Aşırı giriş yapma talebi yüzünden hesabınız kilitlendi.
+        info2: 'Hesabınızın kilidini açmak için aşağıdaki bağlantıyı tıklayın:'
+        unlock_link: Hesabımın kilidini aç
+  errors:
+    messages:
+      already_confirmed: zaten onaylanmış, lütfen giriş yapmayı deneyin
+      confirmation_period_expired: "%{period} içinde onaylanması gerekmektedir, lütfen yeni bir tane isteyiniz."
+      expired: süresi doldu, lütfen yeni bir tane isteyin
+      not_found: bulunamadı
+      not_locked: kilitlenmemiş
+      not_saved: "%{count} tane hata %{resource}'ın kaydını engelledi."

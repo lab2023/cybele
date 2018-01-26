@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that will be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+
+@import "bootstrap"
+@import "sidebar"
+@import "footable.bootstrap.min"
+
+/* from vendor
+@import "nprogress"
+@import "trix"
+@import "jquery.datetimepicker"
+
+body
+  main
+    @media (max-width: 767px)
+      margin-left: 2.45rem
+  .users
+    .active
+      color: green !important
+    .passive
+      background-color: rgba(230, 161, 161, 0.37) !important
+
+  .table
+    tbody
+      .action
+        a
+          margin: 0.5px
+
+  .filters
+    a
+      margin: 1px 1px
+    form
+      input
+        min-width: 115px
+
+  #toolbar
+    text-align: right
+    a
+      margin-bottom: 12px
+
+  #admin-devise-page
+    .card
+      margin-top: 50px
+      width: 30rem
+
+  .simple_form
+    .form-actions
+      text-align: right
+
+    .form-group
+      .checkbox
+        label
+          input[type="checkbox"]
+            margin: 0 10px 0 0
+
+  .audit.form-inline
+    .form-group
+      margin: 0px 10px
+
+      label
+        padding: 0 5px
+
+.alert.message
+  .far.fa-smile
+    padding: 0 5px
