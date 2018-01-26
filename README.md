@@ -13,8 +13,8 @@ western colonies from around the 6th century BCE.
 
 Before generating your application, you will need:
 
-* Ruby ~> 2.3
-* Rails ~> 4.2
+* Ruby ~> 2.3.5
+* Rails ~> 5.1.4
 
 ## Usage
 
@@ -28,36 +28,16 @@ First you should install the cybele gem than you can use it for creating new gem
 When the initialization is completed, there will be some required settings.
 
 * Set .env.local variables
-* Set ENV['ROLLBAR_ACCESS_TOKEN'] for Rollbar.
-* If Sidekiq will be use, you must open sidekiq option in config/initializers/rollbar.rb like the following:
-    ```ruby 
-        config.use_sidekiq 'queue' => 'default' 
-    ```
-* If you don't want to use Rollbar in development environment, you can disable for development environment in 
-  in config/initializers/rollbar.rb
-* If you want to sign up email notification in staging environment, you can add mails like the following: 
-    ```ruby 
-        [Settings.email.sandbox, 'user1@example.com', 'user2@example.com']
-    ``` 
-* Set default values for is_active, time_zone variable using in User and Admin model migrations db/migrate/*.rb
-* Change username and password in config/settings.yml
-* In public folder run this command ln -s ../VERSION.txt VERSION.txt
-
-We are using sidekiq  with redis-server for background jobs.
-Before the run application look our env.sample file. It should be in project root directory with this name .env.local
-```bash
-bundle
-redis-server
-rake sidekiq:start
-rake db:create
-rake db:migrate
-rake dev:seed
-rails s
-```
+* If you don't want to use Rollbar in development environment, you can disable for development environment in config/initializers/rollbar.rb
+* Change username and passwords in config/settings.yml
 
 ## What cybele do and included?
 
-Let's look the [Gemfile](https://raw.github.com/lab2023/cybele/develop/templates/cybele_Gemfile) which created by cybele.
+Let's look options
+
+    ```ruby
+        cybele --help
+    ```
 
 ## Bugs and  Feedback
 
