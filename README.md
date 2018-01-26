@@ -20,10 +20,11 @@ Before generating your application, you will need:
 
 First you should install the cybele gem than you can use it for creating new gem.
 
-    ```ruby
-        gem install cybele
-        cybele project_name
-    ```
+```ruby
+gem install cybele
+cybele project_name
+```
+ 
 
 When the initialization is completed, there will be some required settings.
 
@@ -35,9 +36,9 @@ When the initialization is completed, there will be some required settings.
 
 Let's look options
 
-    ```ruby
-        cybele --help
-    ```
+```ruby
+cybele --help
+```
 
 ## Bugs and  Feedback
 
