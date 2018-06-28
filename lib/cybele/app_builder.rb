@@ -13,7 +13,6 @@ module Cybele
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
     include Cybele::Helpers::Mailer
-    include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
     include Cybele::Helpers::ErrorPages
     include Cybele::Helpers::Audited

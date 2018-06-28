@@ -99,11 +99,6 @@ module Cybele
       build :add_editor_config
     end
 
-    def setup_ruby_version
-      say 'Add .ruby-version file', :green
-      build :add_ruby_version
-    end
-
     def setup_cybele_version
       say 'Add .VERSION.txt file', :green
       build :add_cybele_version
@@ -189,11 +184,6 @@ module Cybele
       build :configure_haml
     end
 
-    def add_staging_secret_key
-      say 'Add staging secret key to secret.yml file', :green
-      build :add_staging_secret_key_to_secrets_yml
-    end
-
     def setup_bullet_config
       say 'Setup bullet config'
       build :configure_bullet
@@ -202,11 +192,6 @@ module Cybele
     def force_ssl
       say 'Add ssl control into staging.rb and production.rb', :green
       build :force_ssl_setting
-    end
-
-    def setup_paperclip_and_add_aws
-      say 'Setting up paperclip, editing settings.yml and env files', :green
-      build :configure_paperclip
     end
 
     def setup_devise
@@ -260,6 +245,7 @@ module Cybele
       build :generate_devise_views
       build :configure_routes
       build :customize_controller_files
+      build :add_devise_protect_from_forgery
       build :add_devise_strong_parameter
       build :add_devise_authenticate_admin
       build :configure_basic_authentication

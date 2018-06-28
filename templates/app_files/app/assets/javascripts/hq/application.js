@@ -49,13 +49,6 @@ var ready = function(){
 
 document.addEventListener("turbolinks:load", ready);
 
-$(document).on('turbolinks:load', function () {
-    ready();
-    var script = document.createElement("script");
-    script.src = "https://use.fontawesome.com/releases/v5.0.1/js/all.js";
-    document.head.appendChild(script);
-});
-
 $(window).on('page:load', ready);
 
 $(document).on('page:fetch', function() {

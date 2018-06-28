@@ -14,7 +14,6 @@ RSpec.configure do |config|
   config.include DotenvTestHelper
   config.include ConfigTestHelper
   config.include DeviseTestHelper
-  config.include PaperclipTestHelper
   config.include LocaleLanguageTestHelper
   config.include ResponderTestHelper
   config.include ErrorPagesTestHelper

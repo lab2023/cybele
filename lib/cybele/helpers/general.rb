@@ -33,10 +33,6 @@ module Cybele
         copy_file 'editorconfig', '.editorconfig'
       end
 
-      def add_ruby_version
-        copy_file 'ruby-version', '.ruby-version'
-      end
-
       def add_cybele_version
         copy_file 'VERSION.txt', 'VERSION.txt'
         run 'ln -s ../VERSION.txt public/VERSION.txt'

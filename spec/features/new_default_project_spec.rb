@@ -160,17 +160,8 @@ RSpec.describe 'Create new project with default configuration' do
     expect(simple_form_tr_yml_file).to match('simple_form')
   end
 
-  it 'make control secret_key_base for staging' do
-    secret_file = content('config/secrets.yml')
-    expect(secret_file).to match('staging')
-  end
-
   it 'control .env files' do
     dotenv_test
-  end
-
-  it 'uses paperclip' do
-    paperclip_test
   end
 
   it 'uses mailer' do
