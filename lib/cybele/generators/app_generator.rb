@@ -194,6 +194,11 @@ module Cybele
       build :force_ssl_setting
     end
 
+    def active_storage
+      say 'Make active_storage amazon configuration', :green
+      build :active_storage_setting
+    end
+
     def setup_devise
       say 'Generate devise'
       build :generate_devise_settings
