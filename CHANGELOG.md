@@ -1,5 +1,19 @@
 
 #### [Current]
+ * [52832d1](../../commit/52832d1) - __(İsmail Akbudak)__ Fix pronto warnings
+ * [148c6d4](../../commit/148c6d4) - __(İsmail Akbudak)__ Update CHANGELOG file
+ * [ee9d462](../../commit/ee9d462) - __(İsmail AKBUDAK)__ Merge pull request [#127](../../issues/127) from lab2023/feature/update_ruby_rails_to_latest_version
+
+KBP-207 #time 2d - Update rails, ruby and some gems version to latest version
+ * [bf9734d](../../commit/bf9734d) - __(İsmail Akbudak)__ Fix rails version control spec error
+ * [5187400](../../commit/5187400) - __(Hamdi Bayhan)__ KBP-207 #time 30m - Add AWS S3 settings for environment variable and remove unnecessary secret key file
+ * [f1137c1](../../commit/f1137c1) - __(Hamdi Bayhan)__ KBP-207 #time 2d - Update rails, ruby and some gems version to latest version
+ * [55026e7](../../commit/55026e7) - __(İsmail Akbudak)__ Merge tag 'v2.0.0' into develop
+
+v2.0.0
+
+#### v2.0.0
+ * [4f57300](../../commit/4f57300) - __(İsmail Akbudak)__ Update CHANGELOG file
  * [320d265](../../commit/320d265) - __(İsmail AKBUDAK)__ Update README.md
  * [2b203bd](../../commit/2b203bd) - __(İsmail Akbudak)__ Update README file
  * [69f24dc](../../commit/69f24dc) - __(İsmail Akbudak)__ Merged in feature/remove_env_local_from_gitignore (pull request [#41](../../issues/41))

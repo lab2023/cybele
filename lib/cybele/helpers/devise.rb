@@ -33,10 +33,16 @@ module Cybele
                          after: 'class Hq::ApplicationController < ApplicationController'
       end
 
+      def add_devise_protect_from_forgery
+        inject_into_file 'app/controllers/application_controller.rb',
+                         template_content('devise/devise_protect_from_forgery.rb.erb'),
+                         after: 'respond_to :html, :js, :json'
+      end
+
       def add_devise_strong_parameter
         inject_into_file 'app/controllers/application_controller.rb',
                          template_content('devise/devise_strong_parameter.rb.erb'),
-                         after: 'protect_from_forgery with: :exception'
+                         after: 'protect_from_forgery with: :exception, prepend: true'
 
         inject_into_file 'app/controllers/application_controller.rb',
                          template_content('devise/devise_before_action_strong_parameter.rb.erb'),

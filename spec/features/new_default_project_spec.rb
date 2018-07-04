@@ -12,7 +12,7 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses default Gemfile' do
     gemfile_file = content('Gemfile')
     readme_file = content('README.md')
-    expect(gemfile_file).to match(/^gem 'rails', '#{Cybele::RAILS_VERSION}'/)
+    expect(gemfile_file).to match(/^gem 'rails', '#{Cybele::RAILS_VERSION.first}'/)
     expect(readme_file).to match(/^# #{app_name.capitalize}/)
     expect(readme_file).to match(/^# Docker development/)
     expect(readme_file).to match(/^➜ ✗ redis-server/)
@@ -160,17 +160,8 @@ RSpec.describe 'Create new project with default configuration' do
     expect(simple_form_tr_yml_file).to match('simple_form')
   end
 
-  it 'make control secret_key_base for staging' do
-    secret_file = content('config/secrets.yml')
-    expect(secret_file).to match('staging')
-  end
-
   it 'control .env files' do
     dotenv_test
-  end
-
-  it 'uses paperclip' do
-    paperclip_test
   end
 
   it 'uses mailer' do

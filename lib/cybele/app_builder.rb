@@ -13,7 +13,6 @@ module Cybele
     include Cybele::Helpers::Haml
     include Cybele::Helpers::LocaleLanguage
     include Cybele::Helpers::Mailer
-    include Cybele::Helpers::Paperclip
     include Cybele::Helpers::Devise
     include Cybele::Helpers::ErrorPages
     include Cybele::Helpers::Audited
@@ -30,6 +29,7 @@ module Cybele
     include Cybele::Helpers::Docker
     include Cybele::Helpers::Pronto
     include Cybele::Helpers::General
+    include Cybele::Helpers::ActiveStorage
 
     def setup_gitignore_files
       remove_file '.gitignore', force: true
