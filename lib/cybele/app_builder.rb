@@ -29,6 +29,7 @@ module Cybele
     include Cybele::Helpers::Docker
     include Cybele::Helpers::Pronto
     include Cybele::Helpers::General
+    include Cybele::Helpers::ActiveStorage
 
     def setup_gitignore_files
       remove_file '.gitignore', force: true
