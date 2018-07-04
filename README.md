@@ -13,8 +13,8 @@ western colonies from around the 6th century BCE.
 
 Before generating your application, you will need:
 
-* Ruby ~> 2.3.5
-* Rails ~> 5.1.4
+* Ruby ~> 2.5.1
+* Rails ~> 5.2.0
 
 ## Usage
 
@@ -74,4 +74,4 @@ Once you've made your great commits:
 
 ## License
 
-Copyright © 2013-2015 [lab2023 - information technologies](http://lab2023.com)
+Copyright © 2013-2018 [lab2023 - information technologies](http://lab2023.com)

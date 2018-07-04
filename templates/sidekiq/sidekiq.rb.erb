@@ -1,15 +1,14 @@
 require 'sidekiq'
 require 'sidekiq/web'
 
-namespace = "<%= app_name.parameterize %>_#{Rails.env}"
+labels = "<%= app_name.parameterize %>_#{Rails.env}"
 settings = {
-  url: ENV['REDISTOGO_URL'] || 'redis://localhost:6379/0',
-  namespace: namespace
+  url: ENV['REDISTOGO_URL'] || 'redis://localhost:6379/0'
 }
 
 Sidekiq.configure_server { |config| config.redis = settings }
 Sidekiq.configure_client { |config| config.redis = settings }
-Sidekiq.options[:labels] << namespace
+Sidekiq.options[:labels] << labels
 
 # Open this if you have scheduled jobs
 # schedule_file = 'config/sidekiq_schedule.yml'

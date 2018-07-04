@@ -10,7 +10,7 @@ module Cybele
 
         inject_into_file 'app/controllers/application_controller.rb',
                          template_content('error_pages/error_method.erb'),
-                         after: 'protect_from_forgery with: :exception'
+                         after: 'protect_from_forgery with: :exception, prepend: true'
 
         inject_into_file 'config/routes.rb',
                          template_content('error_pages/error_route.erb.rb'),
