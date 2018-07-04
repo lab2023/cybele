@@ -1,5 +1,7 @@
 
 #### [Current]
+ * [52832d1](../../commit/52832d1) - __(İsmail Akbudak)__ Fix pronto warnings
+ * [148c6d4](../../commit/148c6d4) - __(İsmail Akbudak)__ Update CHANGELOG file
  * [ee9d462](../../commit/ee9d462) - __(İsmail AKBUDAK)__ Merge pull request [#127](../../issues/127) from lab2023/feature/update_ruby_rails_to_latest_version
 
 KBP-207 #time 2d - Update rails, ruby and some gems version to latest version
