@@ -12,7 +12,7 @@ RSpec.describe 'Create new project with default configuration' do
   it 'uses default Gemfile' do
     gemfile_file = content('Gemfile')
     readme_file = content('README.md')
-    expect(gemfile_file).to match(/^gem 'rails', '#{Cybele::RAILS_VERSION}'/)
+    expect(gemfile_file).to match(/^gem 'rails', '#{Cybele::RAILS_VERSION.first}'/)
     expect(readme_file).to match(/^# #{app_name.capitalize}/)
     expect(readme_file).to match(/^# Docker development/)
     expect(readme_file).to match(/^➜ ✗ redis-server/)
