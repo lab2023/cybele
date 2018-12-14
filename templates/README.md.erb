@@ -3,7 +3,8 @@
 # TODOs
 - Change email sender domain address and basic_auth info in `config/settings.yml`
 - Change email sender domain address in `config/initializers/devise.rb`
-- Add your master key variable  to `.env` files like in `.env.sample` file.
+- Move your `config/master.key` variable to in `.environments` files
+- Create `.pronto.yml` file from `example.pronto.yml` file
 
 <% unless @options[:skip_docker] %>
 # Docker development
@@ -25,3 +26,5 @@
 # Development
 ➜ ✗ pronto run
 ➜ ✗ pronto run -r haml
+- On feature branch
+➜ ✗ pronto run -c origin/develop
