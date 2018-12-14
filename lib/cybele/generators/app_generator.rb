@@ -283,6 +283,10 @@ module Cybele
 
     private
 
+    def config_master_key_content
+      IO.read(File.join(destination_root, '/config/master.key'))
+    end
+
     # :reek:TooManyStatements
     def ask_questions(options)
       say 'Ask cybele options', :green
