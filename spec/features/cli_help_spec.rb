@@ -29,6 +29,11 @@ Cybele options:
                                                              # Default: true
       [--skip-create-database], [--no-skip-create-database]  # Skip create database. Default: don't skip
       [--skip-sidekiq], [--no-skip-sidekiq]                  # Skip sidekiq integration. Default: don't skip
+      [--skip-simple-form], [--no-skip-simple-form]          # Skip simple_form integration. Default: don't skip
+      [--skip-show-for], [--no-skip-show-for]                # Skip show_for integration. Default: don't skip
+      [--skip-haml], [--no-skip-haml]                        # Skip haml and haml-rails integration. Default: don't skip
+      [--skip-view-files], [--no-skip-view-files]            # Skip view files. Default: don't skip. Dependent: haml, show-for, simple-form
+      [--skip-docker], [--no-skip-docker]                    # Skip docker development environment. Default: don't skip
 EOH
   end
 

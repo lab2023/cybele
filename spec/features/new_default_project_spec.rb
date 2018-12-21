@@ -28,64 +28,27 @@ RSpec.describe 'Create new project with default configuration' do
 
   it_behaves_like 'uses responders'
 
-  it 'uses cybele_version' do
-    expect(File).to exist(file_project_path('VERSION.txt'))
-    expect(File).to exist(file_project_path('public/VERSION.txt'))
-  end
+  it_behaves_like 'uses cybele_version'
 
-  it 'uses rollbar' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'rollbar'/)
+  it_behaves_like 'uses rollbar'
 
-    config_file = content('config/initializers/rollbar.rb')
-    expect(config_file).to match(/^Rollbar.configure/)
-  end
+  it_behaves_like 'uses ransack'
 
-  it 'uses ransack' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'ransack'/)
-  end
+  it_behaves_like 'uses will_paginate'
 
-  it 'uses will_paginate' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'will_paginate'/)
-    expect(gemfile_file).to match(/^gem 'will_paginate-bootstrap'/)
-  end
+  it_behaves_like 'uses to_xls'
 
-  it 'uses to_xls' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'to_xls'/)
-  end
+  it_behaves_like 'uses roo'
 
-  it 'uses roo' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'roo'/)
-  end
+  it_behaves_like 'uses roo-xls'
 
-  it 'uses roo-xls' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'roo-xls'/)
-  end
+  it_behaves_like 'uses write_xlsx'
 
-  it 'uses write_xlsx' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'write_xlsx'/)
-  end
+  it_behaves_like 'uses colorize'
 
-  it 'uses colorize' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'colorize'")
-  end
+  it_behaves_like 'uses better_errors'
 
-  it 'uses better_errors' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'better_errors'")
-  end
-
-  it 'uses rails-i18n' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'rails-i18n'/)
-  end
+  it_behaves_like 'uses rails-i18n'
 
   it 'uses show_for' do
     gemfile_file = content('Gemfile')
@@ -103,13 +66,7 @@ RSpec.describe 'Create new project with default configuration' do
 
   it_behaves_like 'uses config'
 
-  it 'uses recipient_interceptor' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'recipient_interceptor'/)
-
-    config_staging_file = content('config/environments/staging.rb')
-    expect(config_staging_file).to match('RecipientInterceptor.new')
-  end
+  it_behaves_like 'uses recipient_interceptor'
 
   it_behaves_like 'uses locale_language'
 
@@ -151,13 +108,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
 
-  it 'uses bullet' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'bullet'")
-
-    locale_file = content('config/environments/development.rb')
-    expect(locale_file).to match('Bullet')
-  end
+  it_behaves_like 'uses bullet'
 
   it_behaves_like 'uses devise'
 
@@ -336,32 +287,16 @@ RSpec.describe 'Create new project with default configuration' do
     end
   end
 
-  it 'uses default view files' do
-    # Mailer files
-    hq_admins_view = content('app/views/admin_mailer/login_info.html.haml')
-    expect(hq_admins_view).to match('@admin')
-  end
+  it_behaves_like 'uses default view files'
 
   it 'configure routes file' do
     route_file = content('config/routes.rb')
     expect(route_file).to match('concern :activeable')
   end
 
-  it 'uses model files' do
-    admin_model = content('app/models/admin.rb')
-    expect(admin_model).to match('login_info_mailer')
+  it_behaves_like 'uses model files'
 
-    audit_model = content('app/models/audit.rb')
-    expect(audit_model).to match('class Audit')
-  end
-
-  it 'uses mailer files' do
-    admin_mailer = content('app/mailers/admin_mailer.rb')
-    expect(admin_mailer).to match('class AdminMailer')
-
-    application_mailer = content('app/mailers/application_mailer.rb')
-    expect(application_mailer).to match('Settings.email.noreply')
-  end
+  it_behaves_like 'uses mailer files'
 
   it_behaves_like 'uses ssl_setting'
 
