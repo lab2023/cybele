@@ -24,35 +24,9 @@ RSpec.describe 'Create new project with default configuration' do
     expect(database_file).to match(/^  database: #{app_name}_staging/)
   end
 
-  it 'uses sidekiq' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'sidekiq'/)
-    expect(gemfile_file).to match(/^gem 'sidekiq-cron'/)
-    expect(gemfile_file).to match(/^gem 'cocaine'/)
-    expect(gemfile_file).to match(/^gem 'devise-async'/)
+  it_behaves_like 'uses sidekiq'
 
-    sidekiq_file = content('config/sidekiq.yml')
-    expect(sidekiq_file).to match('[high_priority, 2]')
-
-    sidekiq_schedule_file = content('config/sidekiq_schedule.yml')
-    expect(sidekiq_schedule_file).to match(/-> Daily at midnight/)
-
-    initializers_file = content('config/initializers/sidekiq.rb')
-    expect(initializers_file).to match("^require 'sidekiq'")
-    expect(initializers_file).to match("^require 'sidekiq/web'")
-
-    routes_file = content('config/routes.rb')
-    expect(routes_file).to match("^require 'sidekiq/web'")
-    expect(routes_file).to match("^require 'sidekiq/cron/web'")
-    expect(routes_file).to match(/# ========== Sidekiq ==========/)
-
-    rake_file = content('lib/tasks/sidekiq.rake')
-    expect(rake_file).to match(/^namespace :sidekiq/)
-  end
-
-  it 'uses responders' do
-    responder_test
-  end
+  it_behaves_like 'uses responders'
 
   it 'uses cybele_version' do
     expect(File).to exist(file_project_path('VERSION.txt'))
@@ -127,9 +101,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(show_for_tr_yml_file).to match('show_for')
   end
 
-  it 'uses config and staging file' do
-    config_test
-  end
+  it_behaves_like 'uses config'
 
   it 'uses recipient_interceptor' do
     gemfile_file = content('Gemfile')
@@ -139,9 +111,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(config_staging_file).to match('RecipientInterceptor.new')
   end
 
-  it 'uses locale_language' do
-    locale_language_test
-  end
+  it_behaves_like 'uses locale_language'
 
   it 'uses simple_form' do
     gemfile_file = content('Gemfile')
@@ -160,14 +130,9 @@ RSpec.describe 'Create new project with default configuration' do
     expect(simple_form_tr_yml_file).to match('simple_form')
   end
 
-  it 'control .env files' do
-    dotenv_test
-  end
+  it_behaves_like 'has .env files'
 
   it 'uses mailer' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'mailtrap'")
-
     expect(File).to exist(file_project_path('config/settings/production.yml'))
     expect(File).to exist(file_project_path('config/settings/staging.yml'))
 
@@ -194,17 +159,11 @@ RSpec.describe 'Create new project with default configuration' do
     expect(locale_file).to match('Bullet')
   end
 
-  it 'uses devise' do
-    devise_test
-  end
+  it_behaves_like 'uses devise'
 
-  it 'uses error_pages' do
-    error_pages_test
-  end
+  it_behaves_like 'uses error_pages'
 
-  it 'uses gitignore' do
-    git_ignore_test
-  end
+  it_behaves_like 'uses gitignore'
 
   it 'uses asset files' do
     gemfile_file = content('Gemfile')
@@ -404,53 +363,14 @@ RSpec.describe 'Create new project with default configuration' do
     expect(application_mailer).to match('Settings.email.noreply')
   end
 
-  it 'uses ssl_setting' do
-    force_ssl_test
-  end
+  it_behaves_like 'uses ssl_setting'
 
-  it 'uses docker development environment' do
+  it_behaves_like 'uses docker development environment'
 
-    file_exist_test(
-      %w[
-        docker-compose.yml
-        Dockerfile
-        bin/start-app.sh
-        bin/start-sidekiq.sh
-      ]
-    )
+  it_behaves_like 'uses pronto'
 
-    file_exist_test(
-      %w[
-        .env.sample
-        .env.local
-        .environments/.env.local
-      ]
-    ) do |env|
-      file = content(env)
-      expect(file).to match('REDISTOGO_URL=redis://redis:6379/0')
-      expect(file).to match('RACK_ENV=development')
-      expect(file).to match('POSTGRESQL_HOST=postgres')
-      expect(file).to match('REDIS_HOST=redis')
-    end
-
-    file_exist_test(
-      %w[
-        .environments/.env.staging
-        .environments/.env.production
-      ]
-    ) do |env|
-      expect(content(env)).to match('REDISTOGO_URL=')
-    end
-  end
-
-  it 'uses pronto' do
-    pronto_test
-  end
-
-  it 'uses guardfile' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'guard'")
-
-    expect(File).to exist(file_project_path('Guardfile'))
+  it 'match readme' do
+    gemfile_file = content('README.md')
+    expect(gemfile_file).to match(file_content('README_DEFAULT.md'))
   end
 end

@@ -1,4 +1,4 @@
-# <%= app_name.capitalize %>
+# Dummy_app
 
 # TODOs
 - Change email sender domain address and basic_auth info in `config/settings.yml`
@@ -9,7 +9,7 @@
 - Edit secret keys
 ➜ ✗ EDITOR=vi bin/rails credentials:edit
 
-<% unless @options[:skip_docker] %>
+
 # Docker development
 - run following commands on terminal
 ➜ ✗ docker-compose build
@@ -20,18 +20,15 @@
 - If you want to access rails console run this command before
 ➜ ✗ docker-compose run app bundle install --binstubs
 ➜ ✗ docker-compose run app bundle exec rails c
-<% end %>
+
 # Local development
-<% unless @options[:skip_docker] %>
-- Change <%= @options[:skip_sidekiq] ? '' : 'SIDEKIG_REDIS_URL and' %> POSTGRESQL_HOST environment in `.env.local` file
-<% end %>
+
+- Change  POSTGRESQL_HOST environment in `.env.local` file
+
 - run following commands on terminal
 ➜ ✗ bundle exec rails server
 - open in your browser localhost:3000 or lvh.me:3000
-<% unless @options[:skip_sidekiq] %>
-➜ ✗ redis-server
-➜ ✗ bundle exec rake sidekiq:start
-<% end %>
+
 # Development
 ➜ ✗ pronto run
 ➜ ✗ pronto run -r haml
