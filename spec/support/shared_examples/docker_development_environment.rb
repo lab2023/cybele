@@ -3,7 +3,7 @@
 shared_examples 'uses docker development environment' do
   it do
     file_exist_test(
-        %w[
+      %w[
         docker-compose.yml
         Dockerfile
         bin/start-app.sh
@@ -12,7 +12,7 @@ shared_examples 'uses docker development environment' do
     )
 
     file_exist_test(
-        %w[
+      %w[
         .env.sample
         .env.local
         .environments/.env.local
@@ -26,7 +26,7 @@ shared_examples 'uses docker development environment' do
     end
 
     file_exist_test(
-        %w[
+      %w[
         .environments/.env.staging
         .environments/.env.production
       ]
@@ -39,7 +39,7 @@ end
 shared_examples 'uses docker development environment without sidekiq' do
   it do
     file_exist_test(
-        %w[
+      %w[
         docker-compose.yml
         Dockerfile
         bin/start-app.sh
@@ -47,13 +47,11 @@ shared_examples 'uses docker development environment without sidekiq' do
     )
 
     file_not_exist_test(
-        %w[
-        bin/start-sidekiq.sh
-      ]
+      %w[bin/start-sidekiq.sh]
     )
 
     file_exist_test(
-        %w[
+      %w[
         .env.sample
         .env.local
         .environments/.env.local
@@ -67,7 +65,7 @@ shared_examples 'uses docker development environment without sidekiq' do
     end
 
     file_exist_test(
-        %w[
+      %w[
         .environments/.env.staging
         .environments/.env.production
       ]
