@@ -293,7 +293,7 @@ RSpec.describe 'Create new project without default configuration' do
         .environments/.env.local
       ]
     ) do |env|
-      expect(content(env)).not_to match('SIDEKIG_REDIS_URL=redis://redis:6379/0')
+      expect(content(env)).not_to match('REDIS_URL=redis://redis:6379/0')
     end
 
     file_exist_test(
@@ -302,7 +302,7 @@ RSpec.describe 'Create new project without default configuration' do
         .environments/.env.production
       ]
     ) do |env|
-      expect(content(env)).not_to match('SIDEKIG_REDIS_URL=')
+      expect(content(env)).not_to match('REDIS_URL=')
     end
   end
 

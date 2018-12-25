@@ -23,7 +23,7 @@
 
 # Local development
 
-- Change SIDEKIG_REDIS_URL and POSTGRESQL_HOST environment in `.env.local` file
+- Change REDIS_URL and POSTGRESQL_HOST environment in `.env.local` file
 
 - run following commands on terminal
 ➜ ✗ bundle exec rails server

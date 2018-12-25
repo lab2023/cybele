@@ -23,7 +23,7 @@
 <% end %>
 # Local development
 <% unless @options[:skip_docker] %>
-- Change <%= @options[:skip_sidekiq] ? '' : 'SIDEKIG_REDIS_URL and' %> POSTGRESQL_HOST environment in `.env.local` file
+- Change <%= @options[:skip_sidekiq] ? '' : 'REDIS_URL and' %> POSTGRESQL_HOST environment in `.env.local` file
 <% end %>
 - run following commands on terminal
 ➜ ✗ bundle exec rails server

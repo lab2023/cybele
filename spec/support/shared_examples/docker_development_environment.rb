@@ -19,7 +19,7 @@ shared_examples 'uses docker development environment' do
       ]
     ) do |env|
       file = content(env)
-      expect(file).to match('SIDEKIG_REDIS_URL=redis://redis:6379/0')
+      expect(file).to match('REDIS_URL=redis://redis:6379/0')
       expect(file).to match('RACK_ENV=development')
       expect(file).to match('POSTGRESQL_HOST=postgres')
       expect(file).to match('REDIS_HOST=redis')
@@ -31,7 +31,7 @@ shared_examples 'uses docker development environment' do
         .environments/.env.production
       ]
     ) do |env|
-      expect(content(env)).to match('SIDEKIG_REDIS_URL=')
+      expect(content(env)).to match('REDIS_URL=')
     end
   end
 end
@@ -46,9 +46,7 @@ shared_examples 'uses docker development environment without sidekiq' do
       ]
     )
 
-    file_not_exist_test(
-      %w[bin/start-sidekiq.sh]
-    )
+    file_not_exist_test(%w[bin/start-sidekiq.sh])
 
     file_exist_test(
       %w[
@@ -58,7 +56,7 @@ shared_examples 'uses docker development environment without sidekiq' do
       ]
     ) do |env|
       file = content(env)
-      expect(file).not_to match('SIDEKIG_REDIS_URL=redis://redis:6379/0')
+      expect(file).not_to match('REDIS_URL=redis://redis:6379/0')
       expect(file).to match('RACK_ENV=development')
       expect(file).to match('POSTGRESQL_HOST=postgres')
       expect(file).not_to match('REDIS_HOST=redis')
@@ -70,7 +68,7 @@ shared_examples 'uses docker development environment without sidekiq' do
         .environments/.env.production
       ]
     ) do |env|
-      expect(content(env)).not_to match('SIDEKIG_REDIS_URL=')
+      expect(content(env)).not_to match('REDIS_URL=')
     end
   end
 end
