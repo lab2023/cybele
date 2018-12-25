@@ -1,5 +1,32 @@
 
 #### [Current]
+ * [864753a](../../commit/864753a) - __(İsmail Akbudak)__ Merged in feature/improve_gems (pull request [#42](../../issues/42))
+
+Feature/improve gems
+
+ * [cd2480f](../../commit/cd2480f) - __(İsmail Akbudak)__ Change SIDEKIQ_REDIS_URL with REDIS_URL
+ * [0cf91a1](../../commit/0cf91a1) - __(İsmail Akbudak)__ Fix alignment problem for rspec test
+ * [914975a](../../commit/914975a) - __(İsmail Akbudak)__ Update template gemfile gems versions
+ * [b5e504c](../../commit/b5e504c) - __(İsmail Akbudak)__ Code refactor for test specs
+ * [e690b25](../../commit/e690b25) - __(İsmail Akbudak)__ Code refactor for test specs and change sidekiq_redis environment key
+ * [6b10ade](../../commit/6b10ade) - __(İsmail Akbudak)__ Update rails version
+ * [3fa1533](../../commit/3fa1533) - __(İsmail Akbudak)__ Remove pronto-reek gem from cybele gemspec
+ * [3ee5639](../../commit/3ee5639) - __(İsmail Akbudak)__ Remove guard gem configs
+ * [85eadfe](../../commit/85eadfe) - __(İsmail Akbudak)__ Fix ap view files wrong titles
+ * [4036acb](../../commit/4036acb) - __(İsmail Akbudak)__ Add rails credentials edit information to readme
+ * [f246d62](../../commit/f246d62) - __(İsmail Akbudak)__ Update ransack gem version and add binding_of_caller gem for development
+ * [5123d07](../../commit/5123d07) - __(İsmail Akbudak)__ Fix devise generate model migration commented lines
+ * [1d3f4b6](../../commit/1d3f4b6) - __(İsmail Akbudak)__ Upgrade ruby version to 2.5.3
+ * [995ded4](../../commit/995ded4) - __(İsmail Akbudak)__ Improve environment file contents
+ * [b426d4e](../../commit/b426d4e) - __(İsmail Akbudak)__ Add master_key to environment files
+ * [df9542e](../../commit/df9542e) - __(İsmail Akbudak)__ Fix active_storage initialization
+ * [cbc7830](../../commit/cbc7830) - __(İsmail Akbudak)__ Add erb_lint pronto runner
+ * [809ec01](../../commit/809ec01) - __(İsmail Akbudak)__ Merge tag 'v2.1.0' into develop
+
+v2.1.0
+
+#### v2.1.0
+ * [f7d00fc](../../commit/f7d00fc) - __(İsmail Akbudak)__ Update CHANGELOG file
  * [52832d1](../../commit/52832d1) - __(İsmail Akbudak)__ Fix pronto warnings
  * [148c6d4](../../commit/148c6d4) - __(İsmail Akbudak)__ Update CHANGELOG file
  * [ee9d462](../../commit/ee9d462) - __(İsmail AKBUDAK)__ Merge pull request [#127](../../issues/127) from lab2023/feature/update_ruby_rails_to_latest_version

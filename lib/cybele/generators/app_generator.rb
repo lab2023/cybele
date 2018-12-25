@@ -156,11 +156,6 @@ module Cybele
       build :generate_rollbar
     end
 
-    def setup_guard
-      say 'Generate guard', :green
-      build :generate_guard
-    end
-
     def configure_locale_language
       say 'Configure locale', :green
       build :configure_locale_language
@@ -282,6 +277,10 @@ module Cybele
     end
 
     private
+
+    def config_master_key_content
+      IO.read(File.join(destination_root, '/config/master.key'))
+    end
 
     # :reek:TooManyStatements
     def ask_questions(options)

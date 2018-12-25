@@ -66,6 +66,11 @@ module Cybele
       def add_default_value_to_migrations
         Dir.glob('db/migrate/*devise_create*.rb') do |file|
           replace_in_file file, 't.boolean :is_active', 't.boolean :is_active, default: true'
+          uncomment_lines file, /t.integer  :sign_in_count, default: 0, null: false/
+          uncomment_lines file, /t.datetime :current_sign_in_at/
+          uncomment_lines file, /t.datetime :last_sign_in_at/
+          uncomment_lines file, /t.inet     :current_sign_in_ip/
+          uncomment_lines file, /t.inet     :last_sign_in_ip/
         end
       end
     end

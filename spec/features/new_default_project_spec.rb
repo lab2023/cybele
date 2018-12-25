@@ -24,94 +24,31 @@ RSpec.describe 'Create new project with default configuration' do
     expect(database_file).to match(/^  database: #{app_name}_staging/)
   end
 
-  it 'uses sidekiq' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'sidekiq'/)
-    expect(gemfile_file).to match(/^gem 'sidekiq-cron'/)
-    expect(gemfile_file).to match(/^gem 'cocaine'/)
-    expect(gemfile_file).to match(/^gem 'devise-async'/)
+  it_behaves_like 'uses sidekiq'
 
-    sidekiq_file = content('config/sidekiq.yml')
-    expect(sidekiq_file).to match('[high_priority, 2]')
+  it_behaves_like 'uses responders'
 
-    sidekiq_schedule_file = content('config/sidekiq_schedule.yml')
-    expect(sidekiq_schedule_file).to match(/-> Daily at midnight/)
+  it_behaves_like 'uses cybele_version'
 
-    initializers_file = content('config/initializers/sidekiq.rb')
-    expect(initializers_file).to match("^require 'sidekiq'")
-    expect(initializers_file).to match("^require 'sidekiq/web'")
+  it_behaves_like 'uses rollbar'
 
-    routes_file = content('config/routes.rb')
-    expect(routes_file).to match("^require 'sidekiq/web'")
-    expect(routes_file).to match("^require 'sidekiq/cron/web'")
-    expect(routes_file).to match(/# ========== Sidekiq ==========/)
+  it_behaves_like 'uses ransack'
 
-    rake_file = content('lib/tasks/sidekiq.rake')
-    expect(rake_file).to match(/^namespace :sidekiq/)
-  end
+  it_behaves_like 'uses will_paginate'
 
-  it 'uses responders' do
-    responder_test
-  end
+  it_behaves_like 'uses to_xls'
 
-  it 'uses cybele_version' do
-    expect(File).to exist(file_project_path('VERSION.txt'))
-    expect(File).to exist(file_project_path('public/VERSION.txt'))
-  end
+  it_behaves_like 'uses roo'
 
-  it 'uses rollbar' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'rollbar'/)
+  it_behaves_like 'uses roo-xls'
 
-    config_file = content('config/initializers/rollbar.rb')
-    expect(config_file).to match(/^Rollbar.configure/)
-  end
+  it_behaves_like 'uses write_xlsx'
 
-  it 'uses ransack' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'ransack'/)
-  end
+  it_behaves_like 'uses colorize'
 
-  it 'uses will_paginate' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'will_paginate'/)
-    expect(gemfile_file).to match(/^gem 'will_paginate-bootstrap'/)
-  end
+  it_behaves_like 'uses better_errors'
 
-  it 'uses to_xls' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'to_xls'/)
-  end
-
-  it 'uses roo' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'roo'/)
-  end
-
-  it 'uses roo-xls' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'roo-xls'/)
-  end
-
-  it 'uses write_xlsx' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'write_xlsx'/)
-  end
-
-  it 'uses colorize' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'colorize'")
-  end
-
-  it 'uses better_errors' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'better_errors'")
-  end
-
-  it 'uses rails-i18n' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'rails-i18n'/)
-  end
+  it_behaves_like 'uses rails-i18n'
 
   it 'uses show_for' do
     gemfile_file = content('Gemfile')
@@ -127,21 +64,11 @@ RSpec.describe 'Create new project with default configuration' do
     expect(show_for_tr_yml_file).to match('show_for')
   end
 
-  it 'uses config and staging file' do
-    config_test
-  end
+  it_behaves_like 'uses config'
 
-  it 'uses recipient_interceptor' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match(/^gem 'recipient_interceptor'/)
+  it_behaves_like 'uses recipient_interceptor'
 
-    config_staging_file = content('config/environments/staging.rb')
-    expect(config_staging_file).to match('RecipientInterceptor.new')
-  end
-
-  it 'uses locale_language' do
-    locale_language_test
-  end
+  it_behaves_like 'uses locale_language'
 
   it 'uses simple_form' do
     gemfile_file = content('Gemfile')
@@ -160,14 +87,9 @@ RSpec.describe 'Create new project with default configuration' do
     expect(simple_form_tr_yml_file).to match('simple_form')
   end
 
-  it 'control .env files' do
-    dotenv_test
-  end
+  it_behaves_like 'has .env files'
 
   it 'uses mailer' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'mailtrap'")
-
     expect(File).to exist(file_project_path('config/settings/production.yml'))
     expect(File).to exist(file_project_path('config/settings/staging.yml'))
 
@@ -186,25 +108,13 @@ RSpec.describe 'Create new project with default configuration' do
     expect(File).to exist(file_project_path('app/views/layouts/application.html.haml'))
   end
 
-  it 'uses bullet' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'bullet'")
+  it_behaves_like 'uses bullet'
 
-    locale_file = content('config/environments/development.rb')
-    expect(locale_file).to match('Bullet')
-  end
+  it_behaves_like 'uses devise'
 
-  it 'uses devise' do
-    devise_test
-  end
+  it_behaves_like 'uses error_pages'
 
-  it 'uses error_pages' do
-    error_pages_test
-  end
-
-  it 'uses gitignore' do
-    git_ignore_test
-  end
+  it_behaves_like 'uses gitignore'
 
   it 'uses asset files' do
     gemfile_file = content('Gemfile')
@@ -377,80 +287,25 @@ RSpec.describe 'Create new project with default configuration' do
     end
   end
 
-  it 'uses default view files' do
-    # Mailer files
-    hq_admins_view = content('app/views/admin_mailer/login_info.html.haml')
-    expect(hq_admins_view).to match('@admin')
-  end
+  it_behaves_like 'uses default view files'
 
   it 'configure routes file' do
     route_file = content('config/routes.rb')
     expect(route_file).to match('concern :activeable')
   end
 
-  it 'uses model files' do
-    admin_model = content('app/models/admin.rb')
-    expect(admin_model).to match('login_info_mailer')
+  it_behaves_like 'uses model files'
 
-    audit_model = content('app/models/audit.rb')
-    expect(audit_model).to match('class Audit')
-  end
+  it_behaves_like 'uses mailer files'
 
-  it 'uses mailer files' do
-    admin_mailer = content('app/mailers/admin_mailer.rb')
-    expect(admin_mailer).to match('class AdminMailer')
+  it_behaves_like 'uses ssl_setting'
 
-    application_mailer = content('app/mailers/application_mailer.rb')
-    expect(application_mailer).to match('Settings.email.noreply')
-  end
+  it_behaves_like 'uses docker development environment'
 
-  it 'uses ssl_setting' do
-    force_ssl_test
-  end
+  it_behaves_like 'uses pronto'
 
-  it 'uses docker development environment' do
-
-    file_exist_test(
-      %w[
-        docker-compose.yml
-        Dockerfile
-        bin/start-app.sh
-        bin/start-sidekiq.sh
-      ]
-    )
-
-    file_exist_test(
-      %w[
-        .env.sample
-        .env.local
-        .environments/.env.local
-      ]
-    ) do |env|
-      file = content(env)
-      expect(file).to match('REDISTOGO_URL=redis://redis:6379/0')
-      expect(file).to match('RACK_ENV=development')
-      expect(file).to match('POSTGRESQL_HOST=postgres')
-      expect(file).to match('REDIS_HOST=redis')
-    end
-
-    file_exist_test(
-      %w[
-        .environments/.env.staging
-        .environments/.env.production
-      ]
-    ) do |env|
-      expect(content(env)).to match('REDISTOGO_URL=')
-    end
-  end
-
-  it 'uses pronto' do
-    pronto_test
-  end
-
-  it 'uses guardfile' do
-    gemfile_file = content('Gemfile')
-    expect(gemfile_file).to match("gem 'guard'")
-
-    expect(File).to exist(file_project_path('Guardfile'))
+  it 'match readme' do
+    gemfile_file = content('README.md')
+    expect(gemfile_file).to match(file_content('README_DEFAULT.md'))
   end
 end

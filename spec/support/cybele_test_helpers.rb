@@ -23,8 +23,12 @@ module CybeleTestHelpers
     end
   end
 
-  def cybele_not_default_parameters
-    '--database=sqlite3 --skip-create-database --skip-sidekiq --skip-simple-form --skip-show-for --skip-haml --skip-docker --skip-view-files'
+  def cybele_not_default_parameters(no_skips: [])
+    commands = %w[sidekiq simple-form show-for haml docker view-files] - no_skips
+    skips = commands.map do |command|
+      "--skip-#{command}"
+    end
+    '--database=sqlite3 ' + skips.join(' ')
   end
 
   def content(file_path)
@@ -97,6 +101,10 @@ module CybeleTestHelpers
       expect(File).not_to exist(file_project_path(file))
       yield file if block_given?
     end
+  end
+
+  def file_content(fixture_name)
+    IO.read(Pathname.new("#{root_path}/spec/files/#{fixture_name}"))
   end
 
   private

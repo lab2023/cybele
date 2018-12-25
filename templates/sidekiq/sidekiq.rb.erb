@@ -3,7 +3,7 @@ require 'sidekiq/web'
 
 labels = "<%= app_name.parameterize %>_#{Rails.env}"
 settings = {
-  url: ENV['REDISTOGO_URL'] || 'redis://localhost:6379/0'
+  url: ENV['REDIS_URL'] || 'redis://localhost:6379/0'
 }
 
 Sidekiq.configure_server { |config| config.redis = settings }
