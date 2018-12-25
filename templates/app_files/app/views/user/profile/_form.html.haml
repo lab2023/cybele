@@ -3,7 +3,7 @@
     %i.icon-edit.icon-large
     = yield :form_title
   .card-body
-    = simple_form_for([:user, profile], url: user_profile_path, validate: true) do |f|
+    = simple_form_for([:user, profile], url: user_profile_path) do |f|
       = f.error_notification
 
       .form-inputs
