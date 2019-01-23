@@ -7,7 +7,7 @@ class Hq::UsersController < Hq::ApplicationController
   add_breadcrumb I18n.t('activerecord.models.users'), :hq_users_path
 
   def index
-    @search = User.order(id: :desc).search(params[:q])
+    @search = User.order(id: :desc).ransack(params[:q])
     @users = @search.result(distinct: true).paginate(page: params[:page])
     respond_with(@users)
   end

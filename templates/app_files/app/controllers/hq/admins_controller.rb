@@ -7,7 +7,7 @@ class Hq::AdminsController < Hq::ApplicationController
   add_breadcrumb I18n.t('activerecord.models.admins'), :hq_admins_path
 
   def index
-    @search = Admin.order(id: :desc).search(params[:q])
+    @search = Admin.order(id: :desc).ransack(params[:q])
     @admins = @search.result(distinct: true).paginate(page: params[:page])
     respond_with(@admins)
   end
