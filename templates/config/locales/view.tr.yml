@@ -17,6 +17,8 @@ tr:
     reset: Temizle
     quick_search: Arama yap..
     reload: Yeniden yükle
+    current_value: Şuanki Değeri
+    previous_value: Önceki Değeri
     hello: "Merhaba %{user}"
     there_is_no_data: "Hiç %{resource} eklenmemiş."
     create_resource_mail_info: "Yeni bir %{resource} eklediğinizde e-posta adresine giriş bilgileri gönderilecektir."

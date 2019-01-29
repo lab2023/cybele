@@ -1,8 +1,22 @@
 .card
+  .card-header
+    %i.fas.fa-microchip
+    = t('activerecord.models.audits')
   .card-body
-    - @audit.audited_changes.each_key do |key|
-      %p
-        %strong
-          - if @audit.try(:auditable_type).present?
-            = t("activerecord.attributes.#{@audit.try(:auditable_type).try(:underscore)}.#{key}")
-        = @audit.audited_changes[key]
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}= t('activerecord.attributes.audit.action')
+          %th{scope: 'col'}= t('view.previous_value')
+          %th{scope: 'col'}= t('view.current_value')
+      %tbody
+        - @audit.audited_changes.each_key do |key|
+          %tr
+            - if @audit.try(:auditable_type).present?
+              %th{scope: 'row'}= t("activerecord.attributes.#{@audit.try(:auditable_type).try(:underscore)}.#{key}")
+            - if @audit.audited_changes[key].is_a?(Array)
+              %td= @audit.audited_changes[key][0]
+              %td= @audit.audited_changes[key][1]
+            - else
+              %td= @audit.audited_changes[key]
+              %td= @audit.audited_changes[key]
