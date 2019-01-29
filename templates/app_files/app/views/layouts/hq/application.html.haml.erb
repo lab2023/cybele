@@ -5,10 +5,7 @@
 %html.no-js{ lang: I18n.locale }
   %head
     %title
-      - if content_for?(:title)
-        = "#{yield(:title)} - <%= app_name.capitalize %>"
-      - else
-        = '<%= app_name.capitalize %>'
+      = content_for?(:title) ? "#{yield(:title)} - <%= app_name.capitalize %>" : '<%= app_name.capitalize %>'
     %meta{ 'http-equiv': 'content-type', content: 'text/html', charset: 'utf-8' }
     %meta{ 'http-equiv': 'x-ua-compatible', content: 'ie=edge,chrome=1' }
     %meta{ name: 'description', content: '<%= app_name.capitalize %>' }
