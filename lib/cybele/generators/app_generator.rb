@@ -258,7 +258,7 @@ module Cybele
     end
 
     def setup_pronto
-      say 'Pronto is setup'
+      say 'Pronto is setup', :green
       build :add_pronto_to_gemfile
     end
 

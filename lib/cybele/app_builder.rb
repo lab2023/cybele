@@ -67,8 +67,8 @@ module Cybele
     def add_pronto_to_gemfile
       # Add gems
       append_file('Gemfile', template_content('Pronto.erb'))
-      run 'bundle update'
-      run 'bundle'
+      bundle_command 'update'
+      bundle_command 'install'
     end
   end
 end
