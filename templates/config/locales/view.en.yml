@@ -1,6 +1,5 @@
 en:
   view:
-    excel_export: Export as Excel
     make_passive: Make Passive
     make_active: Make Active
     table_actions: Actions
@@ -8,10 +7,6 @@ en:
     select: Select
     active: Active
     passive: Passive
-    start: Start
-    end: End
-    used: Used
-    not_used: Not Used
     cancel: Cancel
     all: All
     reset: Reset
@@ -22,19 +17,12 @@ en:
     hello: "Hello %{user}"
     there_is_no_data: "There is no %{resource}."
     create_resource_mail_info: "When you add a new %{resource}, login information will be sent to your e-mail address."
-    admin_info: Admin Info
     title:
       edit: "Edit %{resource_name}"
       show: "Detail %{resource_name}"
-      new: "Add %{resource_name}"
     actions:
       new: "New %{resource_name}"
-      update: Update
-      create: Create
-      destroy: Destroy
-      delete: Delete
     navbar:
-      settings: Settings
       signup: Sign Up
       signin: Sign In
       sign_out: Sign Out
@@ -51,23 +39,15 @@ en:
       delete: "Delete"
       new: "New"
       are_you_sure: "Are you sure you want to continue?"
-      choose: "Select"
       show: "Show"
     btn:
       add: Add
       update: Update
       back: Back
-      detail: Detail
-      delete: Delete
     dock:
       dashboard: "Control Panel"
       profile: "Profile"
       system_users: "System users"
-      system_datas: "System data"
-      system: "System"
-    error:
-      internal_server_error: "We are sorry. An error occured. Our engineers are working on it. We will solve it as soon as possible."
-      not_found: "We are sorry. Page was not found. It may have been moved."
     welcome:
       navbar:
         about: About
