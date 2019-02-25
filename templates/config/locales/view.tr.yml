@@ -1,6 +1,5 @@
 tr:
   view:
-    excel_export: Excel Olarak Çıkart
     make_passive: Pasif et
     make_active: Aktif et
     table_actions: İşlemler
@@ -8,10 +7,6 @@ tr:
     select: Seçiniz
     active: Aktif
     passive: Pasif
-    start: Başlangıç
-    end: Bitiş
-    used: Kullanılan
-    not_used: Kullanılmayan
     cancel: İptal et
     all: Hepsi
     reset: Temizle
@@ -22,19 +17,12 @@ tr:
     hello: "Merhaba %{user}"
     there_is_no_data: "Hiç %{resource} eklenmemiş."
     create_resource_mail_info: "Yeni bir %{resource} eklediğinizde e-posta adresine giriş bilgileri gönderilecektir."
-    admin_info: Yönetici Bilgilerini
     title:
       edit: "%{resource_name} Düzenle"
       show: "%{resource_name} Detay"
-      new: "%{resource_name} Ekle"
     actions:
-      update: Güncelleme
-      create: Oluşturma
-      destroy: Silme
-      delete: Silme
       new: "Yeni %{resource_name}"
     navbar:
-      settings: Ayarlar
       signup: Kayıt ol
       signin: Giriş Yap
       sign_out: Çıkış yap
@@ -51,23 +39,15 @@ tr:
       delete: "Sil"
       new: "Yeni"
       are_you_sure: "Devam etmek istediğinize emin misiniz?"
-      choose: "Seçiniz"
       show: "Göster"
     btn:
       add: Ekle
       update: Güncelle
       back: Geri
-      detail: Detaylar
-      delete: Sil
     dock:
       dashboard: Kontrol Paneli
-      dashboard: Kontrol paneli
       profile: Profil
       system_users: Sistem kullanıcıları
-      system_datas: Sistem verileri
-    error:
-      internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
-      not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
     welcome:
       navbar:
         about: Hakkında
