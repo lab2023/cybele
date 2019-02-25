@@ -63,5 +63,12 @@ module Cybele
       git add: '.'
       git commit: '-m "Project initialized"'
     end
+
+    def add_pronto_to_gemfile
+      # Add gems
+      append_file('Gemfile', template_content('pronto/pronto_Gemfile.erb'))
+      bundle_command 'update'
+      bundle_command 'install'
+    end
   end
 end

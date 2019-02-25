@@ -257,6 +257,11 @@ module Cybele
       build :setup_docker_development_env
     end
 
+    def setup_pronto
+      say 'Pronto is setup', :green
+      build :add_pronto_to_gemfile
+    end
+
     def setup_git_and_git_flow
       say 'Initialize git and git flow'
       build :git_and_git_flow_commands
