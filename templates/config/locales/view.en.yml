@@ -17,6 +17,8 @@ en:
     reset: Reset
     quick_search: Search...
     reload: Reload
+    current_value: Current Value
+    previous_value: Previous Value
     hello: "Hello %{user}"
     there_is_no_data: "There is no %{resource}."
     create_resource_mail_info: "When you add a new %{resource}, login information will be sent to your e-mail address."
