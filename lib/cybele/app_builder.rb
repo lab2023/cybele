@@ -70,5 +70,10 @@ module Cybele
       bundle_command 'update'
       bundle_command 'install'
     end
+
+
+    def add_environment_to_lib
+      copy_file 'environment/environment_generator.rb', 'lib/generators/environment/environment_generator.rb'
+    end
   end
 end
