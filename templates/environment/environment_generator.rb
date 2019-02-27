@@ -1,4 +1,3 @@
-
 class EnvironmentGenerator < Rails::Generators::Base
   desc 'This generetor create .env.local file from .env.sample'
 
