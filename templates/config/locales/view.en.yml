@@ -20,8 +20,13 @@ en:
     title:
       edit: "Edit %{resource_name}"
       show: "Detail %{resource_name}"
+      new: "Add %{resource_name}"
     actions:
       new: "New %{resource_name}"
+      update: Update
+      create: Create
+      destroy: Destroy
+      delete: Delete
     navbar:
       signup: Sign Up
       signin: Sign In
@@ -44,10 +49,16 @@ en:
       add: Add
       update: Update
       back: Back
+      detail: Detail
+      delete: Delete
     dock:
       dashboard: "Control Panel"
       profile: "Profile"
       system_users: "System users"
+      system_datas: "System data"
+    error:
+      internal_server_error: "We are sorry. An error occured. Our engineers are working on it. We will solve it as soon as possible."
+      not_found: "We are sorry. Page was not found. It may have been moved."
     welcome:
       navbar:
         about: About

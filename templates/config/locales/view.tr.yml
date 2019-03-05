@@ -20,7 +20,12 @@ tr:
     title:
       edit: "%{resource_name} Düzenle"
       show: "%{resource_name} Detay"
+      new: "%{resource_name} Ekle"
     actions:
+      update: Güncelleme
+      create: Oluşturma
+      destroy: Silme
+      delete: Silme
       new: "Yeni %{resource_name}"
     navbar:
       signup: Kayıt ol
@@ -44,10 +49,16 @@ tr:
       add: Ekle
       update: Güncelle
       back: Geri
+      detail: Detaylar
+      delete: Sil
     dock:
       dashboard: Kontrol Paneli
       profile: Profil
       system_users: Sistem kullanıcıları
+      system_datas: Sistem verileri
+    error:
+      internal_server_error: "Üzgünüz. Şu anda bir hata var. Mühendislerimiz bu hata üzerinde çalışma yapıyorlar. En kısa sürede çözeceğiz."
+      not_found: "Üzgünüz. Bu sayfa bulunamadı. Taşınmış olabilir. Buraya gitmek istediğinizden emin olun."
     welcome:
       navbar:
         about: Hakkında
