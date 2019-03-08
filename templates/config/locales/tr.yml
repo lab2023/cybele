@@ -1,0 +1,17 @@
+---
+tr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      year_month: "%Y-%B"
+      date: '%d %B %Y'
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      year_month: "%Y-%B"
+      date: '%d %B %Y'
+  number:
+    currency:
+      format:
+        format: "%u %n"
+        unit: "₺"
