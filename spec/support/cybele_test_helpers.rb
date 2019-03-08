@@ -28,7 +28,7 @@ module CybeleTestHelpers
     skips = commands.map do |command|
       "--skip-#{command}"
     end
-    '--database=sqlite3 ' + skips.join(' ')
+    '--skip-create-database ' + skips.join(' ')
   end
 
   def content(file_path)

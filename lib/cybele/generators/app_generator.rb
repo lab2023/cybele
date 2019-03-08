@@ -86,7 +86,6 @@ module Cybele
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
-      bundle_command 'update thor'
       build :add_simple_form_gem unless @options[:skip_simple_form]
       build :add_show_for_gem unless @options[:skip_show_for]
       build :add_haml_gems unless @options[:skip_haml]

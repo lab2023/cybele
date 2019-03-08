@@ -18,11 +18,7 @@ RSpec.describe 'Create new project with default configuration' do
     expect(readme_file).to match(/^➜ ✗ redis-server/)
   end
 
-  it 'uses postgresql database template' do
-    database_file = content('config/database.yml')
-    expect(database_file).to match(/^connection: &connection/)
-    expect(database_file).to match(/^  database: #{app_name}_staging/)
-  end
+  it_behaves_like 'uses postgresql database'
 
   it_behaves_like 'uses sidekiq'
 
