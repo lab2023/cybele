@@ -12,7 +12,6 @@ shared_examples 'uses locale_language' do
 
     def file_content_control_test
       locale_file = content('config/locales/tr.yml')
-      expect(locale_file).to match('phone:')
       expect(locale_file).to match('date:')
       expect(locale_file).to match('time:')
       expect(locale_file).to match('number:')
