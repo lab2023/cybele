@@ -1,5 +1,69 @@
 
 #### [Current]
+ * [9af28ad](../../commit/9af28ad) - __(İsmail AKBUDAK)__ Merge pull request [#131](../../issues/131) from lab2023/feature/fix_broken_specs
+
+Fix broken specs after changes
+ * [980fd25](../../commit/980fd25) - __(İsmail Akbudak)__ Fix broken specs after changes
+ * [b5cde72](../../commit/b5cde72) - __(Kemal AKIN)__ Merged in feature/environment_generator (pull request [#50](../../issues/50))
+
+Added new generator for environments
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [fb4b71d](../../commit/fb4b71d) - __(Kemal AKIN)__ Merged in feature/fix_yml_problem (pull request [#49](../../issues/49))
+
+Re added files for build problem
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [b23b525](../../commit/b23b525) - __(Kemal AKIN)__ Merged in feature/improve_views (pull request [#46](../../issues/46))
+
+Feature/improve views
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [63656c9](../../commit/63656c9) - __(Kemal AKIN)__ View i18n files revised
+ * [fd2ac29](../../commit/fd2ac29) - __(Kemal AKIN)__ Improve base i18n files
+ * [ff6e546](../../commit/ff6e546) - __(Kemal AKIN)__ Generator name edited
+ * [c08b07f](../../commit/c08b07f) - __(Kemal AKIN)__ Edited README.md for environment generator
+ * [00b3c6c](../../commit/00b3c6c) - __(Kemal AKIN)__ Deleted unless lines
+ * [77315d9](../../commit/77315d9) - __(Kemal AKIN)__ Added new generator for environments
+ * [5e997d6](../../commit/5e997d6) - __(Kemal AKIN)__ Re added files for build problem
+ * [f290325](../../commit/f290325) - __(Kemal AKIN)__ Merged in feature/improve_views (pull request [#44](../../issues/44))
+
+Feature/improve views
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [b6c0d0d](../../commit/b6c0d0d) - __(Kemal AKIN)__ Deleted not used keys
+ * [009f8b3](../../commit/009f8b3) - __(Kemal AKIN)__ Not use view keys deleted
+ * [73c8656](../../commit/73c8656) - __(Kemal AKIN)__ Deleted non used keys from view.tr.yml
+ * [77c3dc5](../../commit/77c3dc5) - __(Kemal AKIN)__ Merged in feature/fix_pronto_thor_problem (pull request [#45](../../issues/45))
+
+Refactored app build method for pronto
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [74d395b](../../commit/74d395b) - __(Kemal AKIN)__ Pronto Gem file based revised
+ * [9aff62d](../../commit/9aff62d) - __(Kemal AKIN)__ Bundle commands refactored
+ * [62a686e](../../commit/62a686e) - __(Kemal AKIN)__ Refactored app build method for pronto
+ * [4dfccd1](../../commit/4dfccd1) - __(Kemal AKIN)__ Merged in feature/evn_file_comments_improve (pull request [#43](../../issues/43))
+
+Feature/evn file comments improve
+
+Approved-by: İsmail Akbudak <ismail.akbudak@lab2023.com>
+
+ * [a3c4ea1](../../commit/a3c4ea1) - __(Kemal AKIN)__ Revised HQ Audits show page
+ * [cd84ed1](../../commit/cd84ed1) - __(Kemal AKIN)__ Application title tag improve
+ * [7be9213](../../commit/7be9213) - __(Kemal AKIN)__ Updated Font Awesome version
+ * [4664bf3](../../commit/4664bf3) - __(Kemal AKIN)__ Edited Comment lines
+ * [6ee9635](../../commit/6ee9635) - __(Kemal AKIN)__ Remove comments
+ * [c16931e](../../commit/c16931e) - __(İsmail Akbudak)__ Merge tag 'v2.2.0' into develop
+
+v2.2.0
+
+#### v2.2.0
+ * [b5b6990](../../commit/b5b6990) - __(İsmail Akbudak)__ Update version v2.2.0
  * [864753a](../../commit/864753a) - __(İsmail Akbudak)__ Merged in feature/improve_gems (pull request [#42](../../issues/42))
 
 Feature/improve gems
