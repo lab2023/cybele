@@ -262,6 +262,11 @@ module Cybele
       build :add_pronto_to_gemfile
     end
 
+    def setup_environment_generator
+      say 'Environment generator setup', :green
+      build :add_environment_to_lib
+    end
+
     def setup_git_and_git_flow
       say 'Initialize git and git flow'
       build :git_and_git_flow_commands
