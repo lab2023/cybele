@@ -9,21 +9,7 @@ RSpec.describe 'Create new project without default configuration' do
     setup_app_dependencies
   end
 
-  it 'uses sqlite3 instead of default pg in Gemfile' do
-    gemfile_file = content('Gemfile')
-    readme_file = content('README.md')
-    expect(gemfile_file).not_to match(/^gem 'pg'/)
-    expect(gemfile_file).to match(/^gem 'sqlite3'/)
-    expect(readme_file).to match(/^# #{app_name.capitalize}/)
-    expect(readme_file).not_to match(/^# Docker development/)
-    expect(readme_file).not_to match(/^➜ ✗ redis-server/)
-  end
-
-  it 'uses sqlite3 database template' do
-    database_file = content('config/database.yml')
-    expect(database_file).to match(/^default: &default/)
-    expect(database_file).to match(/adapter: sqlite3/)
-  end
+  it_behaves_like 'uses postgresql database'
 
   it 'do not use sidekiq' do
     gemfile_file = content('Gemfile')

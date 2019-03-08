@@ -86,7 +86,6 @@ module Cybele
     def customize_gemfile
       say 'Customize gem file', :green
       build :add_gems
-      bundle_command 'update thor'
       build :add_simple_form_gem unless @options[:skip_simple_form]
       build :add_show_for_gem unless @options[:skip_show_for]
       build :add_haml_gems unless @options[:skip_haml]
@@ -255,6 +254,16 @@ module Cybele
       return if @options[:skip_docker]
       say 'Setup docker development environment', :green
       build :setup_docker_development_env
+    end
+
+    def setup_pronto
+      say 'Pronto is setup', :green
+      build :add_pronto_to_gemfile
+    end
+
+    def setup_environment_generator
+      say 'Environment generator setup', :green
+      build :add_environment_to_lib
     end
 
     def setup_git_and_git_flow

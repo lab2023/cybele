@@ -1,7 +1,4 @@
 
-# General requirement
-gem 'thor', '~> 0.19.4'
-
 # For never accidentally send emails to real people from staging environment.
 gem 'recipient_interceptor', '~> 0.2.0'
 
@@ -34,18 +31,6 @@ group :development, :test do
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'bullet', '~> 5.9'
   gem 'colorize', '~> 0.8.1'
-end
-
-# Pronto runners
-group :development do
-  gem 'pronto', '~> 0.9.5'
-  gem 'pronto-erb_lint', require: false
-  gem 'pronto-brakeman', require: false
-  gem 'pronto-fasterer', require: false
-  gem 'pronto-flay', require: false
-  gem 'pronto-haml', require: false
-  gem 'pronto-poper', require: false
-  gem 'pronto-rubocop', require: false
 end
 
 # A set of common locale data and translations to internationalize and/or localize your Rails applications.

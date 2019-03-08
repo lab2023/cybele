@@ -1,6 +1,5 @@
 tr:
   view:
-    excel_export: Excel Olarak Çıkart
     make_passive: Pasif et
     make_active: Aktif et
     table_actions: İşlemler
@@ -8,19 +7,16 @@ tr:
     select: Seçiniz
     active: Aktif
     passive: Pasif
-    start: Başlangıç
-    end: Bitiş
-    used: Kullanılan
-    not_used: Kullanılmayan
     cancel: İptal et
     all: Hepsi
     reset: Temizle
     quick_search: Arama yap..
     reload: Yeniden yükle
+    current_value: Şuanki Değeri
+    previous_value: Önceki Değeri
     hello: "Merhaba %{user}"
     there_is_no_data: "Hiç %{resource} eklenmemiş."
     create_resource_mail_info: "Yeni bir %{resource} eklediğinizde e-posta adresine giriş bilgileri gönderilecektir."
-    admin_info: Yönetici Bilgilerini
     title:
       edit: "%{resource_name} Düzenle"
       show: "%{resource_name} Detay"
@@ -32,7 +28,6 @@ tr:
       delete: Silme
       new: "Yeni %{resource_name}"
     navbar:
-      settings: Ayarlar
       signup: Kayıt ol
       signin: Giriş Yap
       sign_out: Çıkış yap
@@ -49,7 +44,6 @@ tr:
       delete: "Sil"
       new: "Yeni"
       are_you_sure: "Devam etmek istediğinize emin misiniz?"
-      choose: "Seçiniz"
       show: "Göster"
     btn:
       add: Ekle
@@ -59,7 +53,6 @@ tr:
       delete: Sil
     dock:
       dashboard: Kontrol Paneli
-      dashboard: Kontrol paneli
       profile: Profil
       system_users: Sistem kullanıcıları
       system_datas: Sistem verileri
