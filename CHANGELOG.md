@@ -1,5 +1,27 @@
 
 #### [Current]
+ * [cd0a58c](../../commit/cd0a58c) - __(İsmail AKBUDAK)__ Merge pull request [#135](../../issues/135) from boratanrikulu/patch-1
+
+Add nodejs issue solution to dockerfile
+ * [4528876](../../commit/4528876) - __(İsmail AKBUDAK)__ Merge pull request [#136](../../issues/136) from vilusa/feature/fix_docker_bundler_version_problem
+
+Gem install command added for new Bundler version
+ * [3c303d3](../../commit/3c303d3) - __(Kemal AKIN)__ Gem install command added for new Bundler version
+ * [2a7b794](../../commit/2a7b794) - __(Bora Tanrıkulu)__ Add solution to dockerfile for nodejs issue
+ * [13a9def](../../commit/13a9def) - __(İsmail Akbudak)__ Merge tag 'v2.3.1' into develop
+
+v2.3.1
+
+ * [3114af0](../../commit/3114af0) - __(İsmail Akbudak)__ Merge tag 'v2.3.0' into develop
+
+v2.3.0
+
+#### v2.3.1
+ * [4d6dc9d](../../commit/4d6dc9d) - __(İsmail Akbudak)__ Update version v2.3.1
+
+#### v2.3.0
+ * [8d761b8](../../commit/8d761b8) - __(İsmail Akbudak)__ Update changelog file
+ * [273a2e9](../../commit/273a2e9) - __(İsmail Akbudak)__ Update version v2.3.0
  * [9af28ad](../../commit/9af28ad) - __(İsmail AKBUDAK)__ Merge pull request [#131](../../issues/131) from lab2023/feature/fix_broken_specs
 
 Fix broken specs after changes
