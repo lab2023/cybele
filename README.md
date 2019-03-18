@@ -2,7 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/cybele.png)](http://badge.fury.io/rb/cybele)
 [![Code Climate](https://codeclimate.com/github/kebab-project/cybele.png)](https://codeclimate.com/github/kebab-project/cybele)
-[![Dependency Status](https://gemnasium.com/kebab-project/cybele.png)](https://gemnasium.com/kebab-project/cybele)
 
 **Cybele** pron.: /ˈsɪbɨliː/ was an originally Anatolian mother goddess. Little is known of her oldest Anatolian cults,
 other than her association with mountains, hawks and lions. She may have been Phrygia's State deity; her Phrygian cult
@@ -13,8 +12,8 @@ western colonies from around the 6th century BCE.
 
 Before generating your application, you will need:
 
-* Ruby ~> 2.5.1
-* Rails ~> 5.2.0
+* Ruby ~> 2.5.3
+* Rails ~> 5.2.2
 
 ## Usage
 
