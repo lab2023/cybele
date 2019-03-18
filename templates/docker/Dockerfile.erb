@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
   nodejs \
   cmake
 
+# https://github.com/nodesource/distributions#installation-instructions
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+        && apt-get install -y nodejs
+
 # Use en_US.UTF-8 as our locale
 # RUN locale-gen en_US.UTF-8
 # ENV LANG en_US.UTF-8
