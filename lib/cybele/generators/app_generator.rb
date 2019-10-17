@@ -90,6 +90,7 @@ module Cybele
       build :add_show_for_gem unless @options[:skip_show_for]
       build :add_haml_gems unless @options[:skip_haml]
       build :add_required_view_gems unless @options[:skip_view_files]
+      bundle_command 'update'
       bundle_command 'install --binstubs=bin/stubs'
     end
 
